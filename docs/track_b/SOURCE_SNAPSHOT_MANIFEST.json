@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-10-23T22:14:07.456004+00:00",
+  "created_utc": "2026-10-23T22:14:45.526040+00:00",
   "file_count": 193,
   "files": {
     ".gitignore": {
@@ -563,8 +563,8 @@
       "size_bytes": 4866
     },
     "scripts/track_b/build_b8_reviewer_handoff.py": {
-      "sha256": "70a65632260491271985cabdf21decef5ef5a137e19253f105bfcdaf89596e8d",
-      "size_bytes": 12545
+      "sha256": "48ba38d4784a6e44bd7b854c98a6106e7187481c6eafb4c93b93c1fe04797a1b",
+      "size_bytes": 12952
     },
     "scripts/track_b/build_source_manifest.py": {
       "sha256": "d5f574b9a69f652d73a6a7c2e101028cf5ad79183487608cebb53d5ed5afcbb6",
