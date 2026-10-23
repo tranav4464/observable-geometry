@@ -29,8 +29,8 @@ def main() -> None:
     commit = git("rev-parse", "HEAD")
     short = commit[:7]
     snapshot_report = ROOT / "outputs/track_b/20261024_b8_release_checks/source_snapshot_verification.json"
-    test_report = ROOT / "outputs/track_b/20261024_b8_release_checks/test_run.json"
-    archive_test_report = ROOT / "outputs/track_b/20261024_b8_source_archive_tests/source_archive_test_run.json"
+    test_report = ROOT / f"outputs/track_b/20261024_b8_release_checks/test_run_{short}.json"
+    archive_test_report = ROOT / f"outputs/track_b/20261024_b8_source_archive_tests/source_archive_test_run_{short}.json"
     clean_parity = ROOT / "outputs/track_b/20261024_b8_release_checks/clean_install_parity.json"
     wheel = ROOT / "outputs/track_b/20261024_b8_release_checks/release_artifacts/observable_geometry-0.1.2-py3-none-any.whl"
     for path in (snapshot_report, test_report, archive_test_report, clean_parity, wheel):
@@ -48,6 +48,8 @@ def main() -> None:
         raise SystemExit("latest full-workspace test report is not passing")
     if archive_tests.get("source_commit") != commit or archive_tests.get("exit_code") != 0:
         raise SystemExit("source-archive test report does not match the current commit")
+    if archive_tests.get("source_import_verified") is not True:
+        raise SystemExit("source-archive tests did not verify imports from the extracted snapshot")
     if archive_tests.get("status") != "PASS_SOURCE_ARCHIVE_TESTS_WITH_DOCUMENTED_SKIP":
         raise SystemExit("source-archive test report has an unexpected status")
     parity = json.loads(clean_parity.read_text(encoding="utf-8"))
@@ -57,11 +59,12 @@ def main() -> None:
     dated_dir = HANDOFF_ROOT / f"B8_Independent_Review_{RELEASE_DATE}"
     dated_dir.mkdir(parents=True, exist_ok=True)
     source_archive = dated_dir / f"observable_geometry_source_{short}.zip"
-    subprocess.run(
-        ["git", "archive", "--format=zip", f"--output={source_archive}", "HEAD"],
-        cwd=ROOT,
-        check=True,
-    )
+    if not source_archive.is_file():
+        subprocess.run(
+            ["git", "archive", "--format=zip", f"--output={source_archive}", "HEAD"],
+            cwd=ROOT,
+            check=True,
+        )
     archive_digest = sha256_bytes(source_archive.read_bytes())
     if archive_tests.get("source_archive_sha256") != archive_digest:
         raise SystemExit("source-archive test report hash does not match the built archive")
