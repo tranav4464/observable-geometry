@@ -354,7 +354,7 @@
         "outputs/track_b/data_acquisition/b4_multisubject_metadata_feasibility.json",
         "docs/track_b/B4_ALTERNATE_PUBLIC_DATASET_SCREEN_20261024.md"
       ],
-      "known_issue": "The saved 224-channel sub-01 pairwise CSV reproduces exactly, but this is a previously exposed one-participant pulse-artifact analysis. The endpoint and simple fixed-normal cortical source family do not support endogenous neural-source distinguishability. The B1 source-generator audit finds large structured residuals. An earlier 236-channel/224-channel join is invalid and preserved. B4 is pivoted to the bounded GBFs reproduction/software build; no held-out outcome access or neural recovery claim is authorized by this route. A metadata-only screen of public EEG/SEEG alternatives found no qualifying replacement dataset for the active GBF estimand (see B4_ALTERNATE_PUBLIC_DATASET_SCREEN_20261024.md). A metadata-only reopening audit examined the seven Localize-MI participants without opening sub-02–07 signal arrays. Every site–intensity condition occurs in one run; the only run-held-out cross-intensity design leaves 19 geometry-eligible site-pair comparisons across six held-out participants (1, 1, 0, 12, 2, 3). This is too sparse and uneven for the proposed participant-level ranking or decision test. The artifact-only reopening route is not recommended for confirmatory execution; its outcomes remain unopened."
+      "known_issue": "The saved 224-channel sub-01 pairwise CSV reproduces exactly, but this is a previously exposed one-participant pulse-artifact analysis. The endpoint and simple fixed-normal cortical source family do not support endogenous neural-source distinguishability. The B1 source-generator audit finds large structured residuals. An earlier 236-channel/224-channel join is invalid and preserved. B4 is pivoted to the bounded GBFs reproduction/software build; no held-out outcome access or neural recovery claim is authorized by this route. A metadata-only reopening audit examined the seven Localize-MI participants without opening sub-02–07 signal arrays. Every site–intensity condition occurs in one run; the only run-held-out cross-intensity design leaves 19 geometry-eligible site-pair comparisons across six held-out participants (1, 1, 0, 12, 2, 3). This is too sparse and uneven for the proposed participant-level ranking or decision test. The artifact-only reopening route is not recommended for confirmatory execution; its outcomes remain unopened. A separate public iES-CCEP dataset (36 patients, 323 sessions) has individual anatomy and stimulation-site coordinates, but the 2026 GBF paper already reports localization results for 318 sessions from 35 participants on this data route. The OSF API metadata expose no explicit dataset license. It is not an independent confirmation cohort; any distinct B2-score-to-error analysis would be a reviewed, post-publication secondary analysis, and its outcomes remain unopened in this project. See B4_ALTERNATE_PUBLIC_DATASET_SCREEN_20261024.md and B0_GBF_EXTENSION_SCREEN.md."
     },
     {
       "id": "B5",
@@ -514,7 +514,10 @@
         "outputs/track_b/20261024_b8_export_cli_clean_env_v4/ranked_pairs.csv",
         "outputs/track_b/20261024_b8_release_checks/release_artifacts/observable_geometry-0.1.2-py3-none-any.whl",
         "outputs/track_b/20261024_b8_release_checks/clean_install_parity_stale_build_failure_01.json",
-        "docs/track_b/B4_ALTERNATE_PUBLIC_DATASET_SCREEN_20261024.md"
+        "docs/track_b/B4_ALTERNATE_PUBLIC_DATASET_SCREEN_20261024.md",
+        "outputs/track_b/20261024_b8_source_archive_tests/source_archive_test_run.json",
+        "outputs/track_b/20261024_b8_source_archive_tests/20261024_b8_source_archive_failure_01.json",
+        "outputs/track_b/20261024_b8_source_archive_tests/20261024_b8_source_archive_failure_02.json"
       ],
       "blocking": [],
       "objective": "Release a reproducible package and obtain an external reproduction or review.",
@@ -551,9 +554,12 @@
         "outputs/track_b/20261024_b8_export_cli_clean_env_v4/ranked_pairs.csv",
         "outputs/track_b/20261024_b8_release_checks/release_artifacts/observable_geometry-0.1.2-py3-none-any.whl",
         "outputs/track_b/20261024_b8_release_checks/clean_install_parity_stale_build_failure_01.json",
-        "docs/track_b/B4_ALTERNATE_PUBLIC_DATASET_SCREEN_20261024.md"
+        "docs/track_b/B4_ALTERNATE_PUBLIC_DATASET_SCREEN_20261024.md",
+        "outputs/track_b/20261024_b8_source_archive_tests/source_archive_test_run.json",
+        "outputs/track_b/20261024_b8_source_archive_tests/20261024_b8_source_archive_failure_01.json",
+        "outputs/track_b/20261024_b8_source_archive_tests/20261024_b8_source_archive_failure_02.json"
       ],
-      "known_issue": "Version 0.1.2 clean wheel installation and exact model-only output parity pass; the 0.1.1 stale-build failure is retained; legacy simulator/WBEN modules are archived outside the active package and test path. B4–B7 empirical/utility routes are explicitly pivoted with their evidence preserved. Project source is BSD-3-Clause licensed and citation metadata are present. B8 remains open pending unaffiliated outside review or reproduction. The supplied B2 reviewer identity is not independently authenticated; conflicting affiliation declarations and a malformed digest transcription remain disclosed. Localize-MI-derived bundle remains local."
+      "known_issue": "The extracted source-only handoff archive passes 78 tests with only the full-workspace evidence-path integration check skipped; the full workspace passes 79 tests and the strict validator checks 175 evidence paths. Version 0.1.2 clean wheel installation and exact model-only output parity pass; the 0.1.1 stale-build failure is retained; legacy simulator/WBEN modules are archived outside the active package and test path. B4–B7 empirical/utility routes are explicitly pivoted with their evidence preserved. Project source is BSD-3-Clause licensed and citation metadata are present. B8 remains open pending unaffiliated outside review or reproduction. The supplied B2 reviewer identity is not independently authenticated; conflicting affiliation declarations and a malformed digest transcription remain disclosed. Localize-MI-derived bundle remains local."
     }
   ],
   "stage_contract_version": 1,

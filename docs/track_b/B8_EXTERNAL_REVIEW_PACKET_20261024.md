@@ -8,6 +8,7 @@
 - `README.md` and `docs/ARCHITECTURE.md` for setup and interfaces.
 - `docs/track_b/PROJECT_DEFINITION.md` and `docs/track_b/GBF_BUILD_PLAN.md` for scope and claim boundaries.
 - `docs/track_b/B0_GBF_EXTENSION_SCREEN.md` for prior art and novelty limits.
+- `docs/track_b/B4_ALTERNATE_PUBLIC_DATASET_SCREEN_20261024.md` for the updated metadata-only iES-CCEP screen. Please specifically check that the 2026 GBF paper is treated as close prior art, that the 318-session result is not called an independent replication, and that the dataset's missing explicit OSF license is handled as a data-use blocker.
 - `docs/track_b/B2_GBF_SPEC.md` and `docs/track_b/B2_GATE_CLOSEOUT_20261024.md` for the fixed score, numerical check, and reviewer-record limitation.
 - `docs/track_b/B3_IMPLEMENTATION_AND_CLOSEOUT_20261024.md` for upstream trace and the sealed model-only comparison.
 - `docs/track_b/B4_DEVELOPMENT_AUDIT_20261024.md` and `docs/track_b/B4_CHANNEL_MATCH_RECONCILIATION_20261024.md` for the empirical endpoint, pivot, and preserved invalid join.
@@ -17,7 +18,9 @@
 - `docs/track_b/B7_DECISION_VALUE_AUDIT_20261024.md` and `outputs/track_b/20261024_b7_resolution_overlap_audit_v2/` for the paired same-model diagnostic comparison and independent rank-statistic recheck. The earlier v1 exploratory run is retained and marked superseded.
 - `scripts/track_b/export_sealed_model_bundle.py`, `src/observable_geometry/cli.py`, and `src/observable_geometry/track_b/distinguishability.py` for code review.
 - `outputs/track_b/20261024_b8_release_checks/clean_install_parity.json` for the final wheel-based reproduction, license-metadata check, and confirmation that archived simulator modules are absent; the final clean-environment outputs are under `outputs/track_b/20261024_b8_export_cli_clean_env_v4/`.
+- `outputs/track_b/20261024_b8_source_archive_tests/` for the extracted source-only handoff check, including two preserved failed attempts and the successful corrected run. The corrected archive passes 78 tests and skips only the strict evidence-path integration test because run evidence is intentionally excluded from the source archive. The complete workspace still passes all 79 tests and the strict validator checks all 175 registered evidence paths.
 - `outputs/track_b/20261024_b8_release_checks/release_artifacts/observable_geometry-0.1.2-py3-none-any.whl` for the distributable BSD-3-Clause wheel (SHA-256 `dc8b241e0320c901d98cf65dc626c8d1131c2f2b6caae6a4bb51b916cce02100`). The superseded 0.1.1 stale-build failure is preserved separately and is not the release candidate.
+- `docs/track_b/PROJECT_DEFINITION.md` for the current build target and claim boundary, including the distinction between a software reproduction, a nominal model-based diagnostic, and empirical validation.
 - `LICENSE`, `CITATION.cff`, and `docs/track_b/SOURCE_SNAPSHOT_MANIFEST.json` for source terms and source-only provenance. The separate verification report is generated under the ignored release-check output folder after the source snapshot is committed.
 
 ## Checks requested
@@ -29,6 +32,7 @@
 5. Review the B4 pivot and confirm that the 236-channel/224-channel joined analysis is excluded from scientific inference.
 6. Check that B5/B6 are recorded as pivoted without held-out outcome access, and that B7 reports only descriptive model-output associations rather than analyst utility.
 7. Identify any release-blocking defects and state whether the package is ready for a limited software release. Do not certify scientific novelty or physiological validation from the supplied evidence.
+8. Check whether the proposed B2-score-to-localization-error follow-up is sufficiently distinct from Wang et al. 2026, whether its participant-held-out unit and comparator set would be meaningful, and what minimum evidence and data-use permission would be needed before it could be preregistered. This is a candidate only; no outcomes or signals have been opened for it.
 
 ## Required reviewer record
 
@@ -41,3 +45,5 @@ Please provide reviewer name, affiliation, relevant expertise, conflicts or prio
 - The B2 verifier hash printed in the supplied review was malformed; the locally computed code hash is documented in the B2 closeout.
 - Workspace review records contain a conflict about reviewer identity/affiliation; the supplied identity is not independently authenticated. Preserve this limitation and do not edit historical source records.
 - No held-out participant analysis, independent cohort validation, neural physiological source test, decision-utility study, or novel-method evidence is complete.
+- The public iES-CCEP archive is not an untouched cohort for broad GBF localization: Wang et al. 2026 report 318 sessions from 35 participants on this data route. OSF metadata queried for the screen contain no explicit license. No use of its signal data is authorized in this project until terms are clarified and a distinct protocol receives review.
+- A user-supplied B2 review text recommends approval of the registered B2 computation only. It does not review B8. The supplied verifier digest is malformed, and the reviewer affiliation differs across supplied versions, so workspace evidence does not authenticate the named reviewer. Do not treat this text alone as unaffiliated external B8 review.
