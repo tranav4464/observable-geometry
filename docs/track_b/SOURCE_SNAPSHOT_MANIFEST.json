@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-10-23T22:36:02.470518+00:00",
+  "created_utc": "2026-10-23T22:36:52.109922+00:00",
   "file_count": 196,
   "files": {
     ".gitignore": {
@@ -251,8 +251,8 @@
       "size_bytes": 4743
     },
     "docs/track_b/B4_ALTERNATE_PUBLIC_DATASET_SCREEN_20261024.md": {
-      "sha256": "0f88538c15c1488243bd97bca0c29114b1f56945c131a6332454a56754b788f4",
-      "size_bytes": 28028
+      "sha256": "c5ff8d91f52612d3598cc2c7814311f9d7dcd762d4eabc42df38b9bc2003913e",
+      "size_bytes": 28184
     },
     "docs/track_b/B4_ARTIFACT_VALIDATION_REOPENING_PROPOSAL_20261024.md": {
       "sha256": "ec5fc4a18cc478fbd80acdffc7adde8779ad9f84052ccd4b1b9e632b1a30ea04",
