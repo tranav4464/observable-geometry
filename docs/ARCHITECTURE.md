@@ -39,7 +39,7 @@ The package performs no model training. The active route does not create synthet
 
 ## Known release limits
 
-- The project-wide source license has not been selected; upstream GBFs retains its own BSD-3-Clause license.
+- This repository's source is licensed under BSD-3-Clause, as stated in `LICENSE`, `pyproject.toml`, and the wheel metadata. That license does not extend to the separately vendored GBFs checkout or to any dataset; follow each item's own license and data-use terms.
 - Localize-MI data and derivatives are not bundled for redistribution.
 - B4's artifact endpoint did not validate endogenous neural source identifiability; the prior 236/224-channel joined comparison is invalid.
 - B7's paired model-only comparison found related but non-identical views from forward-signature similarity and MNE point-spread summaries; it did not test researcher decisions.

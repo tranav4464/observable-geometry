@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-10-23T22:36:52.109922+00:00",
+  "created_utc": "2026-10-23T22:38:14.539081+00:00",
   "file_count": 196,
   "files": {
     ".gitignore": {
@@ -67,8 +67,8 @@
       "size_bytes": 10986
     },
     "docs/ARCHITECTURE.md": {
-      "sha256": "49350d6f733740249f21820746a6aa07369f8b92cc3c527af8b2215030671ca8",
-      "size_bytes": 4640
+      "sha256": "00ee559fd35aeed19cb35216bffc714134fc94bf10e88534b7a99666d6138516",
+      "size_bytes": 4796
     },
     "docs/DECISIONS.md": {
       "sha256": "168e19ecc8c070dbc042dd4b64faba80b52aeacad3cde8d7f3a931e5b8302299",
@@ -319,8 +319,8 @@
       "size_bytes": 67918
     },
     "docs/track_b/GATE_REGISTER.json": {
-      "sha256": "77296b93507d83227a5d1d2410105ad3562eaa988819d11eba8134aafb2b5aa3",
-      "size_bytes": 53058
+      "sha256": "8d97acf9be87281fdf8c4ac58bb24a50ec644f74fe4e3370dd69c7fac5760bca",
+      "size_bytes": 53089
     },
     "docs/track_b/GBF_BUILD_PLAN.md": {
       "sha256": "dfaa7af96b7b7c7da2e4864e4b9649bcf35509a096857cff99891150be071f2f",
