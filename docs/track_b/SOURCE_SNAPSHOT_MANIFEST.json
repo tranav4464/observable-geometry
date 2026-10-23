@@ -1,6 +1,6 @@
 {
-  "created_utc": "2026-10-23T21:19:31.029094+00:00",
-  "file_count": 182,
+  "created_utc": "2026-10-23T21:31:05.690780+00:00",
+  "file_count": 186,
   "files": {
     ".gitignore": {
       "sha256": "f96cf8be73079a090f21c39fbca22ae1c23b7523034f7f588b650b589bf5c9d9",
@@ -235,8 +235,12 @@
       "size_bytes": 6265
     },
     "docs/track_b/B3_IMPLEMENTATION_AND_CLOSEOUT_20261024.md": {
-      "sha256": "e95bf124a7c15e63bb3bf2e4a113eb211622caec3eb6f20117ef23bbd4aad9da",
-      "size_bytes": 6199
+      "sha256": "d60ac0458f4b3ab07fdfa2e90f7d9e0e211bc42384794775aad7ecf1e660c665",
+      "size_bytes": 6889
+    },
+    "docs/track_b/B3_MONTAGE_SENSITIVITY_20261024.md": {
+      "sha256": "8b10a3d276fb07ab35389bc027a6fa55a862331bb5c72117c78eb785638684e0",
+      "size_bytes": 4759
     },
     "docs/track_b/B3_NEUROFLOWNET_IMPLEMENTATION.md": {
       "sha256": "c5caa49ce1620e105adfeca92b6541a1bd2152ad05b2216555792fad6f58eb8f",
@@ -275,12 +279,12 @@
       "size_bytes": 4494
     },
     "docs/track_b/B8_EXTERNAL_REVIEW_PACKET_20261024.md": {
-      "sha256": "9b7cf00e183e63d5dc2e9179c24dca8b58fd7b8e683203cc2fe439a37c4f0617",
-      "size_bytes": 8897
+      "sha256": "39e68c828d85f54e95b8bd4b4932ed794679905291f7b310ee5c198541a4056d",
+      "size_bytes": 9306
     },
     "docs/track_b/B8_RELEASE_AUDIT_20261024.md": {
-      "sha256": "73dfa997de8a0b1dfda6d293c1ea7e79161d43424d3b7285c61139d3238d371a",
-      "size_bytes": 8486
+      "sha256": "862a4268c364c093e96ae4f2eff90ee0966ac6e88ad7a921cbc36cdcec856cb8",
+      "size_bytes": 8961
     },
     "docs/track_b/BUILD_BASE_DECISION.md": {
       "sha256": "ff9e26767cc99c33fabc41d24cf0775ab4c6d541e17061b89fc0951d7199cd95",
@@ -299,12 +303,12 @@
       "size_bytes": 67918
     },
     "docs/track_b/GATE_REGISTER.json": {
-      "sha256": "603b24d73b27f7ecd69af749da16d9890fbdc7abe8935a31d12b9250f6e76b9a",
-      "size_bytes": 46044
+      "sha256": "b9b3bbf9736abbb16072a04bfc70c9089984a51e8db629589c7bfa0ef671d581",
+      "size_bytes": 48167
     },
     "docs/track_b/GBF_BUILD_PLAN.md": {
-      "sha256": "0c81e6fba7ec67e4bcee090a85b942b0a5f1d3f07d7a3fa12e2e4875aba500ba",
-      "size_bytes": 7361
+      "sha256": "1c312f14a9e8da72444057bf205d5d93d8615b249a691981f924d4d9f321f656",
+      "size_bytes": 7648
     },
     "docs/track_b/GPU_ENVIRONMENT.md": {
       "sha256": "02689f436f8dd9470950818df66cff8fbaacc9d4be55baab83fe4e3419181563",
@@ -434,6 +438,10 @@
       "sha256": "74cf171a3022d2ed2b843af75478bfaf00f5b9894f69a746bc2c20a4aeae84cb",
       "size_bytes": 9004
     },
+    "scripts/track_b/audit_b3_sensor_montage_sensitivity.py": {
+      "sha256": "c7a2178b0622310111e774dad451c04bf4e98171630fdde0af7e8348433746f2",
+      "size_bytes": 12875
+    },
     "scripts/track_b/audit_b4_multisubject_metadata.py": {
       "sha256": "62d6844b2b5c0367350b0b3483b42352bf81742a8b236219215123ec6f54218e",
       "size_bytes": 13063
@@ -539,8 +547,8 @@
       "size_bytes": 4866
     },
     "scripts/track_b/build_b8_reviewer_handoff.py": {
-      "sha256": "40b31f703387f60166a9db0ea99b8b8876a240483b88c47e5e2f0284dd4d187a",
-      "size_bytes": 9733
+      "sha256": "b4d0adf503473f394701e14309b67240a8ceacda39a44e784f237b873b29c405",
+      "size_bytes": 10217
     },
     "scripts/track_b/build_source_manifest.py": {
       "sha256": "d5f574b9a69f652d73a6a7c2e101028cf5ad79183487608cebb53d5ed5afcbb6",
@@ -573,6 +581,10 @@
     "scripts/track_b/hash_payloads.py": {
       "sha256": "cd16ad7428dff39fb0391356497f390f686ffdc96a850f29b690efda8fb1f1a3",
       "size_bytes": 2636
+    },
+    "scripts/track_b/montage_sensitivity.py": {
+      "sha256": "3ab8e4ff37bf148411dd2cc203eedb7e87dbb14a9e585bb05dfe9bcba7b6cb7c",
+      "size_bytes": 1892
     },
     "scripts/track_b/prepare_sub01_bem.py": {
       "sha256": "2d818dfd3c4c166a0e0c91505dbb23c45288af5864d8c211db345f9794dcb29c",
@@ -717,6 +729,10 @@
     "tests/test_track_b_gates.py": {
       "sha256": "e084a5d20c54ce74d4f78c6c6635feb1a4949a60c42d6f353b007314e084151b",
       "size_bytes": 4109
+    },
+    "tests/test_track_b_montage_sensitivity.py": {
+      "sha256": "a7b8a5261752a7eee7c67b3f9a2b25a782ec45560cae7d8afff4e7bea3aa056b",
+      "size_bytes": 1476
     },
     "tests/test_track_b_observable_sensitivity.py": {
       "sha256": "cc5aab6f00d83277bd940e2ccf9c10d2dbedcc979ffc4dda0c8cc177c58ed1c1",

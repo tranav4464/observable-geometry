@@ -36,6 +36,8 @@ The access log contains only allowed key reads: `leadfield`, `noise_cov`, `sourc
 
 The descriptive real-model summary is conditional on the selected model and covariance: median best distant absolute cosine `0.915556984605132`, 90th percentile `0.9453457802989496`, and 6.04% of valid sources had a best distant match at or above `0.95`; none reached `0.99`. These values are nominal geometry summaries, not source-recovery rates, probabilities, or physiological findings.
 
+An additional model-only sensor-montage sensitivity check projects the same sealed leadfield and covariance from the 236-channel contract to the actual 224-channel all-run common subset. The full model first reproduces the sealed B3 output; under the subset, per-source best-similarity ranks have Spearman `rho=0.9958`, the top candidate is retained for 93.36% of source rows, and mean top-five Jaccard overlap is 0.9236. The median best-similarity change is `+0.000132`. This is descriptive robustness evidence for one model and one channel subset, not empirical localization validation or a population estimate. See `B3_MONTAGE_SENSITIVITY_20261024.md` and its hash-verified run output.
+
 ## What remains outside B3
 
 B3 does not show that the diagnostic improves analyst decisions. B4/B7 own matched comparisons and decision-value evaluation. It does not establish generalization beyond this one model or participant. The B2 reviewer’s approval covered the registered CPU64 parity recomputation; this B3 software demonstration is separately within the broader project build request and did not perform new EEG analysis. The reviewer’s malformed verifier-hash transcription is retained in the B2 closeout; the locally computed hash is the authoritative implementation identity.

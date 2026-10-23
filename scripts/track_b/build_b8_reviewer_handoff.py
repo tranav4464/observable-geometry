@@ -71,6 +71,7 @@ def main() -> None:
 
     inputs = {
         "B2_GATE_CLOSEOUT_20261024.md": ROOT / "docs/track_b/B2_GATE_CLOSEOUT_20261024.md",
+        "B3_MONTAGE_SENSITIVITY_20261024.md": ROOT / "docs/track_b/B3_MONTAGE_SENSITIVITY_20261024.md",
         "B0_GBF_EXTENSION_SCREEN.md": ROOT / "docs/track_b/B0_GBF_EXTENSION_SCREEN.md",
         "B4_ALTERNATE_PUBLIC_DATASET_SCREEN_20261024.md": ROOT / "docs/track_b/B4_ALTERNATE_PUBLIC_DATASET_SCREEN_20261024.md",
         "B4_HDEEG_REOPENING_ASSESSMENT_20261024.md": ROOT / "docs/track_b/B4_HDEEG_REOPENING_ASSESSMENT_20261024.md",
@@ -81,6 +82,9 @@ def main() -> None:
         "source_snapshot_verification.json": snapshot_report,
         "test_run_workspace.json": test_report,
         "test_run_source_archive.json": archive_test_report,
+        "b3_montage_sensitivity_report.json": ROOT / "outputs/track_b/20261024_b3_montage_sensitivity/sensitivity_report.json",
+        "b3_montage_sensitivity_manifest.json": ROOT / "outputs/track_b/20261024_b3_montage_sensitivity/run_manifest.json",
+        "b3_montage_sensitivity_access_log.json": ROOT / "outputs/track_b/20261024_b3_montage_sensitivity/run_access_log.json",
         "observable_geometry-0.1.2-py3-none-any.whl": wheel,
         source_archive.name: source_archive,
     }

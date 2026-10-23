@@ -266,7 +266,14 @@
         "outputs/track_b/20261024_b3_gbf_tool_v1/run_manifest.json",
         "outputs/track_b/20261024_b3_gbf_tool_v1/result_summary.json",
         "outputs/track_b/20261024_b3_gbf_tool_v1/top_pairs.csv",
-        "outputs/track_b/20261024_b3_gbf_tool_v1/npz_key_access.jsonl"
+        "outputs/track_b/20261024_b3_gbf_tool_v1/npz_key_access.jsonl",
+        "docs/track_b/B3_MONTAGE_SENSITIVITY_20261024.md",
+        "scripts/track_b/audit_b3_sensor_montage_sensitivity.py",
+        "scripts/track_b/montage_sensitivity.py",
+        "tests/test_track_b_montage_sensitivity.py",
+        "outputs/track_b/20261024_b3_montage_sensitivity/sensitivity_report.json",
+        "outputs/track_b/20261024_b3_montage_sensitivity/run_manifest.json",
+        "outputs/track_b/20261024_b3_montage_sensitivity/run_access_log.json"
       ],
       "blocking": [
         "B4",
@@ -295,9 +302,16 @@
         "outputs/track_b/20261024_b3_gbf_tool_v1/run_manifest.json",
         "outputs/track_b/20261024_b3_gbf_tool_v1/npz_key_access.jsonl",
         "outputs/track_b/20261024_b3_gbf_tool_v1/result_summary.json",
-        "outputs/track_b/20261024_b3_verification_20261024.json"
+        "outputs/track_b/20261024_b3_verification_20261024.json",
+        "docs/track_b/B3_MONTAGE_SENSITIVITY_20261024.md",
+        "scripts/track_b/audit_b3_sensor_montage_sensitivity.py",
+        "scripts/track_b/montage_sensitivity.py",
+        "tests/test_track_b_montage_sensitivity.py",
+        "outputs/track_b/20261024_b3_montage_sensitivity/sensitivity_report.json",
+        "outputs/track_b/20261024_b3_montage_sensitivity/run_manifest.json",
+        "outputs/track_b/20261024_b3_montage_sensitivity/run_access_log.json"
       ],
-      "known_issue": "B3 passes as a bounded software implementation and sealed model-only demonstration. It does not add a novel mathematical method, establish decision value, validate physiological localization, or generalize beyond the one participant-specific model. B4/B7 and B8 remain required for those separate questions.",
+      "known_issue": "B3 passes as a bounded software implementation and sealed model-only demonstration. It does not add a novel mathematical method, establish decision value, validate physiological localization, or generalize beyond the one participant-specific model. B4/B7 and B8 remain required for those separate questions. A supplementary one-model 236-to-224-channel common-reference sensitivity audit is documented in B3_MONTAGE_SENSITIVITY_20261024.md; it is descriptive model-only robustness evidence, not empirical validation or a novel method.",
       "historical_route_artifacts": [
         "docs/track_b/B3_NEUROFLOWNET_IMPLEMENTATION.md",
         "docs/track_b/B3_WBEN_IMPLEMENTATION.md",
@@ -520,7 +534,14 @@
         "docs/track_b/B4_HDEEG_REOPENING_ASSESSMENT_20261024.md",
         "outputs/track_b/20261024_b8_source_archive_tests/source_archive_test_run.json",
         "outputs/track_b/20261024_b8_source_archive_tests/20261024_b8_source_archive_failure_01.json",
-        "outputs/track_b/20261024_b8_source_archive_tests/20261024_b8_source_archive_failure_02.json"
+        "outputs/track_b/20261024_b8_source_archive_tests/20261024_b8_source_archive_failure_02.json",
+        "docs/track_b/B3_MONTAGE_SENSITIVITY_20261024.md",
+        "scripts/track_b/audit_b3_sensor_montage_sensitivity.py",
+        "scripts/track_b/montage_sensitivity.py",
+        "tests/test_track_b_montage_sensitivity.py",
+        "outputs/track_b/20261024_b3_montage_sensitivity/sensitivity_report.json",
+        "outputs/track_b/20261024_b3_montage_sensitivity/run_manifest.json",
+        "outputs/track_b/20261024_b3_montage_sensitivity/run_access_log.json"
       ],
       "blocking": [],
       "objective": "Release a reproducible package and obtain an external reproduction or review.",
@@ -561,9 +582,16 @@
         "docs/track_b/B4_HDEEG_REOPENING_ASSESSMENT_20261024.md",
         "outputs/track_b/20261024_b8_source_archive_tests/source_archive_test_run.json",
         "outputs/track_b/20261024_b8_source_archive_tests/20261024_b8_source_archive_failure_01.json",
-        "outputs/track_b/20261024_b8_source_archive_tests/20261024_b8_source_archive_failure_02.json"
+        "outputs/track_b/20261024_b8_source_archive_tests/20261024_b8_source_archive_failure_02.json",
+        "docs/track_b/B3_MONTAGE_SENSITIVITY_20261024.md",
+        "scripts/track_b/audit_b3_sensor_montage_sensitivity.py",
+        "scripts/track_b/montage_sensitivity.py",
+        "tests/test_track_b_montage_sensitivity.py",
+        "outputs/track_b/20261024_b3_montage_sensitivity/sensitivity_report.json",
+        "outputs/track_b/20261024_b3_montage_sensitivity/run_manifest.json",
+        "outputs/track_b/20261024_b3_montage_sensitivity/run_access_log.json"
       ],
-      "known_issue": "The extracted source-only handoff archive passes 78 tests with only the full-workspace evidence-path integration check skipped; the full workspace passes 79 tests and the strict validator checks 178 evidence paths. Version 0.1.2 clean wheel installation and exact model-only output parity pass; the 0.1.1 stale-build failure is retained; legacy simulator/WBEN modules are archived outside the active package and test path. B4–B7 empirical/utility routes are explicitly pivoted with their evidence preserved. Project source is BSD-3-Clause licensed and citation metadata are present. The committed source snapshot and hash-verified handoff build are reproducible. B8 remains open pending unaffiliated outside review or reproduction. The supplied B2 reviewer identity is not independently authenticated; conflicting affiliation declarations and a malformed digest transcription remain disclosed. Localize-MI-derived bundle remains local."
+      "known_issue": "The extracted source-only handoff archive passes 83 tests with only the full-workspace evidence-path integration check skipped; the full workspace passes 84 tests and the strict validator checks 192 evidence paths. Version 0.1.2 clean wheel installation and exact model-only output parity pass; the 0.1.1 stale-build failure is retained; legacy simulator/WBEN modules are archived outside the active package and test path. B4–B7 empirical/utility routes are explicitly pivoted with their evidence preserved. Project source is BSD-3-Clause licensed and citation metadata are present. The committed source snapshot and hash-verified handoff build are reproducible. B8 remains open pending unaffiliated outside review or reproduction. The supplied B2 reviewer identity is not independently authenticated; conflicting affiliation declarations and a malformed digest transcription remain disclosed. Localize-MI-derived bundle remains local."
     }
   ],
   "stage_contract_version": 1,
