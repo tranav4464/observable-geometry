@@ -15,6 +15,7 @@
 - `docs/track_b/B7_DECISION_VALUE_AUDIT_20261024.md` and `outputs/track_b/20261024_b7_resolution_overlap_audit_v2/` for the paired same-model diagnostic comparison and independent rank-statistic recheck. The earlier v1 exploratory run is retained and marked superseded.
 - `scripts/track_b/export_sealed_model_bundle.py`, `src/observable_geometry/cli.py`, and `src/observable_geometry/track_b/distinguishability.py` for code review.
 - `outputs/track_b/20261024_b8_release_checks/clean_install_parity.json` for the final wheel-based reproduction and license-metadata check; the final clean-environment outputs are under `outputs/track_b/20261024_b8_export_cli_clean_env_v2/`.
+- `outputs/track_b/20261024_b8_release_checks/release_artifacts/observable_geometry-0.1.0-py3-none-any.whl` for the distributable BSD-3-Clause wheel (SHA-256 `e8bcd83ee981639126c5b06c95d367a61c642af8924d4dcc8e35bdd8dba22448`).
 - `LICENSE`, `CITATION.cff`, and `docs/track_b/SOURCE_SNAPSHOT_MANIFEST.json` for source terms and source-only provenance. The separate verification report is generated under the ignored release-check output folder after the source snapshot is committed.
 
 ## Checks requested

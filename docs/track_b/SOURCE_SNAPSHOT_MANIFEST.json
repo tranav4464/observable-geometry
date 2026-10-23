@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-10-23T20:09:04.603578+00:00",
+  "created_utc": "2026-10-23T20:10:29.930166+00:00",
   "file_count": 175,
   "files": {
     ".gitignore": {
@@ -219,12 +219,12 @@
       "size_bytes": 4494
     },
     "docs/track_b/B8_EXTERNAL_REVIEW_PACKET_20261024.md": {
-      "sha256": "8955f6ba186ce67c0944225fd7fc7541f2ec384aa03b177497ffa4afb3a43865",
-      "size_bytes": 4655
+      "sha256": "f7705cd6d1481300f18aa709fb77457f41a8dc5cc273e37770804521f58b30fa",
+      "size_bytes": 4882
     },
     "docs/track_b/B8_RELEASE_AUDIT_20261024.md": {
-      "sha256": "f208a76ead049d9551bc1eb6c83dc62f01fbe0aed4c90b37ebb7b60dd1f5c812",
-      "size_bytes": 5644
+      "sha256": "67ec0cf71758fb7044f9a1e38cbced88251ae23096863737720566be167f5718",
+      "size_bytes": 5857
     },
     "docs/track_b/BUILD_BASE_DECISION.md": {
       "sha256": "ff9e26767cc99c33fabc41d24cf0775ab4c6d541e17061b89fc0951d7199cd95",
@@ -243,12 +243,12 @@
       "size_bytes": 66211
     },
     "docs/track_b/GATE_REGISTER.json": {
-      "sha256": "b78ddf88d1f6c68026e9f4b3cd05864387ac4460371e2606bb39b9ffa179b118",
-      "size_bytes": 38359
+      "sha256": "cb3617d2112d9407dc645ca39cb122a488f34d5130cde1e5cbf2ac5382087ae4",
+      "size_bytes": 38832
     },
     "docs/track_b/GBF_BUILD_PLAN.md": {
-      "sha256": "a3d85833c159b153f465627b2629850a0592ac67bb50054bcccec11bdc1f9343",
-      "size_bytes": 7283
+      "sha256": "8e06d0125b10fd27648171667c03950c3fe2591dfc05f0a03c82f04def42b1c2",
+      "size_bytes": 7361
     },
     "docs/track_b/GPU_ENVIRONMENT.md": {
       "sha256": "02689f436f8dd9470950818df66cff8fbaacc9d4be55baab83fe4e3419181563",

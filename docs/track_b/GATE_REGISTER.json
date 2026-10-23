@@ -481,7 +481,8 @@
         "outputs/track_b/20261024_b7_resolution_overlap_audit_v2/run_manifest.json",
         "outputs/track_b/20261024_b7_resolution_overlap_audit_v2/independent_stat_check.json",
         "docs/track_b/B5_B6_ROUTE_CLOSEOUT_20261024.md",
-        "outputs/track_b/20261024_b7_resolution_overlap_audit_v2/SESSION.md"
+        "outputs/track_b/20261024_b7_resolution_overlap_audit_v2/SESSION.md",
+        "outputs/track_b/20261024_b8_release_checks/release_artifacts/observable_geometry-0.1.0-py3-none-any.whl"
       ],
       "blocking": [],
       "objective": "Release a reproducible package and obtain an external reproduction or review.",
@@ -504,7 +505,11 @@
         "outputs/track_b/20261024_b8_release_checks/clean_install_parity_failure_01.json",
         "outputs/track_b/20261024_b8_release_checks/junit.xml",
         "outputs/track_b/20261024_b8_release_checks/source_snapshot_verification.json",
-        "outputs/track_b/20261024_b8_export_cli_clean_env_v1/run_manifest.json"
+        "outputs/track_b/20261024_b8_export_cli_clean_env_v1/run_manifest.json",
+        "outputs/track_b/20261024_b8_export_cli_clean_env_v2/run_manifest.json",
+        "outputs/track_b/20261024_b8_export_cli_clean_env_v2/summary.json",
+        "outputs/track_b/20261024_b8_export_cli_clean_env_v2/ranked_pairs.csv",
+        "outputs/track_b/20261024_b8_release_checks/release_artifacts/observable_geometry-0.1.0-py3-none-any.whl"
       ],
       "known_issue": "Clean wheel installation and exact model-only output parity pass. B4–B7 empirical/utility routes are explicitly pivoted with their evidence preserved. Project source is BSD-3-Clause licensed and citation metadata are present. B8 remains open pending an unaffiliated outside review/reproduction and a verified clean source snapshot. The supplied B2 reviewer identity is not independently authenticated and remains disclosed. Localize-MI-derived bundle remains local."
     }
