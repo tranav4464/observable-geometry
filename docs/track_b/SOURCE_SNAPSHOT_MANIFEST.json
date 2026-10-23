@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-10-23T22:14:45.526040+00:00",
+  "created_utc": "2026-10-23T22:19:32.829455+00:00",
   "file_count": 193,
   "files": {
     ".gitignore": {
@@ -143,8 +143,8 @@
       "size_bytes": 24053
     },
     "docs/track_b/B0_GBF_EXTENSION_SCREEN.md": {
-      "sha256": "108fb3ebc00b505df0003375b086f698d551004b6d4b923f1edfd7e751c55676",
-      "size_bytes": 31463
+      "sha256": "70dcf03c6eb9c829504baaebe0c38b200567e8404f9638805b841fe088b16558",
+      "size_bytes": 33766
     },
     "docs/track_b/B0_WBEN_HISTORICAL_CLOSEOUT.md": {
       "sha256": "d38f34a1407e55c54fd7542765ed4c6f2e779d91fde7a1c56ac42d8a58dac321",
@@ -291,12 +291,12 @@
       "size_bytes": 4494
     },
     "docs/track_b/B8_EXTERNAL_REVIEW_PACKET_20261024.md": {
-      "sha256": "d7d657638654390c388e90110db9c4fa1b6743ac4ef5fd2113a42bcbec6a3a30",
-      "size_bytes": 11455
+      "sha256": "791d89ca180778400bebff1ea891d49790941994008b53d82d92896dcec62b16",
+      "size_bytes": 12572
     },
     "docs/track_b/B8_RELEASE_AUDIT_20261024.md": {
-      "sha256": "e799638db4aacdff27b3115bae13e68d14814465ffad0fe7182858982ffd248e",
-      "size_bytes": 10661
+      "sha256": "087cea6be2be66c8916155e6a53c458c502dee6638894787919679d87959071c",
+      "size_bytes": 11357
     },
     "docs/track_b/BUILD_BASE_DECISION.md": {
       "sha256": "ff9e26767cc99c33fabc41d24cf0775ab4c6d541e17061b89fc0951d7199cd95",
@@ -307,8 +307,8 @@
       "size_bytes": 11429
     },
     "docs/track_b/DECISION_LOG.md": {
-      "sha256": "fc50bf3634856afa8d8b802eb336ad862274f52d83e15b107a5b7586dcab33c0",
-      "size_bytes": 96244
+      "sha256": "2adc735be935c188cf1d332dfa801cb956b75309a449615220ba094beef0b25e",
+      "size_bytes": 97862
     },
     "docs/track_b/EVIDENCE_LEDGER.md": {
       "sha256": "4e3ae832ac27cc922fb01181eef75d4002cb3e86b41fbb729eaa9471f021d1f4",
@@ -339,8 +339,8 @@
       "size_bytes": 61218
     },
     "docs/track_b/PROJECT_DEFINITION.md": {
-      "sha256": "5de7d5e2b1bf5d7a3c5e324008c4c4ebfea9819e06e1322ac09f3c5b58ede106",
-      "size_bytes": 8243
+      "sha256": "bb7c662f9bca80cba824f3205d9316c7df27d1cdf30c6c08ac89017e84ed51bb",
+      "size_bytes": 8908
     },
     "docs/track_b/PROTOCOL_LOCK.md": {
       "sha256": "d499304994443f99f525ff79f4f1233d5f49ae36b7222e5da16c1f716a302064",
