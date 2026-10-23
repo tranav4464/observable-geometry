@@ -1,6 +1,6 @@
 {
-  "created_utc": "2026-10-23T21:50:08.023283+00:00",
-  "file_count": 188,
+  "created_utc": "2026-10-23T21:54:23.997641+00:00",
+  "file_count": 189,
   "files": {
     ".gitignore": {
       "sha256": "f96cf8be73079a090f21c39fbca22ae1c23b7523034f7f588b650b589bf5c9d9",
@@ -251,8 +251,8 @@
       "size_bytes": 4743
     },
     "docs/track_b/B4_ALTERNATE_PUBLIC_DATASET_SCREEN_20261024.md": {
-      "sha256": "ac55532773d5d54bddbebbbeded3fb290feedb85f912f635905a97794611d503",
-      "size_bytes": 23656
+      "sha256": "6d22c5335ddffe52cedc7268158ec0985a7dd6edb63d7e513ed5cafc9c16464e",
+      "size_bytes": 23791
     },
     "docs/track_b/B4_ARTIFACT_VALIDATION_REOPENING_PROPOSAL_20261024.md": {
       "sha256": "ec5fc4a18cc478fbd80acdffc7adde8779ad9f84052ccd4b1b9e632b1a30ea04",
@@ -266,9 +266,13 @@
       "sha256": "982f189a0e6fcd8f6d374d307fe3293df0a96a63f9011c19bedba0d0590a1e1e",
       "size_bytes": 8318
     },
+    "docs/track_b/B4_HDEEG_PUBLISHED_OVERLAP_ADDENDUM_20261024.md": {
+      "sha256": "383214ee37690a047c0a975234a2c23167e518d46ff7b054f535718c39a5ec4c",
+      "size_bytes": 5571
+    },
     "docs/track_b/B4_HDEEG_REOPENING_ASSESSMENT_20261024.md": {
-      "sha256": "abf488c0c0f8c1fafa860dfb1c3a228e8ef069b69330a384faf57156116fe14c",
-      "size_bytes": 6038
+      "sha256": "375ca927ce678a0ba52e0c0c32ec3e61487748f1d8dc44737eb486deb3871160",
+      "size_bytes": 6526
     },
     "docs/track_b/B5_B6_ROUTE_CLOSEOUT_20261024.md": {
       "sha256": "461a3e1d4f3eefba3250943007edf0d380a1013c162aa19777af277110853b99",
@@ -303,8 +307,8 @@
       "size_bytes": 67918
     },
     "docs/track_b/GATE_REGISTER.json": {
-      "sha256": "8226576cedf992ad9fc7c695a331c0221259e1877adfb212ee5e2ee524e04b1e",
-      "size_bytes": 50209
+      "sha256": "97c973cf3610fc4d26a16cf775f7aa2208604b346cdf4fc18698a8ffa52f4e27",
+      "size_bytes": 50686
     },
     "docs/track_b/GBF_BUILD_PLAN.md": {
       "sha256": "dfaa7af96b7b7c7da2e4864e4b9649bcf35509a096857cff99891150be071f2f",
