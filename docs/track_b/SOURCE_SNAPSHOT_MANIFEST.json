@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-10-23T22:29:12.123509+00:00",
+  "created_utc": "2026-10-23T22:29:53.032042+00:00",
   "file_count": 196,
   "files": {
     ".gitignore": {
@@ -299,8 +299,8 @@
       "size_bytes": 13048
     },
     "docs/track_b/B8_RELEASE_AUDIT_20261024.md": {
-      "sha256": "ffaadb70d507544c68d965cf1b5c66d8fcfbd67455a5b1c22a7afabf1cdd547d",
-      "size_bytes": 11661
+      "sha256": "ddb705859a07c19f2bb1e004aa4cb5097aeba26f6af58d2bbb8027e65cc6d9f6",
+      "size_bytes": 11744
     },
     "docs/track_b/BUILD_BASE_DECISION.md": {
       "sha256": "ff9e26767cc99c33fabc41d24cf0775ab4c6d541e17061b89fc0951d7199cd95",
