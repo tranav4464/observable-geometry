@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-10-23T21:47:21.740924+00:00",
+  "created_utc": "2026-10-23T21:48:10.211124+00:00",
   "file_count": 188,
   "files": {
     ".gitignore": {
@@ -279,12 +279,12 @@
       "size_bytes": 4494
     },
     "docs/track_b/B8_EXTERNAL_REVIEW_PACKET_20261024.md": {
-      "sha256": "0be55f278dd3943dfa70bbfed16bd6adc180e664c2dd0ea1e102364ba00c144c",
-      "size_bytes": 10129
+      "sha256": "f946abe4fc0b6ecf441d9744d6efcb221bb5d77afd1ebbb1bf0da0dc189a2345",
+      "size_bytes": 10315
     },
     "docs/track_b/B8_RELEASE_AUDIT_20261024.md": {
-      "sha256": "252ac1c463773c9fd4ba5514f358360a54284f22aaf05b3953461f4c36bfa745",
-      "size_bytes": 9624
+      "sha256": "909f8aec37ec7ade84383300e1d1b280c5c83a5c7ff2ffa13cf6398d8b284c27",
+      "size_bytes": 9911
     },
     "docs/track_b/BUILD_BASE_DECISION.md": {
       "sha256": "ff9e26767cc99c33fabc41d24cf0775ab4c6d541e17061b89fc0951d7199cd95",
