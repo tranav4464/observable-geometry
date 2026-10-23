@@ -1,0 +1,40 @@
+# Observable Geometry B8 — external software and scope review
+
+**Review requested:** independent technical review of the bounded GBFs software build and its release claims.
+**Project status:** B0–B3 pass at bounded scopes; B4 pivoted away from empirical neural-source validation; B5/B6 not activated; B8 remains open until this review is completed.
+
+## Materials
+
+- `README.md` and `docs/ARCHITECTURE.md` for setup and interfaces.
+- `docs/track_b/PROJECT_DEFINITION.md` and `docs/track_b/GBF_BUILD_PLAN.md` for scope and claim boundaries.
+- `docs/track_b/B0_GBF_EXTENSION_SCREEN.md` for prior art and novelty limits.
+- `docs/track_b/B2_GBF_SPEC.md` and `docs/track_b/B2_GATE_CLOSEOUT_20261024.md` for the fixed score, numerical check, and reviewer-record limitation.
+- `docs/track_b/B3_IMPLEMENTATION_AND_CLOSEOUT_20261024.md` for upstream trace and the sealed model-only comparison.
+- `docs/track_b/B4_DEVELOPMENT_AUDIT_20261024.md` and `docs/track_b/B4_CHANNEL_MATCH_RECONCILIATION_20261024.md` for the empirical endpoint, pivot, and preserved invalid join.
+- `docs/track_b/B5_B6_ROUTE_CLOSEOUT_20261024.md` for the decision not to lock a confirmatory protocol or access held-out outcomes under the pulse-artifact endpoint.
+- `docs/track_b/B7_DECISION_VALUE_AUDIT_20261024.md` and `outputs/track_b/20261024_b7_resolution_overlap_audit_v2/` for the paired same-model diagnostic comparison and independent rank-statistic recheck. The earlier v1 exploratory run is retained and marked superseded.
+- `scripts/track_b/export_sealed_model_bundle.py`, `src/observable_geometry/cli.py`, and `src/observable_geometry/track_b/distinguishability.py` for code review.
+- `outputs/track_b/20261024_b8_release_checks/clean_install_parity.json` for the final wheel-based reproduction and license-metadata check; the final clean-environment outputs are under `outputs/track_b/20261024_b8_export_cli_clean_env_v2/`.
+- `LICENSE`, `CITATION.cff`, and `docs/track_b/SOURCE_SNAPSHOT_MANIFEST.json` for source terms and source-only provenance. The separate verification report is generated under the ignored release-check output folder after the source snapshot is committed.
+
+## Checks requested
+
+1. Inspect whether the CLI rejects undeclared arrays before reading them, validates its input dimensions and metadata, refuses overwrites, and records the needed provenance.
+2. Check that the implementation in `distinguishability.py` matches the B2 equations and does not silently treat unsupported covariance components as observed information.
+3. Verify the clean-wheel results independently, either by rerunning on the permitted model-only bundle or by auditing the input and output hashes and the exact pairwise parity report.
+4. Check that the README, project definition, and reports clearly distinguish nominal forward-model similarity from measured localization, source truth, calibrated probability, and population performance.
+5. Review the B4 pivot and confirm that the 236-channel/224-channel joined analysis is excluded from scientific inference.
+6. Check that B5/B6 are recorded as pivoted without held-out outcome access, and that B7 reports only descriptive model-output associations rather than analyst utility.
+7. Identify any release-blocking defects and state whether the package is ready for a limited software release. Do not certify scientific novelty or physiological validation from the supplied evidence.
+
+## Required reviewer record
+
+Please provide reviewer name, affiliation, relevant expertise, conflicts or prior involvement, materials personally inspected, independent computations or checks performed, findings, recommendation (`PASS`, `HOLD FOR CHANGES`, or `FAIL/PIVOT`), and date. Clearly distinguish checks personally reproduced from checks accepted from the supplied records. Do not claim that EEG samples were untouched unless your own access path supports that statement.
+
+## Known release limits to retain
+
+- The repository source code is BSD-3-Clause licensed; this does not cover the separately vendored GBFs checkout or datasets.
+- The Localize-MI dataset and data-derived bundles are not included in the source distribution.
+- The B2 verifier hash printed in the supplied review was malformed; the locally computed code hash is documented in the B2 closeout.
+- Workspace review records contain a conflict about reviewer identity/affiliation; the supplied identity is not independently authenticated. Preserve this limitation and do not edit historical source records.
+- No held-out participant analysis, independent cohort validation, neural physiological source test, decision-utility study, or novel-method evidence is complete.

@@ -1,0 +1,40 @@
+# Observable Geometry: project definition
+
+## Active build target
+
+Observable Geometry is a computational-neuroscience software build centered on **Geometric-Informed Basis Functions (GBFs)** for EEG source imaging. The goal is to reproduce and reverse-engineer the relevant GBFs implementation, then provide a researcher-facing tool that measures how distinguishable candidate source patterns are at the scalp under one verified participant-specific forward model.
+
+The intended first case is the real Localize-MI dataset and the sealed Track A sub-01 forward model. Track A already contains a clean implementation-parity check, a nominal source-signature library, a list of high-similarity distant source pairs, and an MNE resolution comparison. Those artifacts are the starting foundation, not proof of a new method or general source-localization performance. The new work must establish exactly what remains to build beyond the sealed release.
+
+## Scientific question
+
+> Under one declared head model, reference, noise covariance, and source family, which spatially separated source hypotheses produce scalp patterns that this measurement setup can distinguish, and which pairs remain nominally confusable?
+
+The tool concerns **model-predicted sensor patterns**. It does not recover a unique true source, provide calibrated probabilities, validate physiological localization, map every neural event, or reconstruct the whole brain. Localize-MI's stimulation contacts are ground truth for the pulse-artifact localization task only; they do not establish ground truth for distributed physiological activity.
+
+## Existing base and contribution status
+
+- **Existing method:** upstream GBFs and the Track A adaptation. The upstream code is vendored under its BSD 3-Clause license. Track A records numerical parity on the selected real Localize-MI inputs, with relative Frobenius difference `2.23e-13`; this is not a full reproduction of the paper's benchmark results.
+- **Existing tool behavior:** Track A computes amplitude- and polarity-invariant whitened leadfield similarity for distant source pairs under one fixed forward model and covariance. Its outputs are explicitly nominal.
+- **Build contribution under review:** turn this into a clear, reusable source-distinguishability workflow with auditable inputs, assumptions, pairwise scores, and comparison to standard resolution diagnostics. The broad idea of source ambiguity/separability is established prior art. Do not call the metric mathematically novel unless a precise additional method survives B0/B2 review and matched validation.
+- **NeuroFlowNet:** prior route only. Its clean-room waveform-prediction plan and on004752 audits are retained as historical evidence and are not the active project target.
+
+## Data and computation rules
+
+Use real recordings and the existing verified head model. Do not generate synthetic datasets or synthetic signal fixtures. Algebraic identities, code invariants, and independent numerical implementations may be used for software verification. Keep the Track A release immutable; new code, outputs, and manifests receive new paths and run IDs. Use CPU float64 as the correctness reference and GPU only for an eligible real computation after CPU checks pass.
+
+The current verified case is development-only and one-participant. Any broader claim requires additional real participants with independently verified forward models and a locked evaluation. A numerical ranking of source pairs under one model is not a calibrated probability of distinguishability in the population.
+
+## Deliverable
+
+A runnable software workflow that accepts a verified forward solution and its declared sensor/noise contract, reproduces the GBFs baseline, computes nominal source-pair distinguishability outputs, and presents the assumptions and limitations alongside the result. Include a reproducible command, tests, a small real-data demonstration, saved manifests/results, a plain-language walkthrough, and a claim-to-evidence table. The central deliverable is the software, not an academic paper.
+
+## Current gate status
+
+GBFs is selected as the bounded software/reproduction route, with no new-method claim. B0–B3 are recorded as passed at their stated scopes. The registered B2 CPU64 parity run passed on 24 October 2026. The supplied B2 review record contains a malformed verifier hash, and workspace review declarations conflict about whether the reviewer was an unaffiliated human or an AI; see the B2 closeout before treating that sign-off as independently authenticated. B3 passes for the versioned, tested nominal source-distinguishability API/CLI and sealed model-only demonstration; the upstream GBFs inverse remains a separate computation documented in Track A. Track A remains sealed.
+
+B4 reproduced the existing six-site, 224-channel sub-01 pair table exactly, but the Localize-MI endpoint is a stimulation pulse artifact and the tested simple source generators leave substantial structured residuals. The earlier 236/224-channel joined comparison is invalid. B4 is therefore recorded as **PIVOT** under the project's failure route. B5 protocol lock and B6 held-out evaluation are **PIVOTED**, not run, because this endpoint cannot test endogenous neural-source distinguishability. No reserved outcomes were opened. See `B4_DEVELOPMENT_AUDIT_20261024.md`, `B4_CHANNEL_MATCH_RECONCILIATION_20261024.md`, and `B5_B6_ROUTE_CLOSEOUT_20261024.md`.
+
+B7 paired all 8,196 B3 source scores with MNE resolution summaries from the same 236-channel model. Rank associations are moderate, showing related but non-identical descriptive views. This exploratory, spatially dependent analysis does not establish analyst utility. B7 is recorded as **PIVOT** under its failure route; the tool is retained as a descriptive diagnostic, without utility or novelty claims. See `B7_DECISION_VALUE_AUDIT_20261024.md`.
+
+The researcher-facing CLI, package wheel, and clean model-only reproduction are complete. B8 remains in progress pending outside review, a project-wide source license, reconciliation of the conflicting B2 reviewer records, and a clean version-control release snapshot. The project has not demonstrated a novel mathematical method, physiological localization validity, population generalization, or researcher decision benefit.

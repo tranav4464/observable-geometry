@@ -1,0 +1,14 @@
+.venv/
+.venv_tracka_clean/
+.venv_trackb_*/
+__pycache__/
+.pytest_cache/
+*.egg-info/
+data/
+vendor/
+outputs/
+tmp/
+build/
+dist/
+reviewer_handoff/
+outputs/

@@ -1,0 +1,141 @@
+{
+  "project": "Observable Geometry",
+  "handoff_version": "track-a-foundation-20261022-verified",
+  "track_a_status": "verified_engineering_foundation_accepted_for_track_b_research",
+  "audit_report": "docs/TRACK_A_AUDIT_2026_10_22.md",
+  "handoff_acceptance": "accepted for Track B research and prior-art review; not accepted as physiological validation or an RSG novelty claim",
+  "track_b_status": "active GBFs software build: B0-B3 PASS at bounded scopes; B4-B7 PIVOT at their stated scopes; B8 IN_PROGRESS",
+  "scientific_claim_boundary": "One-participant descriptive pulse-artifact localization and nominal source-signature analysis only. Fixed cortical-normal orientation is a model assumption with measured geometric mismatch; no physiological localization, calibrated recoverability, population generalization, RSG novelty, or method superiority claim.",
+  "dataset": {
+    "name": "Localize-MI",
+    "metadata_commit": "d7a123d3067213281f106b343c71f28c30e4dd60",
+    "license": "CC-BY-NC-SA 4.0",
+    "participant": "sub-01",
+    "runs": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "primary_runs_1mA": [
+      1,
+      3,
+      5,
+      6,
+      8,
+      10
+    ],
+    "secondary_repeated_current_check": "Five sites with 1 mA and 5 mA conditions; secondary conditions are not additional independent sites."
+  },
+  "task_contract": {
+    "target": "Intracranial stimulation contact-pair midpoint for the measured pulse artifact",
+    "not_target": [
+      "post-stimulus physiological response",
+      "spontaneous neural activity",
+      "distributed endogenous sources"
+    ],
+    "observation_window_s": [
+      -0.002,
+      0.002
+    ],
+    "primary_metric": "Euclidean distance from reconstructed peak to contact-pair midpoint, with midpoint-to-cortical-grid offset reported",
+    "secondary_metric": "Descriptive predicted versus observed scalp-pattern similarity across 15 dependent site pairs",
+    "reference": "Average reference over common good channels, applied consistently to EEG, leadfield, and noise covariance",
+    "common_primary_channels": 224,
+    "source_orientation": "Fixed cortical normal from supplied participant-specific forward model",
+    "development_split": "All runs from sub-01 are development data; no held-out participant inference."
+  },
+  "fixed_comparators": {
+    "GBFs": {
+      "repository_commit": "99fc7c6e8afbd2e3e68a700c5f1fa1483b90f49e",
+      "modes_per_hemisphere": 300,
+      "lambda": 1.2,
+      "tuned_on_target_errors": false
+    },
+    "MNE_minimum_norm": {
+      "orientation": "fixed",
+      "lambda2": 0.1111111111111111,
+      "depth_weighting": null,
+      "tuned_on_target_errors": false
+    }
+  },
+  "nominal_signature_api": {
+    "module": "observable_geometry.nominal",
+    "function": "nearest_distant_signatures",
+    "arguments": {
+      "leadfield": "finite sensors-by-sources matrix",
+      "noise_cov": "positive-semidefinite sensor covariance with same channel order/reference as leadfield",
+      "coordinates": "finite sources-by-3 coordinate array in metres",
+      "min_distance_mm": 20.0,
+      "top_k": 5,
+      "block_size": 256
+    },
+    "outputs": [
+      "candidate_indices",
+      "absolute_cosine",
+      "profiled_residual_at_unit_snr",
+      "valid_source",
+      "whitened_norm",
+      "summary"
+    ],
+    "interpretation": "Nominal noise-whitened sensor-pattern similarity conditional on a specified leadfield, reference, and covariance. Not a calibrated probability, localization confidence region, or biological identifiability claim."
+  },
+  "observed_development_results": {
+    "sites": 6,
+    "gbfs_median_peak_error_mm": 19.75829984420392,
+    "mne_median_peak_error_mm": 28.304423357925902,
+    "predicted_observed_similarity_pearson_r": 0.34516194307310066,
+    "predicted_observed_similarity_spearman_rho": 0.3428571428571428,
+    "dependent_site_pairs": 15,
+    "inference": "Descriptive only; one participant, 15 dependent pairwise rows, no p-values or generalization claim. Current topography uses peak-GFP sample; metrics supersede the pre-remediation signed-window-mean values.",
+    "gbfs_mean_peak_error_mm": 19.955302366162403,
+    "mne_mean_peak_error_mm": 27.16242108003331
+  },
+  "reproduction": {
+    "command": ".\\scripts\\run_foundation.ps1",
+    "clean_python": "3.12.14",
+    "pinned_unique_packages": 34,
+    "requirements_sha256": "a24a440fdf25b65ede4a54a8d7dd15240ab45a272647ae91f75b26646a2a19ab",
+    "unit_tests": "20 passed",
+    "final_validator": "PASS twice after sealing",
+    "fresh_basis_generation": "cold 20-mode and 300-mode geometry caches regenerated and identity-checked in the final run",
+    "empty_venv_install_check": "Fresh Python 3.12 venv, all 34 exact pins installed, pip check clean, and all 20 tests passed."
+  },
+  "verified_run_id": "tracka_verified_20261022_final",
+  "run_manifest": "outputs/tracka_verified_20261022_final/run_manifest.json",
+  "offline_report": "outputs/tracka_verified_20261022_final/foundation_report.html",
+  "track_a_closeout": {
+    "cold_run": true,
+    "complete_csr_threshold_export": {
+      "threshold": 0.95,
+      "directed_edges": 912
+    },
+    "signature_runtime_seconds": 25.366317799998797,
+    "signature_peak_rss_increment_bytes": 209584128,
+    "source_orientation_proxy_angles_degrees": {
+      "min": 44.39,
+      "max": 87.62
+    },
+    "visual_qa": "Static HTML and asset integrity checked; interactive browser and cross-browser rendering not certified",
+    "source_control": "Workspace has no Git history or tag; the sealed source snapshot and hashes provide exact artifact identity only."
+  },
+  "active_track_b_route": "docs/track_b/GATE_REGISTER.json",
+  "active_project_definition": "docs/track_b/PROJECT_DEFINITION.md",
+  "active_build_plan": "docs/track_b/GBF_BUILD_PLAN.md",
+  "historical_track_b_gates": [
+    "Complete equation-level prior-art comparison against inverse resolution analysis, robust inverse methods, uncertainty-aware source estimation, and adaptive parcellation; decide whether a distinct gap remains.",
+    "Freeze a mathematically distinct, falsifiable hypothesis and kill criterion before implementing any new score or algorithm.",
+    "Choose a task and benchmark with physically defensible targets and orientation treatment; do not use pulse-artifact localization as physiological ground truth.",
+    "Define physically defensible forward-model ensembles and nuisance handling without fitting held-out targets.",
+    "Evaluate calibration and predictive value with participant-grouped held-out data against fixed baselines; account for dependence at participant/session level.",
+    "If calibration or baseline advantage fails, report the negative result and do not claim a new framework."
+  ],
+  "historical_plan_notice": "The historical RSG/calibration gates below are not the current Track B plan. See active_track_b_route."
+}

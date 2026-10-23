@@ -1,0 +1,26 @@
+# B2 readiness audit after same-chat AI review
+
+> **Historical NeuroFlowNet/WBEN B2 readiness record, superseded 23 October 2026.** The active B2 contract is `B2_GBF_SPEC.md`; the current gate decision is in `GATE_REGISTER.json` and `B2_GATE_CLOSEOUT_20261024.md`.
+
+**Purpose:** reconcile the current B2 packet against the registered exit criteria after a same-chat AI peer review. This remains an author-side readiness audit, not the required unaffiliated independent technical review, and it does not pass B2.
+
+| Registered B2 exit criterion | Current evidence | Readiness | Remaining limit |
+|---|---|---|---|
+| Define measured scalp inputs, measured contact target, units/reference, simultaneity, loads, and bounded claim | `B2_NEUROFLOWNET_SPEC.md` §1 and §3 define paired simultaneous recordings, eight fixed scalp channels, common-reference measured iEEG contact waveforms in reference-dependent microvolt units, working-memory loads 4/6/8, and within-participant held-load transfer. | Documented | This is an estimand specification. It does not show the model can predict the target or recover a source. |
+| Compare primary prior art across waveform/feature prediction, virtual-iEEG regimes, working-memory load, and WBEN; state unresolved overlap without novelty claims | `METHOD_MATRIX.md`, `B2_PAPER_FIDELITY_MATRIX.md`, cited primary audits, and the reviewer packet cover NeuroFlowNet, Subramanian, CAST, Dong et al., Phillips et al., TF-DiffEEG, cross-task load decoding, virtual-iEEG, WBEN, and the dataset task. | Documented with unresolved task-level overlap | Phillips et al.'s exact target/task/split and TF-DiffEEG's exact cohort/target/split remain unknown from accessible records. The matrix records both against broad reconstruction claims, without treating missing methods as proof of novelty or an indefinite blocker for a non-novel benchmark. An unaffiliated reviewer must judge whether the bounded search is sufficient. |
+| Support timing, channels, preprocessing, inner splits, and outcome separation with development-only audits | B1/B2 audit artifacts cover event alignment, 200-Hz compatibility/resampling, channel schema, inner-fold counts, and the retained access logs. | Supported with limits | Outcome separation is based on documentary logs, not OS-level access auditing. Acquisition filter provenance and exact match to the published preprocessing remain unresolved; the project labels its pipeline an adaptation. |
+| Specify outer/inner splits, models, comparators, stopping, seeds, metrics, uncertainty, eligibility/failures, and leakage controls | `B2_NEUROFLOWNET_SPEC.md` §§3–8 specify the guarded pre-probe crop, three outer held-load folds, two inner whole-load folds, empirical no-input baseline, real-trial scalp-pairing diagnostic, ridge objective, full-window temporal comparator, participant-level inference, reliability metrics, and failure handling. The metric-seed consistency audit is at `outputs/track_b/20261023T_b2_metric_seed_consistency_audit/SESSION.md`. | Specification updated; implementation unverified | B3 must verify equations, filter/index boundaries, transforms, and interfaces against implementation before fitting. No model has been fitted. An unaffiliated reviewer must challenge scientific and statistical adequacy. |
+| Define a falsifiable new algorithm or explicitly withdraw it and state the reproduction/challenge scope | `B2_NEUROFLOWNET_SPEC.md` §§1–2 and `METHOD_MATRIX.md` state that the algorithm is not new and the surviving candidate is an evaluation/reliability challenge. | Documented | Whether the challenge answers a useful research decision is not established until the independent reviewer challenges it and empirical results exist. |
+| Independent technical review of task, prior-art boundary, data exposure, and protocol | `outputs/track_b/20261023T_b2_peer_review/REVIEW.md` records a same-chat AI review and HOLD FOR CHANGES. Its authorship disclosure is explicit. | **Not met** | The AI report is not unaffiliated external sign-off and reviewed an earlier packet state. An outside reviewer must inspect this reconciled packet and current specification and issue a recommendation. |
+
+## Current gate judgment
+
+Five criteria have documentary support sufficient to invite focused review, subject to the listed caveats and implementation checks. The sixth criterion remains unmet: the existing AI review is not unaffiliated. The active spec now addresses the technical revision groups identified by that review, but B2 remains `IN_PROGRESS`; fitting is unauthorized and confirmation outcomes remain sealed until the separate B5 lock. The next action is an unaffiliated review of the current packet. If that reviewer finds the held-load challenge unhelpful or insufficiently distinguished from prior art, reopen the task/base choice rather than defend it through wording.
+
+## Evidence checked
+
+- `docs/track_b/GATE_REGISTER.json` B2 objective, six exit criteria, evidence and verification evidence.
+- `docs/track_b/B2_NEUROFLOWNET_SPEC.md` §§1–10.
+- `docs/track_b/B2_INDEPENDENT_REVIEW_PACKET.md` and its local evidence links.
+- `docs/track_b/METHOD_MATRIX.md` and referenced prior-art audits.
+- B1 timing/data, B2 schema, resampling, inner-load feasibility, exposure, and estimand audit records listed in the B2 gate register.

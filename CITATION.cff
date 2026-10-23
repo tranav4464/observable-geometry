@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use Observable Geometry, please cite this software and the GBFs method separately."
+title: "Observable Geometry"
+version: 0.1.0
+date-released: 2026-10-24
+authors:
+  - family-names: Tyagi
+    given-names: Tranav
+license: BSD-3-Clause
+abstract: >-
+  Auditable software for reproducing a bounded GBFs workflow and measuring
+  nominal, covariance-whitened similarity between candidate EEG source
+  signatures under a declared participant-specific forward model. The
+  diagnostic does not establish physiological source recovery or calibrated
+  localization uncertainty.

@@ -1,0 +1,514 @@
+{
+  "plan_version": "2.0",
+  "updated": "2026-10-24",
+  "authority": "docs/track_b/MASTER_RESEARCH_PLAN.md",
+  "status_vocabulary": [
+    "NOT_STARTED",
+    "IN_PROGRESS",
+    "PASS",
+    "FAIL",
+    "PIVOT"
+  ],
+  "rules": [
+    "A gate passes only when its exit criteria are met and the listed verification procedure has actually run.",
+    "Every gate declares an objective, measurable exit criteria, verification steps, a falsification check, a failure route, and an independent-review expectation.",
+    "A PASS requires existing evidence paths and separate verification_evidence paths; prose describing a check is not proof that it ran.",
+    "Any gate marked IN_PROGRESS, PASS, or FAIL must have every prerequisite gate at PASS and every listed evidence path present.",
+    "The blocking graph must be acyclic and reference only declared gate IDs.",
+    "Any test-data-driven change retires that test set as independent confirmation.",
+    "A new release uses a new run ID and cannot overwrite a sealed manifest."
+  ],
+  "gates": [
+    {
+      "id": "B-1",
+      "name": "foundation integrity",
+      "status": "PASS",
+      "evidence": [
+        "outputs/tracka_release_20261022_v2/run_manifest.json",
+        "outputs/independent_review_20261022/REMEDIATION.md"
+      ],
+      "blocking": [
+        "B4",
+        "B5",
+        "B6",
+        "B8"
+      ],
+      "known_issue": "engineering release checks passed; one-participant artifact-only scientific scope remains",
+      "objective": "Confirm Track A engineering artifacts are sealed, reproducible, and safe to use as infrastructure.",
+      "exit_criteria": [
+        "Sealed manifest exists and rejects overwrite.",
+        "Independent remediation audit records the repaired gaps.",
+        "No Track A result is represented as Track B scientific evidence."
+      ],
+      "verification": [
+        "Run the Track A release validator against the sealed run.",
+        "Inspect the independent remediation report and verify cited artifacts exist."
+      ],
+      "falsification_check": "Attempt a prohibited reseal or identify a missing/unverifiable release artifact.",
+      "failure_route": "Repair in a new versioned Track A release; do not alter the sealed run.",
+      "independent_review": "Independent review recorded in outputs/independent_review_20261022/REMEDIATION.md",
+      "verification_evidence": [
+        "outputs/tracka_release_20261022_v2/run_manifest.json",
+        "outputs/independent_review_20261022/REMEDIATION.md"
+      ]
+    },
+    {
+      "id": "B0",
+      "name": "GBFs base and source-distinguishability prior art",
+      "status": "PASS",
+      "evidence": [
+        "outputs/track_b/20261023T_b0_gbf_route_reconciliation/SESSION.md",
+        "outputs/track_b/20261023T_b0_gbf_route_reconciliation/FOUNDATION_SCOPE_CHECK.md",
+        "docs/track_b/BUILD_BASE_DECISION.md",
+        "docs/track_b/B0_GBF_EXTENSION_SCREEN.md",
+        "docs/FOUNDATION_DECISIONS.md",
+        "docs/FOUNDATION_PROTOCOL.md",
+        "docs/REVERSE_ENGINEERING.md",
+        "docs/track_b/B0_EQUATION_AUDIT.md",
+        "vendor/GBFs/LICENSE",
+        "outputs/tracka_release_20261022_v2/run_manifest.json"
+      ],
+      "blocking": [
+        "B1",
+        "B2",
+        "B5",
+        "B6"
+      ],
+      "known_issue": "Base choice and claim boundary are resolved: GBFs is selected for a bounded reproduction and inspectable nominal source-distinguishability software build. The cosine score and broad separability question have substantial prior art; no new mathematical method is claimed. Track A parity is not full paper-benchmark reproduction or physiological source validation.",
+      "objective": "Reconfirm GBFs as the active existing method and determine whether the nominal source-distinguishability tool has a precise, defensible output beyond established source-resolution and ambiguity methods.",
+      "exit_criteria": [
+        "The pinned upstream GBFs revision, license, equations, code path, and exact Track A parity scope are verified.",
+        "The proposed nominal source-distinguishability output and its user decision are compared equation by equation with resolution matrices, point-spread/cross-talk methods, leadfield similarity, and source-separability work.",
+        "The route is explicitly classified as reproduction/software contribution, a precisely defined extension, or pivot; no novelty is presumed.",
+        "The route is explicitly classified as a bounded GBFs reproduction/software contribution, and no novelty is presumed. If a distinct method claim is later retained, it receives independent technical challenge before being made."
+      ],
+      "verification": [
+        "Verify the vendored GBFs license and pinned upstream revision, then trace the implemented equations into the sealed Track A source snapshot.",
+        "Inspect the parity artifact and run manifest to confirm which real inputs and outputs were compared and what the parity result does not establish.",
+        "Compare the exact score and decision to primary-source resolution, ambiguity, leadfield-similarity, and separability methods; log remaining overlap.",
+        "Check that the base comparison and prior-art screen support the selected bounded software route, and verify that no novel-method claim appears in active project descriptions. Independent challenge is mandatory before any later novel-method claim and in the final B8 outside review."
+      ],
+      "falsification_check": "The stated tool output is identical to a standard resolution, leadfield-similarity, or separability diagnostic and does not change a prespecified researcher decision.",
+      "failure_route": "Drop novelty language and deliver a bounded GBFs reproduction/software tool, or pivot to a different evidence-backed obstacle; do not return to NeuroFlowNet without an explicit route decision.",
+      "independent_review": "No distinct method claim is retained. Independent technical challenge is required before any future novel-method claim; the final external review remains required at B8.",
+      "verification_evidence": [
+        "outputs/track_b/20261023T_b0_gbf_route_reconciliation/SESSION.md",
+        "outputs/track_b/20261023T_b0_gbf_route_reconciliation/FOUNDATION_SCOPE_CHECK.md",
+        "outputs/tracka_release_20261022_v2/run_manifest.json",
+        "docs/track_b/B0_EQUATION_AUDIT.md",
+        "docs/track_b/B0_GBF_EXTENSION_SCREEN.md"
+      ]
+    },
+    {
+      "id": "B1",
+      "name": "real-data and forward-model feasibility",
+      "status": "PASS",
+      "evidence": [
+        "outputs/track_b/20261023T_b1_gbf_case_audit/SESSION.md",
+        "outputs/track_b/20261023T_b1_gbf_case_audit/case_audit.json",
+        "outputs/b1_gbf_case_validation_20261023/case_validation.json",
+        "data/Localize-MI/dataset_description.json",
+        "data/Localize-MI/LICENSE",
+        "outputs/tracka_release_20261022_v2/run_manifest.json",
+        "outputs/tracka_release_20261022_v2/case_validation.json"
+      ],
+      "blocking": [
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6"
+      ],
+      "known_issue": "B1 passes only for one Localize-MI sub-01 development case and the measured stimulation pulse-artifact endpoint. This does not establish population performance, endogenous physiological source localization, calibrated probabilities, or general source recovery. An independent reviewer must assess the B2 estimand and interpretation before B2 passes.",
+      "objective": "Verify that the pinned real Localize-MI release and one participant-specific forward model support the bounded GBFs/source-distinguishability demonstration.",
+      "exit_criteria": [
+        "Dataset release, license, provenance, local files, and required checksums are verified.",
+        "The selected real EEG case, channel montage, units, reference, covariance, event, stimulation contact pair, coordinate transform, and individual forward solution are reconciled.",
+        "The measured target is limited to the stimulation pulse artifact; no claim is made about the distributed physiological response or whole-brain activity.",
+        "The one-participant case is explicitly labeled development-only and the limitations of single-model inference are stated."
+      ],
+      "verification": [
+        "Check the Localize-MI source record and local manifests/checksums for the exact files used.",
+        "Inspect only the selected real participant metadata and already permitted development signals; document sensor/reference/coordinate/frame alignment.",
+        "Independently validate the forward solution dimensions, channel order, source orientation convention, and stimulation-target transform.",
+        "Confirm that every public claim is restricted to nominal predictions and the pulse-artifact endpoint."
+      ],
+      "falsification_check": "The paired real EEG, stimulation metadata, coordinate transform, or participant-specific forward solution cannot be reconciled well enough to define the stated endpoint.",
+      "failure_route": "Stop source-distinguishability evaluation for that case; choose another verified real case or narrow to GBFs software reproduction without empirical accuracy claims.",
+      "independent_review": "A reviewer checks data provenance, forward-model alignment, endpoint, and one-participant claim boundary before B2 passes.",
+      "verification_evidence": [
+        "outputs/track_b/20261023T_b1_gbf_case_audit/SESSION.md",
+        "outputs/b1_gbf_case_validation_20261023/case_validation.json",
+        "outputs/tracka_release_20261022_v2/run_manifest.json"
+      ]
+    },
+    {
+      "id": "B2",
+      "name": "GBFs source-distinguishability specification",
+      "status": "PASS",
+      "evidence": [
+        "docs/track_b/B2_GBF_SPEC.md",
+        "docs/track_b/B2_GBF_INDEPENDENT_REVIEW_PACKET.md",
+        "outputs/track_b/20261023T_b2_gbf_specification/SESSION.md",
+        "outputs/track_b/20261023T_b2_gbf_specification_v2/code_contract_audit.json",
+        "outputs/track_b/20261023T_b2_gbf_specification_v2/B2_GBF_SPEC_review_v1.md",
+        "outputs/track_b/20261023T_b2_gbf_specification_v2/review_spec_manifest.json",
+        "outputs/track_b/20261023T_b2_gbf_specification_v3/B2_GBF_SPEC_review_v2.md",
+        "outputs/track_b/20261023T_b2_gbf_specification_v3/review_spec_manifest.json",
+        "outputs/track_b/20261023T_b2_gbf_orientation_audit/orientation_audit.json",
+        "outputs/track_b/20261023T_b2_gbf_specification_v4/B2_GBF_SPEC_review_v3.md",
+        "outputs/track_b/20261023T_b2_gbf_specification_v4/review_spec_manifest.json",
+        "outputs/track_b/20261023T_b2_gbf_specification_v5/B2_GBF_SPEC_review_v4.md",
+        "outputs/track_b/20261023T_b2_gbf_specification_v5/review_spec_manifest.json",
+        "outputs/track_b/20261023T_b2_gbf_unit_tests/unit_test_run.json",
+        "outputs/track_b/20261023T_b2_gbf_covariance_scale/unit_test_run.json",
+        "outputs/track_b/20261023T_b2_gbf_specification_v6/B2_GBF_SPEC_review_v5.md",
+        "outputs/track_b/20261023T_b2_gbf_specification_v6/review_spec_manifest.json",
+        "outputs/track_b/20261023T_b2_gbf_specification_v7/B2_GBF_SPEC_review_v6.md",
+        "outputs/track_b/20261023T_b2_gbf_specification_v7/review_spec_manifest.json",
+        "outputs/track_b/20261023T_b2_gbf_specification_v8/B2_GBF_SPEC_review_v7.md",
+        "outputs/track_b/20261023T_b2_gbf_specification_v8/review_spec_manifest.json",
+        "outputs/track_b/20261023T_b2_gbf_specification_v9/B2_GBF_SPEC_review_v8.md",
+        "outputs/track_b/20261023T_b2_gbf_specification_v9/review_spec_manifest.json",
+        "outputs/track_b/20261023T_b2_gbf_specification_v9/SESSION.md",
+        "scripts/track_b/recompute_b2_gbf_cpu64.py",
+        "outputs/track_b/20261023T_b2_verifier_static_validation.json",
+        "outputs/track_b/20261023T_b2_gbf_same_chat_review/REVIEW.md",
+        "outputs/track_b/20261023T_b2_bundle_header_inspection/ACCESS_NOTE.md",
+        "outputs/track_b/20261023T_b2_gbf_specification_v10/B2_GBF_SPEC_review_v9.md",
+        "outputs/track_b/20261023T_b2_gbf_specification_v10/review_spec_manifest.json",
+        "outputs/track_b/20261023T_b2_gbf_specification_v10/SESSION.md",
+        "outputs/track_b/20261023T_b2_verifier_static_validation_v3.json",
+        "outputs/track_b/20261023T_b2_residual_precision_check/check.py",
+        "outputs/track_b/20261023T_b2_residual_precision_check/result.json",
+        "outputs/track_b/20261023T_b2_gbf_same_chat_review_v9/REVIEW.md",
+        "outputs/track_b/20261023T_b2_gbf_same_chat_review_v9/SESSION.md",
+        "tests/test_b2_independent_calculator.py",
+        "outputs/track_b/20261023T_b2_verifier_analytical_tests/unit_test_run.json",
+        "outputs/track_b/20261023T_b2_verifier_analytical_tests/SESSION.md",
+        "outputs/track_b/20261023T155321Z_b2_safe_regression/test_run.json",
+        "outputs/track_b/20261023T155321Z_b2_safe_regression/SESSION.md",
+        "scripts/track_b/audit_b2_signal_access_boundary.py",
+        "outputs/track_b/20261023T155800Z_b2_signal_access_boundary/access_boundary_audit.json",
+        "outputs/track_b/20261023T155800Z_b2_signal_access_boundary/SESSION.md",
+        "tests/test_b2_access_boundary.py",
+        "outputs/track_b/20261023T155842Z_b2_access_guard_tests/test_run.json",
+        "outputs/track_b/20261023T155842Z_b2_access_guard_tests/SESSION.md",
+        "outputs/track_b/20261023T160054Z_b2_gbf_specification_v10/B2_GBF_SPEC_review_v10.md",
+        "outputs/track_b/20261023T160054Z_b2_gbf_specification_v10/review_spec_manifest.json",
+        "outputs/track_b/20261023T160054Z_b2_gbf_specification_v10/SESSION.md",
+        "outputs/track_b/20261023T160133Z_b2_v10_verifier_boundary/access_boundary_audit.json",
+        "outputs/track_b/20261023T160133Z_b2_v10_verifier_boundary/validation.json",
+        "outputs/track_b/20261023T160133Z_b2_v10_verifier_boundary/SESSION.md",
+        "outputs/track_b/20261023T160054Z_b2_gbf_same_chat_review_v10/REVIEW.md",
+        "outputs/track_b/20261023T160054Z_b2_gbf_same_chat_review_v10/SESSION.md",
+        "outputs/track_b/20261023T_b2_review_remediation/REREVIEW_TRIAGE_20261024.md",
+        "outputs/track_b/20261023T_b2_review_remediation/reviewer_remediation_rereview_20261024.txt",
+        "outputs/track_b/20261023T_b2_review_remediation/reviewer_final_declaration_20261024.md",
+        "docs/track_b/B2_GATE_CLOSEOUT_20261024.md",
+        "outputs/track_b/20261023T_b2_review_remediation/authorization_record_20261024.json",
+        "outputs/track_b/20261024T_b2_v11_cpu64_registered_run/independent_recompute_report.json",
+        "outputs/track_b/20261024T_b2_v11_cpu64_registered_run/independent_pairwise_top5_float64.npz",
+        "outputs/track_b/20261024T_b2_v11_cpu64_registered_run/npz_key_access.jsonl",
+        "outputs/track_b/20261024T_b2_v11_cpu64_registered_run/near_tie_diagnostics.json",
+        "outputs/track_b/20261024T_b2_v11_cpu64_registered_run/near_tie_access_log.jsonl",
+        "scripts/track_b/audit_b2_v11_near_ties.py",
+        "outputs/track_b/20261023T_b2_review_remediation/test_run_full.json",
+        "outputs/track_b/20261023T_b2_review_remediation/provenance_audit_final/provenance_audit.json",
+        "outputs/track_b/20261023T_b2_review_remediation/access_boundary_audit_final.json",
+        "outputs/track_b/20261023T_b2_review_remediation/incident_disclosure.jsonl"
+      ],
+      "blocking": [
+        "B3",
+        "B4",
+        "B5",
+        "B6"
+      ],
+      "objective": "Freeze a mathematical specification for nominal source distinguishability under the verified Localize-MI head model and define a real-data evaluation that distinguishes the software output from established resolution diagnostics.",
+      "exit_criteria": [
+        "The source hypothesis family, sensor signatures, covariance whitening, amplitude/polarity nuisance treatment, units, and nominal interpretation are defined.",
+        "The output is compared with MNE resolution-matrix/point-spread summaries and closest published source-separability or leadfield-similarity methods.",
+        "Thresholds, pairwise versus clustered output, user decision, failure cases, limits, and falsification criterion are explicit.",
+        "No synthetic neural data are used; algebraic checks and independent numerical code checks are clearly separated from empirical evaluation.",
+        "Independent technical review approves the complete specification before new model fitting or outcome-driven iteration."
+      ],
+      "verification": [
+        "Check the equation and dimensions against FOUNDATION_PROTOCOL.md and the Track A implementation.",
+        "Recompute the primary score from saved permitted real forward-model artifacts and compare against an independent implementation after the protocol is reviewed.",
+        "Verify matched output definitions against established resolution and separability baselines.",
+        "Review the predeclared data boundary, thresholds, and conclusions with an independent reviewer."
+      ],
+      "falsification_check": "The candidate tool is a renamed standard resolution/similarity score, cannot change a defined researcher decision, or its nominal output is presented as calibrated source recovery.",
+      "failure_route": "Retain only the honest GBFs reproduction and transparent standard diagnostics, or pivot after prior-art and feasibility review; do not claim a new framework.",
+      "independent_review": "Required: unaffiliated review of estimand, equations, comparators, real-data boundary, and claim limits.",
+      "verification_evidence": [
+        "outputs/track_b/20261023T_b2_verifier_static_validation.json",
+        "outputs/track_b/20261023T_b2_verifier_static_validation_v3.json",
+        "outputs/track_b/20261023T_b2_residual_precision_check/result.json",
+        "outputs/track_b/20261023T_b2_verifier_analytical_tests/unit_test_run.json",
+        "outputs/track_b/20261023T155321Z_b2_safe_regression/test_run.json",
+        "outputs/track_b/20261023T155800Z_b2_signal_access_boundary/access_boundary_audit.json",
+        "outputs/track_b/20261023T155842Z_b2_access_guard_tests/test_run.json",
+        "outputs/track_b/20261023T160133Z_b2_v10_verifier_boundary/validation.json",
+        "outputs/track_b/20261023T160133Z_b2_v10_verifier_boundary/access_boundary_audit.json"
+      ],
+      "known_issue": "Registered v11 CPU float64 recomputation passed on 2026-10-24: exact ranking, validity mask, and candidate counts; score, legacy residual replay, and whitened norms met preregistered tolerances. Descriptive near-tie margins and guarded access logs are preserved. The independent reviewer supplied explicit approval for the named v11 run. The review text contains a malformed verifier SHA-256; the local verifier digest was independently recomputed and recorded in the closeout/authorization record. This is a review-document transcription issue. Scientific limits remain: nominal single-model signature similarity is not calibrated or empirical source recovery; one participant/model; no robustness or population claim. B3 may proceed; later gates retain their own criteria."
+    },
+    {
+      "id": "B3",
+      "name": "GBFs lineage and source-distinguishability tool implementation",
+      "status": "PASS",
+      "evidence": [
+        "docs/track_b/B3_IMPLEMENTATION_AND_CLOSEOUT_20261024.md",
+        "src/observable_geometry/track_b/distinguishability.py",
+        "scripts/track_b/run_b3_distinguishability.py",
+        "tests/test_track_b_distinguishability.py",
+        "outputs/track_b/20261024_b3_gbf_tool_v1/run_manifest.json",
+        "outputs/track_b/20261024_b3_gbf_tool_v1/result_summary.json",
+        "outputs/track_b/20261024_b3_gbf_tool_v1/top_pairs.csv",
+        "outputs/track_b/20261024_b3_gbf_tool_v1/npz_key_access.jsonl"
+      ],
+      "blocking": [
+        "B4",
+        "B5",
+        "B6",
+        "B8"
+      ],
+      "objective": "Deliver a versioned, documented CPU-float64 implementation of the frozen nominal source-signature diagnostic, linked transparently to the pinned GBFs implementation and demonstrated on sealed participant-specific forward-model arrays without opening EEG samples.",
+      "exit_criteria": [
+        "Pinned GBFs source behavior, Track A use, and every active adaptation are mapped to versioned code and evidence; the upstream inverse and nominal forward-signature diagnostic are described as separate calculations.",
+        "A documented API and CLI validate finite forward-model inputs, dimensions, covariance support, coordinates, and parameter contracts, then emit ranked source pairs, nominal interpretation, and provenance.",
+        "CPU float64 results pass exact candidate ranking, valid-mask, and candidate-count checks against the frozen real-model reference; scores and whitened norms meet the frozen tolerances.",
+        "Meaningful algebraic invariants and invalid-input checks pass, and a versioned command produces a non-overwriting demonstration output and manifest from permitted real model arrays only.",
+        "Track A remains sealed; no recorded EEG sample array is materialized by the B3 demonstration."
+      ],
+      "verification": [
+        "Inspect the pinned upstream functions, reverse-engineering record, Track A parity artifact, and B3 method-to-code map.",
+        "Run focused invariant and contract tests for the new API.",
+        "Run the B3 CLI on the sealed model arrays, inspect its access log and artifact hashes, and compare the result to the frozen Track A diagnostic under B2 tolerances.",
+        "Run the full test suite and gate-register validator; preserve output under the new B3 run ID."
+      ],
+      "falsification_check": "The output differs from the frozen reference beyond fixed tolerances, invalid covariance or geometry passes silently, forbidden EEG sample data are accessed, the upstream/adaptation lineage cannot be reproduced from recorded artifacts, or the output is misrepresented as physiological source recovery.",
+      "failure_route": "Preserve the failed run and access log; repair the software in a new versioned release, rerun the invariant and parity checks, or narrow the claim to the specific verified component. Never alter Track A or substitute synthetic neural results.",
+      "independent_review": "B3 closes implementation readiness only. Any new scientific or decision-value claim requires the relevant later gate and its independent review; the B2 reviewer authorization remains limited to the registered B2 recomputation.",
+      "verification_evidence": [
+        "outputs/track_b/20261024_b3_gbf_tool_v1/run_manifest.json",
+        "outputs/track_b/20261024_b3_gbf_tool_v1/npz_key_access.jsonl",
+        "outputs/track_b/20261024_b3_gbf_tool_v1/result_summary.json",
+        "outputs/track_b/20261024_b3_verification_20261024.json"
+      ],
+      "known_issue": "B3 passes as a bounded software implementation and sealed model-only demonstration. It does not add a novel mathematical method, establish decision value, validate physiological localization, or generalize beyond the one participant-specific model. B4/B7 and B8 remain required for those separate questions.",
+      "historical_route_artifacts": [
+        "docs/track_b/B3_NEUROFLOWNET_IMPLEMENTATION.md",
+        "docs/track_b/B3_WBEN_IMPLEMENTATION.md",
+        "src/observable_geometry/track_b/wben.py",
+        "tests/test_track_b_wben.py",
+        "scripts/track_b/verify_b3_reference.py",
+        "outputs/track_b/b3_wben_reference_20261022_v9/b3_reference_verification.json"
+      ]
+    },
+    {
+      "id": "B4",
+      "name": "development and adversarial validation",
+      "status": "PIVOT",
+      "evidence": [
+        "docs/track_b/B4_DEVELOPMENT_AUDIT_20261024.md",
+        "docs/track_b/B4_CHANNEL_MATCH_RECONCILIATION_20261024.md",
+        "outputs/20261023T192900Z_b4_matched_224_reproduction/SESSION.md",
+        "outputs/20261023T192900Z_b4_matched_224_reproduction/empirical_evaluation_report.json",
+        "outputs/20261023T192900Z_b4_matched_224_reproduction/predicted_observed_similarity.csv",
+        "outputs/track_b/20261023T192200Z_b4_dev_protocol_feasibility/b4_site_associations.csv",
+        "outputs/track_b/20261023T192200Z_b4_dev_protocol_feasibility/b4_audit_failure_01.json"
+      ],
+      "blocking": [
+        "B5",
+        "B6"
+      ],
+      "objective": "Challenge the GBFs source-distinguishability tool on permitted real development recordings using matched established resolution baselines, prespecified assumption checks, and negative controls supported by real data.",
+      "exit_criteria": [
+        "Baseline, candidate output, and all assumptions are documented.",
+        "Comparisons use the same verified forward model, sensor set, source family, covariance, and reporting resolution.",
+        "Sensitivity and failure modes are reported without synthetic signal experiments or claims beyond the measured task.",
+        "Any additional method is retained only if it changes the prespecified decision beyond standard comparators."
+      ],
+      "verification": [
+        "Run the reviewed real-data protocol only on allowed development data.",
+        "Independently recompute primary scores and audit baseline matching.",
+        "Preserve all failures and compare the measured endpoint to stated claims."
+      ],
+      "falsification_check": "The real endpoint is unsupported, the extension duplicates a known method without distinct value, leakage is found, controls fail, or real development evidence does not meet the prespecified criterion.",
+      "failure_route": "Drop the extension or narrow the claim; preserve all real-data failure records and do not replace them with synthetic results.",
+      "independent_review": "Independent reviewer audits B1/B2 compliance, matched comparisons, leakage controls, and interpretation before protocol lock.",
+      "verification_evidence": [
+        "outputs/20261023T192900Z_b4_matched_224_reproduction/b4_reproduction_audit.json",
+        "outputs/track_b/20261023T192200Z_b4_dev_protocol_feasibility/b4_site_associations_manifest.json",
+        "outputs/tracka_release_20261022_v2/run_manifest.json"
+      ],
+      "known_issue": "The saved 224-channel sub-01 pairwise CSV reproduces exactly, but this is a previously exposed one-participant pulse-artifact analysis. The endpoint and simple fixed-normal cortical source family do not support endogenous neural-source distinguishability. The B1 source-generator audit finds large structured residuals. An earlier 236-channel/224-channel join is invalid and preserved. B4 is pivoted to the bounded GBFs reproduction/software build; no held-out outcome access or neural recovery claim is authorized by this route."
+    },
+    {
+      "id": "B5",
+      "name": "protocol lock",
+      "status": "PIVOT",
+      "evidence": [
+        "docs/track_b/B5_B6_ROUTE_CLOSEOUT_20261024.md",
+        "docs/track_b/B4_DEVELOPMENT_AUDIT_20261024.md",
+        "docs/track_b/B4_CHANNEL_MATCH_RECONCILIATION_20261024.md"
+      ],
+      "blocking": [
+        "B6"
+      ],
+      "objective": "Lock a confirmatory protocol before accessing any held-out outcomes.",
+      "exit_criteria": [
+        "All target, preprocessing, split, exclusions, thresholds, comparators, endpoints, uncertainty, and stopping rules are filled.",
+        "Protocol/config/code/data hashes and access audit are sealed under a new run ID.",
+        "Independent preflight finds no unfilled choice that can be tuned on the test set."
+      ],
+      "verification": [
+        "Run the B5 preflight validator.",
+        "Have a reviewer compare locked protocol against development decisions and data access log.",
+        "Verify test labels/outcomes remain unopened until lock passes."
+      ],
+      "falsification_check": "Any primary choice depends on test outcomes, a field is unresolved, or the locked sample cannot estimate the prespecified effect.",
+      "failure_route": "Do not run confirmatory analysis; repair before unblinding, obtain a new independent sample, or declare exploratory scope.",
+      "independent_review": "Independent reviewer signs protocol and access-log preflight.",
+      "verification_evidence": [
+        "docs/track_b/B5_B6_ROUTE_CLOSEOUT_20261024.md",
+        "docs/track_b/B4_DEVELOPMENT_AUDIT_20261024.md"
+      ],
+      "known_issue": "Confirmatory evaluation was deliberately not activated: the only permitted Localize-MI target in this route is a stimulation pulse artifact, not a validated endogenous neural-source endpoint. No reserved outcomes were opened. Reopening requires a separately reviewed real-data endpoint and new locked protocol."
+    },
+    {
+      "id": "B6",
+      "name": "held-out evaluation",
+      "status": "PIVOT",
+      "evidence": [
+        "docs/track_b/B5_B6_ROUTE_CLOSEOUT_20261024.md",
+        "docs/track_b/B4_DEVELOPMENT_AUDIT_20261024.md",
+        "docs/track_b/B4_CHANNEL_MATCH_RECONCILIATION_20261024.md"
+      ],
+      "blocking": [
+        "B7"
+      ],
+      "objective": "Evaluate the locked method once on eligible held-out data and report uncertainty and failures.",
+      "exit_criteria": [
+        "No test-informed code/config/model changes occur before the primary result is frozen.",
+        "All preregistered metrics, exclusions, negative controls and uncertainty are reported.",
+        "Claims match the endpoint and independent sample; null/negative outcomes are preserved."
+      ],
+      "verification": [
+        "Run the sealed evaluation command from the locked manifest.",
+        "Recompute primary outcomes independently from stored predictions.",
+        "Audit participant-level split and compare actual run hashes to B5."
+      ],
+      "falsification_check": "Leakage, protocol deviation, failed controls, inadequate sample, or performance not exceeding the prespecified comparator/threshold.",
+      "failure_route": "Report as failed, inconclusive, or exploratory; any repair demotes exposed test data and requires new confirmation.",
+      "independent_review": "Independent reviewer audits the locked run and metric reproduction.",
+      "verification_evidence": [
+        "docs/track_b/B5_B6_ROUTE_CLOSEOUT_20261024.md",
+        "docs/track_b/B4_DEVELOPMENT_AUDIT_20261024.md"
+      ],
+      "known_issue": "Confirmatory evaluation was deliberately not activated: the only permitted Localize-MI target in this route is a stimulation pulse artifact, not a validated endogenous neural-source endpoint. No reserved outcomes were opened. Reopening requires a separately reviewed real-data endpoint and new locked protocol."
+    },
+    {
+      "id": "B7",
+      "name": "researcher decision value of the distinguishability tool",
+      "status": "PIVOT",
+      "evidence": [
+        "docs/track_b/B7_DECISION_VALUE_AUDIT_20261024.md",
+        "scripts/track_b/audit_b7_resolution_overlap.py",
+        "scripts/track_b/verify_b7_resolution_overlap.py",
+        "outputs/track_b/20261024_b7_resolution_overlap_audit_v2/b7_resolution_overlap_report.json",
+        "outputs/track_b/20261024_b7_resolution_overlap_audit_v2/paired_source_metrics.csv",
+        "outputs/track_b/20261024_b7_resolution_overlap_audit_v2/run_manifest.json",
+        "outputs/track_b/20261024_b7_resolution_overlap_audit_v2/independent_stat_check.json",
+        "outputs/track_b/20261024_b7_resolution_overlap_audit_v2/SESSION.md"
+      ],
+      "blocking": [],
+      "objective": "Determine whether the tool changes a defined source-reporting or follow-up decision beyond standard resolution diagnostics.",
+      "exit_criteria": [
+        "A researcher-facing decision is specified separately from numerical similarity.",
+        "The proposed output is compared with standard resolution/point-spread diagnostics at matched information and effort.",
+        "The decision benefit and limits are reported; a clearer visualization alone is not treated as utility."
+      ],
+      "verification": [
+        "Compare source-reporting decisions with and without the tool output under the same evidence.",
+        "Check whether the output changes a prespecified decision and document any unsupported-confidence risk."
+      ],
+      "falsification_check": "No decision improvement, utility depends on unsupported interpretation, or uncertainty hides a meaningful failure rate.",
+      "failure_route": "Remove utility claims and retain only the validated technical result; redesign only with new development evidence.",
+      "independent_review": "Independent reviewer checks decision relevance and interpretation.",
+      "verification_evidence": [
+        "outputs/track_b/20261024_b7_resolution_overlap_audit_v2/run_manifest.json",
+        "outputs/track_b/20261024_b7_resolution_overlap_audit_v2/independent_stat_check.json",
+        "outputs/track_b/20261024_b7_resolution_overlap_audit_v2/SESSION.md"
+      ],
+      "known_issue": "The paired same-model audit found moderate association between the forward-signature score and MNE PSF summaries, but no researcher decision benefit can be established from one model-only case without an independent analyst study or valid physiological endpoint. The utility claim is pivoted; retain the score as an inspectable descriptive diagnostic."
+    },
+    {
+      "id": "B8",
+      "name": "research release and outside check",
+      "status": "IN_PROGRESS",
+      "evidence": [
+        "docs/track_b/B8_RELEASE_AUDIT_20261024.md",
+        "docs/track_b/B8_EXTERNAL_REVIEW_PACKET_20261024.md",
+        "LICENSE",
+        "CITATION.cff",
+        "docs/track_b/SOURCE_SNAPSHOT_MANIFEST.json",
+        "scripts/track_b/verify_source_snapshot.py",
+        "outputs/track_b/20261024_b8_release_checks/source_snapshot_verification.json",
+        "README.md",
+        "docs/ARCHITECTURE.md",
+        "src/observable_geometry/cli.py",
+        "scripts/track_b/export_sealed_model_bundle.py",
+        "scripts/track_b/verify_b8_clean_install.py",
+        "tests/test_cli_distinguish.py",
+        "outputs/track_b/20261024_b8_release_checks/SESSION.md",
+        "outputs/track_b/20261024_b8_release_checks/test_run.json",
+        "outputs/track_b/20261024_b8_release_checks/clean_install_parity.json",
+        "outputs/track_b/20261024_b8_export_cli_clean_env_v1/run_manifest.json",
+        "outputs/track_b/20261024_b8_export_cli_clean_env_v1/summary.json",
+        "outputs/track_b/20261024_b8_export_cli_clean_env_v1/ranked_pairs.csv",
+        "outputs/track_b/20261024_b8_export_cli_clean_env_v2/run_manifest.json",
+        "outputs/track_b/20261024_b8_export_cli_clean_env_v2/summary.json",
+        "outputs/track_b/20261024_b8_export_cli_clean_env_v2/ranked_pairs.csv",
+        "scripts/track_b/verify_b8_clean_install.py",
+        "docs/track_b/B7_DECISION_VALUE_AUDIT_20261024.md",
+        "scripts/track_b/audit_b7_resolution_overlap.py",
+        "scripts/track_b/verify_b7_resolution_overlap.py",
+        "outputs/track_b/20261024_b7_resolution_overlap_audit_v2/b7_resolution_overlap_report.json",
+        "outputs/track_b/20261024_b7_resolution_overlap_audit_v2/paired_source_metrics.csv",
+        "outputs/track_b/20261024_b7_resolution_overlap_audit_v2/run_manifest.json",
+        "outputs/track_b/20261024_b7_resolution_overlap_audit_v2/independent_stat_check.json",
+        "docs/track_b/B5_B6_ROUTE_CLOSEOUT_20261024.md",
+        "outputs/track_b/20261024_b7_resolution_overlap_audit_v2/SESSION.md"
+      ],
+      "blocking": [],
+      "objective": "Release a reproducible package and obtain an external reproduction or review.",
+      "exit_criteria": [
+        "Install, data access, environment, scripts, license and limitations are documented.",
+        "A clean run reproduces the primary artifact without private state.",
+        "Outside review findings and unresolved issues are recorded."
+      ],
+      "verification": [
+        "Run the clean-environment reproduction from documented commands.",
+        "Verify checksums, manifests, outputs and figures.",
+        "Record external reviewer result and any divergence."
+      ],
+      "falsification_check": "A clean reproduction fails, required data/code are inaccessible, or the release overstates what was tested.",
+      "failure_route": "Fix in a versioned release and repeat reproduction; retain the failure record and narrow public claims.",
+      "independent_review": "External researcher or reviewer performs or witnesses the clean reproduction.",
+      "verification_evidence": [
+        "outputs/track_b/20261024_b8_release_checks/test_run.json",
+        "outputs/track_b/20261024_b8_release_checks/clean_install_parity.json",
+        "outputs/track_b/20261024_b8_release_checks/clean_install_parity_failure_01.json",
+        "outputs/track_b/20261024_b8_release_checks/junit.xml",
+        "outputs/track_b/20261024_b8_release_checks/source_snapshot_verification.json",
+        "outputs/track_b/20261024_b8_export_cli_clean_env_v1/run_manifest.json"
+      ],
+      "known_issue": "Clean wheel installation and exact model-only output parity pass. B4–B7 empirical/utility routes are explicitly pivoted with their evidence preserved. Project source is BSD-3-Clause licensed and citation metadata are present. B8 remains open pending an unaffiliated outside review/reproduction and a verified clean source snapshot. The supplied B2 reviewer identity is not independently authenticated and remains disclosed. Localize-MI-derived bundle remains local."
+    }
+  ],
+  "stage_contract_version": 1,
+  "route_note": "Active route reset to GBFs plus nominal source distinguishability under one verified head model; previous NeuroFlowNet route is archived as historical. After the B4 pivot, the bounded software release gate B8 depends on B3 implementation readiness, not on the unactivated B6 neural-source held-out evaluation."
+}

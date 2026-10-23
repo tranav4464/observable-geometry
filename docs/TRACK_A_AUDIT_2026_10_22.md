@@ -1,0 +1,153 @@
+# Track A verification audit
+
+> **Historical audit snapshot:** the findings below describe the state before remediation. The final status and current metrics are in [TRACK_A_COMPLETION_REPORT.md](TRACK_A_COMPLETION_REPORT.md). All ten engineering findings were addressed within the declared Track A scope; the closeout mapping at the end distinguishes those fixes from remaining scientific limits. The old run statistics below are audit-era values and are superseded by the sealed run `outputs/tracka_verified_20261022_final/`.
+
+**Date:** 22 October 2026
+**Verdict:** Functional, reproducible on the existing selected data and caches, but **not fully complete or robust against the original A0–A7 requirements**. Earlier unconditional completion statements are superseded by this audit.
+
+The implementation contains substantial working code and real recorded-data results. The problems below do not imply that every existing number is wrong. They do mean the current PASS validator and 11 unit tests cannot support a blanket claim that all stages are complete and technically sound.
+
+## Evidence collected
+
+- Ran the entire `run_foundation.ps1` pipeline using `.venv_tracka_clean`; it exited successfully. Log: `outputs/audit_2026_10_22/full_run.log`.
+- All 11 existing mathematical unit tests passed, and the existing artifact validator returned PASS.
+- Rechecked the fetched payloads against annex sizes/checksums. Log: `outputs/audit_2026_10_22/payload_integrity.log`.
+- Independently checked all 11 actual epoch arrays for finite values and metadata dimensions. Actual metadata consistently report 8 kHz, volts, and event zero at 0.25 seconds.
+- Independently recomputed the nearest-five signature rankings for 24 seeded source candidates. All matched the saved library within tolerance.
+- Checked both cached basis sizes: all nonconstant eigenvalues were in (0,1), so the upstream inverse-log penalty was positive for these actual inputs. This specific anticipated penalty-domain failure was not present.
+- Confirmed the GBFs checkout is at its declared commit and has no reported tracked modifications. The metadata checkout also has no reported tracked modifications.
+- Reproduced five adversarial failures despite the green existing suite. Evidence and reusable probes: `scripts/audit_track_a.py` and `outputs/audit_2026_10_22/adversarial_checks.json`.
+- Inspected source and generated HTML. A rendered browser interaction test was not completed: the browser tool blocked opening the local-file URL. No visual-interaction certification is claimed.
+
+The rerun reproduced median peak distances of 19.76 mm for GBFs and 28.30 mm for the fixed MNE comparator. Predicted/observed pair similarity remained Pearson r=0.276 and Spearman rho=0.404. These are one-participant development descriptions, not method-superiority or generalization evidence.
+
+## Confirmed implementation defects
+
+### 1. Invalid source candidates receive valid-looking results (high priority; A4)
+
+`src/observable_geometry/nominal.py:59` masks invalid destination columns but does not mask invalid query rows. In a fixture with one zero leadfield column and two valid columns, the function correctly marks only two sources valid but reports three sources with distant alternatives. The null source receives similarity 0 and residual 1, which can look like strong distinguishability although no observable signature exists.
+
+Two related failures were reproduced: with only one valid source the function raises an unhelpful `IndexError` at line 72; when fewer than five distant alternatives exist, missing scores become NaN but their candidate IDs remain ordinary source IDs rather than -1. These violate the A4 missing/unsupported-source contract. All sources in the present selected dataset are valid, so this audit does not establish that the current headline median was corrupted by these edge cases.
+
+**Required fix:** mask invalid rows and columns, handle zero/one supported candidate explicitly, preserve -1 for absent candidates, and add regression cases for all three conditions.
+
+### 2. Noise-null directions are silently discarded (high priority; A4)
+
+`src/observable_geometry/nominal.py:22` projects into the positive covariance eigenspace without checking that the leadfield lies in that space. A fixture with covariance diag(1,0) and leadfield columns (1,0) and (1,100) returns identical normalized signatures and marks both valid. The unsupported component is lost silently. This conflicts with the stricter support check already implemented in `fit_linear_geometry`.
+
+**Required fix:** reject an inconsistent leadfield/reference/noise support or explicitly model the deterministic component. Do not silently convert it into equality of signatures. No such inconsistency was demonstrated for the current prepared bundle.
+
+### 3. The final validator accepts a corrupted result (high priority; A1/A6)
+
+`scripts/verify_foundation.py:73` checks counts and finite aggregate medians, but not all individual errors or consistency between rows and summaries. An in-memory mutation replaced the first site's GBFs error with NaN; the validator still passed. No production result file was altered for this probe.
+
+The validator also reads prior PASS labels without verifying all current input/code/cache hashes. A green final result therefore cannot certify the correctness or freshness of every output.
+
+**Required fix:** validate every numeric result, source index and coordinate; recompute summary statistics from rows; verify data/config/code/basis identities; and reject mixed-run or stale artifacts.
+
+### 4. Cached geometry has no identity check (high priority; A1/A3/A6)
+
+`scripts/pilot_localize.py:77` and `scripts/run_empirical_evaluation.py:172` load a basis whenever its filename exists. The caches contain only eigenvalues and eigenvectors, with no mesh hash, vertex-order identity, upstream source hash, configuration version or enforced correspondence. A different same-sized source mesh or row ordering could reuse a stale basis silently. The parity check can still pass because both calculations consume that same basis.
+
+**Required fix:** bind each cache to mesh, vertex order, coordinate convention, basis count and code version; reject mismatches. Then perform a separate fresh-output, uncached reproduction. The earlier and current clean Python environment runs both reused geometry caches, so neither is evidence of a fully cold reproduction.
+
+### 5. A reported 'energy' metric is actually absolute-amplitude mass (medium priority; A5)
+
+`scripts/run_resolution_baseline.py:64` computes the sum of absolute point-spread amplitudes inside 10 mm divided by the sum everywhere. It labels this `psf_energy_within_10mm`, although it does not square amplitudes. The 3.41% quantity can be valid as an L1 concentration measure, but it is mislabeled as energy in generated outputs and prose.
+
+**Required fix:** rename the existing metric accurately or implement squared-amplitude energy and regenerate affected reports. Do not silently exchange the definitions while retaining the old number.
+
+## Missing requirements and process defects
+
+### 6. A5 does not export complete ambiguity sets (high priority for completion)
+
+The library retains five alternatives per source and reports thresholds on the best score. This is not the promised source-centered ambiguity set at each threshold. Independent enumeration found 8 alternatives at cosine ≥0.95 for source index 1497 and 9 for index 2478, while only five can be stored. This truncation is acceptable for a top-five preview, but cannot be presented as the complete threshold set.
+
+**Required fix:** export complete sparse threshold sets or make complete sets queryable, with counts and truncation status. Verify them against exhaustive small fixtures and selected full-data rows. The missing set export is part of Track A, not a Track B novelty requirement.
+
+### 7. Multi-run contract checks are incomplete (medium priority; A2)
+
+The empirical runner hardcodes 8000 Hz, 2081 samples and tmin=-0.25 at lines 122–123. It does not validate every run's voltage units, zero-time metadata, event count versus array trials, duplicates and finiteness before fitting. The detailed validation script checks only run 01 and hardcodes K13/K14 instead of deriving and validating the pair against the event label.
+
+The audit independently verified that the present eleven files match the assumptions and contain finite values. This is a failure of enforced input protection, not evidence that these particular files are currently mismatched.
+
+**Required fix:** share one validated adapter across every run and fail before model fitting on any inconsistent metadata.
+
+### 8. Reproduction and release controls are incomplete (medium priority; A1/A6/A7)
+
+All scientific runs overwrite `outputs/localize_sub01_run01`; there are no immutable run directories or complete hashed release snapshot. There is no project Git repository/tag, and the handoff's release string is a label rather than an immutable code release. The plan specifically required unique output directories and a frozen version.
+
+The environment checker records Python and platform but does not enforce the declared Python version. Its `clean-run-check` label is inferred from the environment directory name. The bootstrap expects the `py` launcher, which was unavailable in this workspace; the current working environment was created by another executable path. Finally, the planning-page renderer imports `markdown`, which is absent from the clean pinned environment.
+
+**Required fix:** support an explicit Python executable, enforce supported interpreter requirements, create immutable run manifests, record code/input/config/output hashes, and document/test fresh installation and fresh generation separately. Include dependencies needed to reproduce any claimed deliverable.
+
+### 9. Interface and monitoring deliverables are incomplete (medium priority; A4/A6)
+
+The dashboard has reconstruction maps and a source-pair table, but does not provide the planned sensor-signature comparison view. The planning page renderer omits the latest decisions, completion report and handoff from its section list. The pipeline does not regenerate that planning page. A dedicated memory/runtime benchmark for signature generation and an uncached determinism check are also missing.
+
+**Required fix:** finish the requested signature view, update the review page from current audit-aware docs, and record measured runtime/peak-memory and determinism evidence. These are deliverable gaps, not claims that the existing viewer cannot render.
+
+### 10. The acceptance criterion was weakened during closure (high priority; A7)
+
+The original A7 gate required: 'Gate 0 literature review identifies a plausible mathematical gap.' During the earlier closure, this was changed to identifying a plausible falsifiable research question. Those are different requirements. The change was not evidence that the original gate had been met. This audit restores the original wording and marks the overall completion claim as requiring remediation.
+
+Track A does not have to prove a breakthrough. It does need to meet its stated gates, or explicitly propose a scope change for the user to assess, rather than changing the standard and then declaring full completion.
+
+## Scientific assumptions requiring further checks
+
+These are separate from the reproduced software bugs.
+
+- **Source orientation compatibility (A0):** proximity between a contact midpoint and a cortical vertex does not validate a fixed cortical-normal source direction for a bipolar stimulation artifact. A geometry-only probe found angles of approximately 44–88 degrees between the contact-pair axes and the nearest fixed cortical normals. The pair axis is a diagnostic proxy, not a measured current model, so this does not prove the reconstruction is invalid. It does show that target compatibility has not been established by the distance check alone. Compare an appropriately justified orientation model/free-orientation baseline or explicitly restrict the inference to this proxy model.
+- **Observed topography estimator (A7):** the signed mean over −2 to +2 ms can cancel opposite waveform phases. Sensitivity to a prespecified peak-GFP topography or a waveform/subspace representation has not been tested. This is an untested estimator dependence, not a demonstrated cancellation error in these data.
+- **Noise/averaging conventions:** the empirical MNE covariance is divided by the mean primary-run trial count, while each run has its own trial count and `EvokedArray` uses default nave=1. The intent and comparability of scaling require an explicit derivation/check. A uniform covariance scale may cancel in MNE's normalized inverse, so this audit does not claim that correcting the convention will change peak positions. `nfree` also records a trial count although the covariance came from pooled baseline samples.
+- **Scope of parity:** independent numerical parity is demonstrated for the 20-mode-per-hemisphere integration path. The 300-mode evaluation has valid penalty eigenvalues, but does not yet have an independently saved parity/conditioning check or a matched-input normalization sensitivity audit.
+- **Sampling limits:** one participant, six sites and fifteen dependent pairs cannot support population validation or a calibrated recoverability framework. This is an appropriate documented limitation for Track A; it is not itself a software defect or a demand to finish Track B first.
+
+## Stage-by-stage verdict against the plan
+
+| Stage | Current verdict | Remaining gate |
+|---|---|---|
+| A0 | Substantially specified; compatibility unresolved | Justify fixed source orientation for the selected artifact task; specify later-participant eligibility. |
+| A1 | Partial | Bind caches/provenance, enforce environment checks, preserve immutable run/release artifacts. |
+| A2 | Works on current files; partial protection | Enforce the metadata, units, events, finiteness and target checks for every run. |
+| A3 | Working upstream execution and small-basis parity | Validate cache identity; independently check the empirical configuration and document remaining normalization/basis assumptions. |
+| A4 | Fails required edge cases | Correct null/unsupported source handling and missing-candidate contracts; add runtime/memory and determinism evidence. |
+| A5 | Partial | Complete ambiguity sets, correct concentration metric labeling, and rerun limiting-case checks. |
+| A6 | Pipeline runs; partial release readiness | Harden validator, complete fresh setup/cold reproduction evidence, finish planned report views. |
+| A7 | Evaluation exists; freeze not accepted | Close earlier gates, create a real frozen release, retain original acceptance criterion and justify a plausible mathematical gap. |
+
+## Remediation order and acceptance
+
+1. Fix the reproduced signature/support/validator defects, with regression cases that fail before each fix.
+2. Unify physical data validation and justify the source/task model. Keep the existing artifact-only claim boundary.
+3. Add cache identities, immutable manifests and an independent empirical-configuration check.
+4. Finish complete ambiguity sets, correct metric labels and report views.
+5. Perform a fresh-output run from verified inputs, compare invariant results within stated tolerances, and create a hashed release.
+6. Reassess A0–A7 against the original checklist; only then reinstate the full-completion label.
+
+The audit records the pre-remediation evidence. No finite review proves there are zero further errors; the closeout below states exactly what was fixed, what was rerun, and what remains outside Track A's scientific scope.
+
+## Remediation closeout: 22 October 2026
+
+The authorized remediation was completed and verified in the cold, uniquely named run `tracka_verified_20261022_final`. The run regenerated both geometry bases, ran the current 20-test suite, produced the reports and complete 0.95 ambiguity relation, sealed input/source/artifact hashes, and passed the validator twice. Current evidence is in `outputs/tracka_verified_20261022_final/run_manifest.json`.
+
+| Original finding | Closeout |
+|---|---|
+| 1. Invalid signatures and incomplete candidates | **Fixed and regression-tested.** Invalid query rows are masked; padding is `-1`/NaN; unsupported covariance-null components and no-alternative cases fail clearly. |
+| 2. Covariance-null directions discarded silently | **Fixed and regression-tested.** Inconsistent leadfield support is rejected. |
+| 3. Validator accepted corrupted outputs | **Fixed and adversarially tested.** Row-level finiteness/consistency, recomputed summaries, signature arrays, cache identities, report markers, and sealed hashes are checked. |
+| 4. Geometry caches lacked identity | **Fixed and cold-run verified.** Cache metadata bind forward file, upstream code, source positions/order, mode count, and configuration; final run regenerated both caches. |
+| 5. L1 statistic mislabeled as energy | **Fixed.** Report and output call it point-spread L1 mass. |
+| 6. Complete threshold ambiguity set absent | **Fixed for the declared 0.95 threshold.** Complete sparse CSR relation is exported, with 912 directed edges and independent recomputation in the validator. Top-five remains a display preview only. |
+| 7. Multi-run input contracts incomplete | **Fixed for the selected eleven-run payload.** Metadata, dimensions, units, events, time grids, channels, finiteness, and trial consistency are checked before evaluation. |
+| 8. Reproduction and release controls incomplete | **Fixed for the local release workflow, with one release limitation.** Python 3.12 and all 34 exact pins are enforced; bootstrap accepts an explicit interpreter; run directories are unique/immutable; input, source, cache, and output hashes are sealed. The workspace still has no Git history or tag; the hash-bound source snapshot provides artifact identity, not commit history. |
+| 9. Interface, review page, and performance evidence incomplete | **Fixed for Track A deliverables.** Offline report includes sensor-signature visualization; review page is regenerated; runtime and sampled peak RSS are recorded. Static integrity is checked; browser interaction and cross-browser visual QA remain unverified. |
+| 10. A7 acceptance criterion changed without evidence | **Closed with explicit boundary.** Track A records a plausible, cited research-gap hypothesis and the remaining equation-level novelty gate. This is readiness to begin Track B research, not evidence that RSG is novel. |
+
+### Scientific assumptions that remain open
+
+These were not software defects that could be fixed by editing code or rerunning the same data. The accepted task is restricted to descriptive localization of the measured pulse artifact using the supplied fixed-orientation model. The 44.4°–87.6° contact-axis/nearest-cortical-normal angles are reported as a geometry diagnostic only; the pair axis is not a measured artifact-current orientation. Physiological source recovery, participant-held-out performance, calibrated uncertainty, and the novelty of RSG remain untested. The fifteen site pairs are dependent and cannot support inferential statistics. These limitations are visible in the protocol, report, and Track B handoff.
+
+The current empirical association is Pearson `r = 0.345` and Spearman `rho = 0.343` for the same 15 dependent pairs; the prior audit-era `0.276`/`0.404` values are superseded because the prespecified observed topography estimator was changed to a peak-GFP sample and the empirical MNE covariance/nave convention was corrected. Current median peak errors remain 19.76 mm for GBFs and 28.30 mm for fixed MNE. They are descriptive only.
+
+The phrase “Track A complete” therefore means **the declared engineering foundation and its audit remediation are complete and reproducible**. It does not mean every scientific question is solved or that every conceivable defect has been ruled out. Track B may start with prior-art and feasibility research under the claim boundaries above.
