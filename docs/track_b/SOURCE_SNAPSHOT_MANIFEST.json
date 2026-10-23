@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-10-23T22:33:58.156762+00:00",
+  "created_utc": "2026-10-23T22:36:02.470518+00:00",
   "file_count": 196,
   "files": {
     ".gitignore": {
@@ -295,8 +295,8 @@
       "size_bytes": 4494
     },
     "docs/track_b/B8_EXTERNAL_REVIEW_PACKET_20261024.md": {
-      "sha256": "90cffd77426988efd530c0487c913473760cce1a60203f212da6f16ac05dcfc7",
-      "size_bytes": 13048
+      "sha256": "2a30b8c93630bad61ee8ef2ee64b54f4759f067645d29acacca3aa9a8fe5bb10",
+      "size_bytes": 13567
     },
     "docs/track_b/B8_RELEASE_AUDIT_20261024.md": {
       "sha256": "042f0805c4b0a6271bdf7eb140d323581f1f7421fabd3113938c274b85b060d8",
@@ -343,8 +343,8 @@
       "size_bytes": 61218
     },
     "docs/track_b/PROJECT_DEFINITION.md": {
-      "sha256": "ca224194a4940f29ac6c18c3e96cd2509d839a4688c554d7d5492c1ecde059b5",
-      "size_bytes": 9115
+      "sha256": "52ff552137d8a2799272a4a39c194d725d11fc50ea0c564ca42ffa9617fa0bd5",
+      "size_bytes": 9279
     },
     "docs/track_b/PROTOCOL_LOCK.md": {
       "sha256": "d499304994443f99f525ff79f4f1233d5f49ae36b7222e5da16c1f716a302064",
