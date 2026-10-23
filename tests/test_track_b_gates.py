@@ -9,6 +9,11 @@ from observable_geometry.track_b.gates import validate_gate_register
 class GateRegisterTests(unittest.TestCase):
     def test_current_gate_register_has_complete_evidence_and_valid_order(self):
         root = Path(__file__).resolve().parents[1]
+        if not (root / "outputs").is_dir():
+            self.skipTest(
+                "source-only distributions omit run evidence; the full-workspace "
+                "validator is run separately against the complete repository"
+            )
         register = json.loads((root / "docs/track_b/GATE_REGISTER.json").read_text(encoding="utf-8"))
         self.assertEqual(validate_gate_register(register, root), [])
 
