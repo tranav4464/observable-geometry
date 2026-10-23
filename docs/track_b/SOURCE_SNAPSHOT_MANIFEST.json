@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-10-23T22:20:26.237485+00:00",
+  "created_utc": "2026-10-23T22:21:07.555260+00:00",
   "file_count": 193,
   "files": {
     ".gitignore": {
@@ -291,8 +291,8 @@
       "size_bytes": 4494
     },
     "docs/track_b/B8_EXTERNAL_REVIEW_PACKET_20261024.md": {
-      "sha256": "791d89ca180778400bebff1ea891d49790941994008b53d82d92896dcec62b16",
-      "size_bytes": 12572
+      "sha256": "06174d5784949f86d6e0411a16b0643655aada490449679000b67ae45f4c2ac5",
+      "size_bytes": 12529
     },
     "docs/track_b/B8_RELEASE_AUDIT_20261024.md": {
       "sha256": "087cea6be2be66c8916155e6a53c458c502dee6638894787919679d87959071c",
