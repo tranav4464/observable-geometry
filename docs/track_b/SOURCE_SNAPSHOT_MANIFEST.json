@@ -1,6 +1,6 @@
 {
-  "created_utc": "2026-10-23T20:56:31.666550+00:00",
-  "file_count": 180,
+  "created_utc": "2026-10-23T21:01:50.527471+00:00",
+  "file_count": 181,
   "files": {
     ".gitignore": {
       "sha256": "f96cf8be73079a090f21c39fbca22ae1c23b7523034f7f588b650b589bf5c9d9",
@@ -143,8 +143,8 @@
       "size_bytes": 24053
     },
     "docs/track_b/B0_GBF_EXTENSION_SCREEN.md": {
-      "sha256": "a509eb1bf15d870b020e1626d84655b71e72eca88c58c0149ef2e842a4136bcc",
-      "size_bytes": 22149
+      "sha256": "843f0e0e6809fe353a4eb9ead7dd5fdcecbf24755a00f5a34fdf72cc401ecb2d",
+      "size_bytes": 25436
     },
     "docs/track_b/B0_WBEN_HISTORICAL_CLOSEOUT.md": {
       "sha256": "d38f34a1407e55c54fd7542765ed4c6f2e779d91fde7a1c56ac42d8a58dac321",
@@ -271,12 +271,12 @@
       "size_bytes": 4494
     },
     "docs/track_b/B8_EXTERNAL_REVIEW_PACKET_20261024.md": {
-      "sha256": "f73d79d07390ab928984bfc770981ce791d9bdc555cd7f5473fb5c5dc261a85a",
-      "size_bytes": 7851
+      "sha256": "ec110b8bd4bfe5f8a2e18d29ada70cb5abd148645bbb051646a80a61a47f084f",
+      "size_bytes": 7956
     },
     "docs/track_b/B8_RELEASE_AUDIT_20261024.md": {
-      "sha256": "45403d73c06097de7e393189759586c30a0f92156c5ac25517b5363dc8819a57",
-      "size_bytes": 7899
+      "sha256": "041efb476cf7f7834a82676a41d1eb748601560f2e8680f9c0ec116f46870312",
+      "size_bytes": 7706
     },
     "docs/track_b/BUILD_BASE_DECISION.md": {
       "sha256": "ff9e26767cc99c33fabc41d24cf0775ab4c6d541e17061b89fc0951d7199cd95",
@@ -295,8 +295,8 @@
       "size_bytes": 67918
     },
     "docs/track_b/GATE_REGISTER.json": {
-      "sha256": "d0d156b52b193573fd33382558efad103d48a0519b1dcd31d676159a7c2f7841",
-      "size_bytes": 45076
+      "sha256": "c49d98aafc02f726f0fbf4ae227c44ee55d59bb5c0078a824b0c9356f423d19e",
+      "size_bytes": 45213
     },
     "docs/track_b/GBF_BUILD_PLAN.md": {
       "sha256": "8e06d0125b10fd27648171667c03950c3fe2591dfc05f0a03c82f04def42b1c2",
@@ -319,8 +319,8 @@
       "size_bytes": 61218
     },
     "docs/track_b/PROJECT_DEFINITION.md": {
-      "sha256": "c7eb4033731663a3d54ea2278f849b9221f06683a26bd6a9f4040a71fe60cd39",
-      "size_bytes": 7308
+      "sha256": "cf79282bde4586299ddeb792996b94057981b7e3f6dcd7361e0fd2bf42012fd8",
+      "size_bytes": 7278
     },
     "docs/track_b/PROTOCOL_LOCK.md": {
       "sha256": "d499304994443f99f525ff79f4f1233d5f49ae36b7222e5da16c1f716a302064",
@@ -533,6 +533,10 @@
     "scripts/track_b/audit_payload_contract.py": {
       "sha256": "b41eb0fde4ed285b63db7e4b67146caf601f26aa25042c7f06e3b3c689312882",
       "size_bytes": 4866
+    },
+    "scripts/track_b/build_b8_reviewer_handoff.py": {
+      "sha256": "1f85c1d74fa856befa1b1b28fdbc8fead552684858b1b0f06609cafac39b746b",
+      "size_bytes": 8756
     },
     "scripts/track_b/build_source_manifest.py": {
       "sha256": "d5f574b9a69f652d73a6a7c2e101028cf5ad79183487608cebb53d5ed5afcbb6",
