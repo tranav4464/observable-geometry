@@ -1,6 +1,6 @@
 {
-  "created_utc": "2026-10-23T22:04:03.057273+00:00",
-  "file_count": 190,
+  "created_utc": "2026-10-23T22:12:46.809908+00:00",
+  "file_count": 193,
   "files": {
     ".gitignore": {
       "sha256": "f96cf8be73079a090f21c39fbca22ae1c23b7523034f7f588b650b589bf5c9d9",
@@ -251,8 +251,8 @@
       "size_bytes": 4743
     },
     "docs/track_b/B4_ALTERNATE_PUBLIC_DATASET_SCREEN_20261024.md": {
-      "sha256": "1e2947a7f4dffe6d8fe948414b1840de04891e78960f398b1e10f9ccc8cb723a",
-      "size_bytes": 24073
+      "sha256": "df8db10433a9fdf61d24634c60d9c6ceaf56ec7eee85a3a94ab25b527a198dce",
+      "size_bytes": 26511
     },
     "docs/track_b/B4_ARTIFACT_VALIDATION_REOPENING_PROPOSAL_20261024.md": {
       "sha256": "ec5fc4a18cc478fbd80acdffc7adde8779ad9f84052ccd4b1b9e632b1a30ea04",
@@ -274,25 +274,29 @@
       "sha256": "375ca927ce678a0ba52e0c0c32ec3e61487748f1d8dc44737eb486deb3871160",
       "size_bytes": 6526
     },
+    "docs/track_b/B4_NEMAR_CATALOG_SCREEN_20261024.md": {
+      "sha256": "eb1f25538909b08f28c3d26f3313ae2aecc8279b8b89ef8337590240bc6704aa",
+      "size_bytes": 7344
+    },
     "docs/track_b/B4_NEMAR_NM000456_PAIRING_AUDIT_20261024.md": {
       "sha256": "dd679e5b46ec6f1e108fc188821b954b8bc124e92825f430e2100bb4bcc4ecd7",
       "size_bytes": 3383
     },
     "docs/track_b/B5_B6_ROUTE_CLOSEOUT_20261024.md": {
-      "sha256": "461a3e1d4f3eefba3250943007edf0d380a1013c162aa19777af277110853b99",
-      "size_bytes": 2716
+      "sha256": "d8b47cb7aff155675b11911971fc66495188db34c9706ff4504000d95a5e55af",
+      "size_bytes": 2955
     },
     "docs/track_b/B7_DECISION_VALUE_AUDIT_20261024.md": {
       "sha256": "0450ac04b57c2ea22e0fb8b39062735d22fa0b8e9c21c0f261e53bd381316165",
       "size_bytes": 4494
     },
     "docs/track_b/B8_EXTERNAL_REVIEW_PACKET_20261024.md": {
-      "sha256": "05a824e2929b2c8bcb3cbb2bd9e44075629c867530449f4e93153e0304a21e96",
-      "size_bytes": 10888
+      "sha256": "d7d657638654390c388e90110db9c4fa1b6743ac4ef5fd2113a42bcbec6a3a30",
+      "size_bytes": 11455
     },
     "docs/track_b/B8_RELEASE_AUDIT_20261024.md": {
-      "sha256": "1cd08e9e8b7c45b1a4a04add78af0116e1cb4d4400be35897a608e0dad9e1b12",
-      "size_bytes": 10178
+      "sha256": "5c1b1513d0875f3c80844749f0d7f15356628b1fe86fc793cf8eed0deaaf94a4",
+      "size_bytes": 10631
     },
     "docs/track_b/BUILD_BASE_DECISION.md": {
       "sha256": "ff9e26767cc99c33fabc41d24cf0775ab4c6d541e17061b89fc0951d7199cd95",
@@ -303,16 +307,16 @@
       "size_bytes": 11429
     },
     "docs/track_b/DECISION_LOG.md": {
-      "sha256": "308dfee4141853b2db4ffecd1d40599dda7109a7ef3145c8d5be9343d7c472fe",
-      "size_bytes": 94922
+      "sha256": "fc50bf3634856afa8d8b802eb336ad862274f52d83e15b107a5b7586dcab33c0",
+      "size_bytes": 96244
     },
     "docs/track_b/EVIDENCE_LEDGER.md": {
       "sha256": "4e3ae832ac27cc922fb01181eef75d4002cb3e86b41fbb729eaa9471f021d1f4",
       "size_bytes": 67918
     },
     "docs/track_b/GATE_REGISTER.json": {
-      "sha256": "00d949460a19720e8fe5f07c408a11fd24f6f5c908dc9e208fe08271aa53590c",
-      "size_bytes": 51219
+      "sha256": "f062c0050f8c74c841616a048c98116c69583fdf15dff1efee8ec1c73b72f397",
+      "size_bytes": 52152
     },
     "docs/track_b/GBF_BUILD_PLAN.md": {
       "sha256": "dfaa7af96b7b7c7da2e4864e4b9649bcf35509a096857cff99891150be071f2f",
@@ -335,8 +339,8 @@
       "size_bytes": 61218
     },
     "docs/track_b/PROJECT_DEFINITION.md": {
-      "sha256": "3462126ca6a716600aee0f314815b23ac28951521220f933b836f1c97c0cd983",
-      "size_bytes": 7793
+      "sha256": "5de7d5e2b1bf5d7a3c5e324008c4c4ebfea9819e06e1322ac09f3c5b58ede106",
+      "size_bytes": 8243
     },
     "docs/track_b/PROTOCOL_LOCK.md": {
       "sha256": "d499304994443f99f525ff79f4f1233d5f49ae36b7222e5da16c1f716a302064",
@@ -538,6 +542,10 @@
       "sha256": "246eb9a61903cf1918cd6c0ccd3f773441a75e4a694abf404793fbf0ca219062",
       "size_bytes": 6419
     },
+    "scripts/track_b/audit_nemar_eeg_ieeg_catalog.py": {
+      "sha256": "9c29598c827b80ccbc0013b568b358644143648173b6c6aaaeb73de019151a55",
+      "size_bytes": 6306
+    },
     "scripts/track_b/audit_on004752_bids.py": {
       "sha256": "21e766cc588d103b15935f221218d592fdba54179cf3fbaa844594db4c84b406",
       "size_bytes": 13532
@@ -555,8 +563,8 @@
       "size_bytes": 4866
     },
     "scripts/track_b/build_b8_reviewer_handoff.py": {
-      "sha256": "633f8d54d7461a26a94067e110890748fed3aba9e22e0ac7a9d4b52f913490ba",
-      "size_bytes": 12222
+      "sha256": "70a65632260491271985cabdf21decef5ef5a137e19253f105bfcdaf89596e8d",
+      "size_bytes": 12545
     },
     "scripts/track_b/build_source_manifest.py": {
       "sha256": "d5f574b9a69f652d73a6a7c2e101028cf5ad79183487608cebb53d5ed5afcbb6",
@@ -729,6 +737,10 @@
     "tests/test_core.py": {
       "sha256": "ee1966bd1f4685cb5ec709ec189ad7777acf28e746f324cfd01d42a18697427c",
       "size_bytes": 2868
+    },
+    "tests/test_nemar_catalog_metadata_audit.py": {
+      "sha256": "04f1d2ee750e558b9c9ad2e18af99139e6554fab0f118f289de61452607f6c00",
+      "size_bytes": 951
     },
     "tests/test_nominal.py": {
       "sha256": "989fe94d5fd0de31ba7dafe1fa73536bafd059bb8eb1f2912736c4d493319753",
