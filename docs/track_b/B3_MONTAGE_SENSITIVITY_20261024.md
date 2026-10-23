@@ -47,7 +47,7 @@ From the repository root, with NumPy, SciPy, and the project test dependencies i
 ```powershell
 $env:PYTHONPATH = 'src'
 .\.venv\Scripts\python.exe -m pytest -q tests\test_track_b_montage_sensitivity.py
-.\.venv\Scripts\python.exe scripts\track_b\audit_b3_sensor_montage_sensitivity.py --run-id 20261024_b3_montage_sensitivity
+.\.venv\Scripts\python.exe scripts\track_b\audit_b3_sensor_montage_sensitivity.py --run-id 20261024_b3_montage_sensitivity_reproduction_01
 ```
 
-The command writes `sensitivity_report.json`, `run_access_log.json`, and `run_manifest.json` under `outputs/track_b/20261024_b3_montage_sensitivity/`. Input and output hashes, selected/removed channel counts, covariance ranks, baseline parity, and claim limits are recorded in these files.
+The run ID must be unused because the audit refuses to overwrite prior results. This example writes `sensitivity_report.json`, `run_access_log.json`, and `run_manifest.json` under `outputs/track_b/20261024_b3_montage_sensitivity_reproduction_01/`. Run `scripts/track_b/verify_b3_montage_sensitivity_reproduction.py` to compare that repeat with the original. It checks the full report apart from its creation timestamp, identical input hashes and access logs, and the no-signal-access flags. The result is recorded in `reproduction_check.json`. This checks repeatability of the same model-only calculation; it is not an independent sample or external replication.

@@ -1,6 +1,6 @@
 {
-  "created_utc": "2026-10-23T21:31:05.690780+00:00",
-  "file_count": 186,
+  "created_utc": "2026-10-23T21:36:00.656073+00:00",
+  "file_count": 187,
   "files": {
     ".gitignore": {
       "sha256": "f96cf8be73079a090f21c39fbca22ae1c23b7523034f7f588b650b589bf5c9d9",
@@ -239,8 +239,8 @@
       "size_bytes": 6889
     },
     "docs/track_b/B3_MONTAGE_SENSITIVITY_20261024.md": {
-      "sha256": "8b10a3d276fb07ab35389bc027a6fa55a862331bb5c72117c78eb785638684e0",
-      "size_bytes": 4759
+      "sha256": "5b83337e744416af88e35df7d4f8f1320293907a559efc86a6ed8cefe896487e",
+      "size_bytes": 5201
     },
     "docs/track_b/B3_NEUROFLOWNET_IMPLEMENTATION.md": {
       "sha256": "c5caa49ce1620e105adfeca92b6541a1bd2152ad05b2216555792fad6f58eb8f",
@@ -279,12 +279,12 @@
       "size_bytes": 4494
     },
     "docs/track_b/B8_EXTERNAL_REVIEW_PACKET_20261024.md": {
-      "sha256": "39e68c828d85f54e95b8bd4b4932ed794679905291f7b310ee5c198541a4056d",
-      "size_bytes": 9306
+      "sha256": "32a3fc27ead155211718b3b68dfeb52065f024c8d5c61d20301b50d450d9b89a",
+      "size_bytes": 9649
     },
     "docs/track_b/B8_RELEASE_AUDIT_20261024.md": {
-      "sha256": "862a4268c364c093e96ae4f2eff90ee0966ac6e88ad7a921cbc36cdcec856cb8",
-      "size_bytes": 8961
+      "sha256": "1ec6bafe34a2b6a8dfa2a813b8f53fc9baabf24a08b941cba59cc2d0ee127fe0",
+      "size_bytes": 9258
     },
     "docs/track_b/BUILD_BASE_DECISION.md": {
       "sha256": "ff9e26767cc99c33fabc41d24cf0775ab4c6d541e17061b89fc0951d7199cd95",
@@ -303,12 +303,12 @@
       "size_bytes": 67918
     },
     "docs/track_b/GATE_REGISTER.json": {
-      "sha256": "b9b3bbf9736abbb16072a04bfc70c9089984a51e8db629589c7bfa0ef671d581",
-      "size_bytes": 48167
+      "sha256": "8226576cedf992ad9fc7c695a331c0221259e1877adfb212ee5e2ee524e04b1e",
+      "size_bytes": 50209
     },
     "docs/track_b/GBF_BUILD_PLAN.md": {
-      "sha256": "1c312f14a9e8da72444057bf205d5d93d8615b249a691981f924d4d9f321f656",
-      "size_bytes": 7648
+      "sha256": "dfaa7af96b7b7c7da2e4864e4b9649bcf35509a096857cff99891150be071f2f",
+      "size_bytes": 7726
     },
     "docs/track_b/GPU_ENVIRONMENT.md": {
       "sha256": "02689f436f8dd9470950818df66cff8fbaacc9d4be55baab83fe4e3419181563",
@@ -547,8 +547,8 @@
       "size_bytes": 4866
     },
     "scripts/track_b/build_b8_reviewer_handoff.py": {
-      "sha256": "b4d0adf503473f394701e14309b67240a8ceacda39a44e784f237b873b29c405",
-      "size_bytes": 10217
+      "sha256": "0d6df8ef60186127ffa72b42234eb33e31a437883079b8a0cacf311318d42dde",
+      "size_bytes": 10909
     },
     "scripts/track_b/build_source_manifest.py": {
       "sha256": "d5f574b9a69f652d73a6a7c2e101028cf5ad79183487608cebb53d5ed5afcbb6",
@@ -613,6 +613,10 @@
     "scripts/track_b/validate_gate_register.py": {
       "sha256": "979be37debedc61c1e3ad844a10d9e6f3a9ea5d97a6099a6282dd7ca8924c679",
       "size_bytes": 937
+    },
+    "scripts/track_b/verify_b3_montage_sensitivity_reproduction.py": {
+      "sha256": "1cf2a1dc01e49d975f3344c80f4cea42d57462f00e3a12f8997e5ddd6d755567",
+      "size_bytes": 2833
     },
     "scripts/track_b/verify_b4_matched_224_reproduction.py": {
       "sha256": "7dab9480ab8cd72864e1e9ed70fbe0aab1bae5cfa2b979cedcc6991a4a77e553",

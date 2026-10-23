@@ -85,6 +85,10 @@ def main() -> None:
         "b3_montage_sensitivity_report.json": ROOT / "outputs/track_b/20261024_b3_montage_sensitivity/sensitivity_report.json",
         "b3_montage_sensitivity_manifest.json": ROOT / "outputs/track_b/20261024_b3_montage_sensitivity/run_manifest.json",
         "b3_montage_sensitivity_access_log.json": ROOT / "outputs/track_b/20261024_b3_montage_sensitivity/run_access_log.json",
+        "b3_montage_sensitivity_repeat_report.json": ROOT / "outputs/track_b/20261024_b3_montage_sensitivity_reproduction_01/sensitivity_report.json",
+        "b3_montage_sensitivity_repeat_manifest.json": ROOT / "outputs/track_b/20261024_b3_montage_sensitivity_reproduction_01/run_manifest.json",
+        "b3_montage_sensitivity_repeat_access_log.json": ROOT / "outputs/track_b/20261024_b3_montage_sensitivity_reproduction_01/run_access_log.json",
+        "b3_montage_sensitivity_reproduction_check.json": ROOT / "outputs/track_b/20261024_b3_montage_sensitivity_reproduction_01/reproduction_check.json",
         "observable_geometry-0.1.2-py3-none-any.whl": wheel,
         source_archive.name: source_archive,
     }
@@ -104,7 +108,7 @@ The updated prior-art and dataset screen records that Wang et al. 2026 already r
 
 ## Materials
 
-The package includes the source archive, BSD-3-Clause wheel, B0 prior-art screen, B2 closeout, current dataset screen and focused HDEEG reopening assessment, B8 review packet and release audit, project definition, clean-install parity record, source-snapshot verification, and current full-workspace and source-archive test reports. The source-archive report records any skipped evidence-path test, because local run outputs are excluded from that archive.
+The package includes the source archive, BSD-3-Clause wheel, B0 prior-art screen, B2 closeout, current dataset screen and focused HDEEG reopening assessment, B8 review packet and release audit, project definition, clean-install parity record, source-snapshot verification, the primary and repeated B3 montage-sensitivity runs with their semantic parity check, and current full-workspace and source-archive test reports. The source-archive report records any skipped evidence-path test, because local run outputs are excluded from that archive.
 
 ## Data boundary
 
