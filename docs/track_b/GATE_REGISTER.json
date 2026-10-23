@@ -318,7 +318,11 @@
         "outputs/20261023T192900Z_b4_matched_224_reproduction/empirical_evaluation_report.json",
         "outputs/20261023T192900Z_b4_matched_224_reproduction/predicted_observed_similarity.csv",
         "outputs/track_b/20261023T192200Z_b4_dev_protocol_feasibility/b4_site_associations.csv",
-        "outputs/track_b/20261023T192200Z_b4_dev_protocol_feasibility/b4_audit_failure_01.json"
+        "outputs/track_b/20261023T192200Z_b4_dev_protocol_feasibility/b4_audit_failure_01.json",
+        "docs/track_b/B4_ARTIFACT_VALIDATION_REOPENING_PROPOSAL_20261024.md",
+        "scripts/track_b/audit_b4_multisubject_metadata.py",
+        "outputs/track_b/data_acquisition/geometry_sub-01_02_03_04_05_06_07.json",
+        "outputs/track_b/data_acquisition/b4_multisubject_metadata_feasibility.json"
       ],
       "blocking": [
         "B5",
@@ -342,9 +346,13 @@
       "verification_evidence": [
         "outputs/20261023T192900Z_b4_matched_224_reproduction/b4_reproduction_audit.json",
         "outputs/track_b/20261023T192200Z_b4_dev_protocol_feasibility/b4_site_associations_manifest.json",
-        "outputs/tracka_release_20261022_v2/run_manifest.json"
+        "outputs/tracka_release_20261022_v2/run_manifest.json",
+        "docs/track_b/B4_ARTIFACT_VALIDATION_REOPENING_PROPOSAL_20261024.md",
+        "scripts/track_b/audit_b4_multisubject_metadata.py",
+        "outputs/track_b/data_acquisition/geometry_sub-01_02_03_04_05_06_07.json",
+        "outputs/track_b/data_acquisition/b4_multisubject_metadata_feasibility.json"
       ],
-      "known_issue": "The saved 224-channel sub-01 pairwise CSV reproduces exactly, but this is a previously exposed one-participant pulse-artifact analysis. The endpoint and simple fixed-normal cortical source family do not support endogenous neural-source distinguishability. The B1 source-generator audit finds large structured residuals. An earlier 236-channel/224-channel join is invalid and preserved. B4 is pivoted to the bounded GBFs reproduction/software build; no held-out outcome access or neural recovery claim is authorized by this route."
+      "known_issue": "The saved 224-channel sub-01 pairwise CSV reproduces exactly, but this is a previously exposed one-participant pulse-artifact analysis. The endpoint and simple fixed-normal cortical source family do not support endogenous neural-source distinguishability. The B1 source-generator audit finds large structured residuals. An earlier 236-channel/224-channel join is invalid and preserved. B4 is pivoted to the bounded GBFs reproduction/software build; no held-out outcome access or neural recovery claim is authorized by this route. A metadata-only reopening audit examined the seven Localize-MI participants without opening sub-02\u201307 signal arrays. Every site\u2013intensity condition occurs in one run; the only run-held-out cross-intensity design leaves 19 geometry-eligible site-pair comparisons across six held-out participants (1, 1, 0, 12, 2, 3). This is too sparse and uneven for the proposed participant-level ranking or decision test. The artifact-only reopening route is not recommended for confirmatory execution; its outcomes remain unopened."
     },
     {
       "id": "B5",
@@ -353,7 +361,9 @@
       "evidence": [
         "docs/track_b/B5_B6_ROUTE_CLOSEOUT_20261024.md",
         "docs/track_b/B4_DEVELOPMENT_AUDIT_20261024.md",
-        "docs/track_b/B4_CHANNEL_MATCH_RECONCILIATION_20261024.md"
+        "docs/track_b/B4_CHANNEL_MATCH_RECONCILIATION_20261024.md",
+        "docs/track_b/B4_ARTIFACT_VALIDATION_REOPENING_PROPOSAL_20261024.md",
+        "outputs/track_b/data_acquisition/b4_multisubject_metadata_feasibility.json"
       ],
       "blocking": [
         "B6"
@@ -374,9 +384,11 @@
       "independent_review": "Independent reviewer signs protocol and access-log preflight.",
       "verification_evidence": [
         "docs/track_b/B5_B6_ROUTE_CLOSEOUT_20261024.md",
-        "docs/track_b/B4_DEVELOPMENT_AUDIT_20261024.md"
+        "docs/track_b/B4_DEVELOPMENT_AUDIT_20261024.md",
+        "docs/track_b/B4_ARTIFACT_VALIDATION_REOPENING_PROPOSAL_20261024.md",
+        "outputs/track_b/data_acquisition/b4_multisubject_metadata_feasibility.json"
       ],
-      "known_issue": "Confirmatory evaluation was deliberately not activated: the only permitted Localize-MI target in this route is a stimulation pulse artifact, not a validated endogenous neural-source endpoint. No reserved outcomes were opened. Reopening requires a separately reviewed real-data endpoint and new locked protocol."
+      "known_issue": "Confirmatory evaluation was deliberately not activated: the only permitted Localize-MI target in this route is a stimulation pulse artifact, not a validated endogenous neural-source endpoint. No reserved outcomes were opened. Reopening requires a separately reviewed real-data endpoint and new locked protocol. A metadata-only review found the proposed Localize-MI cross-intensity artifact benchmark too sparse and uneven for its planned confirmatory comparison; no sub-02\u201307 signal outcomes were opened. Reopening remains contingent on a different adequately replicated real-data endpoint and prior review."
     },
     {
       "id": "B6",
@@ -385,7 +397,9 @@
       "evidence": [
         "docs/track_b/B5_B6_ROUTE_CLOSEOUT_20261024.md",
         "docs/track_b/B4_DEVELOPMENT_AUDIT_20261024.md",
-        "docs/track_b/B4_CHANNEL_MATCH_RECONCILIATION_20261024.md"
+        "docs/track_b/B4_CHANNEL_MATCH_RECONCILIATION_20261024.md",
+        "docs/track_b/B4_ARTIFACT_VALIDATION_REOPENING_PROPOSAL_20261024.md",
+        "outputs/track_b/data_acquisition/b4_multisubject_metadata_feasibility.json"
       ],
       "blocking": [
         "B7"
@@ -406,9 +420,11 @@
       "independent_review": "Independent reviewer audits the locked run and metric reproduction.",
       "verification_evidence": [
         "docs/track_b/B5_B6_ROUTE_CLOSEOUT_20261024.md",
-        "docs/track_b/B4_DEVELOPMENT_AUDIT_20261024.md"
+        "docs/track_b/B4_DEVELOPMENT_AUDIT_20261024.md",
+        "docs/track_b/B4_ARTIFACT_VALIDATION_REOPENING_PROPOSAL_20261024.md",
+        "outputs/track_b/data_acquisition/b4_multisubject_metadata_feasibility.json"
       ],
-      "known_issue": "Confirmatory evaluation was deliberately not activated: the only permitted Localize-MI target in this route is a stimulation pulse artifact, not a validated endogenous neural-source endpoint. No reserved outcomes were opened. Reopening requires a separately reviewed real-data endpoint and new locked protocol."
+      "known_issue": "Confirmatory evaluation was deliberately not activated: the only permitted Localize-MI target in this route is a stimulation pulse artifact, not a validated endogenous neural-source endpoint. No reserved outcomes were opened. Reopening requires a separately reviewed real-data endpoint and new locked protocol. A metadata-only review found the proposed Localize-MI cross-intensity artifact benchmark too sparse and uneven for its planned confirmatory comparison; no sub-02\u201307 signal outcomes were opened. Reopening remains contingent on a different adequately replicated real-data endpoint and prior review."
     },
     {
       "id": "B7",

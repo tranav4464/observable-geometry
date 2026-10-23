@@ -11,6 +11,7 @@
 - `docs/track_b/B2_GBF_SPEC.md` and `docs/track_b/B2_GATE_CLOSEOUT_20261024.md` for the fixed score, numerical check, and reviewer-record limitation.
 - `docs/track_b/B3_IMPLEMENTATION_AND_CLOSEOUT_20261024.md` for upstream trace and the sealed model-only comparison.
 - `docs/track_b/B4_DEVELOPMENT_AUDIT_20261024.md` and `docs/track_b/B4_CHANNEL_MATCH_RECONCILIATION_20261024.md` for the empirical endpoint, pivot, and preserved invalid join.
+- `docs/track_b/B4_ARTIFACT_VALIDATION_REOPENING_PROPOSAL_20261024.md` and `outputs/track_b/data_acquisition/b4_multisubject_metadata_feasibility.json` for a metadata-only assessment of a possible artifact-benchmark reopening. The audit found a single run per site–intensity condition and sparse cross-intensity comparisons; no held-out signal outcomes were opened and the proposal is not approved for confirmatory execution.
 - `docs/track_b/B5_B6_ROUTE_CLOSEOUT_20261024.md` for the decision not to lock a confirmatory protocol or access held-out outcomes under the pulse-artifact endpoint.
 - `docs/track_b/B7_DECISION_VALUE_AUDIT_20261024.md` and `outputs/track_b/20261024_b7_resolution_overlap_audit_v2/` for the paired same-model diagnostic comparison and independent rank-statistic recheck. The earlier v1 exploratory run is retained and marked superseded.
 - `scripts/track_b/export_sealed_model_bundle.py`, `src/observable_geometry/cli.py`, and `src/observable_geometry/track_b/distinguishability.py` for code review.

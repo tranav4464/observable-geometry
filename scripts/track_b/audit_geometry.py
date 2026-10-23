@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
 import json
 from pathlib import Path
 
@@ -17,6 +18,14 @@ from fetch_localize import META, PAYLOAD, ROOT
 def tsv(path: Path) -> list[dict[str, str]]:
     with path.open(encoding="utf-8", newline="") as stream:
         return list(csv.DictReader(stream, delimiter="\t"))
+
+
+def file_sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as stream:
+        for block in iter(lambda: stream.read(1 << 20), b""):
+            digest.update(block)
+    return digest.hexdigest()
 
 
 def positions(path: Path) -> dict[str, np.ndarray]:
@@ -63,7 +72,8 @@ def audit(subject: str) -> dict:
         raise ValueError(f"Unexpected coordinate units in {sid}")
 
     pair_to_runs: dict[tuple[str, str], list[str]] = {}
-    for path in sorted(eeg_dir.glob(f"{sid}_task-seegstim_run-*_epochs.tsv")):
+    epoch_paths = sorted(eeg_dir.glob(f"{sid}_task-seegstim_run-*_epochs.tsv"))
+    for path in epoch_paths:
         events = tsv(path)
         labels = {row["trial_type"] for row in events}
         if len(labels) != 1:
@@ -85,16 +95,49 @@ def audit(subject: str) -> dict:
         pair_rows.append({"contacts": [first, second], "runs": runs,
                           "separation_mm": separation_mm,
                           "midpoint_to_nearest_cortical_vertex_mm": float(midpoint_mm * 1000),
-                          "nearest_source_index": int(nearest), "roundtrip_mm": roundtrip_mm})
+                          "nearest_source_index": int(nearest),
+                          "nearest_source_surface_mm": (src_surface[int(nearest)] * 1000).tolist(),
+                          "roundtrip_mm": roundtrip_mm})
     offsets = np.array([row["midpoint_to_nearest_cortical_vertex_mm"] for row in pair_rows])
+    proxy_separations = []
+    for left_index, left in enumerate(pair_rows):
+        for right in pair_rows[left_index + 1:]:
+            distance = float(np.linalg.norm(
+                np.asarray(left["nearest_source_surface_mm"])
+                - np.asarray(right["nearest_source_surface_mm"])
+            ))
+            proxy_separations.append({
+                "contacts_a": left["contacts"],
+                "contacts_b": right["contacts"],
+                "source_proxy_separation_mm": distance,
+                "eligible_at_20mm": distance >= 20.0,
+            })
+    input_paths = [
+        fwd_path,
+        xfm_path,
+        eeg_dir / f"{sid}_task-seegstim_electrodes.tsv",
+        eeg_dir / f"{sid}_task-seegstim_coordsystem.json",
+        contact_file,
+        contact_file.with_name(f"{sid}_task-seegstim_space-surface_coordsystem.json"),
+        *epoch_paths,
+    ]
     return {"participant": sid, "scope": "metadata and forward geometry only; no EEG waveform values",
+            "input_sha256": {path.relative_to(ROOT).as_posix(): file_sha256(path)
+                             for path in sorted(input_paths)},
             "sensor_position_error_mm": {"max": float(sensor_error_mm.max()),
                                          "median": float(np.median(sensor_error_mm))},
             "n_forward_sources": forward["nsource"], "n_contact_pairs": len(pair_rows),
             "midpoint_offset_mm": {"median": float(np.median(offsets)), "max": float(offsets.max()),
                                    "count_over_10mm": int(np.sum(offsets > 10)),
                                    "count_over_20mm": int(np.sum(offsets > 20))},
-            "contact_pairs": pair_rows}
+            "contact_pairs": pair_rows,
+            "source_proxy_pairwise_separation": {
+                "distance_definition": "Euclidean distance between nearest fixed-orientation cortical source proxy coordinates in the surface frame",
+                "minimum_eligible_mm": 20.0,
+                "candidate_pair_count": len(proxy_separations),
+                "eligible_pair_count": sum(item["eligible_at_20mm"] for item in proxy_separations),
+                "pairs": proxy_separations,
+            }}
 
 
 def main() -> None:

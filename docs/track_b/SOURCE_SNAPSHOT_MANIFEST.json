@@ -1,6 +1,6 @@
 {
-  "created_utc": "2026-10-23T20:22:30.924431+00:00",
-  "file_count": 176,
+  "created_utc": "2026-10-23T20:37:23.109329+00:00",
+  "file_count": 179,
   "files": {
     ".gitignore": {
       "sha256": "f96cf8be73079a090f21c39fbca22ae1c23b7523034f7f588b650b589bf5c9d9",
@@ -143,8 +143,8 @@
       "size_bytes": 24053
     },
     "docs/track_b/B0_GBF_EXTENSION_SCREEN.md": {
-      "sha256": "b6871b227b6ccef1f9a3d7fb6ccea528e50d161cb3639d6caf5a2177812ff745",
-      "size_bytes": 15789
+      "sha256": "080c22e51718c1682488f49d104eed300fde3c650cefa3b638cb0a7ce2cac934",
+      "size_bytes": 19374
     },
     "docs/track_b/B0_WBEN_HISTORICAL_CLOSEOUT.md": {
       "sha256": "d38f34a1407e55c54fd7542765ed4c6f2e779d91fde7a1c56ac42d8a58dac321",
@@ -246,6 +246,10 @@
       "sha256": "de1378c00425a62ed119b803aa6e1ed8ba110aadf730bcfa69a23f3c302345ec",
       "size_bytes": 4743
     },
+    "docs/track_b/B4_ARTIFACT_VALIDATION_REOPENING_PROPOSAL_20261024.md": {
+      "sha256": "ec5fc4a18cc478fbd80acdffc7adde8779ad9f84052ccd4b1b9e632b1a30ea04",
+      "size_bytes": 10961
+    },
     "docs/track_b/B4_CHANNEL_MATCH_RECONCILIATION_20261024.md": {
       "sha256": "1796e8346744d77858531f14a586fc1085274adae7f87444147cd16d956545b5",
       "size_bytes": 1615
@@ -263,8 +267,8 @@
       "size_bytes": 4494
     },
     "docs/track_b/B8_EXTERNAL_REVIEW_PACKET_20261024.md": {
-      "sha256": "99fb47c8d369798ee7ab0cb3b0f9d034237b2f32eabb80a1706cf32473f8bb60",
-      "size_bytes": 5080
+      "sha256": "67c3a11d53920add40c05606061f1b57b99e172b03bbec07a6f6500073ae34af",
+      "size_bytes": 5509
     },
     "docs/track_b/B8_RELEASE_AUDIT_20261024.md": {
       "sha256": "0fcc4150212224c53b3c87fc3c60efe941b15f24be931744b644f3f186b33d66",
@@ -283,12 +287,12 @@
       "size_bytes": 92415
     },
     "docs/track_b/EVIDENCE_LEDGER.md": {
-      "sha256": "608ec008c06489bfe17c3d9f6a6639948d50136bcbb39821a6906adffd19b3de",
-      "size_bytes": 66211
+      "sha256": "4e3ae832ac27cc922fb01181eef75d4002cb3e86b41fbb729eaa9471f021d1f4",
+      "size_bytes": 67918
     },
     "docs/track_b/GATE_REGISTER.json": {
-      "sha256": "2561c868312813c912be051cf1ba3c47d7a76704f83a27c3cc71c92cc9f5fa76",
-      "size_bytes": 40712
+      "sha256": "b8cab651fb452ab341c5dc394abec68ebacb8483e7d6de769ed2558f9405787a",
+      "size_bytes": 43132
     },
     "docs/track_b/GBF_BUILD_PLAN.md": {
       "sha256": "8e06d0125b10fd27648171667c03950c3fe2591dfc05f0a03c82f04def42b1c2",
@@ -422,6 +426,10 @@
       "sha256": "74cf171a3022d2ed2b843af75478bfaf00f5b9894f69a746bc2c20a4aeae84cb",
       "size_bytes": 9004
     },
+    "scripts/track_b/audit_b4_multisubject_metadata.py": {
+      "sha256": "62d6844b2b5c0367350b0b3483b42352bf81742a8b236219215123ec6f54218e",
+      "size_bytes": 13063
+    },
     "scripts/track_b/audit_b4_site_level_associations.py": {
       "sha256": "c5beced6ad24bba6bf9cb09bad02b8879fb4913fcd0d33ac8cbd4e403b002d83",
       "size_bytes": 9348
@@ -491,8 +499,8 @@
       "size_bytes": 4665
     },
     "scripts/track_b/audit_geometry.py": {
-      "sha256": "1ef9fec791234950cfb8c3fe6fafb05af57b65c231a7cb25963b680d3aeebe10",
-      "size_bytes": 6273
+      "sha256": "a784fbacfce68441ac42944fa8642cbe4634b8e5e40c7d5078bcf224028faa00",
+      "size_bytes": 8169
     },
     "scripts/track_b/audit_inner_load_holdout_feasibility.py": {
       "sha256": "3088d5c2f7b8fbf9dd5e6aed98db6e143c62e52d609b491c9a44e4c71072c47e",
@@ -669,6 +677,10 @@
     "tests/test_b2_verifier_hardening.py": {
       "sha256": "23b698df54149d872f734dc546fcf6e757dbfaee06baf34b20e031b3346f790f",
       "size_bytes": 5215
+    },
+    "tests/test_b4_metadata_feasibility.py": {
+      "sha256": "bf3362fb5a9aba77573fddf0811c5108df0d0d38a40887121b7d102026dc9e71",
+      "size_bytes": 1023
     },
     "tests/test_cli_distinguish.py": {
       "sha256": "b1b5ceecff82d8dbb92ffbe77d9fd8e633915d2798fc1bed5feb0485149942d2",
