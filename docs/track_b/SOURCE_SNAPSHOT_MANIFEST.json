@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-10-23T22:01:36.515029+00:00",
+  "created_utc": "2026-10-23T22:04:03.057273+00:00",
   "file_count": 190,
   "files": {
     ".gitignore": {
@@ -143,8 +143,8 @@
       "size_bytes": 24053
     },
     "docs/track_b/B0_GBF_EXTENSION_SCREEN.md": {
-      "sha256": "a7ad40c7c930fae11cd37d716430eaab3515237c57a91b7075f9182893b4e8fa",
-      "size_bytes": 29901
+      "sha256": "108fb3ebc00b505df0003375b086f698d551004b6d4b923f1edfd7e751c55676",
+      "size_bytes": 31463
     },
     "docs/track_b/B0_WBEN_HISTORICAL_CLOSEOUT.md": {
       "sha256": "d38f34a1407e55c54fd7542765ed4c6f2e779d91fde7a1c56ac42d8a58dac321",
@@ -303,8 +303,8 @@
       "size_bytes": 11429
     },
     "docs/track_b/DECISION_LOG.md": {
-      "sha256": "4862774693ba27df6de6dc236c792fe772b8b99ae971d2628523668631660488",
-      "size_bytes": 93599
+      "sha256": "308dfee4141853b2db4ffecd1d40599dda7109a7ef3145c8d5be9343d7c472fe",
+      "size_bytes": 94922
     },
     "docs/track_b/EVIDENCE_LEDGER.md": {
       "sha256": "4e3ae832ac27cc922fb01181eef75d4002cb3e86b41fbb729eaa9471f021d1f4",
