@@ -94,7 +94,7 @@ Prepared for independent software and scientific-scope review. Source commit: `{
 
 The project reproduces a declared nominal GBF source-pattern diagnostic under one verified participant-specific forward model. It reports model-conditional similarity between candidate scalp patterns. It does not establish physiological source recovery, calibrated localization probabilities, population generalization, analyst decision benefit, or a novel cosine-based method. B4–B7 are pivoted; B8 remains open pending independent outside review or reproduction.
 
-The updated prior-art screen records that Wang et al. 2026 already reports GBF localization results for 318 sessions from 35 participants on the public iES-CCEP data route. The OSF metadata reviewed show no explicit dataset license. It is not an untouched independent validation cohort, and no signal analysis is authorized absent clarified terms and a reviewed protocol.
+The updated prior-art and dataset screen records that Wang et al. 2026 already reports GBF localization results for 318 sessions from 35 participants on the public iES-CCEP data route and on 24 favourable-outcome patients from the HDEEG-IED-SurgOutcome release. The iES-CCEP OSF metadata reviewed show no explicit dataset license. HDEEG-IED-SurgOutcome offers participant MRI, EEG averages, electrode coordinates, resection masks, and clinical outcomes, but any unused participants remain a possible post-publication secondary subset, not an untouched external cohort; EBRAINS terms, overlap, and a reviewed protocol must be resolved before access. No new signal or outcome analysis is authorized by the metadata screen.
 
 ## Materials
 

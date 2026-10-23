@@ -8,7 +8,7 @@
 - `README.md` and `docs/ARCHITECTURE.md` for setup and interfaces.
 - `docs/track_b/PROJECT_DEFINITION.md` and `docs/track_b/GBF_BUILD_PLAN.md` for scope and claim boundaries.
 - `docs/track_b/B0_GBF_EXTENSION_SCREEN.md` for prior art and novelty limits.
-- `docs/track_b/B4_ALTERNATE_PUBLIC_DATASET_SCREEN_20261024.md` for the updated metadata-only iES-CCEP screen. Please specifically check that the 2026 GBF paper is treated as close prior art, that the 318-session result is not called an independent replication, and that the dataset's missing explicit OSF license is handled as a data-use blocker.
+- `docs/track_b/B4_ALTERNATE_PUBLIC_DATASET_SCREEN_20261024.md` for the updated metadata-only screen of alternatives, including iES-CCEP, DRE-LZSH, and HDEEG-IED-SurgOutcome. Please check that close prior art is identified, that previously analyzed data are not called independent replication, and that access terms and endpoint limitations are handled explicitly.
 - `docs/track_b/B2_GBF_SPEC.md` and `docs/track_b/B2_GATE_CLOSEOUT_20261024.md` for the fixed score, numerical check, and reviewer-record limitation.
 - `docs/track_b/B3_IMPLEMENTATION_AND_CLOSEOUT_20261024.md` for upstream trace and the sealed model-only comparison.
 - `docs/track_b/B4_DEVELOPMENT_AUDIT_20261024.md` and `docs/track_b/B4_CHANNEL_MATCH_RECONCILIATION_20261024.md` for the empirical endpoint, pivot, and preserved invalid join.
@@ -33,7 +33,7 @@
 5. Review the B4 pivot and confirm that the 236-channel/224-channel joined analysis is excluded from scientific inference.
 6. Check that B5/B6 are recorded as pivoted without held-out outcome access, and that B7 reports only descriptive model-output associations rather than analyst utility.
 7. Identify any release-blocking defects and state whether the package is ready for a limited software release. Do not certify scientific novelty or physiological validation from the supplied evidence.
-8. Check whether the proposed B2-score-to-localization-error follow-up is sufficiently distinct from Wang et al. 2026, whether its participant-held-out unit and comparator set would be meaningful, and what minimum evidence and data-use permission would be needed before it could be preregistered. This is a candidate only; no outcomes or signals have been opened for it.
+8. Check whether either the proposed iES-CCEP score-to-localization-error follow-up or a HDEEG-IED-SurgOutcome resection/outcome evaluation could provide a sufficiently distinct, useful test beyond Wang et al. 2026. Assess whether a held-out participant subset exists after exact participant-overlap checking, whether the endpoint and comparator set are meaningful, and what dataset-specific permissions and protocol review are required before access. These are candidates only; no new outcomes or signals have been opened for them.
 
 ## Required reviewer record
 
@@ -47,4 +47,5 @@ Please provide reviewer name, affiliation, relevant expertise, conflicts or prio
 - Workspace review records contain a conflict about reviewer identity/affiliation; the supplied identity is not independently authenticated. Preserve this limitation and do not edit historical source records.
 - No held-out participant analysis, independent cohort validation, neural physiological source test, decision-utility study, or novel-method evidence is complete.
 - The public iES-CCEP archive is not an untouched cohort for broad GBF localization: Wang et al. 2026 report 318 sessions from 35 participants on this data route. OSF metadata queried for the screen contain no explicit license. No use of its signal data is authorized in this project until terms are clarified and a distinct protocol receives review.
+- The HDEEG-IED-SurgOutcome dataset has individual MRI, EEG averages, electrode coordinates, resection imaging, and clinical outcomes, but the 2026 GBF paper reports a 24-patient favourable-outcome subset from the same release. Treat any unused participants as a candidate secondary held-out subset only after identity overlap, EBRAINS terms, and a reviewed protocol are resolved. Resection/outcome is a clinical proxy, not direct intracranial source truth. No dataset access or outcome analysis is authorized by the metadata screen.
 - A user-supplied B2 review text recommends approval of the registered B2 computation only. It does not review B8. The supplied verifier digest is malformed, and the reviewer affiliation differs across supplied versions, so workspace evidence does not authenticate the named reviewer. Do not treat this text alone as unaffiliated external B8 review.
