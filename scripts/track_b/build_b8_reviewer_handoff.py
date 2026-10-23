@@ -71,7 +71,9 @@ def main() -> None:
 
     inputs = {
         "B2_GATE_CLOSEOUT_20261024.md": ROOT / "docs/track_b/B2_GATE_CLOSEOUT_20261024.md",
+        "B0_GBF_EXTENSION_SCREEN.md": ROOT / "docs/track_b/B0_GBF_EXTENSION_SCREEN.md",
         "B4_ALTERNATE_PUBLIC_DATASET_SCREEN_20261024.md": ROOT / "docs/track_b/B4_ALTERNATE_PUBLIC_DATASET_SCREEN_20261024.md",
+        "B4_HDEEG_REOPENING_ASSESSMENT_20261024.md": ROOT / "docs/track_b/B4_HDEEG_REOPENING_ASSESSMENT_20261024.md",
         "B8_EXTERNAL_REVIEW_PACKET_20261024.md": ROOT / "docs/track_b/B8_EXTERNAL_REVIEW_PACKET_20261024.md",
         "B8_RELEASE_AUDIT_20261024.md": ROOT / "docs/track_b/B8_RELEASE_AUDIT_20261024.md",
         "PROJECT_DEFINITION.md": ROOT / "docs/track_b/PROJECT_DEFINITION.md",
@@ -94,11 +96,11 @@ Prepared for independent software and scientific-scope review. Source commit: `{
 
 The project reproduces a declared nominal GBF source-pattern diagnostic under one verified participant-specific forward model. It reports model-conditional similarity between candidate scalp patterns. It does not establish physiological source recovery, calibrated localization probabilities, population generalization, analyst decision benefit, or a novel cosine-based method. B4–B7 are pivoted; B8 remains open pending independent outside review or reproduction.
 
-The updated prior-art and dataset screen records that Wang et al. 2026 already reports GBF localization results for 318 sessions from 35 participants on the public iES-CCEP data route and on 24 favourable-outcome patients from the HDEEG-IED-SurgOutcome release. The iES-CCEP OSF metadata reviewed show no explicit dataset license. HDEEG-IED-SurgOutcome offers participant MRI, EEG averages, electrode coordinates, resection masks, and clinical outcomes, but any unused participants remain a possible post-publication secondary subset, not an untouched external cohort; EBRAINS terms, overlap, and a reviewed protocol must be resolved before access. No new signal or outcome analysis is authorized by the metadata screen.
+The updated prior-art and dataset screen records that Wang et al. 2026 already reports GBF localization results for 318 sessions from 35 participants on the public iES-CCEP data route and on 24 favourable-outcome patients from the HDEEG-IED-SurgOutcome release. The HDEEG landing page and 2025 data descriptor differ in their stated cohort count (45 versus 44); the release manifest must be checked before any denominator is frozen. The iES-CCEP OSF metadata reviewed show no explicit dataset license. HDEEG-IED-SurgOutcome offers participant MRI, EEG averages, electrode coordinates, resection masks, and clinical outcomes, but any unused participants remain a possible post-publication secondary subset, not an untouched external cohort; EBRAINS terms, overlap, covariance contract, and a reviewed protocol must be resolved before access. A separate 2023 simultaneous scalp/SEEG stimulation study reports individual FEM models but makes its data available only upon reasonable request. No author has been contacted and no new signal or outcome analysis is authorized by the metadata screen.
 
 ## Materials
 
-The package includes the source archive, BSD-3-Clause wheel, B2 closeout, current prior-art/dataset screen, B8 review packet and release audit, project definition, clean-install parity record, source-snapshot verification, and current full-workspace and source-archive test reports. The source-archive report records any skipped evidence-path test, because local run outputs are excluded from that archive.
+The package includes the source archive, BSD-3-Clause wheel, B0 prior-art screen, B2 closeout, current dataset screen and focused HDEEG reopening assessment, B8 review packet and release audit, project definition, clean-install parity record, source-snapshot verification, and current full-workspace and source-archive test reports. The source-archive report records any skipped evidence-path test, because local run outputs are excluded from that archive.
 
 ## Data boundary
 

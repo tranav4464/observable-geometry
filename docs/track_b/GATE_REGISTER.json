@@ -323,7 +323,8 @@
         "scripts/track_b/audit_b4_multisubject_metadata.py",
         "outputs/track_b/data_acquisition/geometry_sub-01_02_03_04_05_06_07.json",
         "outputs/track_b/data_acquisition/b4_multisubject_metadata_feasibility.json",
-        "docs/track_b/B4_ALTERNATE_PUBLIC_DATASET_SCREEN_20261024.md"
+        "docs/track_b/B4_ALTERNATE_PUBLIC_DATASET_SCREEN_20261024.md",
+        "docs/track_b/B4_HDEEG_REOPENING_ASSESSMENT_20261024.md"
       ],
       "blocking": [
         "B5",
@@ -516,6 +517,7 @@
         "outputs/track_b/20261024_b8_release_checks/release_artifacts/observable_geometry-0.1.2-py3-none-any.whl",
         "outputs/track_b/20261024_b8_release_checks/clean_install_parity_stale_build_failure_01.json",
         "docs/track_b/B4_ALTERNATE_PUBLIC_DATASET_SCREEN_20261024.md",
+        "docs/track_b/B4_HDEEG_REOPENING_ASSESSMENT_20261024.md",
         "outputs/track_b/20261024_b8_source_archive_tests/source_archive_test_run.json",
         "outputs/track_b/20261024_b8_source_archive_tests/20261024_b8_source_archive_failure_01.json",
         "outputs/track_b/20261024_b8_source_archive_tests/20261024_b8_source_archive_failure_02.json"
@@ -556,6 +558,7 @@
         "outputs/track_b/20261024_b8_release_checks/release_artifacts/observable_geometry-0.1.2-py3-none-any.whl",
         "outputs/track_b/20261024_b8_release_checks/clean_install_parity_stale_build_failure_01.json",
         "docs/track_b/B4_ALTERNATE_PUBLIC_DATASET_SCREEN_20261024.md",
+        "docs/track_b/B4_HDEEG_REOPENING_ASSESSMENT_20261024.md",
         "outputs/track_b/20261024_b8_source_archive_tests/source_archive_test_run.json",
         "outputs/track_b/20261024_b8_source_archive_tests/20261024_b8_source_archive_failure_01.json",
         "outputs/track_b/20261024_b8_source_archive_tests/20261024_b8_source_archive_failure_02.json"

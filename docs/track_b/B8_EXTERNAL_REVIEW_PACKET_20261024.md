@@ -9,6 +9,7 @@
 - `docs/track_b/PROJECT_DEFINITION.md` and `docs/track_b/GBF_BUILD_PLAN.md` for scope and claim boundaries.
 - `docs/track_b/B0_GBF_EXTENSION_SCREEN.md` for prior art and novelty limits.
 - `docs/track_b/B4_ALTERNATE_PUBLIC_DATASET_SCREEN_20261024.md` for the updated metadata-only screen of alternatives, including iES-CCEP, DRE-LZSH, and HDEEG-IED-SurgOutcome. Please check that close prior art is identified, that previously analyzed data are not called independent replication, and that access terms and endpoint limitations are handled explicitly.
+- `docs/track_b/B4_HDEEG_REOPENING_ASSESSMENT_20261024.md` for the focused HDEEG candidate assessment, including the unresolved denominator discrepancy, GBF overlap, covariance concern, proxy endpoint, and reopening conditions.
 - `docs/track_b/B2_GBF_SPEC.md` and `docs/track_b/B2_GATE_CLOSEOUT_20261024.md` for the fixed score, numerical check, and reviewer-record limitation.
 - `docs/track_b/B3_IMPLEMENTATION_AND_CLOSEOUT_20261024.md` for upstream trace and the sealed model-only comparison.
 - `docs/track_b/B4_DEVELOPMENT_AUDIT_20261024.md` and `docs/track_b/B4_CHANNEL_MATCH_RECONCILIATION_20261024.md` for the empirical endpoint, pivot, and preserved invalid join.
