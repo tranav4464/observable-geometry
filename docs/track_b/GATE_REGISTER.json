@@ -353,7 +353,11 @@
         "docs/track_b/B4_NEMAR_NM000456_PAIRING_AUDIT_20261024.md",
         "docs/track_b/B4_NEMAR_CATALOG_SCREEN_20261024.md",
         "scripts/track_b/audit_nemar_eeg_ieeg_catalog.py",
-        "outputs/track_b/20261024_b4_nemar_catalog_screen/catalog_screen.json"
+        "outputs/track_b/20261024_b4_nemar_catalog_screen/catalog_screen.json",
+        "docs/track_b/B4_OSF_WSGZP_LICENSE_AUDIT_20261024.md",
+        "scripts/track_b/audit_osf_wsgzp_license_metadata.py",
+        "tests/test_osf_wsgzp_license_audit.py",
+        "outputs/track_b/20261024_b4_osf_license_audit/osf_license_metadata_v2.json"
       ],
       "blocking": [
         "B5",
@@ -388,7 +392,7 @@
         "scripts/track_b/audit_nemar_eeg_ieeg_catalog.py",
         "outputs/track_b/20261024_b4_nemar_catalog_screen/catalog_screen.json"
       ],
-      "known_issue": "The saved 224-channel sub-01 pairwise CSV reproduces exactly, but this is a previously exposed one-participant pulse-artifact analysis. The endpoint and simple fixed-normal cortical source family do not support endogenous neural-source distinguishability. The B1 source-generator audit finds large structured residuals. An earlier 236-channel/224-channel join is invalid and preserved. B4 is pivoted to the bounded GBFs reproduction/software build; no held-out outcome access or neural recovery claim is authorized by this route. A metadata-only reopening audit examined the seven Localize-MI participants without opening sub-02–07 signal arrays. Every site–intensity condition occurs in one run; the only run-held-out cross-intensity design leaves 19 geometry-eligible site-pair comparisons across six held-out participants (1, 1, 0, 12, 2, 3). This is too sparse and uneven for the proposed participant-level ranking or decision test. The artifact-only reopening route is not recommended for confirmatory execution; its outcomes remain unopened. A separate public iES-CCEP dataset (36 patients, 323 sessions) has individual anatomy and stimulation-site coordinates, but the 2026 GBF paper already reports localization results for 318 sessions from 35 participants on this data route. The OSF API metadata expose no explicit dataset license. HDEEG-IED-SurgOutcome is a possible same-cohort secondary evaluation. Published counts imply 20 participants outside the GBF paper's 24-person favorable-outcome analysis (14 unfavorable and six favorable), but exact identities, QC eligibility, data terms, covariance compatibility, and protocol review remain unresolved; this is not an external cohort. No new signal or outcome access is authorized. See B4_ALTERNATE_PUBLIC_DATASET_SCREEN_20261024.md and B0_GBF_EXTENSION_SCREEN.md. The pinned NEMAR nm000456 v1.0.2 metadata audit confirms its EEG and iEEG modalities belong to disjoint participant groups; see B4_NEMAR_NM000456_PAIRING_AUDIT_20261024.md. The 24 October 2026 NEMAR catalog query found four records with both exact EEG/iEEG labels: nm000434 has paired scalp EEG/STN LFP but lacks contact coordinates and individual geometry, and on001785 contains separate EEG and ECoG participant groups. Neither reopens the active estimand; see B4_NEMAR_CATALOG_SCREEN_20261024.md."
+      "known_issue": "The saved 224-channel sub-01 pairwise CSV reproduces exactly, but this is a previously exposed one-participant pulse-artifact analysis. The endpoint and simple fixed-normal cortical source family do not support endogenous neural-source distinguishability. The B1 source-generator audit finds large structured residuals. An earlier 236-channel/224-channel join is invalid and preserved. B4 is pivoted to the bounded GBFs reproduction/software build; no held-out outcome access or neural recovery claim is authorized by this route. A metadata-only reopening audit examined the seven Localize-MI participants without opening sub-02–07 signal arrays. Every site–intensity condition occurs in one run; the only run-held-out cross-intensity design leaves 19 geometry-eligible site-pair comparisons across six held-out participants (1, 1, 0, 12, 2, 3). This is too sparse and uneven for the proposed participant-level ranking or decision test. The artifact-only reopening route is not recommended for confirmatory execution; its outcomes remain unopened. A separate public iES-CCEP dataset (36 patients, 323 sessions) has individual anatomy and stimulation-site coordinates, but the 2026 GBF paper already reports localization results for 318 sessions from 35 participants on this data route. The OSF API records license \"Other\" and directs readers to license.txt, which is absent from the seven visible files in the metadata-only recursive storage inventory; reuse terms remain unresolved. See B4_OSF_WSGZP_LICENSE_AUDIT_20261024.md. HDEEG-IED-SurgOutcome is a possible same-cohort secondary evaluation. Published counts imply 20 participants outside the GBF paper's 24-person favorable-outcome analysis (14 unfavorable and six favorable), but exact identities, QC eligibility, data terms, covariance compatibility, and protocol review remain unresolved; this is not an external cohort. No new signal or outcome access is authorized. See B4_ALTERNATE_PUBLIC_DATASET_SCREEN_20261024.md and B0_GBF_EXTENSION_SCREEN.md. The pinned NEMAR nm000456 v1.0.2 metadata audit confirms its EEG and iEEG modalities belong to disjoint participant groups; see B4_NEMAR_NM000456_PAIRING_AUDIT_20261024.md. The 24 October 2026 NEMAR catalog query found four records with both exact EEG/iEEG labels: nm000434 has paired scalp EEG/STN LFP but lacks contact coordinates and individual geometry, and on001785 contains separate EEG and ECoG participant groups. Neither reopens the active estimand; see B4_NEMAR_CATALOG_SCREEN_20261024.md."
     },
     {
       "id": "B5",
@@ -572,7 +576,11 @@
         "docs/track_b/B4_NEMAR_NM000456_PAIRING_AUDIT_20261024.md",
         "docs/track_b/B4_NEMAR_CATALOG_SCREEN_20261024.md",
         "scripts/track_b/audit_nemar_eeg_ieeg_catalog.py",
-        "outputs/track_b/20261024_b4_nemar_catalog_screen/catalog_screen.json"
+        "outputs/track_b/20261024_b4_nemar_catalog_screen/catalog_screen.json",
+        "docs/track_b/B4_OSF_WSGZP_LICENSE_AUDIT_20261024.md",
+        "scripts/track_b/audit_osf_wsgzp_license_metadata.py",
+        "tests/test_osf_wsgzp_license_audit.py",
+        "outputs/track_b/20261024_b4_osf_license_audit/osf_license_metadata_v2.json"
       ],
       "blocking": [],
       "objective": "Release a reproducible package and obtain an external reproduction or review.",
