@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-10-23T21:36:00.656073+00:00",
+  "created_utc": "2026-10-23T21:45:38.091770+00:00",
   "file_count": 187,
   "files": {
     ".gitignore": {
@@ -143,8 +143,8 @@
       "size_bytes": 24053
     },
     "docs/track_b/B0_GBF_EXTENSION_SCREEN.md": {
-      "sha256": "6ae2e0c5b834b4eca95a7eee71332ac29bcf70049c6622c2f04e922552505dd5",
-      "size_bytes": 26753
+      "sha256": "cffe7fc9576c2f39bc06fcf6c98616142e720d64285d4fb6ba4129a2b88b65d7",
+      "size_bytes": 28230
     },
     "docs/track_b/B0_WBEN_HISTORICAL_CLOSEOUT.md": {
       "sha256": "d38f34a1407e55c54fd7542765ed4c6f2e779d91fde7a1c56ac42d8a58dac321",
@@ -251,8 +251,8 @@
       "size_bytes": 4743
     },
     "docs/track_b/B4_ALTERNATE_PUBLIC_DATASET_SCREEN_20261024.md": {
-      "sha256": "aeffe9aa8279c92c240387e2e4e4609a8bcda06d148ed75772e708963c907d4d",
-      "size_bytes": 20479
+      "sha256": "2ee4b0a950e5b39341e44abf1d23c5b7f3e3272af13fc18bd7b489c69e463413",
+      "size_bytes": 23403
     },
     "docs/track_b/B4_ARTIFACT_VALIDATION_REOPENING_PROPOSAL_20261024.md": {
       "sha256": "ec5fc4a18cc478fbd80acdffc7adde8779ad9f84052ccd4b1b9e632b1a30ea04",
@@ -279,12 +279,12 @@
       "size_bytes": 4494
     },
     "docs/track_b/B8_EXTERNAL_REVIEW_PACKET_20261024.md": {
-      "sha256": "32a3fc27ead155211718b3b68dfeb52065f024c8d5c61d20301b50d450d9b89a",
-      "size_bytes": 9649
+      "sha256": "0be55f278dd3943dfa70bbfed16bd6adc180e664c2dd0ea1e102364ba00c144c",
+      "size_bytes": 10129
     },
     "docs/track_b/B8_RELEASE_AUDIT_20261024.md": {
-      "sha256": "1ec6bafe34a2b6a8dfa2a813b8f53fc9baabf24a08b941cba59cc2d0ee127fe0",
-      "size_bytes": 9258
+      "sha256": "252ac1c463773c9fd4ba5514f358360a54284f22aaf05b3953461f4c36bfa745",
+      "size_bytes": 9624
     },
     "docs/track_b/BUILD_BASE_DECISION.md": {
       "sha256": "ff9e26767cc99c33fabc41d24cf0775ab4c6d541e17061b89fc0951d7199cd95",
@@ -547,8 +547,8 @@
       "size_bytes": 4866
     },
     "scripts/track_b/build_b8_reviewer_handoff.py": {
-      "sha256": "0d6df8ef60186127ffa72b42234eb33e31a437883079b8a0cacf311318d42dde",
-      "size_bytes": 10909
+      "sha256": "a6ae04d47370425ebe60057b5fceb2937fcab4d02ebbd555d7ba869483aefa8b",
+      "size_bytes": 11399
     },
     "scripts/track_b/build_source_manifest.py": {
       "sha256": "d5f574b9a69f652d73a6a7c2e101028cf5ad79183487608cebb53d5ed5afcbb6",

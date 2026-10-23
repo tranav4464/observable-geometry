@@ -42,6 +42,8 @@ def main() -> None:
     archive_tests = json.loads(archive_test_report.read_text(encoding="utf-8"))
     if snapshot.get("commit") != commit or snapshot.get("worktree_clean") is not True:
         raise SystemExit("source snapshot verification does not match the current clean commit")
+    if workspace_tests.get("source_commit") != commit:
+        raise SystemExit("workspace test report does not match the current commit")
     if workspace_tests.get("status") != "PASS" or workspace_tests.get("result", {}).get("failed") != 0:
         raise SystemExit("latest full-workspace test report is not passing")
     if archive_tests.get("source_commit") != commit or archive_tests.get("exit_code") != 0:
@@ -104,7 +106,7 @@ Prepared for independent software and scientific-scope review. Source commit: `{
 
 The project reproduces a declared nominal GBF source-pattern diagnostic under one verified participant-specific forward model. It reports model-conditional similarity between candidate scalp patterns. It does not establish physiological source recovery, calibrated localization probabilities, population generalization, analyst decision benefit, or a novel cosine-based method. B4–B7 are pivoted; B8 remains open pending independent outside review or reproduction.
 
-The updated prior-art and dataset screen records that Wang et al. 2026 already reports GBF localization results for 318 sessions from 35 participants on the public iES-CCEP data route and on 24 favourable-outcome patients from the HDEEG-IED-SurgOutcome release. The HDEEG landing page and 2025 data descriptor differ in their stated cohort count (45 versus 44); the release manifest must be checked before any denominator is frozen. The iES-CCEP OSF metadata reviewed show no explicit dataset license. HDEEG-IED-SurgOutcome offers participant MRI, EEG averages, electrode coordinates, resection masks, and clinical outcomes, but any unused participants remain a possible post-publication secondary subset, not an untouched external cohort; EBRAINS terms, overlap, covariance contract, and a reviewed protocol must be resolved before access. A separate 2023 simultaneous scalp/SEEG stimulation study reports individual FEM models but makes its data available only upon reasonable request. No author has been contacted and no new signal or outcome analysis is authorized by the metadata screen.
+The updated prior-art and dataset screen records that Wang et al. 2026 already reports GBF localization results for 318 sessions from 35 participants on the public iES-CCEP data route and on 24 favourable-outcome patients from the HDEEG-IED-SurgOutcome release. The HDEEG landing page and 2025 data descriptor differ in their stated cohort count (45 versus 44); the release manifest must be checked before any denominator is frozen. The iES-CCEP OSF metadata reviewed show no explicit dataset license. HDEEG-IED-SurgOutcome offers participant MRI, EEG averages, electrode coordinates, resection masks, and clinical outcomes, but any unused participants remain a possible post-publication secondary subset, not an untouched external cohort; EBRAINS terms, overlap, covariance contract, and a reviewed protocol must be resolved before access. Barborica et al.'s simultaneous scalp–SEEG seizure-onset study is close prior art; EBRAINS indexes its dataset as version `v1`, but the study used an MNI-template head model because scalp-electrode coordinates were unavailable, and the exact files and reuse terms remain unverified. It does not satisfy the participant-specific B2 contract. A separate 2023 simultaneous scalp/SEEG stimulation study reports individual FEM models but makes its data available only upon reasonable request. No author has been contacted and no new signal or outcome analysis is authorized by the metadata screen.
 
 ## Materials
 
@@ -128,7 +130,7 @@ Please state your name, affiliation, expertise, conflicts or prior involvement, 
             for name, path in inputs.items()
         },
     }
-    output = HANDOFF_ROOT / f"Observable_Geometry_B8_Independent_Review_{RELEASE_DATE}.zip"
+    output = HANDOFF_ROOT / f"Observable_Geometry_B8_Independent_Review_{RELEASE_DATE}_{short}.zip"
     with zipfile.ZipFile(output, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
         archive.writestr("README_FOR_REVIEWER.md", readme)
         for name, path in inputs.items():
