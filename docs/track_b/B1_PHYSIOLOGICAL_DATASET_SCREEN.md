@@ -1,6 +1,6 @@
 # B1 physiological validation dataset screen
 
-> **Historical screen.** This document was written for an earlier spatial source-confusion question. Its candidate ranking and dataset interpretation are not the active Track B task specification. The current decision is in [`B1_TASK_AND_DATA_DECISION.md`](B1_TASK_AND_DATA_DECISION.md); the active project uses real recordings only and is auditing on004752 for a bounded held-out prediction endpoint.
+> **Historical screen.** This document was written for earlier source-confusion and scalp-to-iEEG prediction routes. Its candidate ranking and dataset interpretation do not define the active Track B task. The current project is the GBF reproduction and nominal source-distinguishability build specified in [`PROJECT_DEFINITION.md`](PROJECT_DEFINITION.md). The on004752 prediction route below is retained as historical evidence only.
 
 **Updated 2026-10-22.** This screen asks whether an available dataset can validate the proposed spatial source-confusion estimand. A dataset with paired scalp and intracranial recordings is not automatically spatial ground truth: the scalp signal is a mixture, and iEEG samples only implanted contacts.
 

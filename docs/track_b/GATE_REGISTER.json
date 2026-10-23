@@ -322,7 +322,8 @@
         "docs/track_b/B4_ARTIFACT_VALIDATION_REOPENING_PROPOSAL_20261024.md",
         "scripts/track_b/audit_b4_multisubject_metadata.py",
         "outputs/track_b/data_acquisition/geometry_sub-01_02_03_04_05_06_07.json",
-        "outputs/track_b/data_acquisition/b4_multisubject_metadata_feasibility.json"
+        "outputs/track_b/data_acquisition/b4_multisubject_metadata_feasibility.json",
+        "docs/track_b/B4_ALTERNATE_PUBLIC_DATASET_SCREEN_20261024.md"
       ],
       "blocking": [
         "B5",
@@ -350,9 +351,10 @@
         "docs/track_b/B4_ARTIFACT_VALIDATION_REOPENING_PROPOSAL_20261024.md",
         "scripts/track_b/audit_b4_multisubject_metadata.py",
         "outputs/track_b/data_acquisition/geometry_sub-01_02_03_04_05_06_07.json",
-        "outputs/track_b/data_acquisition/b4_multisubject_metadata_feasibility.json"
+        "outputs/track_b/data_acquisition/b4_multisubject_metadata_feasibility.json",
+        "docs/track_b/B4_ALTERNATE_PUBLIC_DATASET_SCREEN_20261024.md"
       ],
-      "known_issue": "The saved 224-channel sub-01 pairwise CSV reproduces exactly, but this is a previously exposed one-participant pulse-artifact analysis. The endpoint and simple fixed-normal cortical source family do not support endogenous neural-source distinguishability. The B1 source-generator audit finds large structured residuals. An earlier 236-channel/224-channel join is invalid and preserved. B4 is pivoted to the bounded GBFs reproduction/software build; no held-out outcome access or neural recovery claim is authorized by this route. A metadata-only reopening audit examined the seven Localize-MI participants without opening sub-02\u201307 signal arrays. Every site\u2013intensity condition occurs in one run; the only run-held-out cross-intensity design leaves 19 geometry-eligible site-pair comparisons across six held-out participants (1, 1, 0, 12, 2, 3). This is too sparse and uneven for the proposed participant-level ranking or decision test. The artifact-only reopening route is not recommended for confirmatory execution; its outcomes remain unopened."
+      "known_issue": "The saved 224-channel sub-01 pairwise CSV reproduces exactly, but this is a previously exposed one-participant pulse-artifact analysis. The endpoint and simple fixed-normal cortical source family do not support endogenous neural-source distinguishability. The B1 source-generator audit finds large structured residuals. An earlier 236-channel/224-channel join is invalid and preserved. B4 is pivoted to the bounded GBFs reproduction/software build; no held-out outcome access or neural recovery claim is authorized by this route. A metadata-only screen of public EEG/SEEG alternatives found no qualifying replacement dataset for the active GBF estimand (see B4_ALTERNATE_PUBLIC_DATASET_SCREEN_20261024.md). A metadata-only reopening audit examined the seven Localize-MI participants without opening sub-02–07 signal arrays. Every site–intensity condition occurs in one run; the only run-held-out cross-intensity design leaves 19 geometry-eligible site-pair comparisons across six held-out participants (1, 1, 0, 12, 2, 3). This is too sparse and uneven for the proposed participant-level ranking or decision test. The artifact-only reopening route is not recommended for confirmatory execution; its outcomes remain unopened."
     },
     {
       "id": "B5",
@@ -363,7 +365,8 @@
         "docs/track_b/B4_DEVELOPMENT_AUDIT_20261024.md",
         "docs/track_b/B4_CHANNEL_MATCH_RECONCILIATION_20261024.md",
         "docs/track_b/B4_ARTIFACT_VALIDATION_REOPENING_PROPOSAL_20261024.md",
-        "outputs/track_b/data_acquisition/b4_multisubject_metadata_feasibility.json"
+        "outputs/track_b/data_acquisition/b4_multisubject_metadata_feasibility.json",
+        "docs/track_b/B4_ALTERNATE_PUBLIC_DATASET_SCREEN_20261024.md"
       ],
       "blocking": [
         "B6"
@@ -386,9 +389,10 @@
         "docs/track_b/B5_B6_ROUTE_CLOSEOUT_20261024.md",
         "docs/track_b/B4_DEVELOPMENT_AUDIT_20261024.md",
         "docs/track_b/B4_ARTIFACT_VALIDATION_REOPENING_PROPOSAL_20261024.md",
-        "outputs/track_b/data_acquisition/b4_multisubject_metadata_feasibility.json"
+        "outputs/track_b/data_acquisition/b4_multisubject_metadata_feasibility.json",
+        "docs/track_b/B4_ALTERNATE_PUBLIC_DATASET_SCREEN_20261024.md"
       ],
-      "known_issue": "Confirmatory evaluation was deliberately not activated: the only permitted Localize-MI target in this route is a stimulation pulse artifact, not a validated endogenous neural-source endpoint. No reserved outcomes were opened. Reopening requires a separately reviewed real-data endpoint and new locked protocol. A metadata-only review found the proposed Localize-MI cross-intensity artifact benchmark too sparse and uneven for its planned confirmatory comparison; no sub-02\u201307 signal outcomes were opened. Reopening remains contingent on a different adequately replicated real-data endpoint and prior review."
+      "known_issue": "Confirmatory evaluation was deliberately not activated: the only permitted Localize-MI target in this route is a stimulation pulse artifact, not a validated endogenous neural-source endpoint. No reserved outcomes were opened. Reopening requires a separately reviewed real-data endpoint and new locked protocol. A metadata-only review found the proposed Localize-MI cross-intensity artifact benchmark too sparse and uneven for its planned confirmatory comparison; no sub-02–07 signal outcomes were opened. Reopening remains contingent on a different adequately replicated real-data endpoint and prior review."
     },
     {
       "id": "B6",
@@ -399,7 +403,8 @@
         "docs/track_b/B4_DEVELOPMENT_AUDIT_20261024.md",
         "docs/track_b/B4_CHANNEL_MATCH_RECONCILIATION_20261024.md",
         "docs/track_b/B4_ARTIFACT_VALIDATION_REOPENING_PROPOSAL_20261024.md",
-        "outputs/track_b/data_acquisition/b4_multisubject_metadata_feasibility.json"
+        "outputs/track_b/data_acquisition/b4_multisubject_metadata_feasibility.json",
+        "docs/track_b/B4_ALTERNATE_PUBLIC_DATASET_SCREEN_20261024.md"
       ],
       "blocking": [
         "B7"
@@ -422,9 +427,10 @@
         "docs/track_b/B5_B6_ROUTE_CLOSEOUT_20261024.md",
         "docs/track_b/B4_DEVELOPMENT_AUDIT_20261024.md",
         "docs/track_b/B4_ARTIFACT_VALIDATION_REOPENING_PROPOSAL_20261024.md",
-        "outputs/track_b/data_acquisition/b4_multisubject_metadata_feasibility.json"
+        "outputs/track_b/data_acquisition/b4_multisubject_metadata_feasibility.json",
+        "docs/track_b/B4_ALTERNATE_PUBLIC_DATASET_SCREEN_20261024.md"
       ],
-      "known_issue": "Confirmatory evaluation was deliberately not activated: the only permitted Localize-MI target in this route is a stimulation pulse artifact, not a validated endogenous neural-source endpoint. No reserved outcomes were opened. Reopening requires a separately reviewed real-data endpoint and new locked protocol. A metadata-only review found the proposed Localize-MI cross-intensity artifact benchmark too sparse and uneven for its planned confirmatory comparison; no sub-02\u201307 signal outcomes were opened. Reopening remains contingent on a different adequately replicated real-data endpoint and prior review."
+      "known_issue": "Confirmatory evaluation was deliberately not activated: the only permitted Localize-MI target in this route is a stimulation pulse artifact, not a validated endogenous neural-source endpoint. No reserved outcomes were opened. Reopening requires a separately reviewed real-data endpoint and new locked protocol. A metadata-only review found the proposed Localize-MI cross-intensity artifact benchmark too sparse and uneven for its planned confirmatory comparison; no sub-02–07 signal outcomes were opened. Reopening remains contingent on a different adequately replicated real-data endpoint and prior review."
     },
     {
       "id": "B7",
@@ -507,7 +513,8 @@
         "outputs/track_b/20261024_b8_export_cli_clean_env_v4/summary.json",
         "outputs/track_b/20261024_b8_export_cli_clean_env_v4/ranked_pairs.csv",
         "outputs/track_b/20261024_b8_release_checks/release_artifacts/observable_geometry-0.1.2-py3-none-any.whl",
-        "outputs/track_b/20261024_b8_release_checks/clean_install_parity_stale_build_failure_01.json"
+        "outputs/track_b/20261024_b8_release_checks/clean_install_parity_stale_build_failure_01.json",
+        "docs/track_b/B4_ALTERNATE_PUBLIC_DATASET_SCREEN_20261024.md"
       ],
       "blocking": [],
       "objective": "Release a reproducible package and obtain an external reproduction or review.",
@@ -543,9 +550,10 @@
         "outputs/track_b/20261024_b8_export_cli_clean_env_v4/summary.json",
         "outputs/track_b/20261024_b8_export_cli_clean_env_v4/ranked_pairs.csv",
         "outputs/track_b/20261024_b8_release_checks/release_artifacts/observable_geometry-0.1.2-py3-none-any.whl",
-        "outputs/track_b/20261024_b8_release_checks/clean_install_parity_stale_build_failure_01.json"
+        "outputs/track_b/20261024_b8_release_checks/clean_install_parity_stale_build_failure_01.json",
+        "docs/track_b/B4_ALTERNATE_PUBLIC_DATASET_SCREEN_20261024.md"
       ],
-      "known_issue": "Version 0.1.2 clean wheel installation and exact model-only output parity pass; the 0.1.1 stale-build failure is retained; legacy simulator/WBEN modules are archived outside the active package and test path. B4\u2013B7 empirical/utility routes are explicitly pivoted with their evidence preserved. Project source is BSD-3-Clause licensed and citation metadata are present. B8 remains open pending unaffiliated outside review or reproduction. The supplied B2 reviewer identity is not independently authenticated; conflicting affiliation declarations and a malformed digest transcription remain disclosed. Localize-MI-derived bundle remains local."
+      "known_issue": "Version 0.1.2 clean wheel installation and exact model-only output parity pass; the 0.1.1 stale-build failure is retained; legacy simulator/WBEN modules are archived outside the active package and test path. B4–B7 empirical/utility routes are explicitly pivoted with their evidence preserved. Project source is BSD-3-Clause licensed and citation metadata are present. B8 remains open pending unaffiliated outside review or reproduction. The supplied B2 reviewer identity is not independently authenticated; conflicting affiliation declarations and a malformed digest transcription remain disclosed. Localize-MI-derived bundle remains local."
     }
   ],
   "stage_contract_version": 1,

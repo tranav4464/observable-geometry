@@ -1,6 +1,6 @@
 {
-  "created_utc": "2026-10-23T20:37:23.109329+00:00",
-  "file_count": 179,
+  "created_utc": "2026-10-23T20:43:23.551760+00:00",
+  "file_count": 180,
   "files": {
     ".gitignore": {
       "sha256": "f96cf8be73079a090f21c39fbca22ae1c23b7523034f7f588b650b589bf5c9d9",
@@ -167,8 +167,8 @@
       "size_bytes": 15540
     },
     "docs/track_b/B1_PHYSIOLOGICAL_DATASET_SCREEN.md": {
-      "sha256": "7a57640739185db91c95dd92eece6f68a46fc4630afe2cc16b94fbd3c541495f",
-      "size_bytes": 9345
+      "sha256": "8d18ea5e7f2fcf9b03529cf9ad105fff44b84632455980f50a5fd5f72af9115b",
+      "size_bytes": 9376
     },
     "docs/track_b/B1_SYNC_SOURCE_AUDIT.md": {
       "sha256": "3c5342c0cc972dc3d7820bea063a4fe014a39fc89eba8e82c1328f1bebb5ad36",
@@ -246,6 +246,10 @@
       "sha256": "de1378c00425a62ed119b803aa6e1ed8ba110aadf730bcfa69a23f3c302345ec",
       "size_bytes": 4743
     },
+    "docs/track_b/B4_ALTERNATE_PUBLIC_DATASET_SCREEN_20261024.md": {
+      "sha256": "799a671d17fccc2b3eb3228dab475ff3e9b29a725ac62c288baec9ca5f1017d1",
+      "size_bytes": 10433
+    },
     "docs/track_b/B4_ARTIFACT_VALIDATION_REOPENING_PROPOSAL_20261024.md": {
       "sha256": "ec5fc4a18cc478fbd80acdffc7adde8779ad9f84052ccd4b1b9e632b1a30ea04",
       "size_bytes": 10961
@@ -259,16 +263,16 @@
       "size_bytes": 8318
     },
     "docs/track_b/B5_B6_ROUTE_CLOSEOUT_20261024.md": {
-      "sha256": "74e1dbfc599e7796595ae54b32f4acc0034979e19dbd73ec5fa74662bd29c27b",
-      "size_bytes": 1776
+      "sha256": "ae9ca37c477e642abfdb92af89a68a793ebc742d257e38aec1ef366085eee410",
+      "size_bytes": 2582
     },
     "docs/track_b/B7_DECISION_VALUE_AUDIT_20261024.md": {
       "sha256": "0450ac04b57c2ea22e0fb8b39062735d22fa0b8e9c21c0f261e53bd381316165",
       "size_bytes": 4494
     },
     "docs/track_b/B8_EXTERNAL_REVIEW_PACKET_20261024.md": {
-      "sha256": "67c3a11d53920add40c05606061f1b57b99e172b03bbec07a6f6500073ae34af",
-      "size_bytes": 5509
+      "sha256": "26155a11ed9acd9812d8baa33c6fb839af7dea07af4c1e0218d39f098a722966",
+      "size_bytes": 5762
     },
     "docs/track_b/B8_RELEASE_AUDIT_20261024.md": {
       "sha256": "0fcc4150212224c53b3c87fc3c60efe941b15f24be931744b644f3f186b33d66",
@@ -291,8 +295,8 @@
       "size_bytes": 67918
     },
     "docs/track_b/GATE_REGISTER.json": {
-      "sha256": "b8cab651fb452ab341c5dc394abec68ebacb8483e7d6de769ed2558f9405787a",
-      "size_bytes": 43132
+      "sha256": "e65c2da790dc7214a760626f89c961922a08c1adb922e0094c348a2bfeade8cb",
+      "size_bytes": 43870
     },
     "docs/track_b/GBF_BUILD_PLAN.md": {
       "sha256": "8e06d0125b10fd27648171667c03950c3fe2591dfc05f0a03c82f04def42b1c2",

@@ -20,3 +20,7 @@ Do not reopen B5/B6 under the current pulse-artifact endpoint. A future route mu
 - `docs/track_b/B4_CHANNEL_MATCH_RECONCILIATION_20261024.md`
 - `docs/track_b/GATE_REGISTER.json`
 - B4 run and access-boundary evidence linked from the B4 audit.
+
+## Alternate public-data screen
+
+A metadata-only screen of public simultaneous EEG/SEEG candidates was completed after the original route decision. It found no presently qualifying alternative for the active GBF estimand: `nm000513` lacks released intracranial contact coordinates and has close prior analyses; `nm000456` does not establish paired scalp/SEEG recordings with individual forward-model geometry; and Hao et al. (2025) reports a close simultaneous EEG/SEEG study but its data statement does not identify a public repository DOI or downloadable recordings. The screen used public metadata and article descriptions only, not signal samples. It does not reopen B4–B6. See `docs/track_b/B4_ALTERNATE_PUBLIC_DATASET_SCREEN_20261024.md` for criteria, source links, and candidate-specific limits.
