@@ -1,6 +1,6 @@
 # Observable Geometry
 
-Observable Geometry is a computational-neuroscience software build around **Geometric-Informed Basis Functions (GBFs)** and a nominal EEG source-pattern comparison. The software asks what a declared forward model predicts at the sensors for pairs of candidate sources. It does not infer every active neural source, assign calibrated probabilities, or establish physiological source recovery.
+Observable Geometry 0.1.2 is a computational-neuroscience software build around **Geometric-Informed Basis Functions (GBFs)** and a nominal EEG source-pattern comparison. The software asks what a declared forward model predicts at the sensors for pairs of candidate sources. It does not infer every active neural source, assign calibrated probabilities, or establish physiological source recovery.
 
 The active contribution is a traceable GBFs implementation/reproduction workflow and an inspectable researcher-facing diagnostic. The normalized, noise-whitened source-pattern similarity is established prior art; this project does not claim that score as a new mathematical method. Track A's Localize-MI pulse-artifact evaluation is limited to one participant and an electrical stimulation artifact. It does not validate endogenous neural-source localization.
 
@@ -10,7 +10,7 @@ The active contribution is a traceable GBFs implementation/reproduction workflow
 - **B4:** pivoted. A fresh 224-channel sub-01 rerun reproduces the existing pairwise CSV exactly, but the measured pulse artifact and tested source models do not support a neural-source validation claim. The previous 236/224-channel comparison is documented as invalid.
 - **B5/B6:** pivoted without protocol lock or held-out evaluation because the available endpoint cannot validate endogenous neural-source distinguishability. No reserved outcomes were opened.
 - **B7:** pivoted after a same-model, paired comparison found moderate association between the B3 score and MNE PSF summaries but no evidence of analyst decision benefit. Retain as a descriptive diagnostic only.
-- **B8:** the CLI package and clean model-only reproduction pass. The source is BSD-3-Clause licensed, citeable through `CITATION.cff`, and has a source-only hash manifest. A local Git snapshot is being finalized. An unaffiliated external review remains open; the B2 review is retained with its identity/authentication limitation.
+- **B8:** the BSD-3-Clause CLI package and clean model-only reproduction pass. The source-only manifest is committed and verified. An unaffiliated external review remains open; the B2 review is retained with its identity/authentication limitation.
 
 See [the project definition](docs/track_b/PROJECT_DEFINITION.md), [the build plan](docs/track_b/GBF_BUILD_PLAN.md), the [B4 audit](docs/track_b/B4_DEVELOPMENT_AUDIT_20261024.md), the [B5/B6 route closeout](docs/track_b/B5_B6_ROUTE_CLOSEOUT_20261024.md), the [B7 decision-value audit](docs/track_b/B7_DECISION_VALUE_AUDIT_20261024.md), and the [gate register](docs/track_b/GATE_REGISTER.json).
 
@@ -28,10 +28,10 @@ python -m pip install -e ".[test]"
 Run the focused correctness tests:
 
 ```powershell
-python -m pytest tests/test_cli_distinguish.py tests/test_track_b_distinguishability.py tests/test_b2_independent_calculator.py -q
+python -m pytest -q
 ```
 
-The full research workspace also contains local dataset files, ignored build outputs, and the pinned upstream GBFs checkout. Those files are not included in a clean source installation. The Localize-MI data have a non-commercial share-alike license and must not be redistributed with this package. Follow the dataset's current terms and citation instructions before acquiring or using it.
+The full research workspace also contains local dataset files, ignored build outputs, and the pinned upstream GBFs checkout. Those files are not included in a clean source installation. The Localize-MI data have a non-commercial share-alike license and must not be redistributed with this package. Superseded WBEN and synthetic-signal code is retained only under `archive/historical_wben/`; it is excluded from the installed package and normal test suite. Follow each dataset's current terms and citation instructions before acquiring or using it.
 
 ## Run the researcher-facing diagnostic
 

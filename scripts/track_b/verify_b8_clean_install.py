@@ -2,11 +2,11 @@
 from __future__ import annotations
 
 import csv
-from importlib.metadata import version
 import hashlib
 import json
 from pathlib import Path
 import platform
+import subprocess
 import zipfile
 
 import numpy as np
@@ -14,9 +14,10 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[2]
 SOURCE_RUN = ROOT / "outputs/track_b/20261024_b8_export_cli_source_env_v1"
-CLEAN_RUN = ROOT / "outputs/track_b/20261024_b8_export_cli_clean_env_v2"
+CLEAN_RUN = ROOT / "outputs/track_b/20261024_b8_export_cli_clean_env_v4"
+CLEAN_PYTHON = ROOT / "tmp/b8_clean_env_v4/Scripts/python.exe"
 OUT = ROOT / "outputs/track_b/20261024_b8_release_checks/clean_install_parity.json"
-WHEEL = ROOT / "tmp/b8_dist/observable_geometry-0.1.0-py3-none-any.whl"
+WHEEL = ROOT / "tmp/b8_dist_v012/observable_geometry-0.1.2-py3-none-any.whl"
 BUNDLE = ROOT / "tmp/b8_model_bundle_export_v1/model_bundle.npz"
 
 
@@ -38,6 +39,18 @@ def main() -> None:
         wheel_files = archive.namelist()
         metadata_path = next(name for name in wheel_files if name.endswith(".dist-info/METADATA"))
         wheel_metadata = archive.read(metadata_path).decode("utf-8")
+    wheel_version = next(line.split(": ", 1)[1] for line in wheel_metadata.splitlines() if line.startswith("Version: "))
+    installed_version = subprocess.run(
+        [str(CLEAN_PYTHON), "-c", "from importlib.metadata import version; print(version('observable-geometry'))"],
+        check=True, capture_output=True, text=True
+    ).stdout.strip()
+    retired_modules = {
+        "observable_geometry/track_b/synthetic.py",
+        "observable_geometry/track_b/physical_synthetic.py",
+        "observable_geometry/track_b/wben.py",
+    }
+    included_retired_modules = sorted(retired_modules.intersection(wheel_files))
+    archived_simulation_code_excluded = not included_retired_modules
     wheel_license_ok = (
         "License-Expression: BSD-3-Clause" in wheel_metadata
         and "License-File: LICENSE" in wheel_metadata
@@ -65,11 +78,15 @@ def main() -> None:
                     "fraction_best_abs_cosine_ge_0_95", "fraction_best_abs_cosine_ge_0_99")
     summary_exact = all(source_summary[k] == clean_summary[k] for k in summary_keys)
     report = {
-        "status": "PASS" if csv_exact and exact_scores and summary_exact and wheel_license_ok and len(source_rows) == len(clean_rows) else "FAIL",
+        "status": "PASS" if csv_exact and exact_scores and summary_exact and wheel_license_ok and archived_simulation_code_excluded and installed_version == wheel_version and len(source_rows) == len(clean_rows) else "FAIL",
         "check_scope": "installed wheel compared on the sealed real-model-only input bundle; no EEG sample member used",
         "python_version": platform.python_version(),
-        "installed_distribution_version": version("observable-geometry"),
+        "wheel_version": wheel_version,
+        "installed_distribution_version": installed_version,
+        "installed_version_matches_wheel": installed_version == wheel_version,
         "wheel_declares_bsd_3_clause": wheel_license_ok,
+        "archived_simulation_modules_excluded": archived_simulation_code_excluded,
+        "unexpected_archived_modules_in_wheel": included_retired_modules,
         "wheel_sha256": sha256(WHEEL),
         "model_bundle_sha256": sha256(BUNDLE),
         "source_cli_csv_sha256": sha256(csv_source),

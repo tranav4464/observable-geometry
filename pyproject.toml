@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "observable-geometry"
-version = "0.1.0"
+version = "0.1.2"
 description = "Auditable nominal source-pattern distinguishability for EEG forward models"
 requires-python = ">=3.12"
 dependencies = ["numpy>=1.24"]
@@ -22,4 +22,5 @@ observable-geometry = "observable_geometry.cli:main"
 where = ["src"]
 
 [tool.pytest.ini_options]
-norecursedirs = ["reviewer_handoff"]
+testpaths = ["tests"]
+norecursedirs = ["reviewer_handoff", "archive"]

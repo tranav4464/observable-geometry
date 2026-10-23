@@ -301,9 +301,9 @@
       "historical_route_artifacts": [
         "docs/track_b/B3_NEUROFLOWNET_IMPLEMENTATION.md",
         "docs/track_b/B3_WBEN_IMPLEMENTATION.md",
-        "src/observable_geometry/track_b/wben.py",
-        "tests/test_track_b_wben.py",
-        "scripts/track_b/verify_b3_reference.py",
+        "archive/historical_wben/src/observable_geometry/track_b/wben.py",
+        "archive/historical_wben/tests/test_track_b_wben.py",
+        "archive/historical_wben/scripts/track_b/verify_b3_reference.py",
         "outputs/track_b/b3_wben_reference_20261022_v9/b3_reference_verification.json"
       ]
     },
@@ -482,7 +482,16 @@
         "outputs/track_b/20261024_b7_resolution_overlap_audit_v2/independent_stat_check.json",
         "docs/track_b/B5_B6_ROUTE_CLOSEOUT_20261024.md",
         "outputs/track_b/20261024_b7_resolution_overlap_audit_v2/SESSION.md",
-        "outputs/track_b/20261024_b8_release_checks/release_artifacts/observable_geometry-0.1.0-py3-none-any.whl"
+        "outputs/track_b/20261024_b8_release_checks/release_artifacts/observable_geometry-0.1.0-py3-none-any.whl",
+        "outputs/track_b/20261024_b8_export_cli_clean_env_v3/run_manifest.json",
+        "outputs/track_b/20261024_b8_export_cli_clean_env_v3/summary.json",
+        "outputs/track_b/20261024_b8_export_cli_clean_env_v3/ranked_pairs.csv",
+        "outputs/track_b/20261024_b8_release_checks/failed_artifacts/observable_geometry-0.1.1-py3-none-any.whl",
+        "outputs/track_b/20261024_b8_export_cli_clean_env_v4/run_manifest.json",
+        "outputs/track_b/20261024_b8_export_cli_clean_env_v4/summary.json",
+        "outputs/track_b/20261024_b8_export_cli_clean_env_v4/ranked_pairs.csv",
+        "outputs/track_b/20261024_b8_release_checks/release_artifacts/observable_geometry-0.1.2-py3-none-any.whl",
+        "outputs/track_b/20261024_b8_release_checks/clean_install_parity_stale_build_failure_01.json"
       ],
       "blocking": [],
       "objective": "Release a reproducible package and obtain an external reproduction or review.",
@@ -509,9 +518,18 @@
         "outputs/track_b/20261024_b8_export_cli_clean_env_v2/run_manifest.json",
         "outputs/track_b/20261024_b8_export_cli_clean_env_v2/summary.json",
         "outputs/track_b/20261024_b8_export_cli_clean_env_v2/ranked_pairs.csv",
-        "outputs/track_b/20261024_b8_release_checks/release_artifacts/observable_geometry-0.1.0-py3-none-any.whl"
+        "outputs/track_b/20261024_b8_release_checks/release_artifacts/observable_geometry-0.1.0-py3-none-any.whl",
+        "outputs/track_b/20261024_b8_export_cli_clean_env_v3/run_manifest.json",
+        "outputs/track_b/20261024_b8_export_cli_clean_env_v3/summary.json",
+        "outputs/track_b/20261024_b8_export_cli_clean_env_v3/ranked_pairs.csv",
+        "outputs/track_b/20261024_b8_release_checks/failed_artifacts/observable_geometry-0.1.1-py3-none-any.whl",
+        "outputs/track_b/20261024_b8_export_cli_clean_env_v4/run_manifest.json",
+        "outputs/track_b/20261024_b8_export_cli_clean_env_v4/summary.json",
+        "outputs/track_b/20261024_b8_export_cli_clean_env_v4/ranked_pairs.csv",
+        "outputs/track_b/20261024_b8_release_checks/release_artifacts/observable_geometry-0.1.2-py3-none-any.whl",
+        "outputs/track_b/20261024_b8_release_checks/clean_install_parity_stale_build_failure_01.json"
       ],
-      "known_issue": "Clean wheel installation and exact model-only output parity pass. B4–B7 empirical/utility routes are explicitly pivoted with their evidence preserved. Project source is BSD-3-Clause licensed and citation metadata are present. B8 remains open pending an unaffiliated outside review/reproduction and a verified clean source snapshot. The supplied B2 reviewer identity is not independently authenticated and remains disclosed. Localize-MI-derived bundle remains local."
+      "known_issue": "Version 0.1.2 clean wheel installation and exact model-only output parity pass; the 0.1.1 stale-build failure is retained; legacy simulator/WBEN modules are archived outside the active package and test path. B4\u2013B7 empirical/utility routes are explicitly pivoted with their evidence preserved. Project source is BSD-3-Clause licensed and citation metadata are present. B8 remains open pending unaffiliated outside review or reproduction. The supplied B2 reviewer identity is not independently authenticated; conflicting affiliation declarations and a malformed digest transcription remain disclosed. Localize-MI-derived bundle remains local."
     }
   ],
   "stage_contract_version": 1,

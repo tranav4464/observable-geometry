@@ -18,11 +18,7 @@ The scalp operator is a deterministic, seeded dense random matrix with entries d
 
 ## Feasibility run
 
-Command:
-
-```powershell
-.venv\Scripts\python.exe scripts\track_b\run_synthetic_feasibility.py --out-dir outputs\track_b\synthetic_feasibility_20261022_v3 --seed 20261022
-```
+The old command and implementation are retained under `archive/historical_wben/` for provenance only. Do not run them under the active real-data-only project rules.
 
 The saved report records configuration, dimensions, active regions, graph edge count, transition spectral radius, realized SNRs, participant-data status, and the compressed array hash. The default fixture has 69 modeled regions, 10 active regions, 2 incoming edges per active target, 128 scalp channels, 21 selected iEEG regions (30.4% coverage), 512 samples, scalp SNR `-5 dB`, and iEEG SNR `30 dB`. These settings echo several paper-described values, but the random lead field and simplified generator mean this is still not a physical WBEN reproduction.
 
@@ -30,4 +26,4 @@ The saved report records configuration, dimensions, active regions, graph edge c
 
 This run verifies dimensions, deterministic generation, known graph support, stable latent dynamics, and SNR bookkeeping. It does not test source inference, edge-recovery accuracy, or a contribution. Because the lead field is abstract, it does not reproduce WBEN's realistic BEM-based scalp observation. The paper's Appendix A.3 says its simulated experiment uses `K=1`; higher-order VAR remains an optional generalization, not a requirement for matching that experiment. If a defensible physical lead field cannot be built from available project resources, the final software must label the simulator as abstract and limit its conclusions accordingly.
 
-Tests: `tests/test_track_b_synthetic.py` checks deterministic output, dimensions and selection semantics, graph activity/in-degree, zero-edge behavior, transition stability, exact SNR accounting, and invalid-configuration failures.
+The archived test source is `archive/historical_wben/tests/test_track_b_synthetic.py`. It is not in the active test suite and is not evidence for this build.
