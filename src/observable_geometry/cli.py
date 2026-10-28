@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+from dataclasses import asdict
 from datetime import datetime, timezone
 import csv
 import hashlib
@@ -13,6 +14,9 @@ import sys
 import numpy as np
 
 from .track_b.distinguishability import compute_distinguishability, summarize
+from .track_b.robust_attribution import EndpointChallenge, RobustAuditInput, audit_robust_attribution
+from .track_b.family_frontier import DistanceInterval, FamilyComparison, compare_families
+from .track_b import family_frontier as family_frontier_module
 
 
 ALLOWED_BUNDLE_KEYS = frozenset({"leadfield", "noise_covariance", "coordinates_m", "source_ids"})
@@ -174,6 +178,88 @@ def run_distinguish(args: argparse.Namespace) -> int:
     return 0
 
 
+def run_robust_audit(args: argparse.Namespace) -> int:
+    """Compare a nominal target-only claim with interval and in-set evidence."""
+    spec_path=args.spec.resolve()
+    output=args.output.resolve()
+    if output.exists():
+        raise ValueError(f"refusing to overwrite existing output path: {output}")
+    raw=json.loads(spec_path.read_text(encoding="utf-8"))
+    if not isinstance(raw,dict) or not isinstance(raw.get("endpoints"),list):
+        raise ValueError("robust audit spec needs a JSON object with endpoints")
+    allowed={"parameter_interval","tolerance","anchor_target_residual_upper",
+             "anchor_alternative_residual_lower","anchor_alternative_residual_upper",
+             "target_amplitude_abs_upper","alternative_l1_budget",
+             "target_column_radius","alternative_column_radius_upper","endpoints"}
+    if set(raw)!=allowed:
+        raise ValueError("robust audit spec keys do not match the declared schema")
+    endpoints=tuple(EndpointChallenge(**item) for item in raw["endpoints"])
+    spec=RobustAuditInput(**{k:v for k,v in raw.items() if k!="endpoints"},endpoints=endpoints)
+    result=audit_robust_attribution(spec)
+    output.mkdir(parents=True,exist_ok=False)
+    report={"status":"COMPLETED_CONDITIONAL_ROBUST_AUDIT",
+            "result":asdict(result),"input":asdict(spec),
+            "input_evidence_status":"supplied_bounds_not_replayed_by_this_command",
+            "claim_boundary":"Conditional on supplied in-set scenarios, residual certificates and column radii. This is a standard sufficient bound and counterexample audit, not a new inverse method or physiological source identity.",
+            "input_sha256":sha256(spec_path),"implementation_sha256":sha256(Path(__file__).resolve())}
+    (output/"result.json").write_text(json.dumps(report,indent=2)+"\n",encoding="utf-8")
+    print(json.dumps({"status":report["status"],"anchor_decision":result.anchor_decision,
+                      "interval_decision":result.interval_decision,
+                      "input_evidence_status":report["input_evidence_status"],
+                      "output":str(output)},indent=2))
+    return 0
+
+
+def run_family_frontier(args: argparse.Namespace) -> int:
+    """Report source-family decision reversals from supplied distance bounds."""
+    spec_path = args.spec.resolve()
+    output = args.output.resolve()
+    if output.exists():
+        raise ValueError(f"refusing to overwrite existing output path: {output}")
+    raw = json.loads(spec_path.read_text(encoding="utf-8"))
+    if not isinstance(raw, dict) or set(raw) != {"tolerance", "cases"} or not isinstance(raw["cases"], list):
+        raise ValueError("family-frontier spec needs exactly tolerance and cases")
+    if not raw["cases"]:
+        raise ValueError("family-frontier spec needs at least one case")
+
+    def parse_family(item: dict) -> FamilyComparison:
+        if not isinstance(item, dict) or set(item) != {"name", "distance", "evidence"}:
+            raise ValueError("family needs exactly name, distance and evidence")
+        distance = item["distance"]
+        if not isinstance(distance, dict) or set(distance) != {"lower", "upper"}:
+            raise ValueError("distance needs exactly lower and upper")
+        return FamilyComparison(item["name"], DistanceInterval(**distance), item["evidence"])
+
+    reports = []
+    seen = set()
+    for case in raw["cases"]:
+        if not isinstance(case, dict) or set(case) != {"id", "reference", "alternatives"}:
+            raise ValueError("case needs exactly id, reference and alternatives")
+        if not isinstance(case["id"], str) or not case["id"].strip() or case["id"] in seen:
+            raise ValueError("case IDs must be distinct nonempty strings")
+        seen.add(case["id"])
+        if not isinstance(case["alternatives"], list):
+            raise ValueError("alternatives must be a list")
+        comparison = compare_families(
+            parse_family(case["reference"]),
+            tuple(parse_family(family) for family in case["alternatives"]),
+            raw["tolerance"],
+        )
+        reports.append({"id": case["id"], **comparison})
+    output.mkdir(parents=True, exist_ok=False)
+    report = {
+        "status": "COMPLETED_CONDITIONAL_FAMILY_FRONTIER",
+        "input_sha256": sha256(spec_path),
+        "implementation_sha256": sha256(Path(__file__).resolve()),
+        "family_frontier_module_sha256": sha256(Path(family_frontier_module.__file__).resolve()),
+        "input_evidence_status": "supplied_distance_bounds_not_replayed_by_this_command",
+        "cases": reports,
+    }
+    (output / "result.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    print(json.dumps({"status": report["status"], "cases": len(reports), "output": str(output)}, indent=2))
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -186,10 +272,18 @@ def main(argv: list[str] | None = None) -> int:
     distinguish.add_argument("--top-k", type=int, default=5)
     distinguish.add_argument("--block-size", type=int, default=128)
     distinguish.set_defaults(handler=run_distinguish)
+    robust=subparsers.add_parser("robust-audit",help="classify an attribution claim across a declared forward-model set")
+    robust.add_argument("--spec",required=True,type=Path,help="JSON with residual bounds, column radii and in-set scenarios")
+    robust.add_argument("--output",required=True,type=Path,help="new output directory; existing paths are rejected")
+    robust.set_defaults(handler=run_robust_audit)
+    frontier=subparsers.add_parser("family-frontier",help="show tolerance windows where an alternative source family refutes a reference exclusion")
+    frontier.add_argument("--spec",required=True,type=Path,help="JSON with supplied distance bounds for each family")
+    frontier.add_argument("--output",required=True,type=Path,help="new output directory; existing paths are rejected")
+    frontier.set_defaults(handler=run_family_frontier)
     args = parser.parse_args(argv)
     try:
         return args.handler(args)
-    except (ValueError, OSError, json.JSONDecodeError, PermissionError) as exc:
+    except (ValueError, TypeError, OSError, json.JSONDecodeError, PermissionError) as exc:
         print(f"observable-geometry: error: {exc}", file=sys.stderr)
         return 2
 

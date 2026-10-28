@@ -1,0 +1,19 @@
+{
+  "parameter_interval": [0.0, 1.0],
+  "tolerance": 1.0,
+  "anchor_target_residual_upper": 0.5,
+  "anchor_alternative_residual_lower": 1.8,
+  "anchor_alternative_residual_upper": 1.9,
+  "target_amplitude_abs_upper": 1.0,
+  "alternative_l1_budget": 2.0,
+  "target_column_radius": 0.1,
+  "alternative_column_radius_upper": 0.1,
+  "endpoints": [
+    {
+      "name": "toy_check",
+      "parameter_value": 1.0,
+      "target_residual_lower": 0.3,
+      "alternative_residual_upper": 1.7
+    }
+  ]
+}

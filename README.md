@@ -74,6 +74,38 @@ observable-geometry distinguish `
 
 The output contains ranked source pairs, float64 scores, a JSON summary, input and code hashes, and an NPZ access log. Similarity is conditional on the supplied forward model, sensor reference, source family, and covariance. It is not a probability that a source will be localized correctly.
 
+## Compare source-family claims across tolerances
+
+The `family-frontier` command takes previously computed distance intervals for a reference source family and one or more alternatives. It reports whether each family fits, is excluded, or remains unresolved at a supplied tolerance. It also reports the half-open tolerance interval where a valid lower bound excludes the reference while a feasible alternative upper bound fits. This makes a source-family assumption change visible without choosing a single tolerance after seeing the result.
+
+```powershell
+observable-geometry family-frontier `
+  --spec .\family_distances.json `
+  --output .\results\family-frontier-001
+```
+
+The input has `tolerance` and a nonempty `cases` array. Each case has a unique `id`, one `reference` family and an `alternatives` array. Each family has a unique `name`, `evidence` label and `distance` with nonnegative `lower` and `upper` bounds. An exact numerical minimum can be supplied as equal bounds only when its numerical and modeling limitations are understood. A feasible witness without an exclusion certificate should use `lower: 0` and its replayed residual as `upper`.
+
+This command **does not recompute or authenticate** supplied distances. It records the input hash and labels this limit in its output. A reversal is conditional on the source families, model and valid bounds; it is not measured source recovery or a composite-classifier error rate. A five-participant, 20-case worked input built from independently replayed research results is documented in [the family-frontier report](../research/gbf_omitted_activity_20261024/SECONDARY_FAMILY_FRONTIER_RESULTS_20261028.md) in the full workspace.
+
+## Audit a target-only claim across a declared model set
+
+The separate `robust-audit` command accepts a JSON specification with a fixed-field tolerance, anchor target and alternative residual certificates, a source amplitude limit, an alternative L1 budget, certified per-column forward radii, and one or more independently checked scenarios inside the declared uncertainty set. It returns **certified target only**, **refuted by an in-set scenario**, or **unresolved**. A single in-set target-fit failure refutes the universal claim; a loose radius never becomes a false certificate.
+
+```powershell
+observable-geometry robust-audit `
+  --spec .\examples\robust_audit_toy.json `
+  --output .\results\robust-audit-001
+```
+
+The source checkout's `examples/robust_audit_toy.json` is an **arithmetic illustration**, not simulated neural evidence. Its supplied bounds satisfy a positive certificate; the separate sub-01 research example demonstrates an in-set counterexample and the failure of a loose continuous bound. A wheel-only installation needs a user-supplied JSON spec in the same schema.
+
+The input JSON must have exactly these fields: `parameter_interval`, `tolerance`, `anchor_target_residual_upper`, `anchor_alternative_residual_lower`, `anchor_alternative_residual_upper`, `target_amplitude_abs_upper`, `alternative_l1_budget`, `target_column_radius`, `alternative_column_radius_upper`, and `endpoints`. `parameter_interval` is a two-number range for the varied forward parameter. Each endpoint has a unique `name`, an in-range `parameter_value`, a separately established `target_residual_lower`, and optionally an `alternative_residual_upper`. The observed field, source units, sensor reference, whitening and source-family definitions must agree across all scenarios. The CLI checks numeric membership and decision arithmetic; it cannot authenticate those scientific assumptions or manufacture valid residual/radius certificates from arbitrary numbers.
+
+Every CLI result includes `input_evidence_status=supplied_bounds_not_replayed_by_this_command`. The two included sub-01 research inputs have a separate hash and conservative-scalar replay in `research/gbf_omitted_activity_20261024/ROBUST_AUDIT_INPUT_REPLAY_RESULTS_20261028.md`. That replay is case-specific; it does not confer verification on other user-supplied specs.
+
+The included sub-01 research example is documented in `research/gbf_omitted_activity_20261024/ROBUST_AUDIT_DECISION_RESULTS_20261027.md` in the full workspace. Its conductivity range and tolerance are illustrative. The three-way logic is standard triangle-inequality reasoning plus an in-set counterexample, not a novel source inverse or physiological validation.
+
 ## Reproduce the sealed Localize-MI model-only demonstration
 
 In the full research workspace, with the sealed Track A artifacts present, first export only the allowed model arrays. The adapter validates the sealed artifact hashes, records each NPZ key read, and never indexes the recorded EEG `data` member:
@@ -91,6 +123,14 @@ observable-geometry distinguish `
 The original B3 reference command remains available as `python scripts\track_b\run_b3_distinguishability.py --run-id your-new-run-id`. Both commands refuse overwrites and do not read the EEG sample array. The exported model bundle is Localize-MI-derived and must stay local unless its license terms have been assessed. The Track A report and B4 rerun are development evidence for one participant and the pulse artifact only.
 
 ## Interpretation and research boundaries
+
+The experimental [two-sided fixed-field audit API](docs/track_b/TWO_SIDED_AUDIT_API.md)
+compares a favored source family and a finite union of constrained alternatives
+against the same pre-whitened field. It returns feasible witnesses, weak-dual
+lower bounds, and an explicit abstention state when neither family fits. This
+is standard constrained-fitting mathematics implemented as inspectable
+research software. The current conductivity example uses a synthetic field;
+it does not establish physiological source attribution.
 
 The equation, assumptions, prior art, data provenance, failures, and claim limits are documented in `docs/track_b/`. Historical NeuroFlowNet/WBEN experiments are archived and are not part of the active target. Active experimental work uses real recordings only; software correctness checks may use algebraic fixtures, but no synthetic neural dataset or signal is used as empirical evidence.
 
