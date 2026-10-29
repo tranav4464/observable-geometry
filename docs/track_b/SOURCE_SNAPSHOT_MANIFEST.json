@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-10-29T08:02:17.387769+00:00",
+  "created_utc": "2026-10-29T08:09:04.875072+00:00",
   "file_count": 320,
   "files": {
     ".gitignore": {
@@ -411,8 +411,8 @@
       "size_bytes": 19016
     },
     "docs/track_b/DISCOVERY_OUTCOME_REPORT_20261029.md": {
-      "sha256": "319ba91dfe7a3169ec3ee1a9dd75741eb4e0ae2da90a30027830892b1423361b",
-      "size_bytes": 15420
+      "sha256": "d7e0c10a0f576851232e362966b4d440a06538de5ea153bc43bde70219e40a21",
+      "size_bytes": 16869
     },
     "docs/track_b/DS004752_EFFECT_SENSITIVITY_20261029.md": {
       "sha256": "b72bca14770d30410a1573cec7d7c3b51e51d04630daa5627dd46c690bd69402",
