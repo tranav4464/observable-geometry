@@ -132,3 +132,12 @@ and its listed reports. The current candidate wheel SHA-256 is
 external reviewer should reproduce this exact commit/wheel pair or report why
 that is not possible. The required review record and claim limits above still
 apply.
+
+The pushed handoff snapshot `c0871f816d7b69bcb77b742429b89b714121502a` has a
+separate commit-bound test record: 175/175 workspace tests and 173 source
+archive tests, with two documented skips and no failures. See the latest
+section in [`B8_RELEASE_RECHECK_20261029.md`](B8_RELEASE_RECHECK_20261029.md).
+The external reviewer should use the exact wheel/source pair identified there
+and report that the package parity was built from 1e83192 while the handoff
+packet is on c0871f8; the intervening commits changed documentation and
+traceability only.

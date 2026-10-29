@@ -64,3 +64,18 @@ The package remains a one-model nominal diagnostic. Physiological source
 recovery, comparative researcher benefit, method novelty, independent
 external reproduction, and a final release-version decision remain open or
 unsupported.
+
+## Commit-bound release suite on the handoff snapshot: c0871f8
+
+After the exact-commit wheel run, the pushed handoff snapshot
+`c0871f816d7b69bcb77b742429b89b714121502a` also passed the release runner: 175/175
+workspace tests and 173 source-archive tests, with two documented skips and zero
+failures. The source archive SHA-256 is
+`27b6e4a1d5528796b6291aecfa0e2dadcd5a9500c0c0e631b8c5c4436ec2949a`. Its clean
+source-manifest verification is recorded at
+`outputs/track_b/20261024_b8_release_checks/source_snapshot_verification_c0871f8.json`.
+This verifies the review handoff documents and gate register on the pushed
+snapshot; the wheel parity above remains tied to 1e83192, whose package source,
+README, license, and metadata were verified byte-for-byte and are unchanged by
+the later documentation-only commits. Neither test result changes the
+scientific validity or novelty limits.
