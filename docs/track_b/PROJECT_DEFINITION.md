@@ -120,7 +120,7 @@ specific registration cannot yet be independently validated from the local
 materials. The coordinate gate remains open and the source-recovery protocol
 must not use these geometries until provenance or independent registration QC
 passes. See the [coordinate compatibility screen](WSGZP_COORDINATE_COMPATIBILITY_SCREEN_20261029.md)
-and [independent-registration feasibility check](WSGZP_INDEPENDENT_REGISTRATION_FEASIBILITY_20261029.md).
+and [independent-registration feasibility check](WSGZP_INDEPENDENT_REGISTRATION_FEASIBILITY_20261029.md). The follow-up checked the extracted package directly and reports the FOV/proximity screens, per-participant counts, reproduction commands, and why they remain insufficient for approving geometry in [the detailed recheck](WSGZP_GEOMETRY_RECHECK_20261029.md).
 
 **Localize-MI model-bundle audit, 29 October 2026:** all seven participant
 forward FIFs were downloaded from the pinned dataset revision and verified

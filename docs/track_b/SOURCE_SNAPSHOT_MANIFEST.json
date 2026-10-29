@@ -1,6 +1,6 @@
 {
-  "created_utc": "2026-10-29T07:10:08.134853+00:00",
-  "file_count": 314,
+  "created_utc": "2026-10-29T07:24:33.469441+00:00",
+  "file_count": 315,
   "files": {
     ".gitignore": {
       "sha256": "f96cf8be73079a090f21c39fbca22ae1c23b7523034f7f588b650b589bf5c9d9",
@@ -483,8 +483,8 @@
       "size_bytes": 6139
     },
     "docs/track_b/PROJECT_DEFINITION.md": {
-      "sha256": "1e42522a2cba6b7358b83627ea9e0c9ebd382d526433dfc1437d3b1fbacfe1cd",
-      "size_bytes": 63835
+      "sha256": "6e6a46704425123b53b51204c232773abf26d3b02681e7da8e66e28d42a3661b",
+      "size_bytes": 63542
     },
     "docs/track_b/PROTOCOL_LOCK.md": {
       "sha256": "d499304994443f99f525ff79f4f1233d5f49ae36b7222e5da16c1f716a302064",
@@ -557,6 +557,10 @@
     "docs/track_b/WSGZP_FORWARD_MODEL_BUILD_FEASIBILITY_20261029.md": {
       "sha256": "7ae05dd96a6cc2908cac511cc2a6023612ca38b8eeedd81ec4f64bf5dcf846c3",
       "size_bytes": 3352
+    },
+    "docs/track_b/WSGZP_GEOMETRY_RECHECK_20261029.md": {
+      "sha256": "66dccf869720fb1ed0353211e1d4c1d1ee8fa378102a348fe9e32fa6e1dfce43",
+      "size_bytes": 6959
     },
     "docs/track_b/WSGZP_INDEPENDENT_REGISTRATION_FEASIBILITY_20261029.md": {
       "sha256": "0816abdbb3b2495a32960eb2cdc91b1896456d0e5bc1428b8a0ee6c3c8c8e21e",
