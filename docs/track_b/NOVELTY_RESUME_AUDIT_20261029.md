@@ -36,6 +36,27 @@ threshold. Full-mesh `q=2` optimality remains unproved.
 
 ## Prior-art result
 
+**Close-prior-art update (29 October 2026):** two newly checked preprints make
+the source-observability/null-space area more crowded. CANDLE explicitly uses
+lead-field range/null projectors in a subject-geometry-aware learned source
+reconstruction, and evaluates intracranial stimulation localization on the
+Parmigiani et al. cohort. A second preprint (arXiv:2610.27461v1) refines an
+observable row-space estimate with singular-coordinate diffusion and completes
+the null component with projected learned terms. Both return representative
+source estimates rather than our conditional source-family distinguishability
+object, so the estimands differ. The distinction alone is not a novelty result:
+these works preclude broad claims to have introduced source observability
+decomposition, null-space analysis, or their use in EEG source imaging. No
+held-out comparison shows that our audit changes a decision beyond direct
+fitting and these classes of methods. The exact equations, evaluation scope,
+overlap, and limits are recorded in
+[`CLOSE_PRIOR_ART_RECHECK_20261029.md`](CLOSE_PRIOR_ART_RECHECK_20261029.md).
+
+The arXiv API and HTML full-text currently expose different titles for
+arXiv:2610.27461v1. It is treated here as one paper identified by arXiv ID;
+the title discrepancy is documented and should be rechecked before formal
+reference-list export.
+
 The targeted primary-source check confirms that the ingredients are already
 well populated:
 

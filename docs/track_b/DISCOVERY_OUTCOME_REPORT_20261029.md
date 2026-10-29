@@ -5,6 +5,18 @@
 **Novel method supported:** No\
 **Measured neural source recovery established:** No
 
+**Close-prior-art update (29 October 2026):** the targeted primary-source
+recheck now includes CANDLE (arXiv:2610.07824) and arXiv:2610.27461v1. These
+preprints explicitly use lead-field observable/null-space decompositions;
+CANDLE also reports geometry-aware reconstruction and stimulation localization
+on the Parmigiani data family. They do not share our source-family
+distinguishability estimand, but they further rule out a broad novelty claim
+around making EEG observability or null-space structure explicit. They also
+raise the empirical comparison bar. The estimand distinction alone does not
+change the current outcome because there is still no held-out decision benefit
+over direct fitting or matched source-imaging baselines. See
+[`CLOSE_PRIOR_ART_RECHECK_20261029.md`](CLOSE_PRIOR_ART_RECHECK_20261029.md).
+
 ## Decision in one paragraph
 
 Observable Geometry has substantial reproducible computational work and a bounded measured-data family comparison, but the evidence does not show that its source-family analysis improves a researcher decision over established methods. The most promising held-out WSGZP decision cannot currently be run under a valid participant-specific forward model and locked preprocessing contract. The existing Localize-MI comparison is a one-participant stimulation-pulse-artifact control, not neural source validation. The proposed fixed-area lower-envelope ranking is not yet operational and can collapse to zero whenever any compatible explanation avoids a parcel. Therefore the defensible submission is a **researcher-facing, auditable software contribution with conditional source-family results**, with novelty and neural-source recovery explicitly unclaimed.
@@ -71,4 +83,4 @@ Reconsider the WSGZP test only after receiving and independently checking the or
 - `docs/track_b/FIXED_AREA_SCORE_FALSIFICATION_20261029.md`
 - `docs/track_b/WSGZP_UPSTREAM_COORDINATE_PIPELINE_AUDIT_20261029.md`
 
-Closest external threats recorded in the prior-art audit include [the GBF study](https://arxiv.org/html/2604.25592), [XDL-ESI](https://doi.org/10.1016/j.neuroimage.2024.120802), [EEG/MEG spatial-fidelity evaluation](https://pmc.ncbi.nlm.nih.gov/articles/PMC7793168/), and [forward-model uncertainty analysis](https://orbit.dtu.dk/en/publications/evaluation-of-the-influence-of-uncertain-forward-models-on-the-ee/).
+Closest external threats recorded in the prior-art audit include [the GBF study](https://arxiv.org/html/2604.25592), [CANDLE](https://arxiv.org/abs/2610.07824), [the observability-aligned diffusion/null-space preprint](https://arxiv.org/abs/2610.27461), [XDL-ESI](https://doi.org/10.1016/j.neuroimage.2024.120802), [EEG/MEG spatial-fidelity evaluation](https://pmc.ncbi.nlm.nih.gov/articles/PMC7793168/), and [forward-model uncertainty analysis](https://orbit.dtu.dk/en/publications/evaluation-of-the-influence-of-uncertain-forward-models-on-the-ee/).

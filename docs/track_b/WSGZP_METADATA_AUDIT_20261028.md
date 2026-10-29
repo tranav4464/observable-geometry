@@ -1,7 +1,8 @@
 # WSGZP metadata-only audit and analysis gate
 
-**Audit:** `WSGZP-METADATA-2026-10-28-v1`\
-**Run date:** 28 October 2026\
+**Original audit:** `WSGZP-METADATA-2026-10-28-v1`\
+**Metadata-contract recheck:** `WSGZP-METADATA-2026-10-29-v2`\
+**Run date:** 29 October 2026\
 **Status:** `REVIEW`\
 **Signal samples read:** no
 
@@ -56,11 +57,20 @@ See `WSGZP_PREPROCESSING_PROVENANCE_20261028.md`.
    `V12-13`) are absent from its native coordinate table in five runs. Exclude
    those channels from spatial comparisons unless the custodian supplies a
    documented alias or coordinate source; do not infer their positions.
-3. **Scalp coordinate sidecars have a broken MRI pointer for all 36
-   participants.** Each `IntendedFor` points to `sub-XX_T1.nii`, while the
-   actual file is `sub-XX_T1w.nii`. The coordinates are nevertheless declared
-   in `T1w` space. Preserve the source files and record a local, explicit
-   path-resolution rule if the forward-model toolchain requires it. The
+3. **Scalp coordinate sidecars have an unresolved MRI association for all 36
+   participants.** Each populated `IntendedFor` points to `sub-XX_T1.nii`, while the
+   actual file is `sub-XX_T1w.nii`. The coordinates are declared in `T1w`
+   space, but that label alone does not specify the EEG coordinate convention
+   (axes and origin) or establish the transform provenance. Under the dataset's
+   declared BIDS 1.6.0 version, the EEG coordinate appendix lists `CapTrak`
+   and standard template identifiers, and separately describes `individual`
+   for participant-specific anatomical space. The sidecar's `T1w` declaration
+   does not document which supported convention is intended or identify the
+   transform. A custom frame can instead be described with `Other` and its
+   required coordinate-system description. This is a metadata/provenance
+   ambiguity, not evidence that the coordinates are anatomically wrong.
+   Preserve the source files and record a local, explicit path-resolution rule
+   if the forward-model toolchain requires it. The
    official `fx_bids.py` helper labels these scalp coordinates as
    `coord_frame='head'` when loading, despite the T1w/mm declaration. Do not
    reuse that loader unchanged: convert units and apply a checked T1w-to-head
@@ -74,6 +84,19 @@ See `WSGZP_PREPROCESSING_PROVENANCE_20261028.md`.
    in the project environment; FreeSurfer segmentation executables are not
    present on `PATH`. MRI and sensor-coordinate presence alone does not close
    the forward-model gate.
+
+The 29 October contract recheck found the same `T1w` coordinate declaration
+and nonexistent `IntendedFor` target in all 36 scalp EEG sidecars. The
+coordinate label is not an allowed EEG coordinate-system keyword under BIDS
+1.6.0; a metadata-only validator fixture confirmed both the EEG and anatomical
+landmark fields are rejected. This establishes metadata nonconformance, not
+that the numeric locations are anatomically wrong. It remains metadata-only
+and did not read EEG/SEEG samples. The BIDS 1.6.0
+requirements are documented in the official [EEG specification](https://bids-specification.readthedocs.io/en/v1.6.0/04-modality-specific-files/03-electroencephalography.html)
+and [coordinate-systems appendix](https://bids-specification.readthedocs.io/en/v1.6.0/99-appendices/08-coordinate-systems.html).
+The updated machine-readable report is generated locally at
+`outputs/track_b/20261029_wsgzp_metadata_contract_audit/audit.json` (outputs
+are excluded from Git); the script and regression tests are tracked.
 
 ### Coordinate-only follow-up
 

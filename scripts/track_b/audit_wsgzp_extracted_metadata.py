@@ -71,8 +71,54 @@ def expected_file(path: Path, errors: list[str], label: str) -> bool:
     return exists
 
 
+def eeg_coordinate_contract(meta: dict[str, Any], bids_version: str | None) -> dict[str, Any]:
+    """Flag EEG coordinate declarations that violate or underspecify BIDS.
+
+    BIDS 1.6.0 does not list ``T1w`` as an EEG coordinate-system keyword.
+    ``T1w`` is used as a space/file label elsewhere, but does not by itself
+    define the coordinate-system convention required here. This metadata
+    finding does not establish that the numeric locations are anatomically
+    wrong or recover the missing transform provenance.
+    """
+    system = meta.get("EEGCoordinateSystem")
+    description = meta.get("EEGCoordinateSystemDescription")
+    landmark_system = meta.get("AnatomicalLandmarkCoordinateSystem")
+    if system == "T1w" or landmark_system == "T1w":
+        if bids_version == "1.6.0":
+            status = "BIDS_1_6_COORDINATE_KEYWORD_NOT_ALLOWED"
+            note = (
+                "BIDS 1.6.0 does not list T1w as an EEG coordinate-system keyword. "
+                "The label also does not define the axes/origin convention or establish "
+                "the digitizer-to-MRI transform. This is metadata nonconformance, not "
+                "proof that the numeric electrode locations are anatomically wrong."
+            )
+        else:
+            status = "COORDINATE_KEYWORD_REQUIRES_VERSION_CHECK"
+            note = (
+                "T1w does not by itself define the axes/origin convention or establish "
+                "the digitizer-to-MRI transform. Check this keyword against the exact "
+                "BIDS schema used by the dataset; do not infer anatomical error from "
+                "the metadata alone."
+            )
+    elif system == "Other" and not description:
+        status = "DESCRIPTION_REQUIRED_FOR_OTHER"
+        note = "BIDS requires EEGCoordinateSystemDescription when EEGCoordinateSystem is Other."
+    else:
+        status = "NO_TARGETED_WARNING"
+        note = None
+    return {
+        "declared_bids_version": bids_version,
+        "coordinate_system": system,
+        "anatomical_landmark_coordinate_system": landmark_system,
+        "coordinate_system_description_present": bool(description),
+        "coordinate_semantics_status": status,
+        "coordinate_semantics_note": note,
+    }
+
+
 def coordinate_summary(
-    path: Path, sidecar: Path, errors: list[str], label: str, dataset_root: Path
+    path: Path, sidecar: Path, errors: list[str], label: str, dataset_root: Path,
+    bids_version: str | None = None,
 ) -> dict[str, Any]:
     if not expected_file(path, errors, f"{label} coordinate table"):
         return {"available": False}
@@ -89,7 +135,7 @@ def coordinate_summary(
                 finite_xyz &= all(np.isfinite(float(row[key])) for key in ("x", "y", "z"))
             except (TypeError, ValueError):
                 finite_xyz = False
-    return {
+    result = {
         "available": bool(rows),
         "file": path.name,
         "sidecar": sidecar.name,
@@ -109,9 +155,12 @@ def coordinate_summary(
         "sha256_sidecar": sha256(sidecar),
         "sidecar_had_trailing_comma": trailing_comma_repaired,
     }
+    if label == "scalp EEG":
+        result["bids_coordinate_contract"] = eeg_coordinate_contract(meta, bids_version)
+    return result
 
 
-def audit_subject(subject_dir: Path, deriv_root: Path) -> dict[str, Any]:
+def audit_subject(subject_dir: Path, deriv_root: Path, bids_version: str | None = None) -> dict[str, Any]:
     subject = subject_dir.name
     errors: list[str] = []
     anat = subject_dir / "anat" / f"{subject}_T1w.nii"
@@ -127,6 +176,7 @@ def audit_subject(subject_dir: Path, deriv_root: Path) -> dict[str, Any]:
     eeg_coords = coordinate_summary(
         eeg_dir / f"{eeg_prefix}_electrodes.tsv",
         eeg_dir / f"{eeg_prefix}_coordsystem.json", errors, "scalp EEG", subject_dir.parent,
+        bids_version,
     )
     ieeg_coords = coordinate_summary(
         ieeg_dir / f"{eeg_prefix}_space-T1w_electrodes.tsv",
@@ -301,10 +351,11 @@ def main() -> None:
     if errors:
         raise SystemExit("Dataset root failed required-file checks: " + "; ".join(errors))
 
+    root_desc, root_desc_repaired = read_json_metadata(root / "dataset_description.json")
+    bids_version = root_desc.get("BIDSVersion")
     participants = read_tsv(root / "participants.tsv")
     subjects = [row["participant_id"] for row in participants]
-    subject_reports = [audit_subject(root / subject, deriv_root) for subject in subjects]
-    root_desc, root_desc_repaired = read_json_metadata(root / "dataset_description.json")
+    subject_reports = [audit_subject(root / subject, deriv_root, bids_version) for subject in subjects]
     deriv_desc, deriv_desc_repaired = read_json_metadata(deriv_root / "dataset_description.json")
     license_text = (root / "LICENSE").read_text(encoding="utf-8-sig", errors="replace")
     license_first_line = next((line.strip() for line in license_text.splitlines() if line.strip()), "")
@@ -313,7 +364,7 @@ def main() -> None:
     eeg_epochs = sum(s["modalities"].get("eeg", {}).get("n_epochs_total", 0) for s in subject_reports)
     ieeg_epochs = sum(s["modalities"].get("ieeg", {}).get("n_epochs_total", 0) for s in subject_reports)
     report = {
-        "audit_id": "WSGZP-METADATA-2026-10-28-v1",
+        "audit_id": "WSGZP-METADATA-2026-10-29-v2",
         "created_utc": datetime.now(timezone.utc).isoformat(),
         "dataset_root": str(root),
         "data_boundary": "Metadata and NPY headers only; signal samples were not loaded by this audit.",
@@ -336,6 +387,11 @@ def main() -> None:
             for subject in subject_reports
             if subject["scalp_electrode_geometry"].get("intended_for")
             and subject["scalp_electrode_geometry"].get("intended_for_target_exists") is False
+        }),
+        "eeg_coordinate_contract_warnings": sorted({
+            subject["scalp_electrode_geometry"]["bids_coordinate_contract"]["coordinate_semantics_note"]
+            for subject in subject_reports
+            if subject["scalp_electrode_geometry"].get("bids_coordinate_contract", {}).get("coordinate_semantics_note")
         }),
         "derivative_description_sha256": sha256(deriv_root / "dataset_description.json"),
         "participant_count": len(subjects),

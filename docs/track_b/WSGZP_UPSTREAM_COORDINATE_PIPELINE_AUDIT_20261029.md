@@ -106,3 +106,75 @@ response hashes, script hash, and full metadata listing are recorded in
 and the local ignored output referenced there. This confirms that no separate
 public geometry file is currently listed, but it does not validate the
 released T1w coordinate contract or close the participant-geometry gate.
+
+### Complete public curation-repository history check (29 October 2026)
+
+To check whether the missing geometry was removed from the current branch, the
+public `iTCf/ccepcoreg` repository was cloned with its complete reachable
+history. The seven reachable commits are `ba84ce6aa5ae80f0ff97b6309c7fb9e56391d106`,
+`7fb9cb502d33807022129310e9edfae4e43e911e`,
+`0fe8f75f252ce5dd8f3cdae435f32f3fc628d1f6`,
+`10f4ef1b343ee4800bfcaafc8e6980140a0e525a`,
+`6da4eb9d54f888c7ea54eed2e24d2559ba1c06ab`,
+`9d7ffe240c2064d40e95fc1b48110e301a3aa164`, and the already audited
+`8721fc04328c00b131659915dfbfa569bd342b54`. No reachable commit contains a
+digitizer, fiducial, transform, or registration/QC data file. The earlier
+`load_trans` helper is present in `fx_bids.py`, but none of the three historical
+versions of `export_bids.py` calls it. The exporter reads
+`{subj_name}_egi_dig.hpts` and passes its coordinates to the BIDS writers;
+this history check therefore does not recover the upstream transform or
+prove the exported points' coordinate frame. This closes the repository-history
+search only; it does not close participant geometry or justify source fitting.
+
+Reproduce the history inventory without downloading dataset contents:
+
+```powershell
+git clone https://github.com/iTCf/ccepcoreg.git tmp/ccepcoreg_upstream_history_20261029
+git -C tmp/ccepcoreg_upstream_history_20261029 log --all --format="%H %s"
+git -C tmp/ccepcoreg_upstream_history_20261029 log --all --name-only --pretty=format:
+git -C tmp/ccepcoreg_upstream_history_20261029 log --all -G "load_trans\\(" -- export_bids.py
+```
+
+### Author-provided viewer check
+
+The related [iTCf/CoregView](https://github.com/iTCf/coregview) repository was
+also inspected at commit `f5cc77239d48f95f321bd24e90800fc1dd500350` as a
+possible independent visual-QC route. `coregview_main.py` (SHA-256
+`8088d4d3d3ac2b782ec1e64e9eaa68bc294a79aecda3b3934062fd1a4158bc6c`) loads
+MNE's `EGI256` layout and a template `info-epo.fif`; the source explicitly
+marks subject-specific digitizer loading as a TODO. `coregview_info.py` (SHA-256
+`78c6dfa231888211900d35eb27cc5433c0defa08d294039961899b7436a1d91e`) points
+to a separate EBRAINS dataset path. CoregView may visualize data after
+registration, but this inspected version does not independently validate the
+released WSGZP participant coordinates or recover their missing transform.
+This is a software-capability finding, not a geometry result.
+
+### EBRAINS public Knowledge Graph route recheck (29 October 2026)
+
+Because the dataset paper also points to EBRAINS, the public EBRAINS dataset
+connector was checked as a separate metadata-only route. The official
+`FZJ-INM1-BDA/siibra-python` source was cloned at commit
+`970e6128a2e0aadfc36705462f4298b9d50cc128`. In that snapshot,
+`EbrainsPublicDatasetConnector` queries the released dataset record by its
+dataset ID and reads the version's file listing. Its request implementation
+always attaches a bearer token (`EbrainsRequest.auth_headers`). The inspected
+source hashes are `321423089803E1AFB4E64C7F4CE339AABD16174F3A4737E8FA35F4D716B79D8F`
+for `siibra/retrieval/repositories.py` and
+`C02D3A2B6F9CB13A59985E335D28593B3630C5DC9BE8425CA8A7321456655A32` for
+`siibra/retrieval/requests.py`.
+
+A direct unauthenticated GET to the connector's documented released-dataset
+query for record `b1c3e79e-ca4a-4a05-9235-b93cf1cb678d` returned HTTP 401. No
+EBRAINS token was available in the process environment, and no login flow or
+credential request was initiated. Thus the EBRAINS file listing was **not
+retrieved**. This result is not evidence that the EBRAINS record lacks geometry
+files; it establishes that an authenticated EBRAINS account is required to
+inspect that route from this environment. The anonymous OSF listing remains
+the only retrieved public file inventory, and the WSGZP geometry gate remains
+open. No archive or neural signal data were downloaded or accessed in this
+check.
+
+Reproduction basis: the connector implementation is in the pinned
+[`siibra-python` repository](https://github.com/FZJ-INM1-BDA/siibra-python/tree/970e6128a2e0aadfc36705462f4298b9d50cc128/siibra/retrieval).
+The route template in that source is
+`https://core.kg.ebrains.eu/v3-beta/queries/bebbe365-a0d6-41ea-9ff8-2554c15f70b7/instances?stage=RELEASED&dataset_id={dataset_id}`.

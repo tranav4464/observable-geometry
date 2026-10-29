@@ -2,19 +2,41 @@
 
 ## Active build target
 
+### Close-prior-art update, 29 October 2026
+
+A targeted primary-source check added two near-contemporaneous preprints to the
+novelty threat register: CANDLE (arXiv:2610.07824), which uses lead-field
+range/null projectors for geometry-aware learned source reconstruction and
+tests stimulation localization on the Parmigiani cohort, and arXiv:2610.27461,
+which combines observable-row diffusion refinement with projected null-space
+completion. Both estimate a representative source map rather than compare a
+declared set of source families, but they rule out broad novelty claims around
+observability decomposition or null-space analysis. Observable Geometry's
+conditional family-audit distinction remains only a different estimand until
+it demonstrates a useful decision advantage over direct fitting and matched
+baselines on eligible held-out measured data. See the
+[close-prior-art recheck](CLOSE_PRIOR_ART_RECHECK_20261029.md).
+
 ### Latest evidence, 29 October 2026
 
 **Software verification update, 29 October 2026:** the latest fresh full
-working-tree suite passes 167 tests. It includes the covariance-span input
-hardening and transactional CLI output publication, with regression checks
-that failed runs leave no partial output and existing results are not
-overwritten. The read-only gate-register validator passes with 253 registered
-evidence paths. Exact command outputs, environment, and working-tree snapshot
-are recorded in [the latest fresh validation run](../../outputs/track_b/20261029T_goal_resume_validation_003/SESSION.md).
-These are software and evidence-index checks only; the run includes uncommitted changes,
-does not validate source physiology or novelty, and leaves B4–B7 pivoted and
-B8 open for outside review. See the exact [test run](../../outputs/track_b/20261029T_atomic_cli_publication/SESSION.md)
-and [test evidence summary](TEST_RUN_EVIDENCE_20261029.md).
+working-tree suite passes 181 tests, including a fixed-fixture cross-check
+between the float64 Track B API and legacy threshold-CSR API. The WSGZP
+focused audit tests pass 7/7. The read-only gate-register validator passes
+with 310 registered evidence
+paths. A sample-free BIDS validation follow-up confirmed that the WSGZP scalp
+EEG coordinate sidecars use a coordinate-system keyword rejected by the
+applicable BIDS 1.6.0 contract; this is metadata nonconformance, not proof of
+anatomical misregistration. Exact commands, environment, hashes, validation
+scope, and data findings are recorded in the [WSGZP metadata-contract
+recheck](WSGZP_METADATA_CONTRACT_RECHECK_20261029.md).
+The latest uncommitted working-tree validation is recorded in
+[`20261029T_publication_quality_rerun_002/SESSION.md`](../../outputs/track_b/20261029T_publication_quality_rerun_002/SESSION.md);
+it supplements but does not replace the commit-bound B8 wheel and archive runs.
+These are software and evidence-index checks only; they do not validate source
+physiology or novelty, and B4–B7 remain pivoted while B8 remains open for
+outside review. The earlier atomic-CLI and package parity runs remain recorded
+in [the historical test evidence](TEST_RUN_EVIDENCE_20261029.md).
 
 The same working-tree CLI also reproduced the prior clean-wheel output exactly
 on the sealed model-only input: 40,980 ranked pairs, every score array and all
@@ -65,7 +87,23 @@ public OSF storage API found only the six BIDS archive parts and
 The extracted BIDS tree still has participant T1w MRIs and scalp coordinates
 declared in T1w millimetres, but the exact participant-level transform linkage
 and reviewed QC remain unverified. This narrows the file-search uncertainty;
-it does not clear the geometry gate. See the [public inventory recheck](WSGZP_PUBLIC_GEOMETRY_INVENTORY_RECHECK_20261029.md).
+it does not clear the geometry gate. A separate unauthenticated EBRAINS
+Knowledge Graph query returned HTTP 401, so its file listing was not
+retrieved; this does not establish that EBRAINS lacks geometry files. See the
+[public inventory recheck](WSGZP_PUBLIC_GEOMETRY_INVENTORY_RECHECK_20261029.md)
+and [upstream coordinate-pipeline audit](WSGZP_UPSTREAM_COORDINATE_PIPELINE_AUDIT_20261029.md).
+
+**Scalp-coordinate contract recheck, 29 October 2026:** a metadata-only audit
+confirmed that all 36 scalp EEG sidecars use the coordinate label `T1w` without
+an axis/origin description, and their populated `IntendedFor` fields point to
+missing `*_T1.nii` paths while the files are named `*_T1w.nii`. This is an
+unresolved coordinate-semantics and MRI-association issue, not evidence of
+misregistration. The audit also confirms that 319/323 EEG/iEEG run pairs have
+different retained epoch counts and none has a shared unique event identifier,
+so the released derivatives cannot support trial-level cross-modal pairing.
+The results and official BIDS 1.6.0 references are in the
+[WSGZP metadata audit](WSGZP_METADATA_AUDIT_20261028.md); the fresh machine
+report is local under the ignored `outputs/track_b/20261029_wsgzp_metadata_contract_audit/`.
 
 **Controlled-stimulation family validation completed:** a separate bounded run
 now uses real Localize-MI scalp epochs, 224 common EEG channels, 8,196 sources,
