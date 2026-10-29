@@ -1,4 +1,4 @@
-"""Command-line interface for Observable Geometry's GBF diagnostic."""
+"""Command-line interface for model-conditional EEG forward-pattern diagnostics."""
 from __future__ import annotations
 
 import argparse

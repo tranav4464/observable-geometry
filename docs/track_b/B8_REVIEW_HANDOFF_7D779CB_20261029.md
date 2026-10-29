@@ -18,8 +18,8 @@ Please inspect the repository and candidate report, then state:
 4. A recommendation: `PASS`, `HOLD FOR CHANGES`, or `FAIL/PIVOT`.
 5. Your name, affiliation, relevant expertise, conflicts/prior involvement, and date.
 
-No installation is necessary for the high-level review. If independently repeating the checks, use the commands and pinned artifacts identified by the B8 candidate report; do not download or inspect any human recordings. The Localize-MI-derived model arrays are not distributed in the repository and remain subject to their dataset terms.
+No installation is necessary to provide preliminary feedback on the documentation. **That feedback alone cannot close B8.** The registered B8 independent-review criterion requires an external researcher or reviewer to perform or witness the clean reproduction. To pursue gate closure, arrange lawful access to the pinned model-only inputs and a clean environment, then use the commands and hashes in the candidate report; record exactly which checks the reviewer performed or witnessed. Do not download or inspect human recordings for this software check. The Localize-MI-derived model arrays are not distributed in the repository and remain subject to their dataset terms.
 
 ## Gate boundary
 
-Passing this software review would not validate neural source recovery, the unresolved WSGZP geometry, researcher decision benefit, population generalization, or method novelty. Those remain separate scientific questions. The B8 gate stays open until the independent review is received and the release version is explicitly recorded.
+Passing this software review would not validate neural source recovery, the unresolved WSGZP geometry, researcher decision benefit, population generalization, or method novelty. Those remain separate scientific questions. The B8 gate stays open until the registered outside reproduction is performed or witnessed, findings are recorded, and the release version is explicitly chosen.

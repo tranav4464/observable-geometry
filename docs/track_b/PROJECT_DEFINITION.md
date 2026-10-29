@@ -35,7 +35,7 @@ decision.
 
 **Previous exact-HEAD candidate, 29 October 2026:** commit `9a88bad1b0f9ff48fced1d352d5e36d1c0de4c89` passed **211/211 workspace tests** and **209 source-archive tests with two documented skips**. It was superseded by the later 7d779cb documentation refresh and current package verification described above. Its evidence is retained in the [historical candidate report](B8_RELEASE_CANDIDATE_9A88BAD_20261029.md) and [`20261029T_commit_release_9a88bad/`](../../outputs/track_b/20261029T_commit_release_9a88bad/). The external-review bundle tied to 9a88bad is historical; use the current review handoff for the current candidate.
 
-The preceding 8c7e740 exact-commit package check is preserved as historical evidence in [its candidate report](B8_RELEASE_CANDIDATE_8C7E740_20261029.md); it is superseded by 9a88bad as the current exact-HEAD candidate.
+The preceding 8c7e740 exact-commit package check is preserved as historical evidence in [its candidate report](B8_RELEASE_CANDIDATE_8C7E740_20261029.md); it was superseded first by 9a88bad and then by the 7d779cb candidate described above.
 
 An earlier working-tree run at commit `cfb53e8` passed 186 tests and checked
 330 evidence paths; it is superseded by the 211-test run above. The WSGZP

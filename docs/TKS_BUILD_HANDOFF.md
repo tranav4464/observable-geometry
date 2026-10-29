@@ -50,7 +50,7 @@ These comments are useful outreach feedback, but they are not a formal B8 pass o
 
 ## What remains before calling the TKS software build released
 
-1. Obtain unaffiliated external review of the current hash-identified B8 packet.
+1. Arrange for an external researcher or reviewer to perform or witness the clean reproduction of the final hash-identified B8 candidate, with lawful access to the required model-only inputs, and record their findings.
 2. Resolve any review blockers, if present, and rerun release checks against the final source commit.
 3. Choose and record the release version, then publish the code and documentation without redistributing restricted participant data.
 4. Present the tool with the bounded use case and limitations above; keep WSGZP geometry validation as a later extension.
