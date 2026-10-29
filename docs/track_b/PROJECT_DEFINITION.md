@@ -19,20 +19,23 @@ baselines on eligible held-out measured data. See the
 
 ### Latest evidence, 29 October 2026
 
-**Software verification update, 29 October 2026:** commit-bound suite at
-`199a39c21058b05d45d10e703117a9e38b5089d4` passes **211 tests** (0 failures,
-4.49 s). The read-only gate-register validator passes
-with 341 evidence paths: B-1/B0/B1/B2/B3 are PASS, B4–B7 are PIVOT, and B8 is
-IN_PROGRESS. The source snapshot at this commit separately passes its
-315-file integrity verification. The JUnit XML and gate report are recorded
-under [`20261029T_current_quality_audit/`](../../outputs/track_b/20261029T_current_quality_audit/);
-the JUnit SHA-256 is
-`e4d5221120c787326a06172512a4be32c3031372b7ec1556102473e1f2b1d465`.
-The gate report SHA-256 is
-`738bae2129309c45d34ecf04eb2c0f882f1b8fb2fa4f456f4ccd40f446035440`.
-These checks cover software behavior and evidence-path integrity only; they do
-not validate source physiology, novelty, or WSGZP registration. B4–B7 remain
-pivoted and B8 remains open for outside review.
+**Software verification update, 29 October 2026:** the B8 release-test runner
+on commit `cc446542707cbcb782524a59fe1264350057c4bf` passes **211/211
+workspace tests** and **209 source-archive tests with two documented skips**.
+The Git archive hash is
+`d33b4ce0bd0f61aaa6a9f1f75e4301f01e626c1381e7b0ae8cd0949ec602aea2`. The
+read-only gate-register validator passes with 341 evidence paths: B-1/B0/B1/B2/B3
+are PASS, B4–B7 are PIVOT, and B8 is IN_PROGRESS. The source snapshot at this
+commit separately passes its 315-file integrity verification. Machine-readable
+test reports are [`test_run_cc44654.json`](../../outputs/track_b/20261024_b8_release_checks/test_run_cc44654.json)
+and [`source_archive_test_run_cc44654.json`](../../outputs/track_b/20261024_b8_source_archive_tests/source_archive_test_run_cc44654.json);
+the run details and hashes are in
+[`20261029T_current_quality_audit/SESSION.md`](../../outputs/track_b/20261029T_current_quality_audit/SESSION.md).
+The package wheel parity remains tied to the earlier exact package commit
+`edf085c`; no wheel was rebuilt for `cc44654`. These checks cover software
+behavior and evidence-path integrity only; they do not validate source
+physiology, novelty, or WSGZP registration. B4–B7 remain pivoted and B8 remains
+open for outside review.
 
 An earlier working-tree run at commit `cfb53e8` passed 186 tests and checked
 330 evidence paths; it is superseded by the 211-test run above. The WSGZP
