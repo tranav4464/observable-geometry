@@ -31,9 +31,13 @@ For each participant intended for analysis, please provide or confirm:
    transform or registration procedure/output that maps them to T1w space.
    The curation code refers to source files named
    `{participant}_egi_dig.hpts`.
-4. Whether AnonyMI or another anonymization step changed MRI voxel contents,
-   the NIfTI affine/header, the digitizer points, or the transform; state
-   whether all affected objects were transformed consistently.
+4. Which AnonyMI version/settings and any other anonymization or image
+   reorientation/resampling steps were applied to each released MRI. The
+   AnonyMI methods paper states that its masking changes voxel intensities
+   without changing the image header; please confirm whether the released
+   NIfTI affine/header matches the MRI frame used for digitizer registration
+   and whether any separate step changed the MRI, digitizer points, or
+   transform. State how those objects were kept in a consistent frame.
 5. Available participant-level registration quality-control evidence, such as
    a reviewed sensor/fiducial overlay on the individual T1w MRI, landmark
    residuals, or registration error summary.

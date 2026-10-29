@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-10-29T08:00:28.021501+00:00",
+  "created_utc": "2026-10-29T08:01:44.997969+00:00",
   "file_count": 320,
   "files": {
     ".gitignore": {
@@ -559,8 +559,8 @@
       "size_bytes": 6994
     },
     "docs/track_b/WSGZP_COORDINATE_PROVENANCE_REQUEST.md": {
-      "sha256": "356bcb4902dd7be3c70552bed14f606706097d51c7fc559af0e87fb9da00476c",
-      "size_bytes": 8182
+      "sha256": "ffb1884c5bda114d74964c0de00b8b99a50c9ded06b623a63c06c6a2ed1ed978",
+      "size_bytes": 8480
     },
     "docs/track_b/WSGZP_COREG_AUDIT_20261028.md": {
       "sha256": "56a1e498cc6a5fee5e4cbb0bac1dac08954125961e05777dae3247acfe3eff30",
@@ -615,8 +615,8 @@
       "size_bytes": 8044
     },
     "docs/track_b/WSGZP_UPSTREAM_COORDINATE_PIPELINE_AUDIT_20261029.md": {
-      "sha256": "5c6aa25822630023fd53068355194a8002f4cdd1d461ea9c7e3ffb162f95c390",
-      "size_bytes": 13673
+      "sha256": "a97ee2cb6600217563651d6975cabf32839340a3674d180e62177917ea9dfb23",
+      "size_bytes": 14782
     },
     "examples/robust_audit_toy.json": {
       "sha256": "08c8fea3d9c416f6e58b8c3ee787cf2c1eaa82c8652fca190b671a4d59e40884",

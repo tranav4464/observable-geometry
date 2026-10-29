@@ -60,6 +60,23 @@ Mikulan et al. (2020), [primary dataset paper, DOI
 Jiao et al. (2024), [XDL-ESI, DOI
 10.1016/j.neuroimage.2024.120802](https://doi.org/10.1016/j.neuroimage.2024.120802).
 
+### AnonyMI de-identification cross-check (29 October 2026)
+
+The AnonyMI methods paper states that the algorithm changes MRI voxel
+intensities in the facial mask but does not change the file header; its
+evaluation also compares extracted skin/skull surfaces and source-localization
+outputs against the original MRI. The official [AnonyMI repository
+README](https://github.com/iTCf/anonymi) describes the software as preserving
+head geometry. This makes a coordinate-frame shift caused solely by the
+documented AnonyMI masking operation less likely. It does not verify which
+AnonyMI version/settings were used for each WSGZP MRI, whether any separate
+reorientation/resampling occurred, or how the original `.hpts` points were
+registered before BIDS export. No original MRIs or participant-specific
+AnonyMI logs are in the inspected release. Therefore this cross-check narrows
+the anonymization concern but does not clear coordinate provenance or the
+participant geometry gate. Source: Mikulan et al. (2021), [AnonyMI methods and
+geometry validation, DOI 10.1002/hbm.25639](https://doi.org/10.1002/hbm.25639).
+
 ## Consequence for the novelty test
 
 Without a cleared participant-specific sensor-to-MRI geometry, a measured-data difference cannot fairly be attributed to the proposed source-family report rather than registration error. Thus the held-out source-family/SEEG-contact decision test remains **not ready to run**. The finding narrows a provenance gap; it is not itself a novelty result. Even after the geometry gate closes, novelty still requires a preregistered decision advantage against GBF, direct constrained fitting, and matched resolution/patch baselines.
