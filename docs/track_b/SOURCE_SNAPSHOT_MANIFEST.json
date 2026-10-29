@@ -1,6 +1,6 @@
 {
-  "created_utc": "2026-10-29T07:41:37.899076+00:00",
-  "file_count": 317,
+  "created_utc": "2026-10-29T07:46:50.052291+00:00",
+  "file_count": 318,
   "files": {
     ".gitignore": {
       "sha256": "f96cf8be73079a090f21c39fbca22ae1c23b7523034f7f588b650b589bf5c9d9",
@@ -322,6 +322,10 @@
       "sha256": "b19c3a76a46def6dd5d7b2f8d174af2535c6c13fe134b0738b172fec816e43ff",
       "size_bytes": 3660
     },
+    "docs/track_b/B8_RELEASE_CANDIDATE_7AF36B0_20261029.md": {
+      "sha256": "473438ab1b52986b83a0d0d75155988b381718a6e4f250e8004af668473ec1c5",
+      "size_bytes": 2762
+    },
     "docs/track_b/B8_RELEASE_CANDIDATE_EDF085C_20261029.md": {
       "sha256": "2bb383f04e0f4c56074566d894ef9ef9ccc501f39f01e81d6d9943dfc1c68182",
       "size_bytes": 2568
@@ -423,8 +427,8 @@
       "size_bytes": 4224
     },
     "docs/track_b/GATE_REGISTER.json": {
-      "sha256": "ead0038a10f2306443788c745d38504f9772edfc20a669401cf6275d897d7e02",
-      "size_bytes": 81143
+      "sha256": "1689546ec67d99df839cc7f760e23172075d1eeb818a5957f1da4825cf8e5c04",
+      "size_bytes": 83435
     },
     "docs/track_b/GBF_BUILD_PLAN.md": {
       "sha256": "dfaa7af96b7b7c7da2e4864e4b9649bcf35509a096857cff99891150be071f2f",
@@ -491,8 +495,8 @@
       "size_bytes": 6139
     },
     "docs/track_b/PROJECT_DEFINITION.md": {
-      "sha256": "446a8e22088594e130f8fab339fdb5de67b7dc5dafbbfeb38babf80ad6693f23",
-      "size_bytes": 64004
+      "sha256": "5204ab6a0bf5fef47fbe3be5e86e07cd5264fdfa0a474b7026f32359ff129135",
+      "size_bytes": 64362
     },
     "docs/track_b/PROTOCOL_LOCK.md": {
       "sha256": "d499304994443f99f525ff79f4f1233d5f49ae36b7222e5da16c1f716a302064",

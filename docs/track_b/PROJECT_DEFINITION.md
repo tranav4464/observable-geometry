@@ -19,22 +19,7 @@ baselines on eligible held-out measured data. See the
 
 ### Latest evidence, 29 October 2026
 
-**Software and package verification update, 29 October 2026:** current commit
-`3cfa693c2be6ab5866df9ae68613236fda937d0e` passes **211/211 workspace tests**
-and **209 source-archive tests with two documented skips**. The source archive
-hash is `308b2b4e87603eadf3d58a33700f15305e160d52fab3fcac5bcb149c455c81ad`.
-The read-only gate validator passes with 354 evidence paths after the current
-B8 release and handoff evidence was registered. The
-315-file source snapshot passes at this commit. A wheel built from this exact
-commit archive passed all seven source/version/license checks and a fresh
-Python 3.12.14 install. The installed CLI exactly reproduced all 40,980 ranked
-pairs, score arrays, and summary metrics from the sealed sub-01 model-only
-reference. See the [current B8 candidate report](B8_RELEASE_CANDIDATE_3CFA693_20261029.md),
-[review handoff record](B8_REVIEW_HANDOFF_3CFA693_20261029.md), and machine-readable reports under
-[`20261029T_commit_release_3cfa693/`](../../outputs/track_b/20261029T_commit_release_3cfa693/).
-These checks cover software behavior and evidence-path integrity only; they do
-not validate source physiology, novelty, or WSGZP registration. B4–B7 remain
-pivoted and B8 remains open for outside review.
+**Exact-HEAD package verification:** commit `7af36b0904e0b891c925a9056394c3d36acd43c2` passed 211/211 workspace tests and 209 source-archive tests with two documented skips. A 0.1.3.dev0 wheel built from its source archive passed source/version/license verification, fresh Python 3.12.14 installation, and ten installation/provenance/access checks. Its installed CLI reproduced the sealed sub-01 model-only result exactly: all 40,980 ranked pairs, score arrays, and summary metrics matched. The gate validator passes with 363 evidence paths; the source-only snapshot contains 318 files. This is one-model software reproducibility, not physiological source recovery, calibrated uncertainty, decision benefit, population generalization, or novelty. See the [exact-HEAD B8 candidate report](B8_RELEASE_CANDIDATE_7AF36B0_20261029.md) and linked machine-readable evidence under [`20261029T_commit_release_7af36b0/`](../../outputs/track_b/20261029T_commit_release_7af36b0/). B8 remains open pending unaffiliated external review and a release-version decision.
 
 An earlier working-tree run at commit `cfb53e8` passed 186 tests and checked
 330 evidence paths; it is superseded by the 211-test run above. The WSGZP
