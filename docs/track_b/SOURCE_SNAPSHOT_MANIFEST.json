@@ -1,6 +1,6 @@
 {
-  "created_utc": "2026-10-29T08:09:04.875072+00:00",
-  "file_count": 320,
+  "created_utc": "2026-10-29T08:34:38.354652+00:00",
+  "file_count": 323,
   "files": {
     ".gitignore": {
       "sha256": "f96cf8be73079a090f21c39fbca22ae1c23b7523034f7f588b650b589bf5c9d9",
@@ -15,8 +15,8 @@
       "size_bytes": 1519
     },
     "README.md": {
-      "sha256": "66119b4058014f5bb8b5f4e212b77858ca1aa547fbdfaf42861c9f6d36e47a33",
-      "size_bytes": 16358
+      "sha256": "4f2aaa2fce2603d686aed38c6167dca12a7b713bc45c03d0d53f963cbd6ad942",
+      "size_bytes": 16498
     },
     "REVIEW.html": {
       "sha256": "5df02b6561851b98915c50c8422f41b7a67f7d7b162574cc3058fa63f0d7dcdf",
@@ -330,6 +330,10 @@
       "sha256": "ac2f2ec51e8747d72ea345b1fd5f9d18ebc24deb7e717129c5022546347409d1",
       "size_bytes": 2895
     },
+    "docs/track_b/B8_RELEASE_CANDIDATE_9A88BAD_20261029.md": {
+      "sha256": "503ebbeecd67a9cd6c5af984e27b96acf74aeb59fad8ce7afd8b55b8164e9e5d",
+      "size_bytes": 2237
+    },
     "docs/track_b/B8_RELEASE_CANDIDATE_EDF085C_20261029.md": {
       "sha256": "2bb383f04e0f4c56074566d894ef9ef9ccc501f39f01e81d6d9943dfc1c68182",
       "size_bytes": 2568
@@ -345,6 +349,10 @@
     "docs/track_b/B8_REVIEW_HANDOFF_8C7E740_20261029.md": {
       "sha256": "9b9cfd02cef56cd368f3317047f4783108188564f2f6af06ed125e092de56688",
       "size_bytes": 1428
+    },
+    "docs/track_b/B8_REVIEW_HANDOFF_9A88BAD_20261029.md": {
+      "sha256": "e21d8fced41c606f313c06209a950b1ce5dfc4f533375928fc5200c3bce6c192",
+      "size_bytes": 2157
     },
     "docs/track_b/B8_WORKTREE_ATOMIC_CLI_REPRODUCTION_20261029.md": {
       "sha256": "3339b2c8e54eae54dcaccd3a886b7ce810d1e6fc65476b535bf6bbb76f3415ff",
@@ -435,8 +443,8 @@
       "size_bytes": 4224
     },
     "docs/track_b/GATE_REGISTER.json": {
-      "sha256": "47f665e353064ae068a7f91b3efbbc73674541aefbdacf9c972456983bffa448",
-      "size_bytes": 86471
+      "sha256": "bb9b245dbb38b825a93d0ff443cc8e46f1863679099ded1bc5c2a77bcc5722e2",
+      "size_bytes": 89111
     },
     "docs/track_b/GBF_BUILD_PLAN.md": {
       "sha256": "dfaa7af96b7b7c7da2e4864e4b9649bcf35509a096857cff99891150be071f2f",
@@ -503,8 +511,8 @@
       "size_bytes": 6139
     },
     "docs/track_b/PROJECT_DEFINITION.md": {
-      "sha256": "77c43a1856e59a9bd1141a73df683d58ca7b3441ab113b59d944a074fba6058f",
-      "size_bytes": 64741
+      "sha256": "f03a919aca71ea8d93c256f33531ae85e31fe9fc0b2dba4803fe2d67448b2a8d",
+      "size_bytes": 64682
     },
     "docs/track_b/PROTOCOL_LOCK.md": {
       "sha256": "d499304994443f99f525ff79f4f1233d5f49ae36b7222e5da16c1f716a302064",
@@ -579,8 +587,8 @@
       "size_bytes": 3352
     },
     "docs/track_b/WSGZP_GEOMETRY_RECHECK_20261029.md": {
-      "sha256": "17ec6902b47c79d7a0cc4a5afdd9078b83bd3add9987fb1a2d713d5d95d491ce",
-      "size_bytes": 8307
+      "sha256": "96c061fa3f810cbe87bb5b8d3c8577bd59d81b286e57e5426e9eea4563d81b4d",
+      "size_bytes": 8767
     },
     "docs/track_b/WSGZP_INDEPENDENT_REGISTRATION_FEASIBILITY_20261029.md": {
       "sha256": "0816abdbb3b2495a32960eb2cdc91b1896456d0e5bc1428b8a0ee6c3c8c8e21e",
@@ -613,6 +621,10 @@
     "docs/track_b/WSGZP_REPEAT_RUN_FEASIBILITY_20261028.md": {
       "sha256": "b5edfdc163d20f19626be05a0b806a4aa85e7a20888ab689326971a4331b693e",
       "size_bytes": 8044
+    },
+    "docs/track_b/WSGZP_SCALP_SURFACE_TOOLING_FEASIBILITY_20261029.md": {
+      "sha256": "077816e588b87845e22722187cbcd66c42002fd456e5b1996b56bed407313887",
+      "size_bytes": 3735
     },
     "docs/track_b/WSGZP_UPSTREAM_COORDINATE_PIPELINE_AUDIT_20261029.md": {
       "sha256": "a97ee2cb6600217563651d6975cabf32839340a3674d180e62177917ea9dfb23",

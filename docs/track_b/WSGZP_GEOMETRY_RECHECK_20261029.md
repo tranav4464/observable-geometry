@@ -55,6 +55,8 @@ The executed evidence is in the ignored local directory `outputs/track_b/2026102
 
 For each candidate participant, verify the image/coordinate convention, overlay all scalp sensors and fiducials on axial/coronal/sagittal views and a 3D scalp surface, report sensor-to-surface residuals and outliers, and have a second reviewer inspect the overlay. Resolve sub-32's crop or exclude that participant before forward modeling. Obtain the source `.hpts`, exact transform and registration QC from the data curator if possible. Freeze acceptance criteria before reviewing candidate overlays. Only after that gate passes should a participant-specific head model or source-localization evaluation use the geometry.
 
+The 29 October local feasibility check found that the current Windows environment lacks the documented FreeSurfer/MNE watershed and SimNIBS `charm` tools, with about 3.43 GB free on its only available volume. See [the tooling feasibility note](WSGZP_SCALP_SURFACE_TOOLING_FEASIBILITY_20261029.md). This explains why no scalp segmentation or new overlay validation was produced in this environment; it does not change the coordinate-validity conclusion above.
+
 
 
 
