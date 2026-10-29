@@ -34,3 +34,9 @@ The model-only bundle is excluded from this public handoff under the dataset ter
 Version `0.1.3.dev0` is the verified development candidate. A stable release version and B8 PASS remain deferred until the outside check is recorded and any findings are addressed.
 
 **Offline environment:** If package downloads fail, attach a compatible dependency wheelhouse or use a machine with package access. Dependencies borrowed through `PYTHONPATH` from another environment do not establish a fully isolated installation.
+
+## New owner-run clean-environment evidence (v3)
+
+The v1/v2 `evidence/source_archive_tests.json` describes tests run from the build environment. It has **not** been replaced. New files under `evidence/fresh_environment/` separately document a newly created Python 3.12 virtual environment, installation of the candidate wheel plus test/research dependencies, `pip check`, and a full extracted-archive test run: 209 passed, two expected skips. This is **owner-executed evidence**, not an outside reproduction. Review `clean_env_full_002_verification.json` and its listed file hashes before relying on it.
+
+The `offline_wheels/` folder includes `nibabel-5.4.2-py3-none-any.whl` to resolve the missing-`nibabel` collection error reported by one offline AI audit. On a Python >=3.12 environment with its other declared dependencies already installed, use `python -m pip install --no-index --no-deps offline_wheels/nibabel-5.4.2-py3-none-any.whl`. This single wheel is not a complete offline dependency bundle; a fully isolated installation still needs all package dependencies from a trusted index or complete wheelhouse.
