@@ -1,6 +1,6 @@
 {
-  "created_utc": "2026-10-29T07:36:03.763399+00:00",
-  "file_count": 315,
+  "created_utc": "2026-10-29T07:41:37.899076+00:00",
+  "file_count": 317,
   "files": {
     ".gitignore": {
       "sha256": "f96cf8be73079a090f21c39fbca22ae1c23b7523034f7f588b650b589bf5c9d9",
@@ -15,8 +15,8 @@
       "size_bytes": 1519
     },
     "README.md": {
-      "sha256": "a26ef53f98719ea7f288e63b0a69cb95d1c31e16c90f42db18f66de640a12c23",
-      "size_bytes": 15659
+      "sha256": "37e8afdeb8ae586765af4164463a804a5a41df4fe58ca8838ad57875a81f5983",
+      "size_bytes": 16112
     },
     "REVIEW.html": {
       "sha256": "5df02b6561851b98915c50c8422f41b7a67f7d7b162574cc3058fa63f0d7dcdf",
@@ -318,6 +318,10 @@
       "sha256": "042f0805c4b0a6271bdf7eb140d323581f1f7421fabd3113938c274b85b060d8",
       "size_bytes": 11983
     },
+    "docs/track_b/B8_RELEASE_CANDIDATE_3CFA693_20261029.md": {
+      "sha256": "b19c3a76a46def6dd5d7b2f8d174af2535c6c13fe134b0738b172fec816e43ff",
+      "size_bytes": 3660
+    },
     "docs/track_b/B8_RELEASE_CANDIDATE_EDF085C_20261029.md": {
       "sha256": "2bb383f04e0f4c56074566d894ef9ef9ccc501f39f01e81d6d9943dfc1c68182",
       "size_bytes": 2568
@@ -325,6 +329,10 @@
     "docs/track_b/B8_RELEASE_RECHECK_20261029.md": {
       "sha256": "399cedadfae41a2ea8e453402b7b71a8fd9348b47d8e5a9c5d41e676bfd81bd4",
       "size_bytes": 4738
+    },
+    "docs/track_b/B8_REVIEW_HANDOFF_3CFA693_20261029.md": {
+      "sha256": "78bce1a42bc5e0ad8700d8be58527691a2d83f5675871a8b78914a6adff4aeb2",
+      "size_bytes": 1197
     },
     "docs/track_b/B8_WORKTREE_ATOMIC_CLI_REPRODUCTION_20261029.md": {
       "sha256": "3339b2c8e54eae54dcaccd3a886b7ce810d1e6fc65476b535bf6bbb76f3415ff",
@@ -415,8 +423,8 @@
       "size_bytes": 4224
     },
     "docs/track_b/GATE_REGISTER.json": {
-      "sha256": "90a15a19990ca6caaabb6b760dbca27f60e64651674d02b7bb2ec11bcf732cf5",
-      "size_bytes": 78105
+      "sha256": "ead0038a10f2306443788c745d38504f9772edfc20a669401cf6275d897d7e02",
+      "size_bytes": 81143
     },
     "docs/track_b/GBF_BUILD_PLAN.md": {
       "sha256": "dfaa7af96b7b7c7da2e4864e4b9649bcf35509a096857cff99891150be071f2f",
@@ -483,8 +491,8 @@
       "size_bytes": 6139
     },
     "docs/track_b/PROJECT_DEFINITION.md": {
-      "sha256": "e009685d9d6e03e28ad6bebe9dc150f15819996f9591bf116310f786cdf7e63d",
-      "size_bytes": 64056
+      "sha256": "446a8e22088594e130f8fab339fdb5de67b7dc5dafbbfeb38babf80ad6693f23",
+      "size_bytes": 64004
     },
     "docs/track_b/PROTOCOL_LOCK.md": {
       "sha256": "d499304994443f99f525ff79f4f1233d5f49ae36b7222e5da16c1f716a302064",
