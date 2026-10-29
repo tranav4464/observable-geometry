@@ -16,6 +16,12 @@ ROOT = Path(__file__).resolve().parents[2]
 RELEASE_DIR = ROOT / "outputs/track_b/20261024_b8_release_checks"
 ARCHIVE_REPORT_DIR = ROOT / "outputs/track_b/20261024_b8_source_archive_tests"
 HANDOFF_DIR = ROOT / "reviewer_handoff/B8_Independent_Review_20261024"
+KNOWN_ARCHIVE_SKIP_REASONS = {
+    ("tests.test_track_b_gates.GateRegisterTests", "test_current_gate_register_has_complete_evidence_and_valid_order"):
+        "source-only distributions omit the repository evidence outputs",
+    ("tests.test_wsgzp_coregistration_audit", "test_fiducial_transform_is_not_treated_as_frame_validation"):
+        "Local WSGZP dataset is not available",
+}
 
 
 def digest(path: Path) -> str:
@@ -26,7 +32,7 @@ def git(*args: str) -> str:
     return subprocess.check_output(["git", *args], cwd=ROOT, text=True).strip()
 
 
-def test_counts(junit_path: Path) -> dict[str, int]:
+def test_results(junit_path: Path) -> tuple[dict[str, int], list[dict[str, str]]]:
     root = ET.parse(junit_path).getroot()
     suites = [root] if root.tag == "testsuite" else list(root.iter("testsuite"))
     total = sum(int(suite.attrib.get("tests", 0)) for suite in suites)
@@ -34,9 +40,33 @@ def test_counts(junit_path: Path) -> dict[str, int]:
         int(suite.attrib.get("failures", 0)) + int(suite.attrib.get("errors", 0))
         for suite in suites
     )
-    skipped = sum(int(suite.attrib.get("skipped", 0)) for suite in suites)
-    return {"passed": total - failed - skipped, "skipped": skipped,
-            "failed": failed, "total": total}
+    skipped_cases = []
+    for case in root.iter("testcase"):
+        skipped = case.find("skipped")
+        if skipped is not None:
+            skipped_cases.append({
+                "classname": case.attrib.get("classname", ""),
+                "name": case.attrib.get("name", ""),
+                "reason": skipped.attrib.get("message", "") or (skipped.text or ""),
+            })
+    skipped = len(skipped_cases)
+    return ({"passed": total - failed - skipped, "skipped": skipped,
+             "failed": failed, "total": total}, skipped_cases)
+
+
+def archive_skips_are_expected(skipped_cases: list[dict[str, str]]) -> bool:
+    # A local checkout may have some or all excluded data/evidence available,
+    # so any subset of the documented skips is valid. Unknown or duplicated
+    # skipped cases remain a release-check failure.
+    observed: dict[tuple[str, str], str] = {}
+    for case in skipped_cases:
+        test_id = (case["classname"], case["name"])
+        if test_id in observed or test_id not in KNOWN_ARCHIVE_SKIP_REASONS:
+            return False
+        if KNOWN_ARCHIVE_SKIP_REASONS[test_id] not in case["reason"]:
+            return False
+        observed[test_id] = case["reason"]
+    return True
 
 
 def run(command: list[str], cwd: Path, env: dict[str, str] | None = None) -> tuple[int, str]:
@@ -79,7 +109,7 @@ def main() -> None:
         [sys.executable, "-m", "pytest", "-q", f"--junitxml={workspace_xml}"], ROOT
     )
     workspace_log.write_text(workspace_output, encoding="utf-8")
-    workspace_results = test_counts(workspace_xml)
+    workspace_results, workspace_skips = test_results(workspace_xml)
     workspace_status = "PASS" if workspace_exit == 0 and workspace_results["failed"] == 0 else "FAIL"
     write_new(workspace_report, {
         "status": workspace_status,
@@ -88,6 +118,7 @@ def main() -> None:
         "python_version": sys.version.split()[0],
         "exit_code": workspace_exit,
         "result": workspace_results,
+        "skipped_tests": workspace_skips,
         "outputs_sha256": {"pytest_log": digest(workspace_log), "junit_xml": digest(workspace_xml)},
         "scope": "Full-workspace software correctness tests; no participant outcomes accessed by this test invocation.",
     })
@@ -120,15 +151,16 @@ def main() -> None:
         if not temp_xml.is_file():
             archive_log.write_text(archive_output, encoding="utf-8")
             raise SystemExit(f"source-archive pytest did not produce JUnit output; see {archive_log}")
-        archive_results = test_counts(temp_xml)
+        archive_results, archive_skips = test_results(temp_xml)
         archive_xml.write_bytes(temp_xml.read_bytes())
         archive_log.write_text(archive_output, encoding="utf-8")
 
+    expected_skips = archive_skips_are_expected(archive_skips)
     archive_status = (
         "PASS_SOURCE_ARCHIVE_TESTS_WITH_DOCUMENTED_SKIP"
-        if archive_exit == 0 and archive_results["failed"] == 0 and archive_results["skipped"] > 0
+        if archive_exit == 0 and archive_results["failed"] == 0 and expected_skips
         else "PASS_SOURCE_ARCHIVE_TESTS"
-        if archive_exit == 0 and archive_results["failed"] == 0
+        if archive_exit == 0 and archive_results["failed"] == 0 and archive_results["skipped"] == 0
         else "FAIL"
     )
     write_new(archive_report, {
@@ -142,11 +174,16 @@ def main() -> None:
         "test_environment": f"Extracted Git archive; executed with Python {sys.version.split()[0]} from the build environment; dependencies were not reinstalled into a fresh environment.",
         "exit_code": archive_exit,
         "result": archive_results,
+        "skipped_tests": archive_skips,
+        "expected_archive_skips": [
+            {"classname": classname, "name": name, "reason_contains": reason}
+            for (classname, name), reason in KNOWN_ARCHIVE_SKIP_REASONS.items()
+        ],
         "junit_sha256": digest(archive_xml),
         "pytest_log_sha256": digest(archive_log),
-        "interpretation": "Source tests only. Evidence-path integration checks may skip because the archive excludes local run outputs; the full-workspace strict gate validation is run separately.",
+        "interpretation": "Source tests only. The two explicitly named skips cover the excluded repository evidence outputs and the local WSGZP dataset; any different skip set fails the handoff check. The full-workspace strict gate validation is run separately.",
     })
-    if archive_exit != 0 or archive_results["failed"]:
+    if archive_status == "FAIL":
         raise SystemExit(f"source archive test failure; see {archive_log}")
 
     print(json.dumps({
@@ -156,6 +193,7 @@ def main() -> None:
         "workspace_results": workspace_results,
         "source_archive_report": archive_report.relative_to(ROOT).as_posix(),
         "source_archive_results": archive_results,
+        "source_archive_skipped_tests": archive_skips,
         "source_archive_sha256": archive_hash,
     }, indent=2))
 
