@@ -29,6 +29,19 @@ external reproduction/review are still required. The machine-readable runs
 are `outputs/track_b/20261024_b8_release_checks/test_run_9bfd375.json` and
 `outputs/track_b/20261024_b8_source_archive_tests/source_archive_test_run_9bfd375.json`.
 
+**Commit-bound candidate update, 29 October 2026:** the subsequent commit
+`db98529f4590bb7d9ce4ff6f31b977b29b56ac3a` passes 175/175 workspace tests
+and 173 source-archive tests with two documented skips. A `0.1.3.dev0` wheel
+built from its Git archive passes byte-level module/version/license checks,
+fresh isolated installation, and exact sealed sub-01 CLI output parity for
+40,980 ranked pairs. The wheel SHA-256 is
+`bb3c21a9955896bae5c8314a447559e1d685b42bd28f45eb5ddba2ce8cdddcb4`.
+Full commands, reports, and limits are in
+[`B8_COMMIT_BOUND_CANDIDATE_20261029.md`](B8_COMMIT_BOUND_CANDIDATE_20261029.md).
+This is release verification only. B8 remains open pending unaffiliated
+external review/reproduction; the results do not validate neural source
+recovery or novelty.
+
 ## Materials
 
 - `README.md` and `docs/ARCHITECTURE.md` for setup and interfaces.
