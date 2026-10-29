@@ -104,3 +104,20 @@ Please provide reviewer name, affiliation, relevant expertise, conflicts or prio
 - Barborica et al.'s simultaneous scalp–SEEG seizure-onset analysis is close prior art. The paper reports use of an MNI-template head model because scalp electrode coordinates were unavailable. EBRAINS indexes a versioned `v1` dataset record, but the exact file inventory and dataset-specific reuse terms were not verified; the paper's dataset site did not load during the metadata-only screen. It does not satisfy the participant-specific model contract for B2.
 - A user-supplied B2 review text recommends approval of the registered B2 computation only. It does not review B8. The supplied verifier digest is malformed, and the reviewer affiliation differs across supplied versions, so workspace evidence does not authenticate the named reviewer. Do not treat this text alone as unaffiliated external B8 review.
 - The 0.1.3.dev0 development wheel with SHA-256 `50793f8864d57089ea489bf142d8d377447f0409a66377b09ee57126a4b01c98` matches the current package modules and reproduces the sealed model-only output in a fresh environment. It was built from a modified, uncommitted worktree and is not a public release. The earlier two 0.1.2 wheel hashes are preserved as historical records and must not be conflated. The 167-test result likewise covers a modified worktree; an updated commit-bound source archive, final wheel/version decision, and unaffiliated outside review remain required for B8 closure. See `docs/track_b/B8_DEVELOPMENT_CANDIDATE_PARITY_20261029.md`.
+
+## 29 October 2026 release-candidate update
+
+The refreshed commit-bound candidate is documented in
+[`B8_RELEASE_RECHECK_20261029.md`](B8_RELEASE_RECHECK_20261029.md). Commit
+`d38ff42611c843dc650d5bf8982902176ac41ea4` passed 175/175 workspace tests
+and 173 source-archive tests, with two documented skips and zero failures.
+Its source-verified `0.1.3.dev0` wheel installed in a fresh Python 3.12
+environment and reproduced the sealed one-participant model-only result
+exactly. The check does not establish physiological validity or method
+novelty.
+
+**External reviewer action still needed:** independently obtain the exact
+commit and wheel identified in the recheck report, follow its reproduction
+commands, record the environment and any deviations, inspect claim boundaries,
+and provide a signed or otherwise attributable review. Do not treat prior
+project-associated review text as this independent B8 review.

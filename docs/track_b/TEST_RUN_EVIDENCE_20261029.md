@@ -154,3 +154,14 @@ This is not a measured EEG/SEEG validation, a participant-specific forward
 model validation, a test of calibration coverage, or evidence of method
 novelty. Algebraic fixtures are software tests only. The WSGZP signal-access
 gate remains closed; no result in this test report is a neural-data outcome.
+
+## Refreshed commit-bound release check on d38ff42
+
+The refreshed source snapshot and package candidate were checked from commit
+`d38ff42611c843dc650d5bf8982902176ac41ea4`. The workspace suite passed
+175/175; the extracted source archive passed 173 tests with two documented
+skips and zero failures. A fresh Python 3.12 installation of the commit-built
+`0.1.3.dev0` wheel reproduced the sealed sub-01 model-only CLI result exactly
+(40,980 ranked source pairs). This verifies software provenance and parity,
+not source truth, neural recovery, researcher decision benefit, or novelty.
+Full report: [`B8_RELEASE_RECHECK_20261029.md`](B8_RELEASE_RECHECK_20261029.md).
