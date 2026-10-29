@@ -1,6 +1,6 @@
 # Observable Geometry: TKS build handoff
 
-**Build:** Observable Geometry 0.1.3.dev0 (owner-accepted TKS snapshot at commit 58570b8; no stable package publication implied)
+**Build:** Observable Geometry 0.1.3.dev1 (owner-accepted TKS snapshot at commit 3c99ca1; no stable package publication implied)
 **Scope:** A traceable GBF reproduction workflow plus a separate, nominal, participant-model-conditional EEG source-pattern diagnostic.
 
 ## The problem and the tool
@@ -33,7 +33,7 @@ For a new model, the install and input contracts are in the repository [README](
 
 - B0–B3 passed at their declared, bounded scopes.
 - B4–B7 were explicitly pivoted or stopped after the proposed endpoints failed to support the intended neural-source or analyst-decision claims. These are documented outcomes, not hidden completed validations.
-- B8 passed on 30 October 2026 under owner-accepted AI reproducibility: fresh installation, 209 archive tests plus two local supplements, exact 40,980-pair replay and independent numerical calculation. External human review is deferred under a documented acceptance amendment. See [B8 decision](track_b/B8_PASS_20261030.md).
+- B8 passed on 30 October 2026 under owner-accepted AI reproducibility: fresh installation, 213 workspace tests and 211 archive tests with two expected skips, exact 40,980-pair replay and independent numerical calculation. External human review is deferred under a documented acceptance amendment. See [B8 decision](track_b/B8_PASS_20261030.md).
 
 ## What this build does not establish
 
@@ -49,4 +49,6 @@ These comments are useful outreach feedback, but they are not a formal B8 pass o
 
 ## Accepted TKS snapshot and next work
 
-The accepted snapshot is `58570b8`, version `0.1.3.dev0`. [B8 PASS](track_b/B8_PASS_20261030.md) records the owner's amended software acceptance criteria. External human reproduction, WSGZP geometry verification and scientific extension remain next-build work. A stable-version rebuild or public package release would require its own artifact checks; neither is implied by this snapshot acceptance.
+The accepted snapshot is `3c99ca1`, version `0.1.3.dev1`. [B8 PASS](track_b/B8_PASS_20261030.md) records the owner's amended software acceptance criteria. External human reproduction, WSGZP geometry verification and scientific extension remain next-build work. A stable-version rebuild or public package release would require its own artifact checks; neither is implied by this snapshot acceptance.
+
+Current maintenance verification: [remediation re-review](TKS_REMEDIATION_REVIEW_20261030.md). The original B8 acceptance artifact remains preserved; this update repairs provenance and packaging without changing numerical scores.

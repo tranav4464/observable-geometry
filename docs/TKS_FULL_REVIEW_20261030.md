@@ -1,5 +1,7 @@
 # Observable Geometry: full TKS build review
 
+**Historical findings: all three were subsequently addressed in [the remediation re-review](TKS_REMEDIATION_REVIEW_20261030.md).**
+
 Date: 30 October 2026. Reviewer: GPT-6 Astra through Codex, in the existing project chat. This is a same-host technical/product review with prior project involvement, not unaffiliated external review.
 
 Reviewed repository: `23de77fb310c324a20377e8bcfeb4943f597b73f`. Accepted numerical software: `58570b8738080efd6c94b7e44eb5d89f83343be9`, version 0.1.3.dev0. Reviewed download: `Observable_Geometry_TKS_20261030.zip`, SHA-256 `e1868d9e21bd40c5a6dc266b518b7ea9e545545e705faa14a450a52c23be70b6`.

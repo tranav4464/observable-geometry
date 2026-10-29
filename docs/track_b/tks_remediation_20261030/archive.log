@@ -1,0 +1,7 @@
+........................................................................ [ 33%]
+..............................................s......................... [ 67%]
+..............................................s......................    [100%]
+=========================== short test summary info ===========================
+SKIPPED [1] tests\test_track_b_gates.py:10: source-only distributions omit the repository evidence outputs; the full-workspace validator is run separately against the complete repository
+SKIPPED [1] tests\test_wsgzp_coregistration_audit.py:53: Local WSGZP dataset is not available
+211 passed, 2 skipped in 6.75s

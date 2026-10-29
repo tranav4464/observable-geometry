@@ -1,0 +1,16 @@
+Processing c:\users\tranav\onedrive\desktop\tks\observable_geometry\outputs\track_b\tks_remediation_20261030\source
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: observable-geometry
+  Building wheel for observable-geometry (pyproject.toml): started
+  Building wheel for observable-geometry (pyproject.toml): finished with status 'done'
+  Created wheel for observable-geometry: filename=observable_geometry-0.1.3.dev1-py3-none-any.whl size=50803 sha256=783fd2dce9eb4f424afbe1dd279173f376baedb62a1ee2017a49576d2f323ff8
+  Stored in directory: C:\Users\TRANAV\AppData\Local\Temp\pip-ephem-wheel-cache-npk9t7lp\wheels\86\80\d1\6488dff7a6aa0c189478c961b03fca15266836efb011de219d
+Successfully built observable-geometry
+
+[notice] A new release of pip is available: 25.0.1 -> 26.2.2
+[notice] To update, run: C:\Users\TRANAV\OneDrive\Desktop\TKS\observable_geometry\.venv\Scripts\python.exe -m pip install --upgrade pip

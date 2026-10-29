@@ -31,7 +31,7 @@ On the existing full workspace, use this previously verified wheel environment a
 ```powershell
 Set-Location 'C:\Users\TRANAV\OneDrive\Desktop\TKS\observable_geometry'
 $demoOutput = Join-Path $PWD ('outputs/track_b/tks_demo_' + (Get-Date -Format 'yyyyMMdd_HHmmss'))
-& .\outputs\track_b\astra_b8_audit_20261030\env\Scripts\observable-geometry.exe distinguish --bundle .\outputs\track_b\20261029T_atomic_cli_real_model_reproduction\model_export\model_bundle.npz --metadata .\outputs\track_b\20261029T_atomic_cli_real_model_reproduction\model_export\model_metadata.json --output $demoOutput --minimum-distance-mm 20 --top-k 5
+& .\outputs\track_b\tks_remediation_20261030\env\Scripts\observable-geometry.exe distinguish --bundle .\outputs\track_b\20261029T_atomic_cli_real_model_reproduction\model_export\model_bundle.npz --metadata .\outputs\track_b\20261029T_atomic_cli_real_model_reproduction\model_export\model_metadata.json --output $demoOutput --minimum-distance-mm 20 --top-k 5
 Get-Content (Join-Path $demoOutput 'summary.json')
 Import-Csv (Join-Path $demoOutput 'ranked_pairs.csv') | Select-Object -First 5
 ```
@@ -49,7 +49,7 @@ Expected model size: 8,196 sources, covariance rank 235, 40,980 ranked rows. Cha
 
 ## Verify the source and bundle
 
-The source archive is pinned to commit `58570b8`; its older status documents reflect that commit's history. Current acceptance is in the outer submission documents. The manifest lists SHA-256 hashes for all packaged files. After extracting the source, install pytest, h5py, MNE and nibabel in a virtual environment, set PYTHONPATH to its `src` folder and run `python -m pytest -q -ra`. The two archive skips are expected; a downloaded source archive does not include the private workspace evidence or WSGZP dataset.
+The source archive is pinned to commit `3c99ca1`; its older status documents reflect that commit's history. Current acceptance is in the outer submission documents. The manifest lists SHA-256 hashes for all packaged files. After extracting the source, install pytest, h5py, MNE and nibabel in a virtual environment, set PYTHONPATH to its `src` folder and run `python -m pytest -q -ra`. The two archive skips are expected; a downloaded source archive does not include the private workspace evidence or WSGZP dataset.
 
 ## Rebuild the submission
 

@@ -1,6 +1,10 @@
 # Observable Geometry: project definition
 
-## Accepted TKS snapshot, 30 October 2026
+## Current maintenance snapshot, 30 October 2026
+
+Version `0.1.3.dev1`, commit `3c99ca1`, repairs package provenance and the portable handoff. 213 workspace tests, 211 archive tests (two expected skips), fresh installation and exact 40,980-row replay passed. See [the re-review](../TKS_REMEDIATION_REVIEW_20261030.md). The earlier acceptance below is historical.
+
+## Original accepted TKS snapshot, 30 October 2026
 
 Commit `58570b8738080efd6c94b7e44eb5d89f83343be9`, version `0.1.3.dev0`, is accepted under [B8's owner-approved AI audit criterion](B8_PASS_20261030.md). Fresh installation, 209 archive tests plus two local supplements, and exact 40,980-pair replay passed. External human review remains deferred. The dated candidate notes below are historical; they do not override this acceptance. See the [submission overview](../TKS_SUBMISSION.md).
 
