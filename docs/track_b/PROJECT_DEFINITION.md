@@ -19,7 +19,21 @@ baselines on eligible held-out measured data. See the
 
 ### Latest evidence, 29 October 2026
 
-**Current exact-HEAD software verification:** commit `9a88bad1b0f9ff48fced1d352d5e36d1c0de4c89` passed **211/211 workspace tests** and **209 source-archive tests with two documented skips**. Its wheel passed all seven source/version/license checks, fresh Python 3.12.14 installation, and ten installation/provenance/access checks. The installed CLI exactly reproduced the sealed sub-01 model-only reference: all **40,980 ranked pairs**, score arrays, and summary metrics matched. See the [current exact-commit candidate report](B8_RELEASE_CANDIDATE_9A88BAD_20261029.md) and machine-readable evidence under [`20261029T_commit_release_9a88bad/`](../../outputs/track_b/20261029T_commit_release_9a88bad/). These checks establish reproducible software behavior for one model only, not physiological source recovery, calibrated uncertainty, decision benefit, population generalization, or novelty. The original 9a88 review ZIP had a stale scope page and has been superseded by the refreshed packet identified in the [handoff record](B8_REVIEW_HANDOFF_9A88BAD_20261029.md). B8 remains open pending unaffiliated external review and a release-version decision.
+**Current public software candidate, 29 October 2026:** commit
+`7d779cb2e6e47edcccfd6bf52eda63e6f626c730` passed 211/211 workspace tests,
+209 source-archive tests with two documented skips, fresh wheel/source
+provenance checks, Python 3.12.14 isolated installation, and exact CLI parity
+for all 40,980 ranked pairs on the sealed sub-01 model-only bundle. The
+candidate wheel SHA-256 is
+`bb82a6ec86ed7fbb4536d012abcd1ef63d1388804e8593e07f7a2a14d370b54d`.
+Detailed evidence and limits are in the
+[current B8 report](B8_RELEASE_CANDIDATE_7D779CB_20261029.md). This is
+software/package verification only. Two outreach reviews provide useful
+document feedback but do not meet the gate-specific independent clean-run
+review. B8 remains open pending that review and a recorded release-version
+decision.
+
+**Previous exact-HEAD candidate, 29 October 2026:** commit `9a88bad1b0f9ff48fced1d352d5e36d1c0de4c89` passed **211/211 workspace tests** and **209 source-archive tests with two documented skips**. It was superseded by the later 7d779cb documentation refresh and current package verification described above. Its evidence is retained in the [historical candidate report](B8_RELEASE_CANDIDATE_9A88BAD_20261029.md) and [`20261029T_commit_release_9a88bad/`](../../outputs/track_b/20261029T_commit_release_9a88bad/). The external-review bundle tied to 9a88bad is historical; use the current review handoff for the current candidate.
 
 The preceding 8c7e740 exact-commit package check is preserved as historical evidence in [its candidate report](B8_RELEASE_CANDIDATE_8C7E740_20261029.md); it is superseded by 9a88bad as the current exact-HEAD candidate.
 

@@ -33,8 +33,8 @@ For a new model, the install and input contracts are in the repository [README](
 
 - B0–B3 passed at their declared, bounded scopes.
 - B4–B7 were explicitly pivoted or stopped after the proposed endpoints failed to support the intended neural-source or analyst-decision claims. These are documented outcomes, not hidden completed validations.
-- The exact-commit 9a88bad candidate passed 211 workspace tests, 209 source-archive tests with two documented skips, package provenance checks, fresh-environment installation, and exact one-model CLI output replay. The source archive and wheel hashes are recorded in the [B8 candidate report](track_b/B8_RELEASE_CANDIDATE_9A88BAD_20261029.md).
-- The release candidate is not yet a final release. B8 remains open pending unaffiliated external review and a release-version decision; see the [review handoff](track_b/B8_REVIEW_HANDOFF_9A88BAD_20261029.md).
+- The current 7d779cb candidate passed 211 workspace tests, 209 source-archive tests with two documented skips, current wheel/source checks, isolated installation, and exact one-model CLI output replay. See the [current B8 verification report](track_b/B8_RELEASE_CANDIDATE_7D779CB_20261029.md).
+- The prototype is ready for inspection and outreach, but B8 is not formally closed. The two outreach reviews did not perform the required gate-specific independent review/reproduction, and no release version has been recorded. See the [current review handoff](track_b/B8_REVIEW_HANDOFF_7D779CB_20261029.md).
 
 ## What this build does not establish
 
