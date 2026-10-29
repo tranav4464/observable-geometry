@@ -1,6 +1,6 @@
 {
-  "created_utc": "2026-10-29T05:00:58.147959+00:00",
-  "file_count": 299,
+  "created_utc": "2026-10-29T05:47:30.347846+00:00",
+  "file_count": 302,
   "files": {
     ".gitignore": {
       "sha256": "f96cf8be73079a090f21c39fbca22ae1c23b7523034f7f588b650b589bf5c9d9",
@@ -307,8 +307,8 @@
       "size_bytes": 6576
     },
     "docs/track_b/B8_EXTERNAL_REVIEW_PACKET_20261024.md": {
-      "sha256": "f1bf201eacb93662d07f40834c5734d7407869bf3e1f4e59c66033916a7c73b2",
-      "size_bytes": 20072
+      "sha256": "984612535e1ae9c5c89951ef9466ea84e378c0e785f420c0127ddef3525f572f",
+      "size_bytes": 21903
     },
     "docs/track_b/B8_RELEASE_AUDIT_20261024.md": {
       "sha256": "042f0805c4b0a6271bdf7eb140d323581f1f7421fabd3113938c274b85b060d8",
@@ -333,6 +333,10 @@
     "docs/track_b/CALIBRATION_IDENTIFIABILITY_AUDIT_20261029.md": {
       "sha256": "9535dadd40fae621c244529d1eabf5fcaf504c3747f0cd32f338652a7b74eeb0",
       "size_bytes": 7695
+    },
+    "docs/track_b/CLOSE_PRIOR_ART_RECHECK_20261029.md": {
+      "sha256": "a1490f421e4cfaa4010ee78c963388bcc3c507a65fb310b4963752e1f1e93391",
+      "size_bytes": 7356
     },
     "docs/track_b/COG_PRE_SIGNAL_REVIEW_20261028.md": {
       "sha256": "e9e127a345aadedcfab2519b174e5cd1bf032f0e2b2d509d9df9af721f9b9cfc",
@@ -379,8 +383,8 @@
       "size_bytes": 19016
     },
     "docs/track_b/DISCOVERY_OUTCOME_REPORT_20261029.md": {
-      "sha256": "27de1380a9293905f8f8342de241705efba90ee6165a63f72dccd812d66af654",
-      "size_bytes": 12367
+      "sha256": "938ad9ba1f45f64e69b2e5818c483282174f474e104017ed162c473a6df599d8",
+      "size_bytes": 13323
     },
     "docs/track_b/DS004752_EFFECT_SENSITIVITY_20261029.md": {
       "sha256": "b72bca14770d30410a1573cec7d7c3b51e51d04630daa5627dd46c690bd69402",
@@ -403,8 +407,8 @@
       "size_bytes": 4224
     },
     "docs/track_b/GATE_REGISTER.json": {
-      "sha256": "7216d96621ee86bc8c2d59758eaa77034e73afaff2d89ecf20e27fcd88c06d6d",
-      "size_bytes": 69228
+      "sha256": "6c029a34bb36889fbe585c227bf782e8b32d7731d4fe307466fea63edd5e56fb",
+      "size_bytes": 71739
     },
     "docs/track_b/GBF_BUILD_PLAN.md": {
       "sha256": "dfaa7af96b7b7c7da2e4864e4b9649bcf35509a096857cff99891150be071f2f",
@@ -443,8 +447,8 @@
       "size_bytes": 66521
     },
     "docs/track_b/NOVELTY_RESUME_AUDIT_20261029.md": {
-      "sha256": "455638de4f0e27ffb6ea2027e6eaa427e681f3141d323ab0bb95f499d5424013",
-      "size_bytes": 6472
+      "sha256": "668b55f624dcf5cc6cda3a6c4fd53c275fbf25115b5d059fd08c588c7e9445c1",
+      "size_bytes": 7829
     },
     "docs/track_b/NOVELTY_ROUTE_AND_DATASET_PLAN_20261028.md": {
       "sha256": "70981deb2229febee3f414a72c54bac5160b0a0147f89ae43e7f811153070dea",
@@ -467,8 +471,8 @@
       "size_bytes": 6139
     },
     "docs/track_b/PROJECT_DEFINITION.md": {
-      "sha256": "4774034d618bd11790dcfc4bce95239c363399675b404a93594279d8f6be3b0e",
-      "size_bytes": 58359
+      "sha256": "893017209051ff76a07584484f8c08d5b3fc5a7d67bf9924f43edcaafd5905ba",
+      "size_bytes": 60850
     },
     "docs/track_b/PROTOCOL_LOCK.md": {
       "sha256": "d499304994443f99f525ff79f4f1233d5f49ae36b7222e5da16c1f716a302064",
@@ -535,8 +539,12 @@
       "size_bytes": 3352
     },
     "docs/track_b/WSGZP_METADATA_AUDIT_20261028.md": {
-      "sha256": "d30df7bea10639eb6b3b46e6fc7553d38fbd6359b01ad8b367254f4535249849",
-      "size_bytes": 12946
+      "sha256": "5871a98074c49ed26464c5a4b452dfdf6622505f3f3fdf6ea7a41268e1e839ff",
+      "size_bytes": 14739
+    },
+    "docs/track_b/WSGZP_METADATA_CONTRACT_RECHECK_20261029.md": {
+      "sha256": "dea279f3f9bd9b81caf98a6bab542860ce55ffff49a830bbd9acdfe29eb0f510",
+      "size_bytes": 7366
     },
     "docs/track_b/WSGZP_OVERLAY_QC_20261028.md": {
       "sha256": "504d4cebb30a754cbfb616c8c033e5e3fd8e4b600856cec736368a5e872d43f3",
@@ -559,8 +567,8 @@
       "size_bytes": 8044
     },
     "docs/track_b/WSGZP_UPSTREAM_COORDINATE_PIPELINE_AUDIT_20261029.md": {
-      "sha256": "71a199578d13174725bea976854eaec140065b6daa802320feeb745d57442f10",
-      "size_bytes": 9379
+      "sha256": "5c6aa25822630023fd53068355194a8002f4cdd1d461ea9c7e3ffb162f95c390",
+      "size_bytes": 13673
     },
     "examples/robust_audit_toy.json": {
       "sha256": "08c8fea3d9c416f6e58b8c3ee787cf2c1eaa82c8652fca190b671a4d59e40884",
@@ -795,8 +803,8 @@
       "size_bytes": 8434
     },
     "scripts/track_b/audit_wsgzp_extracted_metadata.py": {
-      "sha256": "e7765d5d0ef1890952dc8496847e50c79250d19fabfe76c0d3d793cf0c131354",
-      "size_bytes": 20017
+      "sha256": "18dfdb2dd8975d5008ac344dc6bef22b5d78ed5d33b9497600cdad9efc72eee6",
+      "size_bytes": 22893
     },
     "scripts/track_b/audit_wsgzp_net_geometry.py": {
       "sha256": "d40cb049e45d548487754cf9d40cc10b61c6226e74e65ecfbb9fc42e65af33ad",
@@ -925,6 +933,10 @@
     "scripts/track_b/validate_gate_register.py": {
       "sha256": "979be37debedc61c1e3ad844a10d9e6f3a9ea5d97a6099a6282dd7ca8924c679",
       "size_bytes": 937
+    },
+    "scripts/track_b/validate_wsgzp_coordinate_metadata.py": {
+      "sha256": "07ca9fd0728ab6295b574bbff6f6741d23bc3fc23260c0121c73c5d6dc6abcdd",
+      "size_bytes": 7760
     },
     "scripts/track_b/verify_b3_montage_sensitivity_reproduction.py": {
       "sha256": "1cf2a1dc01e49d975f3344c80f4cea42d57462f00e3a12f8997e5ddd6d755567",
@@ -1127,8 +1139,8 @@
       "size_bytes": 1472
     },
     "tests/test_track_b_distinguishability.py": {
-      "sha256": "41604f1678bd52d187a467c537745b14f614dcf8b0de954263c5d4c6b20545df",
-      "size_bytes": 2464
+      "sha256": "db3a58c8dfdf0ad58ab2e8ade20a09e6946a8e7c07fe79ce3a331842fe34be03",
+      "size_bytes": 4375
     },
     "tests/test_track_b_forward_error_budget.py": {
       "sha256": "dc8ea6068e5f1ac19be05b40b6a1183f25315c1dc4e5ef1c8f24362d15f81298",
@@ -1179,8 +1191,8 @@
       "size_bytes": 865
     },
     "tests/test_wsgzp_metadata_audit.py": {
-      "sha256": "d3ae2857d0eea8729a46b3a5148ae03b4a45ce3c130522bc0d99121996ed406f",
-      "size_bytes": 1195
+      "sha256": "2577fac87be122ed7085591e6e26862465e787939c18c528551f012221b0a869",
+      "size_bytes": 3797
     },
     "tests/test_wsgzp_net_geometry.py": {
       "sha256": "977e8b0d89ad4f22fed07b3ff655645f0d9a07b3489ad8c87d57fd336740254e",
