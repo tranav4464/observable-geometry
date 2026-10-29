@@ -11,7 +11,7 @@ import hashlib
 import json
 from pathlib import Path
 
-import mne
+from mne.transforms import apply_trans, get_ras_to_neuromag_trans
 import nibabel as nib
 import numpy as np
 
@@ -47,7 +47,7 @@ def make_t1w_to_head(fiducials_mm: dict[str, list[float]]) -> np.ndarray:
         raise ValueError("Fiducials must be finite 3-vectors in millimetres")
     if np.linalg.norm(rpa - lpa) < 0.04 or np.linalg.norm(nas - (lpa + rpa) / 2) < 0.04:
         raise ValueError("Fiducials are degenerate or implausibly close")
-    return mne.transforms.get_ras_to_neuromag_trans(nas, lpa, rpa)
+    return get_ras_to_neuromag_trans(nas, lpa, rpa)
 
 
 def audit_subject(root: Path, subject: str) -> dict:
@@ -69,9 +69,9 @@ def audit_subject(root: Path, subject: str) -> dict:
     fid = coords.get("AnatomicalLandmarkCoordinates", {})
     transform = make_t1w_to_head(fid)
     names, eeg_mm = load_tsv_xyz(electrode_path)
-    eeg_head_m = mne.transforms.apply_trans(transform, eeg_mm / 1000.0)
+    eeg_head_m = apply_trans(transform, eeg_mm / 1000.0)
     fid_order = ("NAS", "LPA", "RPA")
-    fid_head_m = mne.transforms.apply_trans(
+    fid_head_m = apply_trans(
         transform, np.asarray([fid[k] for k in fid_order], dtype=np.float64) / 1000.0
     )
 

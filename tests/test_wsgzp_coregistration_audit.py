@@ -8,7 +8,7 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts" / "track_b"))
 from audit_wsgzp_coregistration import make_t1w_to_head, resolve_subjects
-import mne
+from mne.transforms import apply_trans
 
 
 def test_fiducials_map_to_expected_head_axes():
@@ -18,7 +18,7 @@ def test_fiducials_map_to_expected_head_axes():
         "RPA": [63.0, -6.0, -22.0],
     }
     trans = make_t1w_to_head(fid)
-    head = mne.transforms.apply_trans(
+    head = apply_trans(
         trans, np.asarray([fid[k] for k in ("NAS", "LPA", "RPA")]) / 1000.0
     )
     assert head[0, 1] > 0
