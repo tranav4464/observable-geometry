@@ -17,6 +17,8 @@ Three existing read-only audits were run against the extracted package:
 2. `audit_wsgzp_electrode_fov.py` found 57 of 6,660 released electrode points outside the MRI voxel field of view, across 8 participants: sub-05 (2), sub-07 (1), sub-10 (1), sub-16 (1), sub-21 (4), sub-29 (11), sub-32 (29), and sub-33 (8). Most excursions are small, but sub-32 requires special handling because its MRI is cropped and 29 points are out of bounds.
 3. `audit_wsgzp_electrode_mri_proximity.py` compared point coordinates with voxels above a coarse MRI intensity threshold (10, sampled every second voxel). The median across participants of the per-participant median distance was 10.48 mm (range 1.96 to 43.04 mm); the SEEG contact positive-control median was 1.00 mm (range 0.96 to 1.07 mm). This is a triage signal only: the intensity threshold and downsampling do not form a scalp segmentation, so these distances must not be interpreted as registration errors or pass/fail values.
 
+The coarse proximity screen was also rerun at intensity thresholds 1 and 40, keeping the same MRI sampling step of 2. Across the 36 participants, the median of participant-level median distances was 10.41 mm (range 1.74–43.04 mm) at threshold 1, 10.48 mm (1.96–43.04 mm) at threshold 10, and 10.83 mm (2.92–43.67 mm) at threshold 40. `sub-32` was the only participant above 20 mm at all three thresholds; `sub-25` remained lowest. This shows the coarse outlier ranking is not sensitive to these three intensity cutoffs. It does **not** validate the ranking anatomically: all three runs use the same non-scalp tissue thresholding method and qform assumption. The JSON output SHA-256 values are `D6F522C5E9C179A60D85377FEE91FF0384473EF40918B92C0278C7668A08E314` (threshold 1), `E6B3B9D4EB8080B6155FC0B82553B3E9870CC82CE02916A34F1F12A0B3D37F80` (threshold 10), and `BAEC8DE7F4A938E3D9A0B1D9975A3F8BFECC1BE0AA19B4114DF573A3ADF51F65` (threshold 40). The full per-electrode report is local, ignored run evidence.
+
 The screens support a plausible coordinate orientation and identify participants/points that need inspection. They do not prove that electrodes sit on the correct participant's scalp. In particular, a coordinate can be inside an MRI's field of view while being anatomically misplaced; likewise, fiducial axis order is only a weak sanity check.
 
 ## Verification status
@@ -41,6 +43,10 @@ $out = "outputs\track_b\wsgzp_geometry_recheck"
   --dataset-root $dataset --output "$out\fov_screen.json"
 .\.venv\Scripts\python.exe scripts\track_b\audit_wsgzp_electrode_mri_proximity.py `
   --dataset-root $dataset --output "$out\proximity_screen.json"
+.\.venv\Scripts\python.exe scripts\track_b\audit_wsgzp_electrode_mri_proximity.py `
+  --dataset-root $dataset --threshold 1 --output "$out\proximity_threshold1.json"
+.\.venv\Scripts\python.exe scripts\track_b\audit_wsgzp_electrode_mri_proximity.py `
+  --dataset-root $dataset --threshold 40 --output "$out\proximity_threshold40.json"
 ```
 
 The executed evidence is in the ignored local directory `outputs/track_b/20261029_wsgzp_geometry_recheck/`. The compact coordinate report SHA-256 is `34c7ecd9dd437775a9677ed6a57edfbe8c3c095ce577968027edcab2ac90a512`. The full report records per-participant MRI, electrode TSV, and sidecar hashes; it contains coordinates and should remain in the local audit outputs rather than being published unnecessarily. The full audit explicitly records that signal samples were not accessed.
