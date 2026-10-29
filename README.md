@@ -30,16 +30,16 @@ Python 3.12 or later is required. From the project directory:
 py -3.12 -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
-python -m pip install -e ".[test]"
+python -m pip install -e ".[test,research-audit]"
 ```
 
-Run the focused correctness tests:
+Run the full workspace correctness and audit tests:
 
 ```powershell
 python -m pytest -q
 ```
 
-In a full research workspace, the gate-register integration test also checks that every cited evidence path exists. A source-only archive intentionally omits those local run outputs, so that one integration test is skipped there; run `python scripts/track_b/validate_gate_register.py` only from the complete workspace to validate the evidence paths.
+The `research-audit` extra supplies the HDF5, MRI and MNE dependencies used by repository audit tests; these are not required to install or use the researcher-facing CLI. In a full research workspace, the gate-register integration test also checks that every cited evidence path exists. A source-only archive intentionally omits those local run outputs, so that integration test is skipped there; run `python scripts/track_b/validate_gate_register.py` only from the complete workspace to validate the evidence paths.
 
 The full research workspace also contains local dataset files, ignored build outputs, and the pinned upstream GBFs checkout. Those files are not included in a clean source installation. The Localize-MI data have a non-commercial share-alike license and must not be redistributed with this package. Superseded WBEN and synthetic-signal code is retained only under `archive/historical_wben/`; it is excluded from the installed package and normal test suite. Follow each dataset's current terms and citation instructions before acquiring or using it.
 
