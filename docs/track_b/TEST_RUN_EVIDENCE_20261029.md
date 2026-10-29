@@ -132,6 +132,22 @@ record is
 [`outputs/track_b/20261029T_release_candidate_013d/FINAL_VALIDATION_SESSION.md`](../../outputs/track_b/20261029T_release_candidate_013d/FINAL_VALIDATION_SESSION.md).
 The worktree is dirty, so this evidence is explicitly not commit-bound.
 
+## Commit-bound release-runner hardening
+
+Commit `9bfd375b20b1d2f1318904551f5a341977b68982` includes tests that ensure
+the source-archive release runner accepts only specifically documented
+environmental skips, including valid subsets, and rejects unexpected skips or
+reasons. The full committed workspace passed **173/173 tests**. A Git archive
+of the same commit passed **171 tests, skipped 2 documented cases, and had no
+failures**. The skipped checks require repository evidence outputs omitted
+from the source archive and the local WSGZP dataset, respectively. The
+machine-readable reports are
+[`workspace run`](../../outputs/track_b/20261024_b8_release_checks/test_run_9bfd375.json)
+and
+[`source archive run`](../../outputs/track_b/20261024_b8_source_archive_tests/source_archive_test_run_9bfd375.json).
+This validates the release runner and source snapshot, not scientific claims
+or a clean-built wheel.
+
 ## What this does not establish
 
 This is not a measured EEG/SEEG validation, a participant-specific forward

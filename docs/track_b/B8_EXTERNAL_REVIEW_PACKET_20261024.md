@@ -16,6 +16,19 @@ reproduces the sealed model-only output; it remains an unreleased worktree
 candidate. The 167-test worktree result is also not commit-bound. An outside
 review requires a clean committed source snapshot and a rebuilt final wheel.
 
+**Commit-bound update, 29 October 2026:** commit
+`9bfd375b20b1d2f1318904551f5a341977b68982` passes the full workspace suite
+(173 passed, 0 skipped) and the extracted source-archive suite (171 passed,
+2 documented skips, 0 failed). The skips are limited to the full-workspace
+evidence-path integration test, whose outputs are intentionally excluded from
+the source archive, and the WSGZP audit that requires the local dataset. The
+release runner now accepts only a subset of these named skips with matching
+reasons; unknown or duplicated skips fail. This closes the stale-skip-count
+ambiguity, but does not close B8: a commit-bound wheel rebuild and unaffiliated
+external reproduction/review are still required. The machine-readable runs
+are `outputs/track_b/20261024_b8_release_checks/test_run_9bfd375.json` and
+`outputs/track_b/20261024_b8_source_archive_tests/source_archive_test_run_9bfd375.json`.
+
 ## Materials
 
 - `README.md` and `docs/ARCHITECTURE.md` for setup and interfaces.
@@ -40,7 +53,7 @@ review requires a clean committed source snapshot and a rebuilt final wheel.
 - `scripts/track_b/export_sealed_model_bundle.py`, `src/observable_geometry/cli.py`, and `src/observable_geometry/track_b/distinguishability.py` for code review.
 - `scripts/track_b/run_b8_release_tests.py` and `scripts/track_b/build_b8_reviewer_handoff.py` for commit-bound workspace/archive tests and the clean-commit, hash-verified handoff build procedure. The archive-test runner explicitly verifies that imports resolve inside the extracted snapshot.
 - `outputs/track_b/20261024_b8_release_checks/clean_install_parity.json` for the final wheel-based reproduction, license-metadata check, and confirmation that archived simulator modules are absent; the final clean-environment outputs are under `outputs/track_b/20261024_b8_export_cli_clean_env_v4/`.
-- `outputs/track_b/20261024_b8_source_archive_tests/` for the extracted source-only handoff check, including preserved failed attempts and the commit-bound run report matching the packaged source commit. The latest completed run passes 88 workspace tests; the source archive passes 87 tests and records one documented skip because local run evidence is intentionally excluded. The handoff builder verifies that the workspace and archive reports match the exact packaged commit and source-archive hash.
+- `outputs/track_b/20261024_b8_source_archive_tests/` for extracted source-only handoff checks, including preserved failed attempts and commit-bound reports. Earlier 88/87-test counts are historical. The latest report for commit `9bfd375` records 173 workspace passes and 171 archive passes with exactly two documented skips; the handoff builder binds reports to the exact packaged commit and source-archive hash.
 - `outputs/track_b/20261024_b8_release_checks/release_artifacts/observable_geometry-0.1.2-py3-none-any.whl` for the distributable BSD-3-Clause wheel (SHA-256 `dc8b241e0320c901d98cf65dc626c8d1131c2f2b6caae6a4bb51b916cce02100`). The superseded 0.1.1 stale-build failure is preserved separately and is not the release candidate.
 - `docs/track_b/PROJECT_DEFINITION.md` for the current build target and claim boundary, including the distinction between a software reproduction, a nominal model-based diagnostic, and empirical validation.
 - `docs/track_b/DISCOVERY_OUTCOME_REPORT_20261029.md`, `docs/track_b/TAIL_CLOSED_NOVELTY_FALSIFICATION_20261029.md`, and `docs/track_b/TAIL_CLOSED_RELATIVE_FRONTIER_20261029.md` for the latest candidate-method falsification, matched-subspace comparisons, and explicit no-novelty boundary. The relative-margin selector optimizes its declared fixed-grid objective, but no distinct algorithmic or decision advantage is established.
