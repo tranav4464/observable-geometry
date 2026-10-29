@@ -171,3 +171,23 @@ metadata are unchanged through 0d54fe0. Full details are in
 
 B8 still requires an attributable independent outside review/reproduction.
 None of these software checks establishes neural source recovery or novelty.
+
+## Current wheel and review bundle: edf085c
+
+The exact-commit `0.1.3.dev0` wheel for
+`edf085c07b08d3681657f164a0a9e3bb6a5ecf03` passed source, license, version,
+fresh-install, model-only CLI parity, and access-manifest checks. Its SHA-256
+is `eae1bf92e97dfb7e1ae3e2239ea4f5dfc43b6aa92127274e0904d42d72162dc5`. The
+fresh installed CLI reproduced 40,980 ranked pairs and all saved score arrays
+exactly on the sealed sub-01 model-only bundle. A current reviewer bundle is
+available at
+`reviewer_handoff/B8_Independent_Review_20261029_edf085c_v2.zip` (SHA-256
+`977a4ede5fdeabc1bec4d9f8a95edbe02102c10052a106f457ca56c277b1964d`). This
+v2 bundle supersedes the initial v1 package. It contains no dataset or model
+arrays, so a reviewer needs authorized access to
+those artifacts to replay the participant-specific output. See
+[`B8_RELEASE_CANDIDATE_EDF085C_20261029.md`](B8_RELEASE_CANDIDATE_EDF085C_20261029.md).
+
+This package check does not close B8 or support neural source recovery or a
+novel-method claim. An attributable independent review/reproduction and a
+release-version decision remain outstanding.

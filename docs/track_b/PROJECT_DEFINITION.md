@@ -44,6 +44,15 @@ passed source-manifest verification (302 files), 181/181 workspace tests, and
 commands, package-parity limitation, and remaining B8 conditions are recorded
 in the [commit-bound recheck](B8_COMMIT_BOUND_RECHECK_20261029_0D54FE0.md).
 
+**Exact-commit package refresh, 29 October 2026:** commit
+`edf085c07b08d3681657f164a0a9e3bb6a5ecf03` now has a wheel built from its Git
+archive, verified against all 18 package modules and project metadata, and
+installed into a fresh Python 3.12.14 environment. The installed CLI exactly
+reproduced the one-model reference output (40,980 ranked pairs); the access
+audit confirms model-array-only access. A hash-verified, data-free external
+review bundle is prepared. Details and claim limits are in the
+[current B8 candidate report](B8_RELEASE_CANDIDATE_EDF085C_20261029.md).
+
 The same working-tree CLI also reproduced the prior clean-wheel output exactly
 on the sealed model-only input: 40,980 ranked pairs, every score array and all
 summary metrics matched. This confirms that the output-publication change did

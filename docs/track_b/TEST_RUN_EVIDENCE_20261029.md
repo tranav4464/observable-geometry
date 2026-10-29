@@ -189,3 +189,16 @@ WSGZP audit; neither was skipped in the full workspace. Reports are listed in
 [`B8_COMMIT_BOUND_RECHECK_20261029_0D54FE0.md`](B8_COMMIT_BOUND_RECHECK_20261029_0D54FE0.md).
 This is software release evidence only. It does not establish physiological
 source recovery, researcher decision benefit, or method novelty.
+
+## Exact-commit wheel and review bundle on edf085c
+
+The `0.1.3.dev0` wheel built from commit
+`edf085c07b08d3681657f164a0a9e3bb6a5ecf03` passed all seven wheel-source
+checks, fresh Python 3.12.14 installation, and all ten installed-package and
+model-only parity checks. The installed command reproduced the 40,980-pair
+reference exactly. The wheel SHA-256 is
+`eae1bf92e97dfb7e1ae3e2239ea4f5dfc43b6aa92127274e0904d42d72162dc5`.
+The data-free review bundle and its hash are recorded in
+[`B8_RELEASE_CANDIDATE_EDF085C_20261029.md`](B8_RELEASE_CANDIDATE_EDF085C_20261029.md).
+This remains package parity on one model, not measured source recovery or a
+method-advantage result.

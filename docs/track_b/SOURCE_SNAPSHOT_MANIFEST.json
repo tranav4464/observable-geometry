@@ -1,6 +1,6 @@
 {
-  "created_utc": "2026-10-29T05:49:09.804381+00:00",
-  "file_count": 303,
+  "created_utc": "2026-10-29T05:54:37.509748+00:00",
+  "file_count": 304,
   "files": {
     ".gitignore": {
       "sha256": "f96cf8be73079a090f21c39fbca22ae1c23b7523034f7f588b650b589bf5c9d9",
@@ -311,12 +311,16 @@
       "size_bytes": 6576
     },
     "docs/track_b/B8_EXTERNAL_REVIEW_PACKET_20261024.md": {
-      "sha256": "3e6e83fa34e903291385b73f21abe1e08cdb2d926f46e9a1c5a16b5ecac3ae50",
-      "size_bytes": 22861
+      "sha256": "007fa833eb41b156651dfeede36fb23445da5164190ee8cd20e3264bc01e4d91",
+      "size_bytes": 23985
     },
     "docs/track_b/B8_RELEASE_AUDIT_20261024.md": {
       "sha256": "042f0805c4b0a6271bdf7eb140d323581f1f7421fabd3113938c274b85b060d8",
       "size_bytes": 11983
+    },
+    "docs/track_b/B8_RELEASE_CANDIDATE_EDF085C_20261029.md": {
+      "sha256": "2bb383f04e0f4c56074566d894ef9ef9ccc501f39f01e81d6d9943dfc1c68182",
+      "size_bytes": 2568
     },
     "docs/track_b/B8_RELEASE_RECHECK_20261029.md": {
       "sha256": "399cedadfae41a2ea8e453402b7b71a8fd9348b47d8e5a9c5d41e676bfd81bd4",
@@ -411,8 +415,8 @@
       "size_bytes": 4224
     },
     "docs/track_b/GATE_REGISTER.json": {
-      "sha256": "c503288a5d492c2ef41b705418f7a8cb8d357c18ec064e43365773cda9fcbb5c",
-      "size_bytes": 73198
+      "sha256": "7a873e28b6f874e7e739f3686f2862f41454548f93d6c41c016915fed8cca503",
+      "size_bytes": 75494
     },
     "docs/track_b/GBF_BUILD_PLAN.md": {
       "sha256": "dfaa7af96b7b7c7da2e4864e4b9649bcf35509a096857cff99891150be071f2f",
@@ -475,8 +479,8 @@
       "size_bytes": 6139
     },
     "docs/track_b/PROJECT_DEFINITION.md": {
-      "sha256": "51064123de65597c025a09450b29d496ec1963baed860d15a03f7d37875acc2b",
-      "size_bytes": 61259
+      "sha256": "e8b1a0cf860af017361fca2577aa2eb9327c7d55df7177e2ee405b0867e48e95",
+      "size_bytes": 61845
     },
     "docs/track_b/PROTOCOL_LOCK.md": {
       "sha256": "d499304994443f99f525ff79f4f1233d5f49ae36b7222e5da16c1f716a302064",
@@ -507,8 +511,8 @@
       "size_bytes": 7998
     },
     "docs/track_b/TEST_RUN_EVIDENCE_20261029.md": {
-      "sha256": "35dce022f367dc0cfbc6bac4c834f501804efe3ca7e180e1980af3802e553c32",
-      "size_bytes": 10918
+      "sha256": "8f6cdc46f17c2824e3640bd312a0bbece3943fa562fc6f60179100a94620f740",
+      "size_bytes": 11604
     },
     "docs/track_b/TRACK_B_AUTONOMOUS_BUILD_PROMPT.md": {
       "sha256": "280a1015e68a357bcd3c80cee163225d0f1498179a01553136d18d5e1afc2ef3",
