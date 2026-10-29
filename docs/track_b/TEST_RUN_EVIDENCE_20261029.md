@@ -176,3 +176,16 @@ installation and access-manifest checks passed. The wheel SHA-256 is
 `e81af2356c3856d0d71bd287d69482919b614bdbf722cbcfa660ccc2c425227f`. This is
 model-only software parity, not neural source validation. Full details are in
 [`B8_RELEASE_RECHECK_20261029.md`](B8_RELEASE_RECHECK_20261029.md).
+
+## Source-manifest and release check on 0d54fe0
+
+Commit `0d54fe09b5ee08c8ffefb72197f737e99987c585` passed the source-only
+manifest verifier for 302 files, the full workspace suite (181 passed, 0
+skipped, 0 failed), and the extracted Git archive suite (179 passed, 2
+documented skips, 0 failed). The source archive SHA-256 is
+`d329741b0a4fd0f32061b16d2c89d3139e94c744fa2f704df246b1e7065da91c`. The
+two skips are the repository evidence-path gate test and the dataset-dependent
+WSGZP audit; neither was skipped in the full workspace. Reports are listed in
+[`B8_COMMIT_BOUND_RECHECK_20261029_0D54FE0.md`](B8_COMMIT_BOUND_RECHECK_20261029_0D54FE0.md).
+This is software release evidence only. It does not establish physiological
+source recovery, researcher decision benefit, or method novelty.

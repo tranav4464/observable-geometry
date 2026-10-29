@@ -38,6 +38,12 @@ physiology or novelty, and B4–B7 remain pivoted while B8 remains open for
 outside review. The earlier atomic-CLI and package parity runs remain recorded
 in [the historical test evidence](TEST_RUN_EVIDENCE_20261029.md).
 
+**Commit-bound refresh, 29 October 2026:** commit `0d54fe09b5ee08c8ffefb72197f737e99987c585`
+passed source-manifest verification (302 files), 181/181 workspace tests, and
+179 source-archive tests with two documented skips. The source archive hash,
+commands, package-parity limitation, and remaining B8 conditions are recorded
+in the [commit-bound recheck](B8_COMMIT_BOUND_RECHECK_20261029_0D54FE0.md).
+
 The same working-tree CLI also reproduced the prior clean-wheel output exactly
 on the sealed model-only input: 40,980 ranked pairs, every score array and all
 summary metrics matched. This confirms that the output-publication change did

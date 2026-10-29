@@ -154,3 +154,20 @@ The external reviewer should use the exact wheel/source pair identified there
 and report that the package parity was built from 1e83192 while the handoff
 packet is on c0871f8; the intervening commits changed documentation and
 traceability only.
+
+## Later commit-bound software recheck: 0d54fe0
+
+The source and test updates in commit
+`0d54fe09b5ee08c8ffefb72197f737e99987c585` passed source-manifest verification
+for 302 files, the full workspace suite (181/181), and the extracted source
+archive suite (179 passed, 2 documented skips, 0 failures). The source archive
+hash is
+`d329741b0a4fd0f32061b16d2c89d3139e94c744fa2f704df246b1e7065da91c`. The
+added metadata audit utility and cross-API regression are therefore included
+in a clean tested source snapshot. The earlier fresh-wheel parity remains tied
+to 1e83192 because no wheel was rebuilt in this recheck; `src/` and package
+metadata are unchanged through 0d54fe0. Full details are in
+[`B8_COMMIT_BOUND_RECHECK_20261029_0D54FE0.md`](B8_COMMIT_BOUND_RECHECK_20261029_0D54FE0.md).
+
+B8 still requires an attributable independent outside review/reproduction.
+None of these software checks establishes neural source recovery or novelty.
