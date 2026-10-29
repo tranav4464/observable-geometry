@@ -19,24 +19,30 @@ baselines on eligible held-out measured data. See the
 
 ### Latest evidence, 29 October 2026
 
-**Software verification update, 29 October 2026:** the latest fresh full
-working-tree suite passes 186 tests, including the geometry metadata audit
-regressions. The read-only gate-register validator passes with 330 registered
-evidence paths. A sample-free BIDS validation follow-up confirmed that the WSGZP scalp
-EEG coordinate sidecars use a coordinate-system keyword rejected by the
-applicable BIDS 1.6.0 contract; this is metadata nonconformance, not proof of
-anatomical misregistration. Exact commands, environment, hashes, validation
-scope, and data findings are recorded in the [WSGZP metadata-contract
-recheck](WSGZP_METADATA_CONTRACT_RECHECK_20261029.md).
-The latest uncommitted working-tree validation is recorded in
-[`20261029T_publication_quality_rerun_002/SESSION.md`](../../outputs/track_b/20261029T_publication_quality_rerun_002/SESSION.md);
-it supplements but does not replace the commit-bound B8 wheel and archive runs.
-The current run, including its JUnit XML and gate report, is recorded in
-[`20261029T_publication_quality_rerun_003/`](../../outputs/track_b/20261029T_publication_quality_rerun_003/).
-These are software and evidence-index checks only; they do not validate source
-physiology or novelty, and B4–B7 remain pivoted while B8 remains open for
-outside review. The earlier atomic-CLI and package parity runs remain recorded
-in [the historical test evidence](TEST_RUN_EVIDENCE_20261029.md).
+**Software verification update, 29 October 2026:** commit-bound suite at
+`199a39c21058b05d45d10e703117a9e38b5089d4` passes **211 tests** (0 failures,
+4.49 s). The read-only gate-register validator passes
+with 341 evidence paths: B-1/B0/B1/B2/B3 are PASS, B4–B7 are PIVOT, and B8 is
+IN_PROGRESS. The source snapshot at this commit separately passes its
+315-file integrity verification. The JUnit XML and gate report are recorded
+under [`20261029T_current_quality_audit/`](../../outputs/track_b/20261029T_current_quality_audit/);
+the JUnit SHA-256 is
+`e4d5221120c787326a06172512a4be32c3031372b7ec1556102473e1f2b1d465`.
+The gate report SHA-256 is
+`738bae2129309c45d34ecf04eb2c0f882f1b8fb2fa4f456f4ccd40f446035440`.
+These checks cover software behavior and evidence-path integrity only; they do
+not validate source physiology, novelty, or WSGZP registration. B4–B7 remain
+pivoted and B8 remains open for outside review.
+
+An earlier working-tree run at commit `cfb53e8` passed 186 tests and checked
+330 evidence paths; it is superseded by the 211-test run above. The WSGZP
+sample-free BIDS validation follow-up confirmed that the scalp EEG coordinate
+sidecars use a coordinate-system keyword rejected by the applicable BIDS
+1.6.0 contract; this is metadata nonconformance, not proof of anatomical
+misregistration. Exact commands and findings are in the [WSGZP
+metadata-contract recheck](WSGZP_METADATA_CONTRACT_RECHECK_20261029.md). The
+earlier atomic-CLI and package-parity runs remain recorded in [the historical
+test evidence](TEST_RUN_EVIDENCE_20261029.md).
 
 **Commit-bound refresh, 29 October 2026:** commit `0d54fe09b5ee08c8ffefb72197f737e99987c585`
 passed source-manifest verification (302 files), 181/181 workspace tests, and
