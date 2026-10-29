@@ -19,9 +19,9 @@ I then built a second, explicitly approximate outer-head envelope at full resolu
 - The cohort aggregate changes little with threshold, but participant-specific results are not uniformly stable: sub-25's median shifted by 5.34 mm and sub-34's by 2.69 mm between cutoffs `>1` and `>40`. Therefore the cohort-level stability cannot be used to certify each participant.
 - At cutoff `>10`, the median distances were largest for sub-32 (38.39 mm) and sub-22 (16.19 mm). The NAS fiducial for sub-32 was 17.4 mm from this approximate envelope, versus 0.5 mm for each ear fiducial; the cropped scan is not adequate for whole-cap QC.
 
-The threshold-screen details are in [outer_envelope_screen.json](../../outputs/track_b/20261029_independent_wsgzp_geometry_check_001/outer_envelope_screen.json), SHA-256 `F3958EF9772E65F82D80E9AAC33B529A6CF509E1B96B01EC65D5E185A52F7722`. No universal pass/fail tolerance was found in the sources reviewed, so none was invented.
+The threshold-screen details are in the local, ignored artifact `outputs/track_b/20261029_independent_wsgzp_geometry_check_001/outer_envelope_screen.json`, SHA-256 `F3958EF9772E65F82D80E9AAC33B529A6CF509E1B96B01EC65D5E185A52F7722`. This participant-level QC file and the MRI overlay are intentionally not included in GitHub. The aggregate results and hashes are recorded here. No universal pass/fail tolerance was found in the sources reviewed, so none was invented.
 
-The fresh machine-readable result is [geometry_check.json](../../outputs/track_b/20261029_independent_wsgzp_geometry_check_001/geometry_check.json), SHA-256 `1EA96031938D5F8F6DA55C23D47B929144C16CB35DD74D3FB5DC6039F5D83F5B`. The illustrative overlay is [sub25_orthogonal_overlay.png](../../outputs/track_b/20261029_independent_wsgzp_geometry_check_001/sub25_orthogonal_overlay.png), SHA-256 `A2DF76042995679F4109776922B455E396A9459056A8FCA4B1A8EAAD89642214`.
+The first machine-readable result is the local, ignored artifact `outputs/track_b/20261029_independent_wsgzp_geometry_check_001/geometry_check.json`, SHA-256 `1EA96031938D5F8F6DA55C23D47B929144C16CB35DD74D3FB5DC6039F5D83F5B`. The illustrative local overlay is `outputs/track_b/20261029_independent_wsgzp_geometry_check_001/sub25_orthogonal_overlay.png`, SHA-256 `A2DF76042995679F4109776922B455E396A9459056A8FCA4B1A8EAAD89642214`.
 
 ## What the literature establishes
 
