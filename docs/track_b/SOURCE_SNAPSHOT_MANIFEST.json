@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-10-29T07:46:50.052291+00:00",
+  "created_utc": "2026-10-29T07:47:39.663419+00:00",
   "file_count": 318,
   "files": {
     ".gitignore": {
@@ -427,8 +427,8 @@
       "size_bytes": 4224
     },
     "docs/track_b/GATE_REGISTER.json": {
-      "sha256": "1689546ec67d99df839cc7f760e23172075d1eeb818a5957f1da4825cf8e5c04",
-      "size_bytes": 83435
+      "sha256": "ad005319aa0cda7d48176a9c32e3c9d16427a7b582d7ef128e99e3b7128cd2c3",
+      "size_bytes": 83639
     },
     "docs/track_b/GBF_BUILD_PLAN.md": {
       "sha256": "dfaa7af96b7b7c7da2e4864e4b9649bcf35509a096857cff99891150be071f2f",
