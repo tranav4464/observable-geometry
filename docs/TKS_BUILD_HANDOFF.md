@@ -1,13 +1,15 @@
 # Observable Geometry: TKS build handoff
 
 **Build:** Observable Geometry 0.1.3.dev0 (unreleased development candidate)  
-**Scope:** GBF reproduction workflow and a nominal, participant-model-conditional EEG source-pattern diagnostic.
+**Scope:** A traceable GBF reproduction workflow plus a separate, nominal, participant-model-conditional EEG source-pattern diagnostic.
 
 ## The problem and the tool
 
 EEG source imaging estimates brain activity from voltages recorded at the scalp. Different candidate source locations can produce similar predicted scalp patterns under a particular head model. Observable Geometry makes that model-based similarity inspectable: given a forward model, sensor covariance, source coordinates, and metadata, it ranks spatially separated source pairs by their normalized, noise-whitened similarity.
 
 The intended use is a **pre-interpretation model audit**. A researcher can ask whether the supplied forward model predicts clearly different scalp patterns for two candidate locations before treating a source estimate as spatially specific. The answer is conditional on the supplied model, channel order, reference, covariance, source orientations, and candidate source family.
+
+The pairwise `distinguish` diagnostic is **separate from the GBF inverse estimator**. It accepts a sensor-by-candidate-pattern leadfield and compares its columns; it does not construct GBF patches or estimate active sources. In the sealed Localize-MI demonstration, columns represent fixed-orientation cortical source vertices. A caller may supply another declared source-pattern family, but must document how those columns were constructed. The diagnostic reports pair rankings and scores, not an inverse solution or a calibrated decision threshold.
 
 ## A short demonstration
 
@@ -39,6 +41,12 @@ For a new model, the install and input contracts are in the repository [README](
 It does not establish endogenous neural-source recovery, calibrated localization uncertainty, improved researcher decisions, population generalization, clinical utility, or a novel mathematical method. The normalized whitened similarity and underlying constrained-fitting ideas have substantial prior art. Current evidence does not show a distinct advantage over direct constrained fitting or established resolution methods.
 
 The ds004752 real-recording benchmark is a separate exploratory scalp-to-intracranial prediction result, not validation of source-map recovery; its average advantage was small and uncertain. Localize-MI results concern a stimulation pulse artifact, not endogenous neural activity. WSGZP's participant-specific scalp-electrode-to-MRI registration remains unverified, so WSGZP source analysis is deferred until that geometry is validated.
+
+## Outreach feedback and next build
+
+Two reviewers found the exploratory pre-interpretation use case clear and worth considering. They emphasized that the next scientific step is to show what decision the output changes beyond direct leadfield similarity and established PSF/CTF or other resolution diagnostics. One reviewer also suggested clarifying the relationship between the diagnostic and GBFs; the distinction is stated above. Suggested orientation-aware, gain-aware, and parcel-level extensions remain candidates, not implemented or validated improvements. The detailed next-build agenda is in [NEXT_BUILD_REVIEW_ACTIONS.md](NEXT_BUILD_REVIEW_ACTIONS.md).
+
+These comments are useful outreach feedback, but they are not a formal B8 pass or an independent clean reproduction of the release candidate. B8 remains open for that gate-specific review and the release-version decision.
 
 ## What remains before calling the TKS software build released
 
