@@ -10,7 +10,7 @@ The active contribution is a traceable GBFs implementation/reproduction workflow
 - **B4:** pivoted. A fresh 224-channel sub-01 rerun reproduces the existing pairwise CSV exactly, but the measured pulse artifact and tested source models do not support a neural-source validation claim. The previous 236/224-channel comparison is documented as invalid.
 - **B5/B6:** pivoted without protocol lock or held-out evaluation because the available endpoint cannot validate endogenous neural-source distinguishability. No reserved outcomes were opened.
 - **B7:** pivoted after a same-model, paired comparison found moderate association between the B3 score and MNE PSF summaries but no evidence of analyst decision benefit. Retain as a descriptive diagnostic only.
-- **B8:** the BSD-3-Clause CLI package and clean model-only reproduction passed for the last committed candidate. The current working-tree additions have not been committed or rechecked as a release. An unaffiliated external review remains open; the B2 review is retained with its identity/authentication limitation.
+- **B8:** the BSD-3-Clause CLI package, source/wheel provenance check, isolated `0.1.3.dev0` install, and exact one-model output parity pass for the current release candidate. The current commit also passes 211 workspace tests and 209 source-archive tests, with two documented archive-only skips, plus source-snapshot verification. This remains an unreleased development candidate; unaffiliated outside review and the release decision are still open. The supplied B2 review is retained with its identity/authentication limitation.
 
 ### WSGZP geometry status
 
