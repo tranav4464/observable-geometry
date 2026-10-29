@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-10-29T07:58:22.115639+00:00",
+  "created_utc": "2026-10-29T08:00:28.021501+00:00",
   "file_count": 320,
   "files": {
     ".gitignore": {
@@ -463,8 +463,8 @@
       "size_bytes": 24567
     },
     "docs/track_b/MEASURED_SOURCE_REFERENCE_DATASET_REVIEW_20261029.md": {
-      "sha256": "2e93e7e4ac979fe24b5858df9e44d6fff6e1286655ab747f9238327a479a0bc6",
-      "size_bytes": 6449
+      "sha256": "85e8875c30feab0dcdeb7b67ff63889628ee3cf21b900db7a4384ba0bcaa5463",
+      "size_bytes": 7731
     },
     "docs/track_b/METHOD_MATRIX.md": {
       "sha256": "fc769d9c196815e36b907a5d2821a7700ea7cc63e73769df87a0a6be7cb6b53b",
