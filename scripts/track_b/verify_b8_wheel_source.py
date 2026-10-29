@@ -5,6 +5,7 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+import subprocess
 import tomllib
 import zipfile
 
@@ -20,8 +21,20 @@ def sha256_bytes(value: bytes) -> str:
     return hashlib.sha256(value).hexdigest()
 
 
+def normalize_eol(value: bytes) -> bytes:
+    """Normalize Windows checkout/archive CRLF to canonical Git LF bytes."""
+    return value.replace(b"\r\n", b"\n")
+
+
 def sha256_file(path: Path) -> str:
     return sha256_bytes(path.read_bytes())
+
+
+def committed_bytes(relative_path: str) -> bytes:
+    """Read a tracked file from HEAD, independent of Windows checkout EOL conversion."""
+    return subprocess.check_output(
+        ["git", "show", f"HEAD:{relative_path}"], cwd=ROOT
+    )
 
 
 def main() -> int:
@@ -54,24 +67,30 @@ def main() -> int:
             current = current_rel.get(rel)
             member = rel
             stage_hash = sha256_file(staged) if staged else None
-            current_hash = sha256_file(current) if current else None
+            git_path = f"src/{rel}"
+            committed_hash = sha256_bytes(committed_bytes(git_path)) if staged else None
             wheel_hash = sha256_bytes(archive.read(member)) if member in wheel_files else None
+            stage_commit_hash = sha256_bytes(normalize_eol(staged.read_bytes())) if staged else None
             source_rows.append({
                 "path": rel,
                 "stage_sha256": stage_hash,
-                "current_source_sha256": current_hash,
+                "committed_source_sha256": committed_hash,
+                "stage_normalized_commit_sha256": stage_commit_hash,
                 "wheel_member_sha256": wheel_hash,
-                "stage_matches_current": stage_hash == current_hash and staged is not None and current is not None,
+                "stage_matches_commit_after_eol_normalization": stage_commit_hash == committed_hash and staged is not None and current is not None,
                 "wheel_matches_stage": stage_hash == wheel_hash and staged is not None and wheel_hash is not None,
             })
 
         root_rows = {}
         for rel in ("README.md", "LICENSE", "pyproject.toml"):
             stage_path, current_path = stage / rel, ROOT / rel
+            committed_hash = sha256_bytes(committed_bytes(rel)) if stage_path.is_file() else None
+            stage_commit_hash = sha256_bytes(normalize_eol(stage_path.read_bytes())) if stage_path.is_file() else None
             root_rows[rel] = {
                 "stage_sha256": sha256_file(stage_path) if stage_path.is_file() else None,
-                "current_sha256": sha256_file(current_path) if current_path.is_file() else None,
-                "stage_matches_current": stage_path.is_file() and current_path.is_file() and sha256_file(stage_path) == sha256_file(current_path),
+                "committed_sha256": committed_hash,
+                "stage_normalized_commit_sha256": stage_commit_hash,
+                "stage_matches_commit_after_eol_normalization": stage_path.is_file() and current_path.is_file() and stage_commit_hash == committed_hash,
             }
         metadata_names = [n for n in wheel_files if n.endswith(".dist-info/METADATA")]
         if len(metadata_names) != 1:
@@ -85,9 +104,9 @@ def main() -> int:
 
     checks = {
         "source_file_sets_match": same_file_set,
-        "all_staged_sources_match_current_checkout": all(r["stage_matches_current"] for r in source_rows),
+        "all_staged_sources_match_commit_after_eol_normalization": all(r["stage_matches_commit_after_eol_normalization"] for r in source_rows),
         "all_wheel_modules_match_staged_sources": all(r["wheel_matches_stage"] for r in source_rows),
-        "README_LICENSE_pyproject_match_current_checkout": all(v["stage_matches_current"] for v in root_rows.values()),
+        "README_LICENSE_pyproject_match_commit_after_eol_normalization": all(v["stage_matches_commit_after_eol_normalization"] for v in root_rows.values()),
         "wheel_version_matches_expected": version == args.expected_version,
         "wheel_license_is_BSD_3_Clause": license_expression_ok,
         "wheel_license_file_matches_stage": staged_license_hash == wheel_license_hash,
@@ -96,6 +115,7 @@ def main() -> int:
         "status": "PASS" if all(checks.values()) else "FAIL",
         "scope": "Byte-level source-stage, current-checkout, and wheel-member provenance check; no neural samples accessed.",
         "wheel": str(wheel),
+        "source_commit": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(),
         "wheel_sha256": sha256_file(wheel),
         "wheel_version": version,
         "expected_version": args.expected_version,

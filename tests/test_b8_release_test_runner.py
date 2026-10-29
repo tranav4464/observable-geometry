@@ -6,9 +6,16 @@ from scripts.track_b.run_b8_release_tests import (
     archive_skips_are_expected as check_archive_skips,
     test_results as summarize_junit,
 )
+from scripts.track_b.verify_b8_wheel_source import normalize_eol
 
 
 class B8ReleaseTestRunnerTests(unittest.TestCase):
+    def test_eol_normalization_maps_windows_crlf_to_git_lf(self):
+        self.assertEqual(normalize_eol(b"first\r\nsecond\r\n"), b"first\nsecond\n")
+
+    def test_eol_normalization_preserves_other_bytes(self):
+        self.assertEqual(normalize_eol(b"first\nsecond\rthird"), b"first\nsecond\rthird")
+
     def test_accepts_only_the_two_documented_source_archive_skips(self):
         skips = [
             {
