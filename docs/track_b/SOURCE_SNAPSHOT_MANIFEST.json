@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-10-29T04:55:49.223578+00:00",
+  "created_utc": "2026-10-29T04:59:47.904309+00:00",
   "file_count": 299,
   "files": {
     ".gitignore": {
@@ -307,16 +307,16 @@
       "size_bytes": 6576
     },
     "docs/track_b/B8_EXTERNAL_REVIEW_PACKET_20261024.md": {
-      "sha256": "72b21c5362a92a5e7a675ef5bbc885761aa78d466fba0b4e0aa04af8b9dabc5b",
-      "size_bytes": 18941
+      "sha256": "3513f9f08431f1b69f3536896d0b80bc417ee6937fc6aa10084be1ac21a1b2a5",
+      "size_bytes": 19514
     },
     "docs/track_b/B8_RELEASE_AUDIT_20261024.md": {
       "sha256": "042f0805c4b0a6271bdf7eb140d323581f1f7421fabd3113938c274b85b060d8",
       "size_bytes": 11983
     },
     "docs/track_b/B8_RELEASE_RECHECK_20261029.md": {
-      "sha256": "6fb7a9bded3a2922dc714c7d2539472c7869d5010752e8abf6293d45347fd576",
-      "size_bytes": 2281
+      "sha256": "9ebbb4203f92c14635e8e0d04eda313fc9a733bfcb772850eb5efb7a805cdd38",
+      "size_bytes": 3839
     },
     "docs/track_b/B8_WORKTREE_ATOMIC_CLI_REPRODUCTION_20261029.md": {
       "sha256": "3339b2c8e54eae54dcaccd3a886b7ce810d1e6fc65476b535bf6bbb76f3415ff",
@@ -403,8 +403,8 @@
       "size_bytes": 4224
     },
     "docs/track_b/GATE_REGISTER.json": {
-      "sha256": "9e8471a7b12031bf1e03bada91d0d1f56b995982d68492b82ff63c028f252907",
-      "size_bytes": 66240
+      "sha256": "4778e76f4ef2deb3ddced473132bdd8ab4efef9c2861e9bd9d22c0b027627fbb",
+      "size_bytes": 68166
     },
     "docs/track_b/GBF_BUILD_PLAN.md": {
       "sha256": "dfaa7af96b7b7c7da2e4864e4b9649bcf35509a096857cff99891150be071f2f",
@@ -499,8 +499,8 @@
       "size_bytes": 7998
     },
     "docs/track_b/TEST_RUN_EVIDENCE_20261029.md": {
-      "sha256": "fac0d291b9116b025ce81b64755ed6b3dc160b8555c71c267403392415ad86f3",
-      "size_bytes": 9457
+      "sha256": "c726dab2816600d4677de0c341733b94da53de906e32dea47ee0c3feca625203",
+      "size_bytes": 10115
     },
     "docs/track_b/TRACK_B_AUTONOMOUS_BUILD_PROMPT.md": {
       "sha256": "280a1015e68a357bcd3c80cee163225d0f1498179a01553136d18d5e1afc2ef3",

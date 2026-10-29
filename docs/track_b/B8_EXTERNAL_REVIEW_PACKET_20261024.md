@@ -121,3 +121,14 @@ commit and wheel identified in the recheck report, follow its reproduction
 commands, record the environment and any deviations, inspect claim boundaries,
 and provide a signed or otherwise attributable review. Do not treat prior
 project-associated review text as this independent B8 review.
+
+## Latest exact-commit package evidence
+
+The newer package verification is bound to source commit
+`1e831920cb8b6d8f97078bdb66229e5598d4657e`, superseding d38ff42 for the
+reviewer's candidate. See [`B8_RELEASE_RECHECK_20261029.md`](B8_RELEASE_RECHECK_20261029.md)
+and its listed reports. The current candidate wheel SHA-256 is
+`e81af2356c3856d0d71bd287d69482919b614bdbf722cbcfa660ccc2c425227f`. The
+external reviewer should reproduce this exact commit/wheel pair or report why
+that is not possible. The required review record and claim limits above still
+apply.

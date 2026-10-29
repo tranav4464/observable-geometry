@@ -165,3 +165,14 @@ skips and zero failures. A fresh Python 3.12 installation of the commit-built
 (40,980 ranked source pairs). This verifies software provenance and parity,
 not source truth, neural recovery, researcher decision benefit, or novelty.
 Full report: [`B8_RELEASE_RECHECK_20261029.md`](B8_RELEASE_RECHECK_20261029.md).
+
+## Exact-commit wheel and CLI replay on 1e83192
+
+For source commit `1e831920cb8b6d8f97078bdb66229e5598d4657e`, a wheel was built
+from the commit archive, source-verified, installed in a fresh Python 3.12
+environment, and run against the sealed sub-01 model bundle. All 40,980 ranked
+pairs, score arrays, and summary outputs matched the reference exactly;
+installation and access-manifest checks passed. The wheel SHA-256 is
+`e81af2356c3856d0d71bd287d69482919b614bdbf722cbcfa660ccc2c425227f`. This is
+model-only software parity, not neural source validation. Full details are in
+[`B8_RELEASE_RECHECK_20261029.md`](B8_RELEASE_RECHECK_20261029.md).

@@ -38,3 +38,29 @@ endogenous neural source recovery, establish researcher decision benefit,
 prove a novel method, or demonstrate cross-participant scientific
 generalization. An unaffiliated external reproduction/review and a release
 version decision are still required for B8 closure.
+
+## Newer exact-commit candidate: 1e83192
+
+The documentation/register commit `1e831920cb8b6d8f97078bdb66229e5598d4657e`
+was also checked directly. Its committed source manifest verified cleanly
+(299 files; manifest SHA-256
+`da5311b51cf50c810261914b29c0e38d5d8349b521826961a19c7e10c80a6575`).
+The commit-bound release runner passed 175/175 workspace tests and 173 source
+archive tests, with two named skips and no failures.
+
+A wheel built from that commit's Git archive passed all 7 source, package,
+version, and license checks across 18 modules. Its SHA-256 is
+`e81af2356c3856d0d71bd287d69482919b614bdbf722cbcfa660ccc2c425227f`. A fresh
+Python 3.12 environment installed it and reproduced the sealed sub-01
+model-only CLI output exactly: all 40,980 ranked pairs and score arrays
+matched the established reference, and the output/access manifests passed
+verification. No EEG signal-array key was accessed. Machine-readable results
+are under `outputs/track_b/20261029T_commit_release_1e83192/`; commit-bound
+test reports are `outputs/track_b/20261024_b8_release_checks/test_run_1e83192.json`
+and `outputs/track_b/20261024_b8_source_archive_tests/source_archive_test_run_1e83192.json`.
+
+This closes the software verification for this source commit, not B8 itself.
+The package remains a one-model nominal diagnostic. Physiological source
+recovery, comparative researcher benefit, method novelty, independent
+external reproduction, and a final release-version decision remain open or
+unsupported.
