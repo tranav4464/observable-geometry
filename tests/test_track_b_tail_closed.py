@@ -4,7 +4,7 @@ import pytest
 from observable_geometry.track_b.tail_closed import (
     construct_finite_prior_sensor_witness, exact_mimicry_audit,
     finite_prior_gram_envelope, finite_prior_sensor_witness, model_mimicry_subspace,
-    tail_closed_margin_frontier,
+    tail_closed_margin_frontier, tail_closed_relative_margin_frontier,
 )
 
 
@@ -46,6 +46,58 @@ def test_tail_closed_frontier_rejects_indefinite_gram():
 def test_tail_closed_frontier_requires_positive_budget():
     with pytest.raises(ValueError, match="eta"):
         tail_closed_margin_frontier(np.eye(2), np.eye(2), eta=0.0)
+
+
+def test_relative_frontier_uses_fieldwise_gain_and_dominates_global_gain_bound():
+    b = np.array([[3.0, 0.0], [0.0, 0.2], [0.0, 0.0]])
+    d = np.array([[0.05, 0.0], [0.0, 0.1], [0.0, 0.2]])
+    c = d @ d.T
+    coarse = tail_closed_margin_frontier(b, c, grid_size=81)
+    relative = tail_closed_relative_margin_frontier(b, c, grid_size=81)
+    assert relative.effective_rank == 2
+    assert np.all(relative.normalized_lower_margin[:2] + 1e-12 >=
+                  coarse.normalized_lower_margin[:2])
+    assert relative.normalized_lower_margin[1] > coarse.normalized_lower_margin[1]
+
+
+def test_relative_frontier_certificate_replays_in_direct_slemma_matrix():
+    b = np.array([[2.0, 0.1], [0.0, 0.8], [0.2, 0.0]])
+    d = np.array([[0.2, 0.0], [0.0, 0.4], [0.1, 0.2]])
+    c = d @ d.T
+    result = tail_closed_relative_margin_frontier(b, c, eta=1.0, grid_size=101)
+    for rank, margin in enumerate(result.normalized_lower_margin, start=1):
+        if margin <= 0:
+            continue
+        basis = result.selected_basis_by_rank[rank - 1]
+        assert basis is not None
+        t = result.selected_multiplier_scaled[rank - 1] * result.operator_scale**2
+        h = t * b.T @ np.linalg.solve(c + t*np.eye(c.shape[0]), b) - t*np.eye(b.shape[1])
+        g = b.T @ b
+        replay = basis.T @ (h - margin**2*g) @ basis
+        assert np.linalg.eigvalsh((replay+replay.T)/2)[0] >= -1e-9
+
+
+def test_relative_frontier_handles_rank_deficient_retained_operator():
+    b = np.array([[1.0, 1.0], [2.0, 2.0], [0.0, 0.0]])
+    d = np.diag([0.1, 0.2, 0.3])
+    result = tail_closed_relative_margin_frontier(b, d@d.T, grid_size=41)
+    assert result.effective_rank == 1
+    assert result.normalized_lower_margin[0] > 0
+    assert result.normalized_lower_margin[1] == 0
+    assert result.selected_basis_by_rank[1] is None
+
+
+def test_relative_frontier_is_sensor_rotation_invariant_and_error_monotone():
+    b = np.array([[1.0, 0.0], [0.2, 0.7], [0.0, 0.3]])
+    d = np.array([[0.3, 0.0], [0.0, 1.0], [0.2, 0.4]])
+    c = d @ d.T
+    q, _ = np.linalg.qr(np.array([[1.0, 2.0, 0.0], [0.0, 1.0, 1.0], [1.0, 0.0, 1.0]]))
+    base = tail_closed_relative_margin_frontier(b, c, grid_size=61)
+    rotated = tail_closed_relative_margin_frontier(q@b, q@c@q.T, grid_size=61)
+    robust = tail_closed_relative_margin_frontier(b, c, gram_error_bound=0.2, grid_size=61)
+    assert np.allclose(base.normalized_lower_margin, rotated.normalized_lower_margin,
+                       rtol=1e-10, atol=1e-12)
+    assert np.all(robust.normalized_lower_margin <= base.normalized_lower_margin + 1e-12)
 
 
 def test_prior_envelope_dominates_nested_and_incomparable_grams():

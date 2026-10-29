@@ -28,7 +28,10 @@ this acquisition, and it is not yet part of the COG primary calibration.
 
 ## Why this does not close the primary-data gate
 
-The COG primary route still requires iES-CCEP/WSGZP and the external HDEEG
-route. WSGZP's visible OSF license points to an unlisted `license.txt`, and
-HDEEG retrieval is governed by EBRAINS terms. The raw archives for those two
-routes therefore remain unacquired pending permission and version hashes.
+The WSGZP multipart archive has since been downloaded, extracted and verified
+against its six-part manifest; the package declares CC BY-NC-SA 4.0. This
+supersedes the earlier statement that its archive and reuse terms were
+unresolved. The metadata/provenance audits did not analyze signal sample
+values, and the WSGZP analysis gate remains closed pending geometry, endpoint,
+event/provenance and protocol review. HDEEG remains unacquired because
+retrieval is governed by EBRAINS terms.

@@ -1,5 +1,25 @@
 # iES-CCEP OSF license metadata audit
 
+> **28 October 2026 addendum:** the later-downloaded and CRC-verified BIDS
+> archive contains a root `LICENSE` file declaring CC BY-NC-SA 4.0, and its
+> `dataset_description.json` independently declares `CC-BY-NC-SA 4.0`. The
+> earlier metadata-only audit below remains accurate about OSF's `Other`
+> license relationship pointing to a `license.txt` that was not separately
+> listed in OSF storage. The archive's explicit license now provides a usable
+> noncommercial reuse declaration for this project, subject to attribution,
+> ShareAlike, and any other rights/ethical constraints. It does not by itself
+> reopen confirmatory analysis: prior-art overlap, coordinate provenance,
+> preprocessing limits, endpoint validity, and the protocol lock remain open.
+> Keep the data out of Git and do not imply that license terms establish
+> scientific validation.
+
+The addendum inspected only the archive's package-level license/README and
+`dataset_description.json`; no EEG/iEEG sample values were used for this
+license determination. The extracted `LICENSE` SHA-256 is
+`e75267dc97f015d72a6571e3a761519b1466f47da98d12f3a6d4c5f726fe2a60`; the
+dataset description SHA-256 is
+`60e16737e8b487dc0876a70f4d920e0537f23928adc48741cfa13fda5987ab94`.
+
 **Date:** 24 October 2026  
 **Purpose:** Resolve the apparent discrepancy between the OSF project license metadata and the earlier statement that no license was exposed.  
 **Data boundary:** Public JSON metadata only. No archive, neural signal, MRI, event, or outcome file was downloaded or opened.

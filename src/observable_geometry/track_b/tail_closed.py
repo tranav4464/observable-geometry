@@ -24,6 +24,26 @@ class TailClosedFrontier:
 
 
 @dataclass(frozen=True)
+class TailClosedRelativeFrontier:
+    """Grid-based lower margins normalized by each retained field's gain.
+
+    Unlike :class:`TailClosedFrontier`, this uses the generalized eigenproblem
+    relative to ``B.T @ B``. It therefore avoids the additional global
+    ``||B||_2**2`` denominator bound. The multiplier search is still finite
+    grid search, so these are attainable lower bounds, not continuous-search
+    optima or formal interval-arithmetic certificates.
+    """
+
+    normalized_lower_margin: np.ndarray
+    selected_multiplier_scaled: np.ndarray
+    selected_basis_by_rank: tuple[np.ndarray | None, ...]
+    effective_rank: int
+    operator_scale: float
+    multiplier_grid_size: int
+    claim_boundary: str
+
+
+@dataclass(frozen=True)
 class FinitePriorEnvelope:
     """One conservative sensor Gram dominating a declared finite prior family."""
 
@@ -451,4 +471,105 @@ def tail_closed_margin_frontier(
         scale=scale,
         gram_error_bound=float(gram_error_bound),
         claim_boundary="finite-mesh model observability under the declared operator and prior; not physiological localization",
+    )
+
+
+def tail_closed_relative_margin_frontier(
+    retained_operator: np.ndarray,
+    tail_gram: np.ndarray,
+    *,
+    eta: float = 1.0,
+    gram_error_bound: float = 0.0,
+    grid_size: int = 257,
+) -> TailClosedRelativeFrontier:
+    """Compute relative-margin lower bounds without a global gain penalty.
+
+    For ``B`` the retained operator, ``C = D D.T`` the competitor Gram, and
+    coefficient budget ``||z|| <= eta * ||c||``, the S-lemma matrix at
+    multiplier ``t > 0`` is
+
+        H(t) = t B.T (C + t I)^-1 B - t eta**2 I.
+
+    A rank-``k`` coefficient subspace ``V`` has relative separation at least
+    ``delta`` when ``V.T @ (H(t) - delta**2 * B.T @ B) @ V`` is positive
+    definite. On the row space of ``B``, ``B.T @ B`` is positive definite;
+    the maximum feasible ``delta**2`` at fixed ``t`` is therefore the
+    ``k``-th largest generalized eigenvalue of ``(H(t), B.T @ B)``. The
+    nullspace of ``B`` is excluded because ``H(t)`` is strictly negative
+    there for positive ``t``.
+
+    The returned values maximize over a declared logarithmic multiplier grid.
+    Every positive result is an attainable finite-model lower bound under the
+    supplied one-sided Gram-error bound. This function makes no claim about
+    physiological source recovery, calibrated uncertainty, or global
+    continuous-multiplier optimality.
+    """
+    b = _finite_matrix(retained_operator, "retained_operator")
+    c = _finite_matrix(tail_gram, "tail_gram")
+    if c.shape != (b.shape[0], b.shape[0]):
+        raise ValueError("sensor dimensions disagree")
+    if not np.isfinite(eta) or eta <= 0:
+        raise ValueError("eta must be finite and positive")
+    if not np.isfinite(gram_error_bound) or gram_error_bound < 0:
+        raise ValueError("gram_error_bound must be finite and nonnegative")
+    if not isinstance(grid_size, int) or grid_size < 3:
+        raise ValueError("grid_size must be an integer >= 3")
+
+    c = (c + c.T) / 2
+    c_values, c_vectors = _gram_eigendecomposition(c, "tail_gram")
+    scale = float(np.sqrt(c_values[-1]))
+    if scale <= np.finfo(float).tiny:
+        raise ValueError("tail_gram must have nonzero scale")
+    b = b / scale
+    c_values = c_values / (scale * scale)
+    error = float(gram_error_bound) / (scale * scale)
+    e = c_vectors.T @ b
+
+    _, singular_values, right_vectors_t = np.linalg.svd(b, full_matrices=False)
+    if singular_values.size == 0 or singular_values[0] <= np.finfo(float).tiny:
+        raise ValueError("retained_operator must have nonzero rank")
+    rank_tolerance = np.finfo(float).eps * max(b.shape) * singular_values[0]
+    effective_rank = int(np.count_nonzero(singular_values > rank_tolerance))
+    singular_values = singular_values[:effective_rank]
+    coefficient_vectors = right_vectors_t[:effective_rank].T
+    inverse_singular = 1.0 / singular_values
+    p = b.shape[1]
+    gain_squared = float(singular_values[0] ** 2)
+    t_max = gain_squared / (eta * eta)
+    if not np.isfinite(t_max) or t_max <= 0:
+        raise ValueError("retained_operator scale is numerically unresolved")
+    multipliers = np.r_[0.0, np.geomspace(t_max * 1e-16, t_max, grid_size)]
+
+    lower = np.zeros(p, dtype=np.float64)
+    selected = np.zeros(p, dtype=np.float64)
+    bases: list[np.ndarray | None] = [None] * p
+    for t in multipliers[1:]:
+        resolvent_b = e / (c_values + t + error)[:, None]
+        h = t * (e.T @ resolvent_b) - t * eta * eta * np.eye(p)
+        h = (h + h.T) / 2
+        h_reduced = coefficient_vectors.T @ h @ coefficient_vectors
+        generalized = (inverse_singular[:, None] * h_reduced) * inverse_singular[None, :]
+        eigenvalues, eigenvectors = np.linalg.eigh((generalized + generalized.T) / 2)
+        order = np.argsort(eigenvalues)[::-1]
+        eigenvalues = eigenvalues[order]
+        eigenvectors = eigenvectors[:, order]
+        improved = eigenvalues > lower[:effective_rank]
+        for index in np.flatnonzero(improved):
+            lower[index] = float(eigenvalues[index])
+            selected[index] = t
+            raw_basis = coefficient_vectors @ (inverse_singular[:, None] * eigenvectors[:, :index + 1])
+            bases[index] = np.linalg.qr(raw_basis, mode="reduced")[0]
+
+    return TailClosedRelativeFrontier(
+        normalized_lower_margin=np.sqrt(np.maximum(lower, 0.0)),
+        selected_multiplier_scaled=selected,
+        selected_basis_by_rank=tuple(bases),
+        effective_rank=effective_rank,
+        operator_scale=scale,
+        multiplier_grid_size=grid_size,
+        claim_boundary=(
+            "finite-mesh relative separation under the declared retained operator, "
+            "competitor Gram, coefficient budget, and one-sided Gram-error bound; "
+            "not physiological localization or calibrated uncertainty"
+        ),
     )

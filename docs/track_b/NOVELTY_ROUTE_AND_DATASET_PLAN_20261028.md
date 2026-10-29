@@ -12,10 +12,14 @@ implement a **calibrated source-family observability certificate**:
 > which source families remain observationally indistinguishable, and abstain
 > from a unique attribution when the measured data cannot support one.
 
-The certificate must be calibrated against independent measured references and
-must beat direct constrained fitting, GBF, PSF/CTF and established inverse
-methods on a predeclared decision. If it does not, the final result is a
-validated software contribution, not a novel method.
+The full requested certificate requires a defensible calibration target and
+independent measured references. The current WSGZP and HDEEG endpoints do not
+provide labels for complete source-family coverage. No calibration or novelty
+advantage is established. Preserve the full target while seeking an adequate
+reference; do not silently relabel contact capture or surgical concordance as
+source coverage. Compare against direct constrained fitting, GBF, PSF/CTF and
+established inverse methods. If the required target cannot be validated, say
+so explicitly and classify the result within the stated outcome categories.
 
 ## Non-synthetic-data rule
 
@@ -48,10 +52,11 @@ and HDEEG-IED-SurgOutcome datasets. Therefore the following are not new claims:
 * demonstrating GBF on intracranial stimulation;
 * showing that geometric modes can compactly represent source activity.
 
-Our defensible gap is narrower: **measuring and calibrating when the scalp
-measurement cannot distinguish competing source families**, then exposing that
-uncertainty as a researcher-facing decision rather than returning one
-apparently precise inverse map.
+The candidate gap is narrower: **quantify, under explicit assumptions, when a
+scalp measurement cannot distinguish competing source families**, then test
+whether exposing that ambiguity changes a researcher decision beyond existing
+methods. Whether this can be calibrated against an adequate measured reference
+is unresolved; calibration is not assumed available from WSGZP or HDEEG.
 
 ## Dataset ranking
 
@@ -72,16 +77,21 @@ interval must be treated separately as stimulation artifact.
 Why it is the best primary dataset:
 
 * individual geometry and forward models can be reconstructed;
-* the stimulation contact gives a predeclared spatial reference;
+* the stimulation contact is a spatial reference for the intervention site,
+  not a complete label for the generator of a later distributed CCEP;
 * repeated sessions and stimulation parameters permit held-out testing;
 * the post-artifact CCEP provides a measured neural response, not only a
   mathematically injected signal;
-* the dataset is large enough for participant-level hierarchical calibration.
+* 36 participants may support participant-grouped evaluation, but the sparse
+  positive SEEG labels do not calibrate whole-cortex source-set coverage or
+  correctness of the `unique / ambiguous / unsupported` label.
 
 Risks:
 
 * stimulation is an intervention, not spontaneous cognition;
 * the contact midpoint is not a complete neural source map;
+* post-artifact responsive SEEG contacts are sparse positives, not a complete
+  source map or verified negatives;
 * the 2026 GBF paper already uses this resource, so our estimand and decision
   must be different;
 * OSF/EBRAINS terms and access must be checked before downloading or
@@ -92,19 +102,23 @@ Risks:
 Official identifier: EBRAINS DOI `10.25493/B3B8-XPM`; Vorderwülbecke et al.,
 *Scientific Data* 2025, DOI `10.1038/s41597-025-05740-z`.
 
-The dataset contains 45 patients with pharmacoresistant focal epilepsy,
+The public dataset record lists 45 patients; the 2025 data descriptor analyzes
+44 after exclusions. They have pharmacoresistant focal epilepsy,
 individual structural MRI, 257-channel EEG averages of interictal discharges,
 postsurgical imaging, and 12-month surgical outcomes. Thirty patients had
-favourable outcomes. It is a strong endogenous clinical endpoint for testing
-whether an ambiguity-aware report avoids false confident localization and
-whether accepted localizations agree with the resection/epileptogenic zone.
+favourable outcomes. It is an endogenous clinical-concordance resource for
+testing whether prespecified EEG spatial summaries associate with resection
+and outcome. It does not supply event-matched direct source truth and cannot
+by itself calibrate false-confident attribution or whole-cortex set coverage.
 
 Risks:
 
 * surgical outcome is an indirect reference, not a full neural ground truth;
 * the data are averaged IEDs rather than simultaneous scalp/iEEG trials;
 * the dataset has already been used for source-localization benchmarking;
-* EBRAINS registration and terms of use must be respected.
+* project-specific EBRAINS access has not been granted; and
+* this dataset can support clinical concordance analysis, not calibration of
+  event-level source coverage or a whole-cortex ambiguity label.
 
 ### 3. Existing bounded controls retained in this project
 
@@ -119,8 +133,10 @@ Risks:
 ### 4. Lower-priority alternatives
 
 * `nm000513` has seven patients and 1,945 simultaneous scalp/SEEG interictal
-  spike epochs, but released contact coordinates and individual forward-model
-  inputs are insufficient for the primary geometry test.
+  spike epochs, but the released SEEG contact coordinates are `n/a`, and the
+  same cohort was analyzed in 2015 and 2023. It cannot serve as independent
+  participant-specific spatial validation as released. See
+  `MEASURED_SOURCE_REFERENCE_DATASET_REVIEW_20261029.md`.
 * `on004752` has 15 patients, scalp EEG, iEEG and MNI contact coordinates, but
   its 10–20 scalp montage and missing verified individual forward-model
   contract make it a secondary transport benchmark, not the primary source
@@ -142,24 +158,36 @@ For competing families `F1, ..., Fk`, report:
 
 1. the residual for each family;
 2. the residual gap between the best and competing families;
-3. the set of families whose residuals are within a calibrated tolerance;
+3. the set of families whose residuals are within a **prespecified fit
+   tolerance**; call this calibrated only after its target, null distribution
+   and participant-level calibration design are justified;
 4. the spatial support shared by all surviving families;
 5. an **ambiguous/unique/unsupported** decision.
 
-Calibration is performed only on training participants. The tolerance is learned
-from held-out stimulation or endogenous reference outcomes, with participant-
-level resampling and no event-level leakage. A candidate certificate is useful
-only if its advertised coverage and selective error are met on unseen
-participants.
+Any calibration is performed only on training participants. A residual/noise
+compatibility threshold must be calibrated for the residual event after
+family, source-parameter and forward-uncertainty optimization. A threshold
+learned from sparse SEEG positives or intervention/resection labels does not
+calibrate whole-cortex source coverage. WSGZP's positive-contact capture and
+HDEEG's resection/outcome concordance are distinct bounded endpoints; neither
+validates the biological source set. The current calibration identifiability
+and data-reference audits are in
+`CALIBRATION_IDENTIFIABILITY_AUDIT_20261029.md` and
+`MEASURED_SOURCE_REFERENCE_DATASET_REVIEW_20261029.md`.
 
-This extends the current GBF audit by preserving source-family disjunctions
-and forward uncertainty instead of collapsing them into one unconstrained L1
-ball. The mathematical ingredients must be attributed correctly: whitened
-least squares, convex fitting, weak duality, Gaussian testing, resolution
-matrices and conformal/calibration ideas are established. The possible new
-step is the **validated decision protocol that calibrates family-level
-observability against an independent spatial reference**, not a claim that any
-individual optimization primitive is new.
+A candidate certificate is useful only if its precisely named target and
+decision value are evaluated on unseen participants. If no valid source
+coverage labels are available, do not report source coverage or selective
+error for true neural attribution.
+
+This candidate keeps source-family disjunctions and forward uncertainty
+explicit. That object combination is not automatically a contribution: its
+mathematical ingredients, including whitened least squares, convex fitting,
+weak duality, Gaussian testing, resolution matrices and set-valued/calibration
+ideas, are established. The only possible contribution is a rigorously
+validated new guarantee or a predeclared researcher decision benefit beyond
+matched methods. Current data do not yet support calibration of whole-cortex
+family observability.
 
 ## Three candidate contribution levels
 
@@ -172,13 +200,15 @@ decision under forward uncertainty.
 source-fidelity evaluation, empirical Bayesian forward uncertainty, and
 conformal/calibration work. These are direct threats to novelty.
 
-**Required evidence:** held-out participant coverage, selective localization
-error, false-confidence rate, and a decision comparison against direct fitting,
-MNE/dSPM/eLORETA/LCMV, GBF-only output and established patch methods.
+**Required evidence:** a valid source-reference target for coverage and
+selective localization error, plus a decision comparison against direct
+fitting, MNE/dSPM/eLORETA/LCMV, GBF-only output and established patch methods.
+The currently reviewed WSGZP/HDEEG labels do not supply that whole-cortex
+target, so Candidate A cannot yet be calibrated as specified.
 
 **Falsifier:** direct fitting or a standard resolution metric gives the same
-  ambiguity decisions and equal or better calibration; the candidate becomes a
-  software/workflow contribution only.
+  ambiguity decisions and equal or better performance for the exact supported
+  target; the candidate becomes a software/workflow contribution only.
 
 **Rank:** best candidate, but novelty is conditional and must be earned by the
   measured decision result.
@@ -186,8 +216,9 @@ MNE/dSPM/eLORETA/LCMV, GBF-only output and established patch methods.
 ### Candidate B: Cross-participant source-family transfer benchmark
 
 **Object:** a reproducible benchmark showing whether nominal ambiguity scores
-  predict source-family disagreement and source-reference error across
-  participants and stimulation parameters.
+  predict source-family disagreement and a clearly bounded measured endpoint
+  across participants and stimulation parameters. WSGZP can supply sparse
+  positive-contact capture, not complete source-reference error.
 
 **Closest prior art:** the 2026 GBF paper, source-fidelity frameworks, and
   existing iES-CCEP localization studies.
@@ -200,8 +231,10 @@ MNE/dSPM/eLORETA/LCMV, GBF-only output and established patch methods.
 
 ### Candidate C: Observability-aware sensor-design recommendation
 
-**Object:** choose electrode subsets or montage changes that reduce the
-  calibrated family ambiguity for a stated source pair or region.
+**Object:** choose electrode subsets or montage changes that reduce a
+  model-conditional family-ambiguity measure for a stated source pair or
+  region. It is not a calibrated source-truth claim unless a valid target is
+  supplied.
 
 **Closest prior art:** optimal sensor placement, resolution kernels and
   experimental-design methods.
@@ -215,8 +248,8 @@ MNE/dSPM/eLORETA/LCMV, GBF-only output and established patch methods.
 
 ### Stage 0: data and prior-art freeze
 
-1. Download only metadata and one pilot subject from WSGZP and
-   HDEEG-IED-SurgOutcome.
+1. Preserve the completed WSGZP acquisition and metadata-only audit. Do not
+   download HDEEG signals unless its legitimate access gate is granted.
 2. Verify license, checksums, MRI-to-sensor transforms, contact coordinates,
    trigger timing, reference, filtering and forward-model reproducibility.
 3. Build an equation-level overlap matrix against the 2026 GBF paper,
@@ -232,8 +265,9 @@ For every included participant:
 
 * reconstruct the individual head model and average-reference leadfield;
 * verify channel order, orientation, source coordinates and covariance rank;
-* map the stimulation contact pair and the HDEEG surgical reference into the
-  same surface coordinate system;
+* map the stimulation pair and any HDEEG resection reference into the same
+  surface coordinate system, while keeping intervention and clinical outcome
+  distinct from a measured CCEP generator;
 * quantify transform, conductivity and sensor-position perturbations;
 * publish a machine-readable manifest and independent replay.
 
@@ -246,19 +280,24 @@ Use iES-CCEP only after the Stage 0 lock:
 * extract scalp topographies and independent SEEG response features;
 * compute point, uniform, smooth, signed, flexible and multi-patch fits;
 * compute the candidate observability certificate;
-* hold out entire sessions or participants, never random trials from the same
-  stimulation condition;
-* evaluate spatial error to the stimulated pair, response agreement with SEEG,
-  family ambiguity, selective risk and calibration coverage.
+* keep every session, run and event from one participant in the same outer
+  fold; never use event-level or run-level splits as participant holdout;
+* report stimulation-site localization only for the stimulation artifact or
+  another endpoint explicitly validated against that intervention site;
+* for later CCEPs, report model-conditional family compatibility and a
+  separately defined sparse positive-contact capture endpoint;
+* do not report source-reference error, calibrated source coverage or
+  false-confident attribution from those sparse positives.
 
 ### Stage 3: endogenous external test
 
 Use HDEEG-IED-SurgOutcome as an external endpoint:
 
 * fit all thresholds and calibration parameters on a training subset;
-* evaluate accepted versus abstained localization decisions on held-out
-  participants;
-* compare against surgical resection/12-month outcome labels;
+* evaluate a predeclared EEG-to-resection/outcome concordance endpoint on
+  held-out participants, if access is granted;
+* do not call concordance source coverage, event-level localization error or
+  false-confident attribution;
 * report temporal/extratemporal strata and the effect of channel density;
 * treat surgical outcome as an indirect reference, not absolute truth.
 
@@ -273,10 +312,13 @@ The same participant splits must be used for:
 * uniform, smooth and established patch families;
 * the candidate certificate.
 
-Predeclare one decision: for example, *when should the system abstain from a
-unique source attribution?* A method passes the novelty gate only if it reduces
-false confident attribution at matched coverage, or supplies a validated
-guarantee/calibration that baselines do not.
+Predeclare one decision and its evidence class. A false-confident-attribution
+rate requires a defensible source reference. With WSGZP's current labels, a
+possible bounded decision is fixed-area follow-up prioritization measured by
+sampled-positive-contact capture. A method passes the novelty gate only if it
+adds a valid guarantee or improves that predeclared held-out decision beyond
+matched baselines; a weaker endpoint must not be represented as source
+coverage.
 
 ### Stage 5: ML role, only if justified
 
@@ -285,7 +327,8 @@ participants, use a small hierarchical model to estimate calibration parameters
 from training participants. The ML component must:
 
 * use participant-level splits;
-* output calibration parameters or risk estimates, not an opaque source map;
+* output calibration parameters or risk estimates only for a supported target,
+  such as sampled-positive-contact capture, not whole-cortex source coverage;
 * be compared against a non-ML pooled and per-participant calibration;
 * preserve the deterministic certificate and its failure states;
 * be rejected if it improves only in-sample prediction or hides ambiguity.
@@ -294,11 +337,12 @@ from training participants. The ML component must:
 
 The project must end in exactly one of these classifications:
 
-1. **Novel method supported:** the calibrated family certificate changes a
-   predeclared held-out decision or provides a validated guarantee beyond all
-   baselines.
-2. **Promising but unverified:** constructed-field or limited measured results
-   are encouraging but independent source-reference evidence is insufficient.
+1. **Novel method supported:** a mathematically valid, target-specific
+   calibrated family certificate changes a predeclared held-out decision or
+   provides a validated guarantee beyond all baselines. This requires a
+   source-reference dataset that supports the calibration target.
+2. **Promising but unverified:** limited measured results or formal results are
+   encouraging, but independent source-reference evidence is insufficient.
 3. **Validated software contribution:** the workflow is reproducible and useful,
    but direct baselines make equivalent decisions.
 4. **Pivot:** the endpoint, geometry or calibration fails and no defensible
@@ -324,14 +368,15 @@ predeclared researcher decision under held-out measured evidence.
 
 ## Current recommendation
 
-Proceed with **WSGZP iES-CCEP as the primary dataset** and
-**HDEEG-IED-SurgOutcome as external endogenous validation**. Keep Localize-MI
-and ds004752 as completed controls. Do not claim that this route is likely to
-produce a new mathematical theorem. It has a realistic chance of producing a
-novel, validated researcher-facing decision framework only if the held-out
-certificate changes the confidence/abstention decision beyond direct fitting
-and standard resolution diagnostics. Otherwise the correct high-quality result
-is a reproducible, empirically validated software contribution.
+Retain **WSGZP iES-CCEP as the required primary route**, subject to its open
+protocol, coordinate and preprocessing gates. Treat HDEEG only as a possible
+external clinical-concordance route if legitimate access is granted; do not
+call it source truth. Keep Localize-MI and ds004752 in their declared control
+roles. Current evidence does not establish a novel theorem, method, or
+validated decision framework. The strongest present route is to first resolve
+whether the required source-space calibration target can be supplied. If it
+cannot, explicitly report that the full certificate objective was not
+validated; do not substitute a weaker result without stating the limit.
 
 ## Source records
 

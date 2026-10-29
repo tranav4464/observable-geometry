@@ -2,18 +2,70 @@
 
 ## Active build target
 
-### Latest evidence, 28 October 2026
+### Latest evidence, 29 October 2026
+
+**Software verification update, 29 October 2026:** the latest fresh full
+working-tree suite passes 167 tests. It includes the covariance-span input
+hardening and transactional CLI output publication, with regression checks
+that failed runs leave no partial output and existing results are not
+overwritten. The read-only gate-register validator passes with 253 registered
+evidence paths. Exact command outputs, environment, and working-tree snapshot
+are recorded in [the latest fresh validation run](../../outputs/track_b/20261029T_goal_resume_validation_003/SESSION.md).
+These are software and evidence-index checks only; the run includes uncommitted changes,
+does not validate source physiology or novelty, and leaves B4–B7 pivoted and
+B8 open for outside review. See the exact [test run](../../outputs/track_b/20261029T_atomic_cli_publication/SESSION.md)
+and [test evidence summary](TEST_RUN_EVIDENCE_20261029.md).
+
+The same working-tree CLI also reproduced the prior clean-wheel output exactly
+on the sealed model-only input: 40,980 ranked pairs, every score array and all
+summary metrics matched. This confirms that the output-publication change did
+not alter the nominal diagnostic on the one checked model; it is not a source-
+recovery result. A distinct 0.1.3.dev0 development wheel was built from an
+isolated source copy, installed in a fresh Python 3.12 virtual environment
+with NumPy 2.5.4 and SciPy 1.18.1, and reproduced the same outputs exactly.
+Its 18 packaged Python modules match the current checkout byte-for-byte. This
+is a clean-environment package/parity check on one model, not an outside
+reproduction or a public release. The earlier 0.1.2 wheel records are retained
+as historical artifacts and must not be conflated. See the [worktree parity
+report](B8_WORKTREE_ATOMIC_CLI_REPRODUCTION_20261029.md), [historical 0.1.2
+check](B8_CURRENT_WHEEL_PARITY_20261029.md), and [0.1.3.dev0 candidate
+check](B8_DEVELOPMENT_CANDIDATE_PARITY_20261029.md).
+
+**Endpoint design adversarial correction, 29 October 2026:** the candidate
+WSGZP follow-up decision is now explicitly separated into (A) a conditional
+compatibility-set audit, for which direct constrained fitting is the
+answer-equivalence oracle, and (B) a lossy fixed-area prioritization map that
+can be judged only by sampled SEEG-positive-contact capture. The latter cannot
+validate `UNIQUE_ENOUGH`/`AMBIGUOUS` labels or whole-cortex source truth.
+Participant-level holdouts, matched area and abstention budgets, sampling
+controls, a frozen meaningful-effect threshold, valid participant geometry,
+preprocessing semantics and run correspondence remain required. This is a
+design correction only: the protocol remains unlocked and no EEG/SEEG samples
+were opened for it. See [the adversarial amendment](DECISION_ENDPOINT_ADVERSARIAL_AMENDMENT_20261029.md).
 
 **Measured-data benchmark completed:** a separate locked exploratory route used
 permitted OpenNeuro `ds004752` simultaneous scalp EEG and stereo-EEG from 12
 participants, 57 sessions, 1,483 valid trials and 532 held-out intracranial
-contact pairs. It found a small cross-channel scalp prediction advantage with
-participant-level replay and leakage checks. This validates a real
-scalp-to-contact prediction benchmark, not GBF source-map recovery: an
-intracranial contact is not a complete cortical ground truth and this dataset
-does not satisfy the original individual-forward-model contract. The result
-is recorded separately in the [real-data status report](../../../research/gbf_omitted_activity_20261024/REAL_DATA_VALIDATION_STATUS_20261028.md)
-and must not be merged with the constructed-field geometric claims.
+contact pairs. It found a small mean cross-spectrum scalp-prediction advantage
+(0.0222 normalized-MAE units), but its participant-bootstrap 95% interval
+crossed zero. A post-hoc audit of saved participant effects found 9/12 positive
+effects, with exact sign-flip and sign-test p-values of 0.1426 and 0.1460.
+These summaries do not establish a reliable confirmatory advantage. This
+validates a real scalp-to-contact prediction benchmark, not GBF source-map
+recovery: an intracranial contact is not a complete cortical ground truth and
+this dataset does not satisfy the original individual-forward-model contract.
+The sensitivity audit reads only saved participant-level metrics, not EEG/iEEG
+samples. See the [sensitivity audit](DS004752_EFFECT_SENSITIVITY_20261029.md)
+and [real-data status report](../../../research/gbf_omitted_activity_20261024/REAL_DATA_VALIDATION_STATUS_20261028.md).
+Do not merge this benchmark with the constructed-field geometric claims.
+
+**WSGZP provenance recheck, 29 October 2026:** a fresh read-only query of the
+public OSF storage API found only the six BIDS archive parts and
+`eeg_badtrials.json`, with no separately listed digitizer/registration files.
+The extracted BIDS tree still has participant T1w MRIs and scalp coordinates
+declared in T1w millimetres, but the exact participant-level transform linkage
+and reviewed QC remain unverified. This narrows the file-search uncertainty;
+it does not clear the geometry gate. See the [public inventory recheck](WSGZP_PUBLIC_GEOMETRY_INVENTORY_RECHECK_20261029.md).
 
 **Controlled-stimulation family validation completed:** a separate bounded run
 now uses real Localize-MI scalp epochs, 224 common EEG channels, 8,196 sources,
@@ -333,7 +385,7 @@ Track B gate statuses or the sealed Track A release.
 
 Observable Geometry is a computational-neuroscience software build centered on **Geometric-Informed Basis Functions (GBFs)** for EEG source imaging. The goal is to reproduce and reverse-engineer the relevant GBFs implementation, then provide a researcher-facing tool that measures how distinguishable candidate source patterns are at the scalp under one verified participant-specific forward model.
 
-The first software demonstration uses the real Localize-MI dataset and the sealed Track A sub-01 forward model. Track A already contains a clean implementation-parity check, a nominal source-signature library, a list of high-similarity distant source pairs, and an MNE resolution comparison. Those artifacts are the starting foundation, not proof of a new method or general source-localization performance. The 2026 GBF paper has already reported localization results for 318 iES-CCEP sessions from 35 participants and for 24 favourable-outcome patients from HDEEG-IED-SurgOutcome. Neither dataset may be presented as an untouched independent cohort for the corresponding broad GBF claim. HDEEG-IED-SurgOutcome remains a possible participant-held-out secondary evaluation because the public release contains 44 cases, individual MRI and electrode coordinates, EEG averages, resection imaging, and outcomes; the exact overlap with the published GBF subset, EBRAINS terms, and a reviewed protocol must be resolved before any data or outcomes are accessed. The iES-CCEP OSF API records the license as `Other` and directs readers to `license.txt`, but the recursive metadata-only storage audit lists seven visible files and no such file. Its EBRAINS record is discoverable, but the unauthenticated instance API returned HTTP 401 and the public page exposed only an application shell, so that route did not establish reuse terms either. No signal access or secondary analysis is authorized by the present project record. See `B4_OSF_WSGZP_LICENSE_AUDIT_20261024.md`. Neither candidate establishes novelty by itself.
+The first software demonstration uses the real Localize-MI dataset and the sealed Track A sub-01 forward model. Track A already contains a clean implementation-parity check, a nominal source-signature library, a list of high-similarity distant source pairs, and an MNE resolution comparison. Those artifacts are the starting foundation, not proof of a new method or general source-localization performance. The 2026 GBF paper has already reported localization results for 318 iES-CCEP sessions from 35 participants and for 24 favourable-outcome patients from HDEEG-IED-SurgOutcome. Neither dataset may be presented as an untouched independent cohort for the corresponding broad GBF claim. HDEEG-IED-SurgOutcome remains a possible participant-held-out secondary evaluation because the public release contains 44 cases, individual MRI and electrode coordinates, EEG averages, resection imaging, and outcomes; the exact overlap with the published GBF subset, EBRAINS terms, and a reviewed protocol must be resolved before any data or outcomes are accessed. The downloaded and extracted iES-CCEP/WSGZP package contains a root `LICENSE` and `dataset_description.json` that both declare CC BY-NC-SA 4.0; the OSF API still labels its license relationship `Other` and points to a `license.txt` absent from the visible metadata listing. The package declaration resolves the earlier reuse-term uncertainty for noncommercial use subject to attribution, ShareAlike, and applicable ethical/privacy constraints. The archive is outside Git. Metadata and NPY-header audits have not analyzed EEG/SEEG sample values. No signal-level analysis is authorized yet: the protocol is unlocked, participant geometry/forward validity remains under review, released event IDs and cross-modal trial pairing are unavailable, and the candidate endpoint must still beat the closest prior methods. See `B4_OSF_WSGZP_LICENSE_AUDIT_20261024.md`, `DATA_ACCESS_STATUS_20261028.md`, and `NOVELTY_PROOF_PLAN_20261028.md`. Neither candidate establishes novelty by itself.
 
 A close new method comparison appeared as the October 2026 CANDLE preprint, which is marked under review. It uses a learned prior in the leadfield null space and reports evaluations against the same Parmigiani et al. stimulation-data family, with GBF among its baselines. This further narrows any defensible method claim. The paper does not report the B2 pairwise source-signature score, but its cohort must not be treated as independent evidence for this project unless subject/run overlap is reconciled. The inspected project page did not expose a code link; availability and reuse terms for the supplementary implementation and checkpoints remain unverified.
 

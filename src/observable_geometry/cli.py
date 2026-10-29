@@ -5,11 +5,14 @@ import argparse
 from dataclasses import asdict
 from datetime import datetime, timezone
 import csv
+from contextlib import contextmanager
 import hashlib
 import json
 import os
 from pathlib import Path
+import shutil
 import sys
+import tempfile
 
 import numpy as np
 
@@ -32,6 +35,24 @@ def sha256(path: Path) -> str:
         for block in iter(lambda: stream.read(1024 * 1024), b""):
             digest.update(block)
     return digest.hexdigest()
+
+
+@contextmanager
+def fresh_output_directory(destination: Path):
+    """Write a run privately, then publish the complete directory atomically."""
+    destination = destination.resolve()
+    if os.path.lexists(destination):
+        raise ValueError(f"refusing to overwrite existing output path: {destination}")
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    stage = Path(tempfile.mkdtemp(prefix=f".{destination.name}.tmp-", dir=destination.parent))
+    try:
+        yield stage
+        if os.path.lexists(destination):
+            raise ValueError(f"refusing to overwrite existing output path: {destination}")
+        os.rename(stage, destination)
+    finally:
+        if stage.exists():
+            shutil.rmtree(stage)
 
 
 def log_access(path: Path, bundle: Path, key: str, decision: str) -> None:
@@ -102,10 +123,20 @@ def read_metadata(path: Path, sensor_count: int) -> dict:
 def run_distinguish(args: argparse.Namespace) -> int:
     bundle = args.bundle.resolve()
     metadata_path = args.metadata.resolve()
-    output = args.output.resolve()
-    if output.exists():
-        raise ValueError(f"refusing to overwrite existing output path: {output}")
-    output.mkdir(parents=True, exist_ok=False)
+    final_output = args.output.resolve()
+    with fresh_output_directory(final_output) as output:
+        completion = _write_distinguish_run(args, bundle, metadata_path, output, final_output)
+    print(json.dumps(completion, indent=2))
+    return 0
+
+
+def _write_distinguish_run(
+    args: argparse.Namespace,
+    bundle: Path,
+    metadata_path: Path,
+    output: Path,
+    final_output: Path,
+) -> dict:
     access_log = output / "npz_key_access.jsonl"
     leadfield, covariance, coordinates, source_ids = read_bundle(bundle, access_log)
     metadata = read_metadata(metadata_path, leadfield.shape[0])
@@ -172,18 +203,15 @@ def run_distinguish(args: argparse.Namespace) -> int:
         ],
     }
     (output / "run_manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
-    print(json.dumps({"status": summary["status"], "output": str(output), "summary": {k: summary[k] for k in (
+    return {"status": summary["status"], "output": str(final_output), "summary": {k: summary[k] for k in (
         "source_count", "valid_signature_count", "covariance_rank", "median_best_distant_abs_cosine",
-        "p90_best_distant_abs_cosine", "fraction_best_abs_cosine_ge_0_95")}}, indent=2))
-    return 0
+        "p90_best_distant_abs_cosine", "fraction_best_abs_cosine_ge_0_95")}}
 
 
 def run_robust_audit(args: argparse.Namespace) -> int:
     """Compare a nominal target-only claim with interval and in-set evidence."""
     spec_path=args.spec.resolve()
     output=args.output.resolve()
-    if output.exists():
-        raise ValueError(f"refusing to overwrite existing output path: {output}")
     raw=json.loads(spec_path.read_text(encoding="utf-8"))
     if not isinstance(raw,dict) or not isinstance(raw.get("endpoints"),list):
         raise ValueError("robust audit spec needs a JSON object with endpoints")
@@ -196,13 +224,13 @@ def run_robust_audit(args: argparse.Namespace) -> int:
     endpoints=tuple(EndpointChallenge(**item) for item in raw["endpoints"])
     spec=RobustAuditInput(**{k:v for k,v in raw.items() if k!="endpoints"},endpoints=endpoints)
     result=audit_robust_attribution(spec)
-    output.mkdir(parents=True,exist_ok=False)
-    report={"status":"COMPLETED_CONDITIONAL_ROBUST_AUDIT",
-            "result":asdict(result),"input":asdict(spec),
-            "input_evidence_status":"supplied_bounds_not_replayed_by_this_command",
-            "claim_boundary":"Conditional on supplied in-set scenarios, residual certificates and column radii. This is a standard sufficient bound and counterexample audit, not a new inverse method or physiological source identity.",
-            "input_sha256":sha256(spec_path),"implementation_sha256":sha256(Path(__file__).resolve())}
-    (output/"result.json").write_text(json.dumps(report,indent=2)+"\n",encoding="utf-8")
+    with fresh_output_directory(output) as stage:
+        report={"status":"COMPLETED_CONDITIONAL_ROBUST_AUDIT",
+                "result":asdict(result),"input":asdict(spec),
+                "input_evidence_status":"supplied_bounds_not_replayed_by_this_command",
+                "claim_boundary":"Conditional on supplied in-set scenarios, residual certificates and column radii. This is a standard sufficient bound and counterexample audit, not a new inverse method or physiological source identity.",
+                "input_sha256":sha256(spec_path),"implementation_sha256":sha256(Path(__file__).resolve())}
+        (stage/"result.json").write_text(json.dumps(report,indent=2)+"\n",encoding="utf-8")
     print(json.dumps({"status":report["status"],"anchor_decision":result.anchor_decision,
                       "interval_decision":result.interval_decision,
                       "input_evidence_status":report["input_evidence_status"],
@@ -214,8 +242,6 @@ def run_family_frontier(args: argparse.Namespace) -> int:
     """Report source-family decision reversals from supplied distance bounds."""
     spec_path = args.spec.resolve()
     output = args.output.resolve()
-    if output.exists():
-        raise ValueError(f"refusing to overwrite existing output path: {output}")
     raw = json.loads(spec_path.read_text(encoding="utf-8"))
     if not isinstance(raw, dict) or set(raw) != {"tolerance", "cases"} or not isinstance(raw["cases"], list):
         raise ValueError("family-frontier spec needs exactly tolerance and cases")
@@ -246,7 +272,6 @@ def run_family_frontier(args: argparse.Namespace) -> int:
             raw["tolerance"],
         )
         reports.append({"id": case["id"], **comparison})
-    output.mkdir(parents=True, exist_ok=False)
     report = {
         "status": "COMPLETED_CONDITIONAL_FAMILY_FRONTIER",
         "input_sha256": sha256(spec_path),
@@ -255,7 +280,8 @@ def run_family_frontier(args: argparse.Namespace) -> int:
         "input_evidence_status": "supplied_distance_bounds_not_replayed_by_this_command",
         "cases": reports,
     }
-    (output / "result.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    with fresh_output_directory(output) as stage:
+        (stage / "result.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({"status": report["status"], "cases": len(reports), "output": str(output)}, indent=2))
     return 0
 

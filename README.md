@@ -1,6 +1,6 @@
 # Observable Geometry
 
-Observable Geometry 0.1.2 is a computational-neuroscience software build around **Geometric-Informed Basis Functions (GBFs)** and a nominal EEG source-pattern comparison. The software asks what a declared forward model predicts at the sensors for pairs of candidate sources. It does not infer every active neural source, assign calibrated probabilities, or establish physiological source recovery.
+Observable Geometry 0.1.3.dev0 is an unreleased development candidate for a computational-neuroscience software build around **Geometric-Informed Basis Functions (GBFs)** and a nominal EEG source-pattern comparison. The software asks what a declared forward model predicts at the sensors for pairs of candidate sources. It does not infer every active neural source, assign calibrated probabilities, or establish physiological source recovery.
 
 The active contribution is a traceable GBFs implementation/reproduction workflow and an inspectable researcher-facing diagnostic. The normalized, noise-whitened source-pattern similarity is established prior art; this project does not claim that score as a new mathematical method. Track A's Localize-MI pulse-artifact evaluation is limited to one participant and an electrical stimulation artifact. It does not validate endogenous neural-source localization.
 
@@ -44,7 +44,7 @@ Prepare an NPZ bundle with exactly these arrays:
 - `coordinates_m`: finite `n_sources × 3` source coordinates in metres.
 - Optional `source_ids`: one integer or string ID per source column.
 
-The command rejects undeclared arrays, including a `data` member, before materializing them. It records the allowed keys it reads. This process-level guard prevents accidental access through this CLI; it is not a security sandbox.
+The command rejects undeclared arrays, including a `data` member, before materializing them. A successful run records the allowed keys it reads; a rejected run reports the denied key on stderr and does not publish an output folder. This process-level guard prevents accidental access through this CLI; it is not a security sandbox.
 
 Provide a JSON file describing the model. It must include nonempty strings for `dataset`, `participant`, `forward_model`, `reference`, `coordinate_frame`, `source_orientation`, and `noise_covariance`, plus a `sensor_names` array with one unique name per leadfield row. For example:
 
@@ -61,7 +61,7 @@ Provide a JSON file describing the model. It must include nonempty strings for `
 }
 ```
 
-Run the analysis into a new output directory. Existing output paths are never overwritten.
+Run the analysis into a new output directory. Existing output paths are never overwritten. Each command writes into a temporary sibling directory and publishes the finished result only after every output file is complete; a failed run removes its temporary directory so it cannot be mistaken for a completed result or block a retry.
 
 ```powershell
 observable-geometry distinguish `
@@ -133,5 +133,7 @@ research software. The current conductivity example uses a synthetic field;
 it does not establish physiological source attribution.
 
 The equation, assumptions, prior art, data provenance, failures, and claim limits are documented in `docs/track_b/`. Historical NeuroFlowNet/WBEN experiments are archived and are not part of the active target. Active experimental work uses real recordings only; software correctness checks may use algebraic fixtures, but no synthetic neural dataset or signal is used as empirical evidence.
+
+An optional [relative tail-closed frontier](docs/track_b/TAIL_CLOSED_RELATIVE_FRONTIER_20261029.md) evaluates the model-conditional separation margin relative to each retained field's gain, using a generalized eigenvalue form of the existing S-lemma bound. It is a finite-grid, model-only diagnostic, not a novel method or neural-source result. The full workspace includes a runner and a separate direct-matrix verifier under `scripts/track_b/`.
 
 Track A remains sealed. Do not overwrite its outputs. Project source code is BSD-3-Clause licensed. This covers this repository's source only; it does not relicense the separately vendored GBFs checkout or any dataset. The Localize-MI data have a non-commercial share-alike license and are excluded from the package and source snapshot. External scientific/software review is not complete; treat the build as a research prototype until that review is completed.

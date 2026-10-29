@@ -1,5 +1,19 @@
 # B4 alternate public dataset screen
 
+> **28 October 2026 status correction:** The WSGZP multipart archive has since
+> been downloaded, extracted, and checked against its six-part hash manifest.
+> The extracted package contains a root `LICENSE` and dataset description
+> declaring CC BY-NC-SA 4.0. This supersedes the 24 October statements below
+> that archive contents had not been checked and reuse terms were unresolved.
+> The archive terms do not make WSGZP an independent cohort or establish a
+> valid novelty endpoint: the 2026 GBF analysis already uses this data route,
+> event-level EEG/SEEG pairing is unavailable, preprocessing is inherited,
+> and geometry plus the confirmatory protocol remain unresolved. The later
+> metadata/license audits read metadata and NPY headers only, not signal
+> sample values. See `DATA_ACCESS_STATUS_20261028.md`,
+> `B4_OSF_WSGZP_LICENSE_AUDIT_20261024.md`, and
+> `WSGZP_METADATA_AUDIT_20261028.md`.
+
 **Screen date:** 24 October 2026  
 **Purpose:** Determine whether an already public real dataset can reopen B4 for EEG source-pattern distinguishability under an individual forward model.  
 **Data boundary:** Metadata and published descriptions only. No neural-signal samples were opened for this screen.

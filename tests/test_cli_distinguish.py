@@ -60,8 +60,62 @@ def test_distinguish_cli_rejects_unlisted_signal_member_without_loading_it(tmp_p
 
     assert code == 2
     assert "undeclared array member(s): data" in capsys.readouterr().err
-    access = [json.loads(line) for line in (output / "npz_key_access.jsonl").read_text().splitlines()]
-    assert len(access) == 1
-    assert access[0]["archive"] == "forbidden.npz"
-    assert access[0]["key"] == "data"
-    assert access[0]["decision"] == "deny"
+    assert not output.exists()
+
+
+def test_distinguish_cli_does_not_publish_partial_output_when_metadata_is_invalid(tmp_path, capsys):
+    bundle = tmp_path / "model.npz"
+    metadata = tmp_path / "metadata.json"
+    output = tmp_path / "result"
+    np.savez(bundle, leadfield=np.eye(2), noise_covariance=np.eye(2),
+             coordinates_m=np.array([[0., 0., 0.], [0.1, 0., 0.]]))
+    metadata.write_text("{}", encoding="utf-8")
+
+    code = main(["distinguish", "--bundle", str(bundle), "--metadata", str(metadata),
+                 "--output", str(output)])
+
+    assert code == 2
+    assert "metadata is missing nonempty field(s)" in capsys.readouterr().err
+    assert not output.exists()
+
+
+def test_cli_refuses_existing_output_without_changing_it(tmp_path, capsys):
+    bundle = tmp_path / "model.npz"
+    metadata = tmp_path / "metadata.json"
+    output = tmp_path / "result"
+    output.mkdir()
+    sentinel = output / "keep.txt"
+    sentinel.write_text("existing", encoding="utf-8")
+    np.savez(bundle, leadfield=np.eye(2), noise_covariance=np.eye(2),
+             coordinates_m=np.array([[0., 0., 0.], [0.1, 0., 0.]]))
+    _metadata(metadata, ["S1", "S2"])
+
+    code = main(["distinguish", "--bundle", str(bundle), "--metadata", str(metadata),
+                 "--output", str(output)])
+
+    assert code == 2
+    assert "refusing to overwrite existing output path" in capsys.readouterr().err
+    assert sentinel.read_text(encoding="utf-8") == "existing"
+
+
+def test_cli_does_not_report_success_if_atomic_publish_fails(tmp_path, capsys, monkeypatch):
+    bundle = tmp_path / "model.npz"
+    metadata = tmp_path / "metadata.json"
+    output = tmp_path / "result"
+    np.savez(bundle, leadfield=np.array([[1., 0.], [0., 1.]]),
+             noise_covariance=np.eye(2),
+             coordinates_m=np.array([[0., 0., 0.], [0.1, 0., 0.]]))
+    _metadata(metadata, ["S1", "S2"])
+
+    def fail_publish(_source, _destination):
+        raise OSError("simulated atomic publish failure")
+
+    monkeypatch.setattr("observable_geometry.cli.os.rename", fail_publish)
+    code = main(["distinguish", "--bundle", str(bundle), "--metadata", str(metadata),
+                 "--output", str(output)])
+
+    captured = capsys.readouterr()
+    assert code == 2
+    assert captured.out == ""
+    assert "simulated atomic publish failure" in captured.err
+    assert not output.exists()

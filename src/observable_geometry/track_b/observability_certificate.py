@@ -1,15 +1,15 @@
-"""Measured-field source-family observability certificate.
+"""Exploratory linear-span screen for measured-field source hypotheses.
 
-This module is the computation layer for COG-2026-10-28-v1.  It accepts an
-observed sensor field and *candidate forward explanations* supplied by a
-participant-specific model.  Candidate fields are hypotheses; the observed
-field must come from measured data in the scientific runs.
-
-The result is deliberately conservative.  A family is called ``fit`` only
-when every declared forward-model variant fits within the tolerance.  It is
-called ``excluded`` only when every variant is outside the tolerance.  Anything
-between those two cases is ``sensitive``.  This prevents a favourable single
-head-model variant from being reported as a robust attribution.
+This module profiles unrestricted linear least-squares spans. That is only a
+relaxation of any coefficient-constrained source family: its residual is a
+lower bound on the constrained family's best residual. A low span residual
+means only "not excluded by this relaxation"; it does not prove a physically
+admissible source fit. A high computed float64 residual for every supplied
+variant is not a certified exclusion because this module does not bound
+numerical error. Finite variants do not provide a continuous
+forward-uncertainty bound. This module cannot decide spatial uniqueness or
+ambiguity because it receives no spatial supports and does not certify
+coverage of all admissible explanations.
 
 No neural signal is generated here.  Synthetic/algebraic inputs belong only in
 unit tests and must never be used for calibration or the primary result.
@@ -23,28 +23,29 @@ import numpy as np
 
 
 @dataclass(frozen=True)
-class FamilyCertificate:
-    """Residual interval and conservative status for one source family."""
+class FamilySpanResult:
+    """Uncertified float64 span residual screen for a source family."""
 
     name: str
     residuals: tuple[float, ...]
-    lower_residual: float
-    upper_residual: float
+    minimum_span_residual: float
+    maximum_span_residual: float
     best_variant: int
     status: str
+    exclusion_certified: bool = False
 
 
 @dataclass(frozen=True)
-class ObservabilityCertificate:
-    """Complete family comparison for one measured field."""
+class FamilySpanScreen:
+    """Finite tested-family float64 screen, not a spatial certificate."""
 
     tolerance: float
-    families: tuple[FamilyCertificate, ...]
-    decision: str
-    fitted_family_names: tuple[str, ...]
-    excluded_family_names: tuple[str, ...]
-    sensitive_family_names: tuple[str, ...]
+    families: tuple[FamilySpanResult, ...]
+    summary: str
+    within_tolerance_family_names: tuple[str, ...]
+    above_tolerance_family_names: tuple[str, ...]
     whitening_rank: int | None
+    numerical_certification: str = "uncertified_float64_residuals"
 
 
 def whiten_field_and_design(
@@ -59,6 +60,12 @@ def whiten_field_and_design(
     The supported covariance subspace is retained.  This is a numerical
     contract, not a claim that the covariance is physiologically complete.
     """
+    if (
+        not np.isfinite(eigenvalue_rtol)
+        or eigenvalue_rtol < 0.0
+        or eigenvalue_rtol >= 1.0
+    ):
+        raise ValueError("eigenvalue_rtol must be finite and in [0, 1)")
     y = np.asarray(field, dtype=np.float64)
     a = np.asarray(design, dtype=np.float64)
     cov = np.asarray(noise_covariance, dtype=np.float64)
@@ -95,26 +102,28 @@ def _least_squares_residual(field: np.ndarray, design: np.ndarray) -> float:
     return float(np.linalg.norm(residual))
 
 
-def certify_observability(
+def screen_family_spans(
     field: np.ndarray,
     family_variants: Mapping[str, Sequence[np.ndarray]],
     *,
     tolerance: float,
     noise_covariance: np.ndarray | None = None,
-    require_all_variants: bool = True,
-) -> ObservabilityCertificate:
-    """Compare a measured sensor field against declared source families.
+) -> FamilySpanScreen:
+    """Screen whether each family is excluded by unrestricted LS spans.
 
     ``family_variants[name]`` contains one or more candidate design matrices.
-    Each variant corresponds to a fixed point in the declared forward-model
-    uncertainty set.  Coefficients are profiled by least squares; a future
-    protocol may replace this with a constrained solver, but must preserve the
-    same interval/status contract.
-
-    ``require_all_variants=True`` makes ``fit`` mean the residual upper bound is
-    within tolerance and ``excluded`` mean the residual lower bound is above it.
-    If false, status is an exploratory best-variant status and must not be used
-    for the primary COG decision.
+    Each variant corresponds to a fixed point in a finite tested forward-model
+    set. Least squares permits arbitrary signed coefficients and ignores source
+    moment/support constraints. Its residual is therefore a lower bound for a
+    source family contained in the supplied span. A family is marked
+    ``above_tolerance_for_all_tested_variants`` records only that the computed
+    float64 residual exceeded ``tolerance`` for every tested span. It is not a
+    certified exclusion: floating-point least squares can err in either
+    direction, and no residual error bound is computed here. The other status,
+    ``within_tolerance_for_at_least_one_tested_variant``, likewise does not
+    prove a feasible family member, physiological plausibility, or spatial
+    ambiguity. This routine never issues ``unique_enough`` or a certified
+    family exclusion.
     """
     y = np.asarray(field, dtype=np.float64)
     if y.ndim != 1 or y.size < 1 or not np.isfinite(y).all():
@@ -123,7 +132,7 @@ def certify_observability(
         raise ValueError("tolerance must be finite and nonnegative")
     if not family_variants:
         raise ValueError("at least one source family is required")
-    certificates: list[FamilyCertificate] = []
+    results: list[FamilySpanResult] = []
     rank: int | None = None
     for name, variants in family_variants.items():
         if not name or not variants:
@@ -147,25 +156,33 @@ def certify_observability(
                 residuals.append(_least_squares_residual(y, matrix))
         lower = float(min(residuals))
         upper = float(max(residuals))
-        if require_all_variants:
-            status = "fit" if upper <= tolerance else "excluded" if lower > tolerance else "sensitive"
-        else:
-            status = "fit" if lower <= tolerance else "excluded"
-        certificates.append(FamilyCertificate(
-            name=str(name), residuals=tuple(residuals), lower_residual=lower,
-            upper_residual=upper, best_variant=int(np.argmin(residuals)), status=status,
+        status = (
+            "above_tolerance_for_all_tested_variants"
+            if lower > tolerance
+            else "within_tolerance_for_at_least_one_tested_variant"
+        )
+        results.append(FamilySpanResult(
+            name=str(name), residuals=tuple(residuals),
+            minimum_span_residual=lower, maximum_span_residual=upper,
+            best_variant=int(np.argmin(residuals)), status=status,
+            exclusion_certified=False,
         ))
-    fitted = tuple(c.name for c in certificates if c.status == "fit")
-    excluded = tuple(c.name for c in certificates if c.status == "excluded")
-    sensitive = tuple(c.name for c in certificates if c.status == "sensitive")
-    if len(fitted) == 1 and not sensitive:
-        decision = "unique_enough"
-    elif len(fitted) >= 1 or sensitive:
-        decision = "ambiguous"
-    else:
-        decision = "unsupported"
-    return ObservabilityCertificate(
-        tolerance=float(tolerance), families=tuple(certificates), decision=decision,
-        fitted_family_names=fitted, excluded_family_names=excluded,
-        sensitive_family_names=sensitive, whitening_rank=rank,
+    within_tolerance = tuple(
+        c.name for c in results
+        if c.status == "within_tolerance_for_at_least_one_tested_variant"
+    )
+    above_tolerance = tuple(
+        c.name for c in results
+        if c.status == "above_tolerance_for_all_tested_variants"
+    )
+    summary = (
+        "all_tested_float64_span_residuals_above_tolerance"
+        if not within_tolerance
+        else "one_or_more_float64_span_residuals_within_tolerance"
+    )
+    return FamilySpanScreen(
+        tolerance=float(tolerance), families=tuple(results), summary=summary,
+        within_tolerance_family_names=within_tolerance,
+        above_tolerance_family_names=above_tolerance,
+        whitening_rank=rank,
     )
