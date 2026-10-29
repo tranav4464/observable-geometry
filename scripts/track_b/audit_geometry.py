@@ -12,7 +12,9 @@ import mne
 import numpy as np
 from scipy.spatial import cKDTree
 
-from fetch_localize import META, PAYLOAD, ROOT
+ROOT = Path(__file__).resolve().parents[2]
+META = ROOT / "data" / "Localize-MI"
+PAYLOAD = ROOT / "data" / "payload"
 
 
 def tsv(path: Path) -> list[dict[str, str]]:
@@ -26,6 +28,14 @@ def file_sha256(path: Path) -> str:
         for block in iter(lambda: stream.read(1 << 20), b""):
             digest.update(block)
     return digest.hexdigest()
+
+
+def write_report(report: dict, path: Path) -> None:
+    """Write a new audit output without allowing accidental replacement."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("x", encoding="utf-8", newline="\n") as stream:
+        json.dump(report, stream, indent=2)
+        stream.write("\n")
 
 
 def positions(path: Path) -> dict[str, np.ndarray]:
@@ -143,13 +153,20 @@ def audit(subject: str) -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--subjects", nargs="+", choices=[f"{i:02d}" for i in range(1, 8)], required=True)
+    parser.add_argument(
+        "--output", type=Path,
+        help="new JSON path (refuses overwrite); default is the canonical geometry filename",
+    )
     args = parser.parse_args()
     reports = [audit(subject) for subject in args.subjects]
     report = {"status": "PASS", "scope": "geometry metadata only, no EEG outcomes", "participants": reports}
-    out = ROOT / "outputs" / "track_b" / "data_acquisition"
-    out.mkdir(parents=True, exist_ok=True)
-    path = out / ("geometry_sub-" + "_".join(args.subjects) + ".json")
-    path.write_text(json.dumps(report, indent=2), encoding="utf-8")
+    if args.output is None:
+        path = ROOT / "outputs" / "track_b" / "data_acquisition" / (
+            "geometry_sub-" + "_".join(args.subjects) + ".json"
+        )
+    else:
+        path = args.output if args.output.is_absolute() else ROOT / args.output
+    write_report(report, path)
     print(json.dumps({"status": "PASS", "participants": [r["participant"] for r in reports],
                       "max_sensor_error_mm": max(r["sensor_position_error_mm"]["max"] for r in reports),
                       "offsets_over_20mm": sum(r["midpoint_offset_mm"]["count_over_20mm"] for r in reports),

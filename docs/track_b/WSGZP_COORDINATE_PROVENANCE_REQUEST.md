@@ -63,3 +63,81 @@ an authoritative signed statement of the exact transform and coordinate
 contract plus per-participant reviewed MRI overlays and registration-error
 summaries. A new fit of a standard HydroCel template to the MRI is not a
 substitute for verifying the released registration.
+
+## Suggested author request
+
+The linked 2020 Localize-MI dataset paper lists Andrea Pigorini as its
+corresponding author (`andrea.pigorini@unimi.it`). This is a reasonable first
+contact for the shared cohort and geometry workflow, but it does not establish
+that he personally holds the WSGZP export records. If he is not the right
+contact, ask to be redirected to the WSGZP data curator or the person who
+created the participant-level BIDS geometry. The public curation repository
+and the 2022 dataset paper should be included in the request for context.
+
+Suggested message (do not send without the project owner's authorization):
+
+> **Subject:** WSGZP scalp electrode coordinate provenance and QC
+>
+> Dear Dr. Pigorini and the dataset team,
+>
+> I am auditing the scalp-electrode geometry in the public WSGZP/iES-CCEP BIDS
+> release for a computational source-imaging project. The BIDS sidecars label
+> the electrode and fiducial positions as millimetres in T1w space, and the
+> paper describes digitization and coregistration to each participant's
+> pre-implant MRI. Could you confirm whether the released coordinates are
+> already in the coordinate frame of the released T1w MRI, and clarify the
+> frame, axes, handedness, and units of the source `.hpts` files used by the
+> exporter?
+>
+> If available, could you point me to the original digitizer points, the
+> participant-specific transform or registration record, and reviewed
+> electrode/fiducial-over-MRI QC or registration-error summaries? I am
+> particularly interested in resolving the flagged geometry for `sub-32`.
+> If these materials are held by another curator, I would be grateful for the
+> correct contact. I am requesting geometry provenance and QC only, not
+> additional recordings or clinical information.
+>
+> Thank you for your time.
+
+Reference for the listed corresponding-author contact: Mikulan et al. (2020),
+[Scientific Data, DOI 10.1038/s41597-020-0467-x](https://doi.org/10.1038/s41597-020-0467-x).
+The BIDS export implementation is in the pinned
+[`iTCf/ccepcoreg` repository](https://github.com/iTCf/ccepcoreg); the 2022
+dataset paper is [Parmigiani et al., DOI 10.1016/j.brs.2022.04.007](https://doi.org/10.1016/j.brs.2022.04.007).
+
+## Independent reconstruction fallback
+
+If the original transform cannot be recovered, the project may evaluate a
+**new, explicitly labelled independent registration**. It must not be described
+as recovering the original transform or validating the provenance of the
+released points. This fallback is eligible only when the participant MRI
+contains enough scalp/head surface to assess the full sensor array. For each
+participant:
+
+1. Have two reviewers independently mark MRI-visible anatomical landmarks
+   that correspond to the released NAS/LPA/RPA points. Record the MRI voxel
+   locations, inter-rater differences, and conversion through the exact NIfTI
+   affine into world coordinates.
+2. Estimate a rigid transform from the released landmark coordinates into
+   MRI world space. Do not use the electrode cloud to fit the transform.
+   Record handedness, units, determinant, and the transform hash. If only the
+   three NAS/LPA/RPA points are used to estimate a six-degree-of-freedom rigid
+   transform, their fit residual is not an independent validation measure.
+3. Independently inspect the transformed full sensor array against a
+   participant-specific scalp/head surface. Record nearest-surface residuals,
+   coverage, outliers, and blinded reviewer decisions. If additional digitized
+   head-shape points or MRI-visible landmarks are available, hold some out of
+   fitting and report their transform residuals. Define any acceptable
+   tolerance before viewing participant outcomes; the source dataset provides
+   no registration-error threshold, so do not invent one after inspecting
+   results.
+4. Require acceptable predeclared landmark agreement and independent visual
+   QC before building a forward model. A large mismatch or insufficient MRI
+   coverage means that participant remains ineligible.
+
+This route creates a new registration with its own uncertainty. It may support
+a separately named exploratory model if it passes independent QC, but it does
+not resolve whether the historical BIDS coordinates were originally exported
+in the same frame. A cropped image such as sub-32's, which omits part of the
+superior head surface, cannot independently validate the complete cap under
+this fallback; obtain a full-coverage MRI or leave that participant out.

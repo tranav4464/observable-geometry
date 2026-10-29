@@ -1,0 +1,1524 @@
+{
+  "audit_id": "WSGZP_EEG_MRI_COORDINATE_COMPATIBILITY_2026-10-29-v2",
+  "dataset_bids_version": "1.6.0",
+  "scope": "Metadata and T1w MRI only; no EEG/iEEG recordings or epoch arrays opened.",
+  "coordinate_frame_hypothesis": "declared T1w XYZ millimetres are directly in the participant MRI qform world frame",
+  "audit_script_sha256": "b86763fac53885d165dfa3114f9692e9534a9bedc132301e922fed5ea19e3444",
+  "full_audit_sha256": "8fe700c360afa63f26e1b32432b995d71cb99abc195fc76e96583e9612917dc7",
+  "participant_count": 36,
+  "participants": [
+    {
+      "participant": "sub-01",
+      "mri": {
+        "file": "sub-01_T1w.nii",
+        "sha256": "b9e17bfce30ecf97b27198b132c99bda231b854c0830090c5c1699d3e90dc90b",
+        "qform_code": 1,
+        "sform_code": 0
+      },
+      "electrode_table": {
+        "file": "sub-01_task-ccepcoreg_electrodes.tsv",
+        "sha256": "781589adf628d584419195195fb396e8184d2f151b33e4c0d657634f952d31eb",
+        "sidecar": "sub-01_task-ccepcoreg_coordsystem.json",
+        "sidecar_sha256": "0d7832390a297504d44c8387e3a581e1d3048cd85ed705d4cf2a63f65b5b1baf",
+        "point_count": 185,
+        "inside_image_count": 185,
+        "outside_image_count": 0,
+        "nearest_nonzero_mri_voxel_distance_mm_quantiles": [
+          2.0,
+          6.956921938165306,
+          8.366600265340756,
+          10.63014581273465,
+          12.083045973594572,
+          13.023042886243179,
+          17.4928556845359
+        ],
+        "within_5mm": 6,
+        "within_10mm": 84
+      },
+      "fiducials": {
+        "names": [
+          "LPA",
+          "NAS",
+          "RPA"
+        ],
+        "inside_image_count": 3,
+        "outside_image_count": 0,
+        "orientation_sanity_checks": {
+          "left_right_landmark_order_x": true,
+          "nasion_anterior_to_preauricular_mean_y": true
+        }
+      }
+    },
+    {
+      "participant": "sub-02",
+      "mri": {
+        "file": "sub-02_T1w.nii",
+        "sha256": "9ce7119fb9c1b0a9b65897e079a126b7a93f4a82bfeae656fae031b497ddeca6",
+        "qform_code": 1,
+        "sform_code": 0
+      },
+      "electrode_table": {
+        "file": "sub-02_task-ccepcoreg_electrodes.tsv",
+        "sha256": "b2bdab7b312507292abd22e760e178d453ef037becdadc6657bd25fd52773110",
+        "sidecar": "sub-02_task-ccepcoreg_coordsystem.json",
+        "sidecar_sha256": "676c5bff22ff6c55438393e2a601d4569aabcec728caea6e7c1413cc608e2017",
+        "point_count": 185,
+        "inside_image_count": 185,
+        "outside_image_count": 0,
+        "nearest_nonzero_mri_voxel_distance_mm_quantiles": [
+          1.7320509452199109,
+          5.385165360549742,
+          7.483315601908479,
+          11.045361459688058,
+          14.071247525153524,
+          15.993684218673039,
+          23.216375432329645
+        ],
+        "within_5mm": 12,
+        "within_10mm": 81
+      },
+      "fiducials": {
+        "names": [
+          "LPA",
+          "NAS",
+          "RPA"
+        ],
+        "inside_image_count": 3,
+        "outside_image_count": 0,
+        "orientation_sanity_checks": {
+          "left_right_landmark_order_x": true,
+          "nasion_anterior_to_preauricular_mean_y": true
+        }
+      }
+    },
+    {
+      "participant": "sub-03",
+      "mri": {
+        "file": "sub-03_T1w.nii",
+        "sha256": "ee4b786cdec2881f7cd5ed0e828bb675db3a3eb52dbedf194a1d206cbae7e351",
+        "qform_code": 1,
+        "sform_code": 0
+      },
+      "electrode_table": {
+        "file": "sub-03_task-ccepcoreg_electrodes.tsv",
+        "sha256": "674f822295b59e895a9095f77c1002c317fbd8109cb3ec72d9d7d14cb3fd0baf",
+        "sidecar": "sub-03_task-ccepcoreg_coordsystem.json",
+        "sidecar_sha256": "e11675fcf0d0ca6a3afb40e64a57d4e096c034908be1b80181ef6f3e737189b7",
+        "point_count": 185,
+        "inside_image_count": 185,
+        "outside_image_count": 0,
+        "nearest_nonzero_mri_voxel_distance_mm_quantiles": [
+          1.0,
+          4.472135784401137,
+          5.744563123826536,
+          8.366600137106651,
+          10.246951365091855,
+          11.207119671316795,
+          14.560219549315871
+        ],
+        "within_5mm": 30,
+        "within_10mm": 129
+      },
+      "fiducials": {
+        "names": [
+          "LPA",
+          "NAS",
+          "RPA"
+        ],
+        "inside_image_count": 3,
+        "outside_image_count": 0,
+        "orientation_sanity_checks": {
+          "left_right_landmark_order_x": true,
+          "nasion_anterior_to_preauricular_mean_y": true
+        }
+      }
+    },
+    {
+      "participant": "sub-04",
+      "mri": {
+        "file": "sub-04_T1w.nii",
+        "sha256": "a9ce1bfee2f15b84d4afb65b10b36f36827a469f75b98747fceb3d04ab1a981a",
+        "qform_code": 1,
+        "sform_code": 0
+      },
+      "electrode_table": {
+        "file": "sub-04_task-ccepcoreg_electrodes.tsv",
+        "sha256": "72d3d86fafbcd06062dcf36308a64cb43e50cfc57126924b8c89c9c285148c84",
+        "sidecar": "sub-04_task-ccepcoreg_coordsystem.json",
+        "sidecar_sha256": "6a7c9ebc7029bef6282ce04959adbe70eaa516a704a7e05d35ae042bc1fa65f6",
+        "point_count": 185,
+        "inside_image_count": 185,
+        "outside_image_count": 0,
+        "nearest_nonzero_mri_voxel_distance_mm_quantiles": [
+          0.0,
+          5.744562729544728,
+          8.18535290294605,
+          12.727922145651556,
+          16.970562860868743,
+          19.224979555388163,
+          22.158520069772507
+        ],
+        "within_5mm": 14,
+        "within_10mm": 62
+      },
+      "fiducials": {
+        "names": [
+          "LPA",
+          "NAS",
+          "RPA"
+        ],
+        "inside_image_count": 3,
+        "outside_image_count": 0,
+        "orientation_sanity_checks": {
+          "left_right_landmark_order_x": true,
+          "nasion_anterior_to_preauricular_mean_y": true
+        }
+      }
+    },
+    {
+      "participant": "sub-05",
+      "mri": {
+        "file": "sub-05_T1w.nii",
+        "sha256": "d002f40dd860492f19bded691cbd0f3a712712d283c332d9305ac491495edea0",
+        "qform_code": 1,
+        "sform_code": 0
+      },
+      "electrode_table": {
+        "file": "sub-05_task-ccepcoreg_electrodes.tsv",
+        "sha256": "4b929acb96686c6430f828f82851369186b4f4dd675d6b170b3c70549e78f687",
+        "sidecar": "sub-05_task-ccepcoreg_coordsystem.json",
+        "sidecar_sha256": "7fc5233ea5c58f62b30d9434a42d328b847a2707a61a770d79d40ebb3d61c753",
+        "point_count": 185,
+        "inside_image_count": 183,
+        "outside_image_count": 2,
+        "nearest_nonzero_mri_voxel_distance_mm_quantiles": [
+          5.385164441880451,
+          7.238575440359448,
+          9.460406237939981,
+          12.041593460115731,
+          14.524818016059692,
+          16.024974297243855,
+          25.475476129198587
+        ],
+        "within_5mm": 0,
+        "within_10mm": 51
+      },
+      "fiducials": {
+        "names": [
+          "LPA",
+          "NAS",
+          "RPA"
+        ],
+        "inside_image_count": 3,
+        "outside_image_count": 0,
+        "orientation_sanity_checks": {
+          "left_right_landmark_order_x": true,
+          "nasion_anterior_to_preauricular_mean_y": true
+        }
+      }
+    },
+    {
+      "participant": "sub-06",
+      "mri": {
+        "file": "sub-06_T1w.nii",
+        "sha256": "472c89189188ed551faff18f1c6abcf981128772f8efea6660e2ffc4ad3455da",
+        "qform_code": 1,
+        "sform_code": 0
+      },
+      "electrode_table": {
+        "file": "sub-06_task-ccepcoreg_electrodes.tsv",
+        "sha256": "a4a1c91a71b1db57518907dd32a3dddcfb0811f34fd59ab5951735e18193c599",
+        "sidecar": "sub-06_task-ccepcoreg_coordsystem.json",
+        "sidecar_sha256": "7141937aa5c62e81c28bbb8ebff38f9eda292f8019d1b89c6f4645764e9ed08d",
+        "point_count": 185,
+        "inside_image_count": 185,
+        "outside_image_count": 0,
+        "nearest_nonzero_mri_voxel_distance_mm_quantiles": [
+          3.605551705279195,
+          5.385165201166157,
+          8.485281880000768,
+          11.180341049700884,
+          14.212672097834236,
+          16.4922562640526,
+          20.78461134263893
+        ],
+        "within_5mm": 12,
+        "within_10mm": 70
+      },
+      "fiducials": {
+        "names": [
+          "LPA",
+          "NAS",
+          "RPA"
+        ],
+        "inside_image_count": 3,
+        "outside_image_count": 0,
+        "orientation_sanity_checks": {
+          "left_right_landmark_order_x": true,
+          "nasion_anterior_to_preauricular_mean_y": true
+        }
+      }
+    },
+    {
+      "participant": "sub-07",
+      "mri": {
+        "file": "sub-07_T1w.nii",
+        "sha256": "eef820b51689430fa59eb829ca6f12658a5b3d983291c11259f60dadb11bbfd1",
+        "qform_code": 1,
+        "sform_code": 0
+      },
+      "electrode_table": {
+        "file": "sub-07_task-ccepcoreg_electrodes.tsv",
+        "sha256": "7f44d15d0d5c8d53a3841dcb57dd7e230561d223fd9588a3192dd654eaddf64b",
+        "sidecar": "sub-07_task-ccepcoreg_coordsystem.json",
+        "sidecar_sha256": "b1a97d83becdd45b2e617544114b864c616542ecbe174ec9bd8b9c3b69c6e20b",
+        "point_count": 185,
+        "inside_image_count": 184,
+        "outside_image_count": 1,
+        "nearest_nonzero_mri_voxel_distance_mm_quantiles": [
+          0.0,
+          3.7416573867739413,
+          5.454210383072372,
+          8.803362626859986,
+          12.359095903950648,
+          14.744457679173102,
+          21.37755832643195
+        ],
+        "within_5mm": 39,
+        "within_10mm": 114
+      },
+      "fiducials": {
+        "names": [
+          "LPA",
+          "NAS",
+          "RPA"
+        ],
+        "inside_image_count": 3,
+        "outside_image_count": 0,
+        "orientation_sanity_checks": {
+          "left_right_landmark_order_x": true,
+          "nasion_anterior_to_preauricular_mean_y": true
+        }
+      }
+    },
+    {
+      "participant": "sub-08",
+      "mri": {
+        "file": "sub-08_T1w.nii",
+        "sha256": "ad144165733020c91dedb30fd0763a8a319703a4aca9edd23776d80ee3c109a0",
+        "qform_code": 1,
+        "sform_code": 0
+      },
+      "electrode_table": {
+        "file": "sub-08_task-ccepcoreg_electrodes.tsv",
+        "sha256": "940e07d6aa5d1e5c9b1f3d211be03b2d02968fb2d6e57e7e5cc469e259d96016",
+        "sidecar": "sub-08_task-ccepcoreg_coordsystem.json",
+        "sidecar_sha256": "070bcded51aa9b0ec2f87080a43c42495b6feedb91c2556ea4a6fa669e92c1fa",
+        "point_count": 185,
+        "inside_image_count": 185,
+        "outside_image_count": 0,
+        "nearest_nonzero_mri_voxel_distance_mm_quantiles": [
+          5.385165360549742,
+          7.402408011871873,
+          8.6023256134876,
+          10.246951696650447,
+          11.661905179897866,
+          13.023044433225108,
+          20.322403802727464
+        ],
+        "within_5mm": 0,
+        "within_10mm": 82
+      },
+      "fiducials": {
+        "names": [
+          "LPA",
+          "NAS",
+          "RPA"
+        ],
+        "inside_image_count": 3,
+        "outside_image_count": 0,
+        "orientation_sanity_checks": {
+          "left_right_landmark_order_x": true,
+          "nasion_anterior_to_preauricular_mean_y": true
+        }
+      }
+    },
+    {
+      "participant": "sub-09",
+      "mri": {
+        "file": "sub-09_T1w.nii",
+        "sha256": "b1e16e29a304f5bc5cf2ccd8603691482bdf9244415015501da1ad54159f5243",
+        "qform_code": 1,
+        "sform_code": 0
+      },
+      "electrode_table": {
+        "file": "sub-09_task-ccepcoreg_electrodes.tsv",
+        "sha256": "aa7aa6b00adb99cd6ce09c29633f0383b8a91e8cd7e0789ae581e1381f1f4c3a",
+        "sidecar": "sub-09_task-ccepcoreg_coordsystem.json",
+        "sidecar_sha256": "5ec62571a1037ae6cf9639b0c9d6e1c9ea3950ffdf1c0b10a43794939f8a1d52",
+        "point_count": 185,
+        "inside_image_count": 185,
+        "outside_image_count": 0,
+        "nearest_nonzero_mri_voxel_distance_mm_quantiles": [
+          4.123106117130153,
+          7.238706342640071,
+          9.273619549578505,
+          12.083046614873608,
+          14.071247525153524,
+          16.247902583414994,
+          21.4009350993503
+        ],
+        "within_5mm": 1,
+        "within_10mm": 57
+      },
+      "fiducials": {
+        "names": [
+          "LPA",
+          "NAS",
+          "RPA"
+        ],
+        "inside_image_count": 3,
+        "outside_image_count": 0,
+        "orientation_sanity_checks": {
+          "left_right_landmark_order_x": true,
+          "nasion_anterior_to_preauricular_mean_y": true
+        }
+      }
+    },
+    {
+      "participant": "sub-10",
+      "mri": {
+        "file": "sub-10_T1w.nii",
+        "sha256": "876e67800c26dd0fce414f844090fae320485232b2c51aaaa8a0323a25146300",
+        "qform_code": 1,
+        "sform_code": 0
+      },
+      "electrode_table": {
+        "file": "sub-10_task-ccepcoreg_electrodes.tsv",
+        "sha256": "ceae5eae2db798eb5e0bc52d2ac2232b39274512ae057d7b5a1c2fe429252390",
+        "sidecar": "sub-10_task-ccepcoreg_coordsystem.json",
+        "sidecar_sha256": "637a604db2f9c1517adfe1bc285dffb8328d6e8fbbeb41e889eb87de4c830425",
+        "point_count": 185,
+        "inside_image_count": 184,
+        "outside_image_count": 1,
+        "nearest_nonzero_mri_voxel_distance_mm_quantiles": [
+          0.0,
+          2.4494895481152272,
+          4.414762074809235,
+          8.688644655221779,
+          12.051957321205945,
+          14.86935926010035,
+          18.973665961010276
+        ],
+        "within_5mm": 57,
+        "within_10mm": 109
+      },
+      "fiducials": {
+        "names": [
+          "LPA",
+          "NAS",
+          "RPA"
+        ],
+        "inside_image_count": 3,
+        "outside_image_count": 0,
+        "orientation_sanity_checks": {
+          "left_right_landmark_order_x": true,
+          "nasion_anterior_to_preauricular_mean_y": true
+        }
+      }
+    },
+    {
+      "participant": "sub-11",
+      "mri": {
+        "file": "sub-11_T1w.nii",
+        "sha256": "655c28955805a398ad2fe154266bab5602f9e9704fe9eed5454236c12d9b9991",
+        "qform_code": 1,
+        "sform_code": 0
+      },
+      "electrode_table": {
+        "file": "sub-11_task-ccepcoreg_electrodes.tsv",
+        "sha256": "74249a54e6c46f74ad05a469edb88195f8cfdc1072a060e305f1f20228089095",
+        "sidecar": "sub-11_task-ccepcoreg_coordsystem.json",
+        "sidecar_sha256": "9e2f699498f78fdcaf640c298806055689811a7bfc8ebf9d1d9e9ba5a9d18e0d",
+        "point_count": 185,
+        "inside_image_count": 185,
+        "outside_image_count": 0,
+        "nearest_nonzero_mri_voxel_distance_mm_quantiles": [
+          1.4142137309604892,
+          7.3880005883948074,
+          8.124039373096807,
+          9.695360870609601,
+          12.369318351390458,
+          14.330955334755755,
+          20.199012284633774
+        ],
+        "within_5mm": 2,
+        "within_10mm": 100
+      },
+      "fiducials": {
+        "names": [
+          "LPA",
+          "NAS",
+          "RPA"
+        ],
+        "inside_image_count": 3,
+        "outside_image_count": 0,
+        "orientation_sanity_checks": {
+          "left_right_landmark_order_x": true,
+          "nasion_anterior_to_preauricular_mean_y": true
+        }
+      }
+    },
+    {
+      "participant": "sub-12",
+      "mri": {
+        "file": "sub-12_T1w.nii",
+        "sha256": "87694a40e0da0d940bfac0662c00379c83a9e2be1ceb44051b96550a3d515c55",
+        "qform_code": 1,
+        "sform_code": 0
+      },
+      "electrode_table": {
+        "file": "sub-12_task-ccepcoreg_electrodes.tsv",
+        "sha256": "28df75947873574f7f74aed600188f470c178c669c0ffea6f5484cef78de73ea",
+        "sidecar": "sub-12_task-ccepcoreg_coordsystem.json",
+        "sidecar_sha256": "c90f59037afd2065be0d68a7e5b059e0ddcc13ee49b4527b02127c9d329d283e",
+        "point_count": 185,
+        "inside_image_count": 185,
+        "outside_image_count": 0,
+        "nearest_nonzero_mri_voxel_distance_mm_quantiles": [
+          3.741657068173719,
+          7.307453133440059,
+          8.99999913904403,
+          11.445522621491415,
+          14.422204572852648,
+          17.452785827691894,
+          26.57065738408179
+        ],
+        "within_5mm": 6,
+        "within_10mm": 68
+      },
+      "fiducials": {
+        "names": [
+          "LPA",
+          "NAS",
+          "RPA"
+        ],
+        "inside_image_count": 3,
+        "outside_image_count": 0,
+        "orientation_sanity_checks": {
+          "left_right_landmark_order_x": true,
+          "nasion_anterior_to_preauricular_mean_y": true
+        }
+      }
+    },
+    {
+      "participant": "sub-13",
+      "mri": {
+        "file": "sub-13_T1w.nii",
+        "sha256": "a0fe77cc3e2b54801b7a5093123f4fc8471ad6ca5a6aaf0aa0359c7886181da6",
+        "qform_code": 1,
+        "sform_code": 0
+      },
+      "electrode_table": {
+        "file": "sub-13_task-ccepcoreg_electrodes.tsv",
+        "sha256": "c4b441801417ffac655985ecdb28e0a8a8ac8738ec6ae7cbc7733a35efc643a4",
+        "sidecar": "sub-13_task-ccepcoreg_coordsystem.json",
+        "sidecar_sha256": "085785464f0aa52ef890e2f29c21d57b9aafa0ea751aefbdd5d414ba71dfa92f",
+        "point_count": 185,
+        "inside_image_count": 185,
+        "outside_image_count": 0,
+        "nearest_nonzero_mri_voxel_distance_mm_quantiles": [
+          0.0,
+          4.289144473195516,
+          7.141429263174821,
+          10.099506130513408,
+          14.17744856043282,
+          17.429810302397446,
+          26.683331148321212
+        ],
+        "within_5mm": 23,
+        "within_10mm": 90
+      },
+      "fiducials": {
+        "names": [
+          "LPA",
+          "NAS",
+          "RPA"
+        ],
+        "inside_image_count": 3,
+        "outside_image_count": 0,
+        "orientation_sanity_checks": {
+          "left_right_landmark_order_x": true,
+          "nasion_anterior_to_preauricular_mean_y": true
+        }
+      }
+    },
+    {
+      "participant": "sub-14",
+      "mri": {
+        "file": "sub-14_T1w.nii",
+        "sha256": "9bb3dc823b0969cdadc3b4d1d8788d8fe47fabcc29a70df41f9f69376eabc0b8",
+        "qform_code": 1,
+        "sform_code": 0
+      },
+      "electrode_table": {
+        "file": "sub-14_task-ccepcoreg_electrodes.tsv",
+        "sha256": "cdb97ea26dd823158c92bd4d015718a0216b76915b64a199dc98454017d46ca9",
+        "sidecar": "sub-14_task-ccepcoreg_coordsystem.json",
+        "sidecar_sha256": "349bf3d519b679cae224b0da9c2ee168a19035e26016ce8d5a6c6034a82ae37c",
+        "point_count": 185,
+        "inside_image_count": 185,
+        "outside_image_count": 0,
+        "nearest_nonzero_mri_voxel_distance_mm_quantiles": [
+          3.0,
+          6.324555395731338,
+          7.549834687905259,
+          8.602325946074764,
+          10.440306611674167,
+          12.56980615785039,
+          18.788294386677702
+        ],
+        "within_5mm": 5,
+        "within_10mm": 130
+      },
+      "fiducials": {
+        "names": [
+          "LPA",
+          "NAS",
+          "RPA"
+        ],
+        "inside_image_count": 3,
+        "outside_image_count": 0,
+        "orientation_sanity_checks": {
+          "left_right_landmark_order_x": true,
+          "nasion_anterior_to_preauricular_mean_y": true
+        }
+      }
+    },
+    {
+      "participant": "sub-15",
+      "mri": {
+        "file": "sub-15_T1w.nii",
+        "sha256": "8e8fd5109d19ae3e3bacd1564a0d5faab4191d762f3590486b3eb3fedb233afa",
+        "qform_code": 1,
+        "sform_code": 0
+      },
+      "electrode_table": {
+        "file": "sub-15_task-ccepcoreg_electrodes.tsv",
+        "sha256": "6455b82d026d74a113afd0b86d8bcb4509eff4c0cbfc292965ccaadc49d21218",
+        "sidecar": "sub-15_task-ccepcoreg_coordsystem.json",
+        "sidecar_sha256": "30575f5afc40d53028caae71d5591bf716a8e6ce96a80c4b053ec6896159dd75",
+        "point_count": 185,
+        "inside_image_count": 185,
+        "outside_image_count": 0,
+        "nearest_nonzero_mri_voxel_distance_mm_quantiles": [
+          0.9999999403953552,
+          3.316624772383924,
+          5.099019326561866,
+          7.874007805883635,
+          12.165525060596439,
+          15.556349170011613,
+          20.149441573117247
+        ],
+        "within_5mm": 46,
+        "within_10mm": 117
+      },
+      "fiducials": {
+        "names": [
+          "LPA",
+          "NAS",
+          "RPA"
+        ],
+        "inside_image_count": 3,
+        "outside_image_count": 0,
+        "orientation_sanity_checks": {
+          "left_right_landmark_order_x": true,
+          "nasion_anterior_to_preauricular_mean_y": true
+        }
+      }
+    },
+    {
+      "participant": "sub-16",
+      "mri": {
+        "file": "sub-16_T1w.nii",
+        "sha256": "84879da3380fa521b1bbf8343c9dd82a9731ced108dcae442eed4b5dc3f96e42",
+        "qform_code": 1,
+        "sform_code": 0
+      },
+      "electrode_table": {
+        "file": "sub-16_task-ccepcoreg_electrodes.tsv",
+        "sha256": "da02eb01700380af1886dbd28608acdc98fcecc549b8e65f8927280225f6959b",
+        "sidecar": "sub-16_task-ccepcoreg_coordsystem.json",
+        "sidecar_sha256": "0bb730dafd333bcecc892bd88ed8a5212518b70c6c20f776745c0e0f21e8a1f0",
+        "point_count": 185,
+        "inside_image_count": 184,
+        "outside_image_count": 1,
+        "nearest_nonzero_mri_voxel_distance_mm_quantiles": [
+          4.242640743315087,
+          7.569616397232046,
+          8.35160687881861,
+          9.273619208929809,
+          10.344081216447613,
+          12.397568032635808,
+          18.57417619220984
+        ],
+        "within_5mm": 2,
+        "within_10mm": 125
+      },
+      "fiducials": {
+        "names": [
+          "LPA",
+          "NAS",
+          "RPA"
+        ],
+        "inside_image_count": 3,
+        "outside_image_count": 0,
+        "orientation_sanity_checks": {
+          "left_right_landmark_order_x": true,
+          "nasion_anterior_to_preauricular_mean_y": true
+        }
+      }
+    },
+    {
+      "participant": "sub-17",
+      "mri": {
+        "file": "sub-17_T1w.nii",
+        "sha256": "571b2e61bc1507626b56b136019fdaad36bf2f254b1304f16c162bc9c11d3e05",
+        "qform_code": 1,
+        "sform_code": 0
+      },
+      "electrode_table": {
+        "file": "sub-17_task-ccepcoreg_electrodes.tsv",
+        "sha256": "f3120f23256a54484d8693035f308991b05c6f6128b5dd6e9521446ef785e566",
+        "sidecar": "sub-17_task-ccepcoreg_coordsystem.json",
+        "sidecar_sha256": "7e1b54fd74ff4ace1161dbcc125314fe148a23e789daf7765ec0243af79a193c",
+        "point_count": 185,
+        "inside_image_count": 185,
+        "outside_image_count": 0,
+        "nearest_nonzero_mri_voxel_distance_mm_quantiles": [
+          4.1231053943176645,
+          6.999999613421305,
+          8.124037927742362,
+          10.049875116995768,
+          12.529963339297609,
+          17.01460266674989,
+          29.58039720274403
+        ],
+        "within_5mm": 1,
+        "within_10mm": 92
+      },
+      "fiducials": {
+        "names": [
+          "LPA",
+          "NAS",
+          "RPA"
+        ],
+        "inside_image_count": 3,
+        "outside_image_count": 0,
+        "orientation_sanity_checks": {
+          "left_right_landmark_order_x": true,
+          "nasion_anterior_to_preauricular_mean_y": true
+        }
+      }
+    },
+    {
+      "participant": "sub-18",
+      "mri": {
+        "file": "sub-18_T1w.nii",
+        "sha256": "3345338d1437f3783cb5e8584afcf62a8de67fad35de03133034db33397f39ca",
+        "qform_code": 1,
+        "sform_code": 0
+      },
+      "electrode_table": {
+        "file": "sub-18_task-ccepcoreg_electrodes.tsv",
+        "sha256": "072325ef3b36b1a6bcc2ec1ae4341dfeb912379f7e8248a6421dc7dbbe8c4cad",
+        "sidecar": "sub-18_task-ccepcoreg_coordsystem.json",
+        "sidecar_sha256": "dd083503b8798475134f3fe53731ccc54c2cafc342739c36c36acdb2bf5ed522",
+        "point_count": 185,
+        "inside_image_count": 185,
+        "outside_image_count": 0,
+        "nearest_nonzero_mri_voxel_distance_mm_quantiles": [
+          1.000000238418579,
+          3.659994271111812,
+          5.0,
+          7.071068385062644,
+          9.000000715255766,
+          10.42110714746243,
+          18.38477859974836
+        ],
+        "within_5mm": 47,
+        "within_10mm": 160
+      },
+      "fiducials": {
+        "names": [
+          "LPA",
+          "NAS",
+          "RPA"
+        ],
+        "inside_image_count": 3,
+        "outside_image_count": 0,
+        "orientation_sanity_checks": {
+          "left_right_landmark_order_x": true,
+          "nasion_anterior_to_preauricular_mean_y": true
+        }
+      }
+    },
+    {
+      "participant": "sub-19",
+      "mri": {
+        "file": "sub-19_T1w.nii",
+        "sha256": "47038e34d5e59af6b8ddab405ea392eadc3de60f8f1403b21f7c4f62379f6a29",
+        "qform_code": 1,
+        "sform_code": 0
+      },
+      "electrode_table": {
+        "file": "sub-19_task-ccepcoreg_electrodes.tsv",
+        "sha256": "08fb326cf052842ef220f8b1cb9c94624543ad5c8514dc2d64a138412e93b8e2",
+        "sidecar": "sub-19_task-ccepcoreg_coordsystem.json",
+        "sidecar_sha256": "8dd66d4ac546bbb88396d72f00875d277d1a1dfa3bfa5a168d95839e65105a99",
+        "point_count": 185,
+        "inside_image_count": 185,
+        "outside_image_count": 0,
+        "nearest_nonzero_mri_voxel_distance_mm_quantiles": [
+          1.0000001192092896,
+          4.289144490054254,
+          6.633250299569867,
+          11.575838190054496,
+          15.652477677955046,
+          18.904153765325287,
+          30.659419589038922
+        ],
+        "within_5mm": 22,
+        "within_10mm": 79
+      },
+      "fiducials": {
+        "names": [
+          "LPA",
+          "NAS",
+          "RPA"
+        ],
+        "inside_image_count": 3,
+        "outside_image_count": 0,
+        "orientation_sanity_checks": {
+          "left_right_landmark_order_x": true,
+          "nasion_anterior_to_preauricular_mean_y": true
+        }
+      }
+    },
+    {
+      "participant": "sub-20",
+      "mri": {
+        "file": "sub-20_T1w.nii",
+        "sha256": "5e155fcc153503f5ea34ab5b6897ea578e9625821d8bbeb8b77cec0c1da74087",
+        "qform_code": 1,
+        "sform_code": 0
+      },
+      "electrode_table": {
+        "file": "sub-20_task-ccepcoreg_electrodes.tsv",
+        "sha256": "b91da8472845a1a5392b38121fa475530bd7f88bddaf7e136732779f2eeaae3e",
+        "sidecar": "sub-20_task-ccepcoreg_coordsystem.json",
+        "sidecar_sha256": "381ed986fbb0a3ad303339e30295d093be99c3846b449e32359566776f8f3624",
+        "point_count": 185,
+        "inside_image_count": 185,
+        "outside_image_count": 0,
+        "nearest_nonzero_mri_voxel_distance_mm_quantiles": [
+          0.9999997019767761,
+          4.999999403953552,
+          6.4807398982517785,
+          9.486830643273356,
+          12.206552051141694,
+          15.138925668758153,
+          23.043434116380745
+        ],
+        "within_5mm": 22,
+        "within_10mm": 102
+      },
+      "fiducials": {
+        "names": [
+          "LPA",
+          "NAS",
+          "RPA"
+        ],
+        "inside_image_count": 3,
+        "outside_image_count": 0,
+        "orientation_sanity_checks": {
+          "left_right_landmark_order_x": true,
+          "nasion_anterior_to_preauricular_mean_y": true
+        }
+      }
+    },
+    {
+      "participant": "sub-21",
+      "mri": {
+        "file": "sub-21_T1w.nii",
+        "sha256": "72b2a3bae959bfb7b8d132d4facafd22cdac2fe9bffc65c2568b35eb24501eca",
+        "qform_code": 1,
+        "sform_code": 0
+      },
+      "electrode_table": {
+        "file": "sub-21_task-ccepcoreg_electrodes.tsv",
+        "sha256": "0ad3883bcd17cec7a432413e4663d170e5665e67b11fd503d1ea4b143f773841",
+        "sidecar": "sub-21_task-ccepcoreg_coordsystem.json",
+        "sidecar_sha256": "74cfa8e77d4365f54b4aee5d9c760cab2994bc8d601a9debc7be4a8b268511f5",
+        "point_count": 185,
+        "inside_image_count": 181,
+        "outside_image_count": 4,
+        "nearest_nonzero_mri_voxel_distance_mm_quantiles": [
+          1.0,
+          5.744562978564818,
+          7.615773246740434,
+          9.949875341525946,
+          13.03840612698797,
+          15.620499351813308,
+          20.322401579549226
+        ],
+        "within_5mm": 14,
+        "within_10mm": 91
+      },
+      "fiducials": {
+        "names": [
+          "LPA",
+          "NAS",
+          "RPA"
+        ],
+        "inside_image_count": 3,
+        "outside_image_count": 0,
+        "orientation_sanity_checks": {
+          "left_right_landmark_order_x": true,
+          "nasion_anterior_to_preauricular_mean_y": true
+        }
+      }
+    },
+    {
+      "participant": "sub-22",
+      "mri": {
+        "file": "sub-22_T1w.nii",
+        "sha256": "17c97489a81703b49dba055933de67ba4e1100257dc82de0c14eb387ddd655b2",
+        "qform_code": 1,
+        "sform_code": 0
+      },
+      "electrode_table": {
+        "file": "sub-22_task-ccepcoreg_electrodes.tsv",
+        "sha256": "7456216251e1fe939fe887f52bf4e377d7b1f633dc2cd2517cd1f68115282d58",
+        "sidecar": "sub-22_task-ccepcoreg_coordsystem.json",
+        "sidecar_sha256": "7bd8a16a8009f70af8608bd284ac656c5774d80257f1f18ebe32952ec263dd8e",
+        "point_count": 185,
+        "inside_image_count": 185,
+        "outside_image_count": 0,
+        "nearest_nonzero_mri_voxel_distance_mm_quantiles": [
+          0.0,
+          2.000000238418579,
+          7.874008812666696,
+          16.248078746193613,
+          20.02498678166495,
+          23.537207397733077,
+          27.092437597957986
+        ],
+        "within_5mm": 31,
+        "within_10mm": 57
+      },
+      "fiducials": {
+        "names": [
+          "LPA",
+          "NAS",
+          "RPA"
+        ],
+        "inside_image_count": 3,
+        "outside_image_count": 0,
+        "orientation_sanity_checks": {
+          "left_right_landmark_order_x": true,
+          "nasion_anterior_to_preauricular_mean_y": true
+        }
+      }
+    },
+    {
+      "participant": "sub-23",
+      "mri": {
+        "file": "sub-23_T1w.nii",
+        "sha256": "2fdbf984dd5cc8288129eace5957d31b1e13de2ee73dcf8cfff680d4d18cf747",
+        "qform_code": 1,
+        "sform_code": 0
+      },
+      "electrode_table": {
+        "file": "sub-23_task-ccepcoreg_electrodes.tsv",
+        "sha256": "84a7f73c1d7f763a18143932c45313184407660615b2db090e618925de6552f4",
+        "sidecar": "sub-23_task-ccepcoreg_coordsystem.json",
+        "sidecar_sha256": "2a41dcb39d1409e106e37e56522bce656e1d8cd6ca8aa8a6aeaacb5bcacb8efb",
+        "point_count": 185,
+        "inside_image_count": 185,
+        "outside_image_count": 0,
+        "nearest_nonzero_mri_voxel_distance_mm_quantiles": [
+          3.3166245926691573,
+          7.280109455352155,
+          8.774963864363487,
+          10.392304225983626,
+          11.357816014621918,
+          12.369316139584242,
+          17.804492753534326
+        ],
+        "within_5mm": 2,
+        "within_10mm": 81
+      },
+      "fiducials": {
+        "names": [
+          "LPA",
+          "NAS",
+          "RPA"
+        ],
+        "inside_image_count": 3,
+        "outside_image_count": 0,
+        "orientation_sanity_checks": {
+          "left_right_landmark_order_x": true,
+          "nasion_anterior_to_preauricular_mean_y": true
+        }
+      }
+    },
+    {
+      "participant": "sub-24",
+      "mri": {
+        "file": "sub-24_T1w.nii",
+        "sha256": "bcd131800581ab3e693e4e9ea5cab706fd5d00b07440a15ddac8fa41f61edb45",
+        "qform_code": 1,
+        "sform_code": 0
+      },
+      "electrode_table": {
+        "file": "sub-24_task-ccepcoreg_electrodes.tsv",
+        "sha256": "01fe8bd9c09b37d94bc5669014bc62633de2b8f3e06ff7c788ec2a065173b450",
+        "sidecar": "sub-24_task-ccepcoreg_coordsystem.json",
+        "sidecar_sha256": "b93f514aeea6733111a92f694d65cea1fb8ddda5f9ed2082862505ca63694b69",
+        "point_count": 185,
+        "inside_image_count": 185,
+        "outside_image_count": 0,
+        "nearest_nonzero_mri_voxel_distance_mm_quantiles": [
+          3.999999761581421,
+          6.0657651004040245,
+          7.810249088274015,
+          9.6436497906209,
+          11.489124587519152,
+          12.6885767089913,
+          22.293494411358513
+        ],
+        "within_5mm": 5,
+        "within_10mm": 103
+      },
+      "fiducials": {
+        "names": [
+          "LPA",
+          "NAS",
+          "RPA"
+        ],
+        "inside_image_count": 3,
+        "outside_image_count": 0,
+        "orientation_sanity_checks": {
+          "left_right_landmark_order_x": true,
+          "nasion_anterior_to_preauricular_mean_y": true
+        }
+      }
+    },
+    {
+      "participant": "sub-25",
+      "mri": {
+        "file": "sub-25_T1w.nii",
+        "sha256": "f24eecc62076acf12f555bca66fae8c4ef7733204497f28a4428134b5be2c8c3",
+        "qform_code": 1,
+        "sform_code": 0
+      },
+      "electrode_table": {
+        "file": "sub-25_task-ccepcoreg_electrodes.tsv",
+        "sha256": "be902b54e0b16667856af33ae085be667619ef15af696715ac923018a16f4e22",
+        "sidecar": "sub-25_task-ccepcoreg_coordsystem.json",
+        "sidecar_sha256": "26471de3bc307931ef286fd06a8cfc319c8edd98ece5e56938b6b8ce60093f5b",
+        "point_count": 185,
+        "inside_image_count": 185,
+        "outside_image_count": 0,
+        "nearest_nonzero_mri_voxel_distance_mm_quantiles": [
+          0.0,
+          0.0,
+          0.0,
+          1.4142135202262471,
+          8.660253693716813,
+          12.899387921261786,
+          20.832666241138064
+        ],
+        "within_5mm": 117,
+        "within_10mm": 148
+      },
+      "fiducials": {
+        "names": [
+          "LPA",
+          "NAS",
+          "RPA"
+        ],
+        "inside_image_count": 3,
+        "outside_image_count": 0,
+        "orientation_sanity_checks": {
+          "left_right_landmark_order_x": true,
+          "nasion_anterior_to_preauricular_mean_y": true
+        }
+      }
+    },
+    {
+      "participant": "sub-26",
+      "mri": {
+        "file": "sub-26_T1w.nii",
+        "sha256": "b68be7efc1aed2846e8c70cb2a5cc3ec9bbbabaca49cef98198c6fc304d1ed6f",
+        "qform_code": 1,
+        "sform_code": 0
+      },
+      "electrode_table": {
+        "file": "sub-26_task-ccepcoreg_electrodes.tsv",
+        "sha256": "f3a5073cc97ea821fbb0bf2701d1949df21c6b08dd4068edf11f2aca49f44f8d",
+        "sidecar": "sub-26_task-ccepcoreg_coordsystem.json",
+        "sidecar_sha256": "c0787d5338836fd48b0bdcc5996f03df768b6f9a9a651cd7af102c233bfb7fd3",
+        "point_count": 185,
+        "inside_image_count": 185,
+        "outside_image_count": 0,
+        "nearest_nonzero_mri_voxel_distance_mm_quantiles": [
+          4.123105365405165,
+          6.324554920745514,
+          7.280109447164827,
+          8.944271376879009,
+          10.770328972307338,
+          12.024955789967143,
+          13.928387340003384
+        ],
+        "within_5mm": 3,
+        "within_10mm": 120
+      },
+      "fiducials": {
+        "names": [
+          "LPA",
+          "NAS",
+          "RPA"
+        ],
+        "inside_image_count": 3,
+        "outside_image_count": 0,
+        "orientation_sanity_checks": {
+          "left_right_landmark_order_x": true,
+          "nasion_anterior_to_preauricular_mean_y": true
+        }
+      }
+    },
+    {
+      "participant": "sub-27",
+      "mri": {
+        "file": "sub-27_T1w.nii",
+        "sha256": "d9db72d099c4d0145b01ee78c7a41315d64372a6fafdfeda3f50bcea6f29564f",
+        "qform_code": 1,
+        "sform_code": 0
+      },
+      "electrode_table": {
+        "file": "sub-27_task-ccepcoreg_electrodes.tsv",
+        "sha256": "89ca30e0673a8acac23153c4a9783304033ad14b6046bd6f60f322250a4eec80",
+        "sidecar": "sub-27_task-ccepcoreg_coordsystem.json",
+        "sidecar_sha256": "83702b9bda67b77067f51050eea6397304f20c0260c97a903c67701cc7684890",
+        "point_count": 185,
+        "inside_image_count": 185,
+        "outside_image_count": 0,
+        "nearest_nonzero_mri_voxel_distance_mm_quantiles": [
+          3.316624826298355,
+          5.779118618676223,
+          8.12403934374951,
+          10.770329791361892,
+          12.688577775324736,
+          13.812935262622831,
+          19.1049731995016
+        ],
+        "within_5mm": 13,
+        "within_10mm": 82
+      },
+      "fiducials": {
+        "names": [
+          "LPA",
+          "NAS",
+          "RPA"
+        ],
+        "inside_image_count": 3,
+        "outside_image_count": 0,
+        "orientation_sanity_checks": {
+          "left_right_landmark_order_x": true,
+          "nasion_anterior_to_preauricular_mean_y": true
+        }
+      }
+    },
+    {
+      "participant": "sub-28",
+      "mri": {
+        "file": "sub-28_T1w.nii",
+        "sha256": "e9828d356baa6798cc8914585851efcfcc976ac1352c153cc1b4f0a5e7417895",
+        "qform_code": 1,
+        "sform_code": 0
+      },
+      "electrode_table": {
+        "file": "sub-28_task-ccepcoreg_electrodes.tsv",
+        "sha256": "5ad4beeebeddb87ca78ee75b785c72371bbeb9e0847570ed4e126cfc5482613d",
+        "sidecar": "sub-28_task-ccepcoreg_coordsystem.json",
+        "sidecar_sha256": "ec8281ba7557bbeddcc62de13e5d507f81bce4342975a5a45d0263569dcf7c78",
+        "point_count": 185,
+        "inside_image_count": 185,
+        "outside_image_count": 0,
+        "nearest_nonzero_mri_voxel_distance_mm_quantiles": [
+          1.7320510140454235,
+          4.773841819206824,
+          8.60232629251971,
+          11.180341220299324,
+          13.000001549720764,
+          14.163324065146673,
+          20.639769901002307
+        ],
+        "within_5mm": 21,
+        "within_10mm": 69
+      },
+      "fiducials": {
+        "names": [
+          "LPA",
+          "NAS",
+          "RPA"
+        ],
+        "inside_image_count": 3,
+        "outside_image_count": 0,
+        "orientation_sanity_checks": {
+          "left_right_landmark_order_x": true,
+          "nasion_anterior_to_preauricular_mean_y": true
+        }
+      }
+    },
+    {
+      "participant": "sub-29",
+      "mri": {
+        "file": "sub-29_T1w.nii",
+        "sha256": "7fefd569e50ba6da671ef38910e56048fce1d2600b9341c669d540dbfd70cbbc",
+        "qform_code": 1,
+        "sform_code": 0
+      },
+      "electrode_table": {
+        "file": "sub-29_task-ccepcoreg_electrodes.tsv",
+        "sha256": "529d1f4f036b5122217cf407467c0258437dde455878e2378d4600b7b87f0649",
+        "sidecar": "sub-29_task-ccepcoreg_coordsystem.json",
+        "sidecar_sha256": "7e012da89d275182b73d623216a285ad8af3a9bf88031ae084874ea35fc79c88",
+        "point_count": 185,
+        "inside_image_count": 174,
+        "outside_image_count": 11,
+        "nearest_nonzero_mri_voxel_distance_mm_quantiles": [
+          1.0,
+          6.324555320336759,
+          8.321617963523746,
+          12.041594578792296,
+          14.230216856270712,
+          16.886454063322546,
+          21.748563170931547
+        ],
+        "within_5mm": 5,
+        "within_10mm": 60
+      },
+      "fiducials": {
+        "names": [
+          "LPA",
+          "NAS",
+          "RPA"
+        ],
+        "inside_image_count": 3,
+        "outside_image_count": 0,
+        "orientation_sanity_checks": {
+          "left_right_landmark_order_x": true,
+          "nasion_anterior_to_preauricular_mean_y": true
+        }
+      }
+    },
+    {
+      "participant": "sub-30",
+      "mri": {
+        "file": "sub-30_T1w.nii",
+        "sha256": "607a50afcaf99daec2b1d22918ccdc3a9df9ac204821bf1e617b8243a13666e1",
+        "qform_code": 1,
+        "sform_code": 0
+      },
+      "electrode_table": {
+        "file": "sub-30_task-ccepcoreg_electrodes.tsv",
+        "sha256": "8d3e68aba2597e1f47309fc654ba79778fdd5a5a906e3b012e9554bb992b70a8",
+        "sidecar": "sub-30_task-ccepcoreg_coordsystem.json",
+        "sidecar_sha256": "f37c0453c1e2ae01cc2516acf23b276aaad1cfdcd2431a8235e1d8c3376325d2",
+        "point_count": 185,
+        "inside_image_count": 185,
+        "outside_image_count": 0,
+        "nearest_nonzero_mri_voxel_distance_mm_quantiles": [
+          1.999999761581421,
+          5.385163888465217,
+          8.602323798115995,
+          12.124353966757019,
+          14.7986461421296,
+          16.45593904237764,
+          18.681538431513523
+        ],
+        "within_5mm": 17,
+        "within_10mm": 62
+      },
+      "fiducials": {
+        "names": [
+          "LPA",
+          "NAS",
+          "RPA"
+        ],
+        "inside_image_count": 3,
+        "outside_image_count": 0,
+        "orientation_sanity_checks": {
+          "left_right_landmark_order_x": true,
+          "nasion_anterior_to_preauricular_mean_y": true
+        }
+      }
+    },
+    {
+      "participant": "sub-31",
+      "mri": {
+        "file": "sub-31_T1w.nii",
+        "sha256": "7bb0e9932faa6bddc11ac5924ad0b69ceed8971be542ac53a29c30fe5d3e698b",
+        "qform_code": 1,
+        "sform_code": 0
+      },
+      "electrode_table": {
+        "file": "sub-31_task-ccepcoreg_electrodes.tsv",
+        "sha256": "27da4786dff7941182ab766bdfcd8246c3d61bf8c2ddff85fe737f8e73f24c50",
+        "sidecar": "sub-31_task-ccepcoreg_coordsystem.json",
+        "sidecar_sha256": "a47f2f74b478870e53dc9a5437cc28870bece80d8dfaa8f39a3d7bf4c07be4eb",
+        "point_count": 185,
+        "inside_image_count": 185,
+        "outside_image_count": 0,
+        "nearest_nonzero_mri_voxel_distance_mm_quantiles": [
+          1.0,
+          5.308581659350462,
+          7.0710678118654755,
+          9.433980620292148,
+          11.74733979974214,
+          13.243659374573369,
+          26.095976699115724
+        ],
+        "within_5mm": 17,
+        "within_10mm": 105
+      },
+      "fiducials": {
+        "names": [
+          "LPA",
+          "NAS",
+          "RPA"
+        ],
+        "inside_image_count": 3,
+        "outside_image_count": 0,
+        "orientation_sanity_checks": {
+          "left_right_landmark_order_x": true,
+          "nasion_anterior_to_preauricular_mean_y": true
+        }
+      }
+    },
+    {
+      "participant": "sub-32",
+      "mri": {
+        "file": "sub-32_T1w.nii",
+        "sha256": "e4a058ed451205e99411af3ef80104cf6c1efca3e0df758579a9dc4e87da6d6e",
+        "qform_code": 1,
+        "sform_code": 0
+      },
+      "electrode_table": {
+        "file": "sub-32_task-ccepcoreg_electrodes.tsv",
+        "sha256": "01fccf0008799f3fff5241796a1ed614525086cc3d387262d1e614102132153c",
+        "sidecar": "sub-32_task-ccepcoreg_coordsystem.json",
+        "sidecar_sha256": "7ecb71a0d04a09e34682057e5ab2e04c63d2edba64fae24f568f4c61ccb1f22d",
+        "point_count": 185,
+        "inside_image_count": 156,
+        "outside_image_count": 29,
+        "nearest_nonzero_mri_voxel_distance_mm_quantiles": [
+          0.0,
+          12.44756588829512,
+          25.193592278662848,
+          38.25524865915037,
+          50.289136930621915,
+          58.36069374221972,
+          65.90902803588428
+        ],
+        "within_5mm": 5,
+        "within_10mm": 13
+      },
+      "fiducials": {
+        "names": [
+          "LPA",
+          "NAS",
+          "RPA"
+        ],
+        "inside_image_count": 3,
+        "outside_image_count": 0,
+        "orientation_sanity_checks": {
+          "left_right_landmark_order_x": true,
+          "nasion_anterior_to_preauricular_mean_y": true
+        }
+      }
+    },
+    {
+      "participant": "sub-33",
+      "mri": {
+        "file": "sub-33_T1w.nii",
+        "sha256": "6d2b656ab8ccb49ab94ce617959d759e594489d270e8c463181bb4041638812a",
+        "qform_code": 1,
+        "sform_code": 0
+      },
+      "electrode_table": {
+        "file": "sub-33_task-ccepcoreg_electrodes.tsv",
+        "sha256": "4653f93b84c70f8e7fa8cd314a4b3b5c367d35f1366cb5152e26f76738a4d6a5",
+        "sidecar": "sub-33_task-ccepcoreg_coordsystem.json",
+        "sidecar_sha256": "21c7ea2cafd0419670e1580ea0e97e46c4e6216e3ea80e4f76c9ae6a78d62a65",
+        "point_count": 185,
+        "inside_image_count": 177,
+        "outside_image_count": 8,
+        "nearest_nonzero_mri_voxel_distance_mm_quantiles": [
+          0.0,
+          2.1416408184870845,
+          4.000000476837158,
+          8.062258339742266,
+          14.456833721338038,
+          19.039733305201278,
+          31.40064058455286
+        ],
+        "within_5mm": 57,
+        "within_10mm": 106
+      },
+      "fiducials": {
+        "names": [
+          "LPA",
+          "NAS",
+          "RPA"
+        ],
+        "inside_image_count": 3,
+        "outside_image_count": 0,
+        "orientation_sanity_checks": {
+          "left_right_landmark_order_x": true,
+          "nasion_anterior_to_preauricular_mean_y": true
+        }
+      }
+    },
+    {
+      "participant": "sub-34",
+      "mri": {
+        "file": "sub-34_T1w.nii",
+        "sha256": "18457a8a556318d396aea01fa01c5512e91d21c9b15106cd568cd79efb9545bd",
+        "qform_code": 1,
+        "sform_code": 0
+      },
+      "electrode_table": {
+        "file": "sub-34_task-ccepcoreg_electrodes.tsv",
+        "sha256": "0fe52762e8024a76a8a3af4ce0d8e3e2412832640ef9e316f1d3da0bc936c745",
+        "sidecar": "sub-34_task-ccepcoreg_coordsystem.json",
+        "sidecar_sha256": "0877615053d3427eb141c16f3f26fe7ef37078a11192fb1fe9b630add3b76a5b",
+        "point_count": 185,
+        "inside_image_count": 185,
+        "outside_image_count": 0,
+        "nearest_nonzero_mri_voxel_distance_mm_quantiles": [
+          0.0,
+          0.0,
+          0.0,
+          4.0,
+          8.544004638270627,
+          11.754940890480025,
+          16.61324784064505
+        ],
+        "within_5mm": 100,
+        "within_10mm": 149
+      },
+      "fiducials": {
+        "names": [
+          "LPA",
+          "NAS",
+          "RPA"
+        ],
+        "inside_image_count": 3,
+        "outside_image_count": 0,
+        "orientation_sanity_checks": {
+          "left_right_landmark_order_x": true,
+          "nasion_anterior_to_preauricular_mean_y": true
+        }
+      }
+    },
+    {
+      "participant": "sub-35",
+      "mri": {
+        "file": "sub-35_T1w.nii",
+        "sha256": "4a1af80baee32bea7a44f21203e9454a6a2b1e73dfcecb8a33aac4e074a42aec",
+        "qform_code": 1,
+        "sform_code": 0
+      },
+      "electrode_table": {
+        "file": "sub-35_task-ccepcoreg_electrodes.tsv",
+        "sha256": "92b8034d18c9491a287ec3a4ab791e28ef9e28b2fcb88a413a1ff50f78cb5f51",
+        "sidecar": "sub-35_task-ccepcoreg_coordsystem.json",
+        "sidecar_sha256": "cfd2cde6e26c561a9a9c2229adbc869dd68c240667e9e7861ed6cccd8c1c9be9",
+        "point_count": 185,
+        "inside_image_count": 185,
+        "outside_image_count": 0,
+        "nearest_nonzero_mri_voxel_distance_mm_quantiles": [
+          0.0,
+          5.691937080735259,
+          7.681145165878831,
+          10.29562905838512,
+          12.206555586435686,
+          13.490736221869499,
+          15.779732716204116
+        ],
+        "within_5mm": 13,
+        "within_10mm": 90
+      },
+      "fiducials": {
+        "names": [
+          "LPA",
+          "NAS",
+          "RPA"
+        ],
+        "inside_image_count": 3,
+        "outside_image_count": 0,
+        "orientation_sanity_checks": {
+          "left_right_landmark_order_x": true,
+          "nasion_anterior_to_preauricular_mean_y": true
+        }
+      }
+    },
+    {
+      "participant": "sub-36",
+      "mri": {
+        "file": "sub-36_T1w.nii",
+        "sha256": "101588ec387b5e1844443be55d0362883c0dd88b0f6634a09fd9b7d53bad2e48",
+        "qform_code": 1,
+        "sform_code": 0
+      },
+      "electrode_table": {
+        "file": "sub-36_task-ccepcoreg_electrodes.tsv",
+        "sha256": "feb899f77844cbfb44c3929896abcc60fd3afeae2482a88197081233b86d1dcd",
+        "sidecar": "sub-36_task-ccepcoreg_coordsystem.json",
+        "sidecar_sha256": "2d870b14de1d48ec15bfc4b748a8c0c759b68594dfc6824cb26087492b611484",
+        "point_count": 185,
+        "inside_image_count": 185,
+        "outside_image_count": 0,
+        "nearest_nonzero_mri_voxel_distance_mm_quantiles": [
+          0.0,
+          0.0,
+          0.0,
+          4.898979436899369,
+          9.848857311589391,
+          15.943286204255209,
+          23.515951018750773
+        ],
+        "within_5mm": 95,
+        "within_10mm": 140
+      },
+      "fiducials": {
+        "names": [
+          "LPA",
+          "NAS",
+          "RPA"
+        ],
+        "inside_image_count": 3,
+        "outside_image_count": 0,
+        "orientation_sanity_checks": {
+          "left_right_landmark_order_x": true,
+          "nasion_anterior_to_preauricular_mean_y": true
+        }
+      }
+    }
+  ],
+  "interpretation_limit": "This is a coarse compatibility screen, not a registration, scalp segmentation, or independent QC. Even a plausible result does not replace the original transform and reviewed sensor-to-scalp overlays."
+}

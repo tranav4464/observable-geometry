@@ -5,6 +5,12 @@ from scripts.track_b.audit_wsgzp_extracted_metadata import (
     npy_header,
     read_json_metadata,
 )
+from scripts.track_b.audit_wsgzp_eeg_mri_coordinate_consistency import (
+    compact_audit,
+    points_to_voxel,
+    summarize_voxel_locations,
+    validate_t1w_mm_contract,
+)
 from scripts.track_b.validate_wsgzp_coordinate_metadata import build_fixture
 
 
@@ -69,6 +75,27 @@ def test_eeg_captrak_does_not_receive_targeted_warning():
     assert result["coordinate_semantics_note"] is None
 
 
+def test_coordinate_consistency_audit_requires_explicit_t1w_mm_contract():
+    sidecar = {
+        "EEGCoordinateSystem": "T1w",
+        "EEGCoordinateUnits": "mm",
+        "AnatomicalLandmarkCoordinateSystem": "T1w",
+        "AnatomicalLandmarkCoordinateUnits": "mm",
+    }
+    validate_t1w_mm_contract(sidecar)
+
+    for key, value in (("EEGCoordinateUnits", "m"),
+                       ("AnatomicalLandmarkCoordinateSystem", "CapTrak")):
+        invalid = dict(sidecar)
+        invalid[key] = value
+        try:
+            validate_t1w_mm_contract(invalid)
+        except ValueError as error:
+            assert key in str(error)
+        else:
+            raise AssertionError(f"invalid coordinate contract accepted: {key}")
+
+
 def test_coordinate_validator_fixture_copies_metadata_only_and_refuses_overwrite(tmp_path):
     source = tmp_path / "source"
     eeg = source / "derivatives" / "epochs" / "sub-01" / "eeg"
@@ -99,3 +126,80 @@ def test_coordinate_validator_fixture_copies_metadata_only_and_refuses_overwrite
         pass
     else:
         raise AssertionError("existing fixture should not be overwritten")
+
+
+def test_points_to_voxel_inverts_axis_swapped_world_affine():
+    affine = np.array([
+        [-1.0, 0.0, 0.0, 100.0],
+        [0.0, 0.0, 1.0, -50.0],
+        [0.0, -1.0, 0.0, 30.0],
+        [0.0, 0.0, 0.0, 1.0],
+    ])
+    voxel = np.array([[10.0, 20.0, 30.0], [50.0, 60.0, 70.0]])
+    homogeneous = np.column_stack((voxel, np.ones(len(voxel))))
+    world = (homogeneous @ affine.T)[:, :3]
+    np.testing.assert_allclose(points_to_voxel(world, affine), voxel)
+
+
+def test_coordinate_summary_does_not_clip_out_of_volume_points():
+    distances = np.full((4, 4, 4), 9.0)
+    distances[1, 2, 3] = 2.0
+    points = np.array([[1.0, 2.0, 3.0], [-1.0, 2.0, 3.0], [2.8, 1.0, 1.0]])
+    result = summarize_voxel_locations(points, (4, 4, 4), distances)
+    assert result["point_count"] == 3
+    assert result["inside_image_count"] == 2
+    assert result["outside_image_count"] == 1
+    assert result["nearest_nonzero_mri_voxel_distance_mm_quantiles"][0] == 2.0
+    assert result["inside_points_within_5mm_of_nonzero_mri_voxel"] == 1
+
+
+def test_coordinate_summary_uses_voxel_cell_field_of_view_boundaries():
+    distances = np.zeros((4, 4, 4), dtype=np.float64)
+    points = np.array([
+        [-0.49, 1.0, 1.0],
+        [3.49, 1.0, 1.0],
+        [-0.51, 1.0, 1.0],
+        [3.50, 1.0, 1.0],
+    ])
+    result = summarize_voxel_locations(points, (4, 4, 4), distances)
+    assert result["inside_image_count"] == 2
+    assert result["outside_image_count"] == 2
+
+
+def test_compact_coordinate_audit_preserves_hashes_and_geometry_counts():
+    full = {
+        "audit_id": "audit-1",
+        "dataset_bids_version": "1.6.0",
+        "audit_script_sha256": "script-hash",
+        "scope": "metadata only",
+        "coordinate_frame_hypothesis": "identity",
+        "global_limit": "not registration QC",
+        "participants": [{
+            "participant": "sub-01",
+            "mri": {
+                "file": "sub-01_T1w.nii", "sha256": "mri-hash",
+                "qform_code": 1, "sform_code": 0,
+            },
+            "electrode_table": {
+                "file": "electrodes.tsv", "sha256": "electrode-hash",
+                "sidecar": "coordsystem.json", "sidecar_sha256": "sidecar-hash",
+                "point_count": 3, "inside_image_count": 2, "outside_image_count": 1,
+                "nearest_nonzero_mri_voxel_distance_mm_quantiles": [1, 2, 3],
+                "inside_points_within_5mm_of_nonzero_mri_voxel": 2,
+                "inside_points_within_10mm_of_nonzero_mri_voxel": 2,
+                "electrode_names": ["A", "B", "C"],
+            },
+            "fiducials": {
+                "names": ["LPA", "NAS", "RPA"], "inside_image_count": 3,
+                "outside_image_count": 0,
+                "orientation_sanity_checks": {"left_right_landmark_order_x": True},
+            },
+        }],
+    }
+    compact = compact_audit(full, "full-hash")
+    participant = compact["participants"][0]
+    assert compact["full_audit_sha256"] == "full-hash"
+    assert compact["audit_script_sha256"]
+    assert participant["electrode_table"]["outside_image_count"] == 1
+    assert participant["electrode_table"]["sha256"] == "electrode-hash"
+    assert "electrode_names" not in participant["electrode_table"]

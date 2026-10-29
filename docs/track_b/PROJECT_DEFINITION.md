@@ -20,11 +20,9 @@ baselines on eligible held-out measured data. See the
 ### Latest evidence, 29 October 2026
 
 **Software verification update, 29 October 2026:** the latest fresh full
-working-tree suite passes 181 tests, including a fixed-fixture cross-check
-between the float64 Track B API and legacy threshold-CSR API. The WSGZP
-focused audit tests pass 7/7. The read-only gate-register validator passes
-with 310 registered evidence
-paths. A sample-free BIDS validation follow-up confirmed that the WSGZP scalp
+working-tree suite passes 186 tests, including the geometry metadata audit
+regressions. The read-only gate-register validator passes with 330 registered
+evidence paths. A sample-free BIDS validation follow-up confirmed that the WSGZP scalp
 EEG coordinate sidecars use a coordinate-system keyword rejected by the
 applicable BIDS 1.6.0 contract; this is metadata nonconformance, not proof of
 anatomical misregistration. Exact commands, environment, hashes, validation
@@ -33,6 +31,8 @@ recheck](WSGZP_METADATA_CONTRACT_RECHECK_20261029.md).
 The latest uncommitted working-tree validation is recorded in
 [`20261029T_publication_quality_rerun_002/SESSION.md`](../../outputs/track_b/20261029T_publication_quality_rerun_002/SESSION.md);
 it supplements but does not replace the commit-bound B8 wheel and archive runs.
+The current run, including its JUnit XML and gate report, is recorded in
+[`20261029T_publication_quality_rerun_003/`](../../outputs/track_b/20261029T_publication_quality_rerun_003/).
 These are software and evidence-index checks only; they do not validate source
 physiology or novelty, and B4–B7 remain pivoted while B8 remains open for
 outside review. The earlier atomic-CLI and package parity runs remain recorded
@@ -107,6 +107,33 @@ Knowledge Graph query returned HTTP 401, so its file listing was not
 retrieved; this does not establish that EBRAINS lacks geometry files. See the
 [public inventory recheck](WSGZP_PUBLIC_GEOMETRY_INVENTORY_RECHECK_20261029.md)
 and [upstream coordinate-pipeline audit](WSGZP_UPSTREAM_COORDINATE_PIPELINE_AUDIT_20261029.md).
+
+**WSGZP geometry compatibility screen, 29 October 2026:** the new
+metadata/MRI-only screen examined all 36 participants without opening EEG or
+SEEG samples. Under the declared-T1w-to-NIfTI-qform hypothesis, 57 of 6,660
+electrode positions are outside the image field of view across eight
+participants; all fiducials are inside. These counts do not validate or
+falsify the coordinate frame because scalp sensors may lie outside a cropped
+MRI. The feasibility review confirms that the extracted package lacks the
+original digitizer files, saved transform and surface meshes; a participant-
+specific registration cannot yet be independently validated from the local
+materials. The coordinate gate remains open and the source-recovery protocol
+must not use these geometries until provenance or independent registration QC
+passes. See the [coordinate compatibility screen](WSGZP_COORDINATE_COMPATIBILITY_SCREEN_20261029.md)
+and [independent-registration feasibility check](WSGZP_INDEPENDENT_REGISTRATION_FEASIBILITY_20261029.md).
+
+**Localize-MI model-bundle audit, 29 October 2026:** all seven participant
+forward FIFs were downloaded from the pinned dataset revision and verified
+against the annex manifest. Each loads as a finite 256-channel, 8,196-source
+free-orientation leadfield; channel order is identical across participants.
+The embedded MRI-to-head transform agrees with the inverse of the matching
+head-to-surface HDF5 transform to a maximum absolute matrix difference of
+`2.94e-8`. This establishes file and internal transform consistency only, not
+anatomical registration accuracy or source-recovery validity. The replayable
+[audit report](LOCALIZEMI_FORWARD_BUNDLE_AUDIT_20261029.md),
+[script](../../scripts/track_b/audit_localizemi_forward_bundle.py), and
+machine-readable result are registered under B1. No EEG/SEEG recordings were
+accessed for this audit.
 
 **Scalp-coordinate contract recheck, 29 October 2026:** a metadata-only audit
 confirmed that all 36 scalp EEG sidecars use the coordinate label `T1w` without

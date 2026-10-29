@@ -114,7 +114,18 @@
         "data/Localize-MI/dataset_description.json",
         "data/Localize-MI/LICENSE",
         "outputs/tracka_release_20261022_v2/run_manifest.json",
-        "outputs/tracka_release_20261022_v2/case_validation.json"
+        "outputs/tracka_release_20261022_v2/case_validation.json",
+        "docs/track_b/LOCALIZEMI_FORWARD_BUNDLE_AUDIT_20261029.md",
+        "scripts/track_b/audit_localizemi_forward_bundle.py",
+        "tests/test_localizemi_forward_bundle_audit.py",
+        "outputs/track_b/20261029T_localizemi_forward_bundle_audit_002/audit.json",
+        "outputs/track_b/20261029T_localizemi_forward_bundle_audit_003/audit.json",
+        "outputs/track_b/20261029T_localizemi_forward_bundle_audit_004/audit.json",
+        "scripts/track_b/audit_geometry.py",
+        "tests/test_geometry_audit_report_write.py",
+        "outputs/track_b/data_acquisition/geometry_replay_20261029_001.json",
+        "docs/track_b/B1_LOCAL_DATA_AUDIT.md",
+        "outputs/track_b/20261029T_localizemi_forward_bundle_audit_005/audit.json"
       ],
       "blocking": [
         "B2",
@@ -123,7 +134,7 @@
         "B5",
         "B6"
       ],
-      "known_issue": "B1 passes only for one Localize-MI sub-01 development case and the measured stimulation pulse-artifact endpoint. This does not establish population performance, endogenous physiological source localization, calibrated probabilities, or general source recovery. An independent reviewer must assess the B2 estimand and interpretation before B2 passes.",
+      "known_issue": "B1 passes only for one Localize-MI sub-01 development case and the measured stimulation pulse-artifact endpoint. This does not establish population performance, endogenous physiological source localization, calibrated probabilities, or general source recovery. An independent reviewer must assess the B2 estimand and interpretation before B2 passes. Seven Localize-MI subject forward FIFs also pass model-file integrity, leadfield structure, channel-order, and internal transform-consistency checks; this does not validate anatomical registration accuracy, measured-source recovery, or population performance.",
       "objective": "Verify that the pinned real Localize-MI release and one participant-specific forward model support the bounded GBFs/source-distinguishability demonstration.",
       "exit_criteria": [
         "Dataset release, license, provenance, local files, and required checksums are verified.",
@@ -143,7 +154,18 @@
       "verification_evidence": [
         "outputs/track_b/20261023T_b1_gbf_case_audit/SESSION.md",
         "outputs/b1_gbf_case_validation_20261023/case_validation.json",
-        "outputs/tracka_release_20261022_v2/run_manifest.json"
+        "outputs/tracka_release_20261022_v2/run_manifest.json",
+        "docs/track_b/LOCALIZEMI_FORWARD_BUNDLE_AUDIT_20261029.md",
+        "scripts/track_b/audit_localizemi_forward_bundle.py",
+        "tests/test_localizemi_forward_bundle_audit.py",
+        "outputs/track_b/20261029T_localizemi_forward_bundle_audit_002/audit.json",
+        "outputs/track_b/20261029T_localizemi_forward_bundle_audit_003/audit.json",
+        "outputs/track_b/20261029T_localizemi_forward_bundle_audit_004/audit.json",
+        "scripts/track_b/audit_geometry.py",
+        "tests/test_geometry_audit_report_write.py",
+        "outputs/track_b/data_acquisition/geometry_replay_20261029_001.json",
+        "docs/track_b/B1_LOCAL_DATA_AUDIT.md",
+        "outputs/track_b/20261029T_localizemi_forward_bundle_audit_005/audit.json"
       ]
     },
     {
@@ -378,6 +400,11 @@
         "outputs/track_b/20261029T_ds004752_effect_sensitivity_002/SENSITIVITY.md",
         "docs/track_b/WSGZP_UPSTREAM_COORDINATE_PIPELINE_AUDIT_20261029.md",
         "docs/track_b/WSGZP_PUBLIC_GEOMETRY_INVENTORY_RECHECK_20261029.md",
+        "docs/track_b/WSGZP_COORDINATE_COMPATIBILITY_SCREEN_20261029.md",
+        "docs/track_b/WSGZP_COORDINATE_COMPATIBILITY_SCREEN_20261029.json",
+        "docs/track_b/WSGZP_INDEPENDENT_REGISTRATION_FEASIBILITY_20261029.md",
+        "scripts/track_b/audit_wsgzp_eeg_mri_coordinate_consistency.py",
+        "outputs/track_b/20261029_wsgzp_eeg_mri_coordinate_consistency_005/audit.json",
         "scripts/track_b/audit_wsgzp_public_geometry_inventory.py",
         "tests/test_wsgzp_public_geometry_inventory.py",
         "outputs/track_b/20261029T_wsgzp_public_inventory_recheck_003/osf_inventory.json"
@@ -417,6 +444,12 @@
         "docs/track_b/DATA_ACCESS_STATUS_20261028.md",
         "docs/track_b/WSGZP_METADATA_AUDIT_20261028.md",
         "docs/track_b/WSGZP_METADATA_CONTRACT_RECHECK_20261029.md",
+        "docs/track_b/WSGZP_COORDINATE_COMPATIBILITY_SCREEN_20261029.md",
+        "docs/track_b/WSGZP_COORDINATE_COMPATIBILITY_SCREEN_20261029.json",
+        "docs/track_b/WSGZP_INDEPENDENT_REGISTRATION_FEASIBILITY_20261029.md",
+        "scripts/track_b/audit_wsgzp_eeg_mri_coordinate_consistency.py",
+        "tests/test_wsgzp_metadata_audit.py",
+        "outputs/track_b/20261029_wsgzp_eeg_mri_coordinate_consistency_005/audit.json",
         "docs/track_b/WSGZP_PREPROCESSING_PROVENANCE_20261028.md",
         "outputs/track_b/20261028_wsgzp_metadata_audit/audit.json",
         "scripts/track_b/audit_wsgzp_extracted_metadata.py",
