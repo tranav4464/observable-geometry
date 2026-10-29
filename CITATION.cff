@@ -12,3 +12,5 @@ abstract: >-
   signatures under a declared participant-specific forward model. The
   diagnostic does not establish physiological source recovery or calibrated
   localization uncertainty.
+date-released: 2026-10-30
+repository-code: "https://github.com/tranav4464/observable-geometry"

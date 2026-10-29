@@ -1,5 +1,9 @@
 # Observable Geometry: project definition
 
+## Accepted TKS snapshot, 30 October 2026
+
+Commit `58570b8738080efd6c94b7e44eb5d89f83343be9`, version `0.1.3.dev0`, is accepted under [B8's owner-approved AI audit criterion](B8_PASS_20261030.md). Fresh installation, 209 archive tests plus two local supplements, and exact 40,980-pair replay passed. External human review remains deferred. The dated candidate notes below are historical; they do not override this acceptance. See the [submission overview](../TKS_SUBMISSION.md).
+
 ## Active build target
 
 ### Close-prior-art update, 29 October 2026
@@ -17,9 +21,9 @@ it demonstrates a useful decision advantage over direct fitting and matched
 baselines on eligible held-out measured data. See the
 [close-prior-art recheck](CLOSE_PRIOR_ART_RECHECK_20261029.md).
 
-### Latest evidence, 29 October 2026
+### Historical evidence, 29 October 2026
 
-**Current public software candidate, 29 October 2026:** commit
+**Historical public software candidate, 29 October 2026:** commit
 `7d779cb2e6e47edcccfd6bf52eda63e6f626c730` passed 211/211 workspace tests,
 209 source-archive tests with two documented skips, fresh wheel/source
 provenance checks, Python 3.12.14 isolated installation, and exact CLI parity

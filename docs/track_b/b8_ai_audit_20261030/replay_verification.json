@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "checks": {
+    "input:model_bundle.npz": true,
+    "input:model_metadata.json": true,
+    "score_keys": true,
+    "reference_array:source_indices": true,
+    "reference_array:source_ids": true,
+    "reference_array:candidate_indices": true,
+    "reference_array:candidate_ids": true,
+    "reference_array:absolute_cosine": true,
+    "reference_array:profiled_residual": true,
+    "reference_array:valid_source": true,
+    "reference_array:whitened_norm": true,
+    "reference_array:candidate_count": true,
+    "csv_exact_reference": true,
+    "csv_pinned_hash": true,
+    "summary_exact": true,
+    "output_hash:scores.npz": true,
+    "output_hash:ranked_pairs.csv": true,
+    "output_hash:summary.json": true,
+    "output_hash:npz_key_access.jsonl": true,
+    "input_manifest": true,
+    "access_allowlist": true,
+    "40980_rows": true,
+    "independent_ranking_exact": true,
+    "independent_counts_exact": true,
+    "independent_valid_exact": true,
+    "independent_rank_235": true,
+    "independent_scores": true,
+    "independent_norms": true,
+    "independent_residuals": true
+  },
+  "ranked_pair_count": 40980,
+  "max_independent_score_error": 2.1094237467877974e-15,
+  "max_independent_residual_error": 4.218847493575595e-15,
+  "input_sha256": {
+    "model_bundle.npz": "e4116465c9af32ddf4bf9e0d3a8e92428c6f1b0bce22a5db257b1c3eaf07a32f",
+    "model_metadata.json": "a4d52521ddb760114ba1ce740942bc3bb6232f919de62737d345beb7c48db865"
+  },
+  "output_sha256": {
+    "npz_key_access.jsonl": "c1818bbfe9333cd98ef80f82aaf65a9e070b4581b16cb8ca8e0539fa6fababd9",
+    "ranked_pairs.csv": "847d248a5155818d234436a6e874ad8d5c2cf30aee1015b00053754e8359bab4",
+    "run_manifest.json": "bdee7daad6906764a57a8b5f9feb854c82e7e2162c1246e7812b1a2806616173",
+    "scores.npz": "bbc74660d069419ce199c6fd9a86f0f11f7fc52c92f5c93bbcc91ba5684b58c1",
+    "summary.json": "6e33d22df83170fe0c64b6fff94e363b86741f24521b4ffa1523864853034155"
+  },
+  "scope": "Fresh installed-wheel execution and separately implemented full-ranking numerical check; same host and supplied model inputs. No original recording or original forward-model construction replay."
+}

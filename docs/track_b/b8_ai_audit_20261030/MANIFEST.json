@@ -1,0 +1,13 @@
+{
+  "ASTRA_B8_AUDIT_20261030.md": "4d27416ca17809dac368782d99114964051d6d634d2cbd814ef65801a51590d0",
+  "check_integrity.py": "9e202dfa66844bbe045fd2ab23606d078645f4f1f1cb3a80d9dfd81d8620a6fa",
+  "integrity.json": "eb9c36ad3c150eca6c36f534b9590941ef1e8c2f171a45d854c41ed1f514d482",
+  "pip_check.log": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf",
+  "replay_check.py": "03969d89c9d3634e910819166106119118093e8244abee3b0477df6eafe8c2c3",
+  "replay_verification.json": "5ddc84fa75492711523b28131684145d099c369a3fb8cd16a19d5996a58e1dbd",
+  "requirements_resolved.txt": "2ff8ac825759f5bff5e086aa0f0cfc34efbbd628fcf3776c88fb71a0e5a637f9",
+  "tests.log": "f86300d6bc41510f9f52e49ea8b0092a5e77427207cb49991d6cca2ccbe9dccb",
+  "tests.xml": "083a6cbd5ff64fe0e85fed0a5ebf79423e1d82504c9fefde82bf76788da6eabc",
+  "workspace_supplement.log": "e00611fd52c507036d5ca453fbbe834eef152aa40eec3945c80e0a81ef548958",
+  "workspace_supplement.xml": "f1e50990c841b710e9082a636ca7440a0df960291f3f59de9fa62d9207a8a2ec"
+}

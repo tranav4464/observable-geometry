@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-30",
+  "authority": "Project owner Tranav, chat instruction: Pass 8B, following the executed Astra audit and disclosure of missing external human review.",
+  "change_type": "Post-audit owner acceptance amendment; not satisfaction of the original external-review criterion.",
+  "previous_contract": {
+    "status": "IN_PROGRESS",
+    "objective": "Release a reproducible package and obtain an external reproduction or review.",
+    "exit_criteria": [
+      "Install, data access, environment, scripts, license and limitations are documented.",
+      "A clean run reproduces the primary artifact without private state.",
+      "Outside review findings and unresolved issues are recorded."
+    ],
+    "verification": [
+      "Run the clean-environment reproduction from documented commands.",
+      "Verify checksums, manifests, outputs and figures.",
+      "Record external reviewer result and any divergence."
+    ],
+    "independent_review": "External researcher or reviewer performs or witnesses the clean reproduction.",
+    "falsification_check": "A clean reproduction fails, required data/code are inaccessible, or the release overstates what was tested.",
+    "failure_route": "Fix in a versioned release and repeat reproduction; retain the failure record and narrow public claims."
+  },
+  "accepted_commit": "58570b8738080efd6c94b7e44eb5d89f83343be9",
+  "accepted_package_version": "0.1.3.dev0",
+  "accepted_wheel_sha256": "3d38d857afd015630ae55283a24512132e6c444077fc97f971b98d410eb43c56",
+  "external_human_review": "NOT_COMPLETED; deferred from TKS acceptance to later external validation.",
+  "remaining_limit": "Replay uses owner-provided model inputs on the same host; original no-private-state/outside reproduction criterion has been narrowed explicitly."
+}
