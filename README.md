@@ -2,6 +2,8 @@
 
 Observable Geometry 0.1.3.dev0 is an unreleased development candidate for a computational-neuroscience software build around **Geometric-Informed Basis Functions (GBFs)** and a nominal EEG source-pattern comparison. The software asks what a declared forward model predicts at the sensors for pairs of candidate sources. It does not infer every active neural source, assign calibrated probabilities, or establish physiological source recovery.
 
+**Intended use:** before interpreting an inverse solution, a researcher can use a participant-specific forward model, sensor reference, and noise covariance to find spatially distant candidate sources whose predicted scalp patterns are similar. This is an exploratory model audit: it can expose conditional ambiguity in the supplied model, but it does not show that either source was active or that a real recording can be localized accurately. The [TKS build handoff](docs/TKS_BUILD_HANDOFF.md) gives a short project explanation, use case, demo path, evidence, and claim limits.
+
 The active contribution is a traceable GBFs implementation/reproduction workflow and an inspectable researcher-facing diagnostic. The normalized, noise-whitened source-pattern similarity is established prior art; this project does not claim that score as a new mathematical method. Track A's Localize-MI pulse-artifact evaluation is limited to one participant and an electrical stimulation artifact. It does not validate endogenous neural-source localization.
 
 ## Current project state
@@ -11,6 +13,8 @@ The active contribution is a traceable GBFs implementation/reproduction workflow
 - **B5/B6:** pivoted without protocol lock or held-out evaluation because the available endpoint cannot validate endogenous neural-source distinguishability. No reserved outcomes were opened.
 - **B7:** pivoted after a same-model, paired comparison found moderate association between the B3 score and MNE PSF summaries but no evidence of analyst decision benefit. Retain as a descriptive diagnostic only.
 - **B8:** the current software candidate is pinned to exact commit `9a88bad`. Its BSD-3-Clause CLI wheel passed source/wheel provenance checks, isolated `0.1.3.dev0` installation, exact one-model output parity across 40,980 ranked pairs, and commit-bound tests (211 workspace passes; 209 source-archive passes and two documented skips). See the [candidate report](docs/track_b/B8_RELEASE_CANDIDATE_9A88BAD_20261029.md). A refreshed, hash-verified data-free review packet is [available here](reviewer_handoff/Observable_Geometry_B8_Review_9a88bad_v3_20261029.zip); see the [handoff record](docs/track_b/B8_REVIEW_HANDOFF_9A88BAD_20261029.md). This remains an unreleased development candidate; unaffiliated outside review and the release decision are still open. The supplied B2 review is retained with its identity/authentication limitation.
+
+The TKS-facing build scope, reproducible demo, and what remains before release are summarized in the [TKS build handoff](docs/TKS_BUILD_HANDOFF.md). WSGZP geometry is a deferred empirical extension, not a prerequisite for presenting this bounded software build.
 
 ### WSGZP geometry status
 
