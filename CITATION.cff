@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "If you use Observable Geometry, please cite this software and the GBFs method separately."
 title: "Observable Geometry"
-version: 0.1.3-dev.0
+version: 0.1.3-dev.1
 authors:
   - family-names: Tyagi
     given-names: Tranav

@@ -10,7 +10,7 @@ Extract the submission ZIP. Python 3.12+ is required. In PowerShell from that ex
 
 ```powershell
 python -m venv .demo-env
-.\.demo-env\Scripts\python.exe -m pip install .\package\observable_geometry-0.1.3.dev0-py3-none-any.whl numpy==2.5.4 scipy==1.18.1
+.\.demo-env\Scripts\python.exe -m pip install .\package\observable_geometry-0.1.3.dev1-py3-none-any.whl numpy==2.5.4 scipy==1.18.1
 .\.demo-env\Scripts\observable-geometry.exe --help
 ```
 
@@ -50,3 +50,7 @@ Expected model size: 8,196 sources, covariance rank 235, 40,980 ranked rows. Cha
 ## Verify the source and bundle
 
 The source archive is pinned to commit `58570b8`; its older status documents reflect that commit's history. Current acceptance is in the outer submission documents. The manifest lists SHA-256 hashes for all packaged files. After extracting the source, install pytest, h5py, MNE and nibabel in a virtual environment, set PYTHONPATH to its `src` folder and run `python -m pytest -q -ra`. The two archive skips are expected; a downloaded source archive does not include the private workspace evidence or WSGZP dataset.
+
+## Rebuild the submission
+
+See [the clean-checkout build instructions](BUILDING_TKS_SUBMISSION.md). All artifact paths and output destinations are explicit.

@@ -39,6 +39,9 @@ def test_distinguish_cli_writes_auditable_outputs(tmp_path, capsys):
     assert summary["source_count"] == 3
     assert summary["covariance_rank"] == 2
     assert manifest["recorded_signal_array_accessed"] is False
+    provenance = manifest["implementation_provenance"]
+    assert "track_b/distinguishability.py" in provenance["package_source_sha256"]
+    assert provenance["runtime"]["numpy"] == np.__version__
     allowed = [json.loads(line) for line in (output / "npz_key_access.jsonl").read_text().splitlines()]
     assert {row["key"] for row in allowed} == {"leadfield", "noise_covariance", "coordinates_m", "source_ids"}
     assert all(row["decision"] == "allow" for row in allowed)

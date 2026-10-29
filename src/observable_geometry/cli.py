@@ -7,11 +7,13 @@ from datetime import datetime, timezone
 import csv
 from contextlib import contextmanager
 import hashlib
+import importlib.metadata
 import json
 import os
 from pathlib import Path
 import shutil
 import sys
+import platform
 import tempfile
 
 import numpy as np
@@ -35,6 +37,33 @@ def sha256(path: Path) -> str:
         for block in iter(lambda: stream.read(1024 * 1024), b""):
             digest.update(block)
     return digest.hexdigest()
+
+
+def implementation_provenance(package_root: Path | None = None) -> dict:
+    """Identify package source bytes as well as the installed runtime.
+
+    Distribution metadata can differ from a source checkout; the source hashes
+    identify the files actually available to this run in either case.
+    """
+    root = package_root or Path(__file__).resolve().parent
+    hashes = {p.relative_to(root).as_posix(): sha256(p)
+              for p in sorted(root.rglob("*.py"))}
+    if not hashes:
+        raise ValueError("package source provenance is empty")
+    fingerprint = hashlib.sha256(
+        json.dumps(hashes, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    ).hexdigest()
+    try:
+        distribution_version = importlib.metadata.version("observable-geometry")
+    except importlib.metadata.PackageNotFoundError:
+        distribution_version = None
+    return {
+        "installed_distribution_version": distribution_version,
+        "package_source_sha256": hashes,
+        "package_source_fingerprint_sha256": fingerprint,
+        "runtime": {"python": platform.python_version(), "numpy": np.__version__,
+                    "scipy": importlib.metadata.version("scipy")},
+    }
 
 
 @contextmanager
@@ -192,6 +221,7 @@ def _write_distinguish_run(
         "created_utc": datetime.now(timezone.utc).isoformat(),
         "command": "observable-geometry distinguish",
         "implementation_sha256": sha256(implementation),
+        "implementation_provenance": implementation_provenance(),
         "input_sha256": {"bundle": sha256(bundle), "metadata": sha256(metadata_path)},
         "output_sha256": {name: sha256(output / name) for name in ("scores.npz", "ranked_pairs.csv", "summary.json", "npz_key_access.jsonl")},
         "allowed_bundle_keys": sorted(ALLOWED_BUNDLE_KEYS),

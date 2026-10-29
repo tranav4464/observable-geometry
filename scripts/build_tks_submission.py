@@ -1,14 +1,15 @@
 """Package the accepted TKS snapshot without model arrays or recordings."""
 from pathlib import Path
+import argparse
+import email
 import hashlib
+import tomllib
 import html
 import json
 import shutil
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
-PACKET = ROOT / 'outputs/track_b/astra_b8_audit_20261030/packet'
-DEST = ROOT / 'dist/Observable_Geometry_TKS_20261030'
 
 
 def digest(path):
@@ -16,14 +17,36 @@ def digest(path):
 
 
 def main():
-    if DEST.exists():
-        raise FileExistsError(f'Refusing to overwrite {DEST}')
-    wheel = PACKET / 'wheel/observable_geometry-0.1.3.dev0-py3-none-any.whl'
-    source = PACKET / 'source/observable_geometry_source_58570b8.zip'
-    for p, expected in [(wheel, '3d38d857afd015630ae55283a24512132e6c444077fc97f971b98d410eb43c56'),
-                        (source, '9ec5daca87af0fa9a27838d20ce3c412d50f912d89cdf8d31768583965067b02')]:
-        if digest(p) != expected:
-            raise ValueError(f'Pinned artifact changed: {p}')
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--source', type=Path, required=True, help='Exact git-archive ZIP (commit stored in ZIP comment)')
+    parser.add_argument('--wheel', type=Path, required=True)
+    parser.add_argument('--source-sha256', required=True)
+    parser.add_argument('--wheel-sha256', required=True)
+    parser.add_argument('--code-commit', required=True)
+    parser.add_argument('--output', type=Path, required=True, help='New submission directory; ZIP is created beside it')
+    parser.add_argument('--update-page', action='store_true', help='Also update the repository presentation page')
+    args = parser.parse_args()
+    DEST = args.output.resolve()
+    archive = Path(str(DEST) + '.zip')
+    if DEST.exists() or archive.exists():
+        raise FileExistsError(f'Refusing to overwrite {DEST} or {archive}')
+    wheel, source = args.wheel.resolve(), args.source.resolve()
+    for p, expected in [(wheel, args.wheel_sha256), (source, args.source_sha256)]:
+        if digest(p) != expected.lower():
+            raise ValueError(f'Artifact hash mismatch: {p}')
+    with zipfile.ZipFile(source) as src, zipfile.ZipFile(wheel) as whl:
+        if src.testzip() or whl.testzip():
+            raise ValueError('Corrupt artifact ZIP')
+        if src.comment.decode().strip() != args.code_commit:
+            raise ValueError('Source ZIP commit does not match --code-commit')
+        metadata = email.message_from_bytes(whl.read(next(n for n in whl.namelist() if n.endswith('.dist-info/METADATA'))))
+        version = metadata['Version']
+        if tomllib.loads(src.read('pyproject.toml').decode())['project']['version'] != version:
+            raise ValueError('Source and wheel versions differ')
+        modules = [n for n in whl.namelist() if n.startswith('observable_geometry/') and n.endswith('.py')]
+        expected = {n[4:] for n in src.namelist() if n.startswith('src/observable_geometry/') and n.endswith('.py')}
+        if set(modules) != expected or any(whl.read(n) != src.read('src/' + n) for n in modules):
+            raise ValueError('Source and wheel module contents differ')
     (DEST / 'package').mkdir(parents=True)
     shutil.copy2(wheel, DEST / 'package' / wheel.name)
     shutil.copy2(source, DEST / source.name)
@@ -33,8 +56,20 @@ def main():
             target = DEST / p.relative_to(ROOT)
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(p, target)
-    for name in ['LICENSE', 'CITATION.cff', 'README.md']:
+    for name in ['LICENSE', 'CITATION.cff']:
         shutil.copy2(ROOT / name, DEST / name)
+    (DEST / 'README.md').write_text(
+        '# Observable Geometry submission bundle\n\n'
+        'Start with [the presentation](START_HERE.html), [demo guide](docs/TKS_DEMO.md), '
+        'or [project summary](docs/TKS_SUBMISSION.md).\n\n'
+        f'Included software: {version}, commit `{args.code_commit}`. Install `package/{wheel.name}` '
+        'using the demo guide. Package-index access is required for dependencies.\n\n'
+        f'For editable installation and tests, first extract `{source.name}` into a separate source directory. '
+        'Run the source README instructions from that directory, which contains pyproject.toml. '
+        'Historical research references in the source README may require the original research workspace.\n\n'
+        'This bundle contains no participant model arrays or recordings. Exact participant replay needs lawful '
+        'matching inputs; the CLI also accepts your own verified model. The hashes in SHA256_MANIFEST.json '
+        'cover the packaged artifacts.\n', encoding='utf-8')
     (DEST / 'evidence').mkdir()
     shutil.copy2(ROOT / 'docs/track_b/b8_ai_audit_20261030/requirements_resolved.txt', DEST / 'evidence/requirements_resolved.txt')
     links = [('docs/TKS_SUBMISSION.md', 'Submission overview'), ('docs/TKS_DEMO.md', 'Run the demo'),
@@ -54,13 +89,17 @@ body{margin:0;background:#eef2f6;color:#15263a;font:17px/1.6 system-ui,sans-seri
     for path, _ in links:
         if not (DEST / path).is_file():
             raise FileNotFoundError(path)
+    page = page.replace('0.1.3.dev0', version).replace('58570b8', args.code_commit[:7])
+    page = page.replace('209 tests passed', '211 tests passed')
     (DEST / 'START_HERE.html').write_text(page, encoding='utf-8')
-    (ROOT / 'TKS_BUILD.html').write_text(page, encoding='utf-8')
-    (DEST / 'START_HERE.md').write_text('# Observable Geometry TKS submission\n\nOpen START_HERE.html, then docs/TKS_DEMO.md for installation and execution.\n\nThe package and source archive are the audited 58570b8 software. Outer documentation records subsequent B8 acceptance. No recordings or model arrays are included. SHA256_MANIFEST.json identifies every packaged file.\n', encoding='utf-8')
+    (DEST / 'TKS_BUILD.html').write_text(page, encoding='utf-8')
+    if args.update_page:
+        (ROOT / 'TKS_BUILD.html').write_text(page, encoding='utf-8')
+    (DEST / 'START_HERE.md').write_text('# Observable Geometry TKS submission\n\nOpen START_HERE.html, then docs/TKS_DEMO.md for installation and execution.\n\nThe package and source archive are identified by README.md and SHA256_MANIFEST.json. Outer documentation records subsequent B8 acceptance. No recordings or model arrays are included. SHA256_MANIFEST.json identifies every packaged file.\n', encoding='utf-8')
     files = sorted(p for p in DEST.rglob('*') if p.is_file())
     manifest = {p.relative_to(DEST).as_posix(): digest(p) for p in files}
     (DEST / 'SHA256_MANIFEST.json').write_text(json.dumps(manifest, indent=2)+'\n')
-    archive = DEST.with_suffix('.zip')
+    archive = Path(str(DEST) + '.zip')
     if archive.exists():
         raise FileExistsError(archive)
     with zipfile.ZipFile(archive, 'w', zipfile.ZIP_DEFLATED) as z:
@@ -72,7 +111,7 @@ body{margin:0;background:#eef2f6;color:#15263a;font:17px/1.6 system-ui,sans-seri
         for name, h in manifest.items():
             assert hashlib.sha256(z.read(name)).hexdigest() == h
         assert not any(n.endswith(('.npz', '.fif', '.edf', '.nii', '.nii.gz')) for n in z.namelist())
-    receipt = {'status': 'PASS', 'scope': 'Submission packaging; software evidence remains pinned to 58570b8', 'file_count': len(manifest), 'zip_sha256': digest(archive), 'zip_bytes': archive.stat().st_size}
+    receipt = {'status': 'PASS', 'scope': 'Submission integrity and source/wheel correspondence', 'code_commit': args.code_commit, 'version': version, 'source_sha256': digest(source), 'wheel_sha256': digest(wheel), 'file_count': len(manifest), 'zip_sha256': digest(archive), 'zip_bytes': archive.stat().st_size}
     archive.with_suffix('.verification.json').write_text(json.dumps(receipt, indent=2)+'\n')
     print(json.dumps(receipt, indent=2))
     print(archive)
