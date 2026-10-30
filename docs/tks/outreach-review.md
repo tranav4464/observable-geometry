@@ -18,17 +18,20 @@ The delivered `distinguish` diagnostic is separate from the reproduced GBF inver
 
 ## Reproduce the public software checks
 
-Python 3.12 or later is required.
+Python 3.12 or later is required. Confirm that `python` resolves to a compatible version; otherwise invoke the Python 3.12+ executable directly.
 
 ```powershell
 git clone https://github.com/tranav4464/observable-geometry.git
 Set-Location observable-geometry
-py -3.12 -m venv .venv
+python --version
+python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install --upgrade pip
 .\.venv\Scripts\python.exe -m pip install -e ".[test,research-audit]"
 .\.venv\Scripts\python.exe -m pytest -q -ra
 .\.venv\Scripts\observable-geometry.exe --help
 ```
+
+On Windows systems with the Python launcher, `py -3.12 -m venv .venv` is an equivalent environment-creation command.
 
 The public source checkout intentionally excludes licensed model arrays, participant recordings, ignored workspace outputs, and the WSGZP dataset. Therefore, two source-only skips are expected: the full-workspace gate-evidence integration and local WSGZP audit. The remaining public tests must pass.
 

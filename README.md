@@ -48,14 +48,17 @@ See [the project definition](docs/track_b/PROJECT_DEFINITION.md), [the build pla
 
 ## Install
 
-Python 3.12 or later is required. From the project directory:
+Python 3.12 or later is required. Confirm that the `python` command selects a compatible interpreter, then run from the project directory:
 
 ```powershell
-py -3.12 -m venv .venv
+python --version
+python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
 python -m pip install -e ".[test,research-audit]"
 ```
+
+If `python --version` reports an older interpreter, invoke your Python 3.12+ executable directly. On systems with the Windows Python launcher, `py -3.12 -m venv .venv` is an equivalent alternative.
 
 Run the full workspace correctness and audit tests:
 
