@@ -1,6 +1,6 @@
 # B2 specification: nominal GBFs source-pattern distinguishability
 
-**Status: frozen v10 specification; the registered v11 CPU64 numerical parity check passed on 24 October 2026.** This is the active GBFs route and replaces the superseded NeuroFlowNet/WBEN specifications as the B2 contract. The supplied review record reports approval for the registered parity computation, but the workspace contains a conflicting AI-authored declaration under the same reviewer name. The human identity and affiliation have not been independently authenticated; see `B2_GATE_CLOSEOUT_20261024.md`. No model fitting, new signal analysis, synthetic neural data, or confirmatory outcome access is authorized by this document.
+**Status: frozen v10 specification; the registered v11 CPU64 numerical parity check passed on 24 October 2026.** This is the active GBFs route and replaces the superseded NeuroFlowNet/WBEN specifications as the B2 contract. The supplied review record reports approval for the registered parity computation, but the workspace contains conflicting declarations under the same reviewer name. The human identity and affiliation have not been independently authenticated; see `B2_GATE_CLOSEOUT_20261024.md`. No model fitting, new signal analysis, synthetic neural data, or confirmatory outcome access is authorized by this document.
 
 **Review version:** `B2-GBF-2026-10-23-v10`. This version adds two directly relevant prior-art sources to the comparison boundary; the v9 numerical tolerance correction is retained.
 

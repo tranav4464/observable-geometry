@@ -6,7 +6,7 @@
 
 The reviewer recommended retaining the GBF-based nominal source-distinguishability route, while blocking the next real-array recomputation until four conditions are addressed: harden the parity checker, provide auditable forward-model provenance, enforce the signal-access boundary at runtime and preserve the access incident, then obtain independent gate approval before recomputing the registered real artifacts.
 
-The first three conditions have been addressed in versioned remediation artifacts and tested. The missing prior-art discussion identified by the reviewer has also been added with the overlap stated conservatively. The fourth condition is intentionally still open: no registered CPU64 recomputation against the sealed Track A arrays was run. The reviewer explicitly conditions that action on independent gate approval. The supplied review discloses that it is AI-assisted, not a signed review by an unaffiliated human EEG/MEG methods expert, so it cannot by itself serve as that external approval.
+The first three conditions have been addressed in versioned remediation artifacts and tested. The missing prior-art discussion identified by the reviewer has also been added with the overlap stated conservatively. The fourth condition is intentionally still open: no registered CPU64 recomputation against the sealed Track A arrays was run. The reviewer explicitly conditions that action on independent gate approval. The supplied review is not signed by an unaffiliated human EEG/MEG methods expert, so it cannot by itself serve as that external approval.
 
 No model fitting was performed. No claim of physiological source recovery, empirical discrimination probability, robust localization, or methodological novelty is made.
 

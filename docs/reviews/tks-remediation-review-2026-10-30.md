@@ -1,8 +1,8 @@
 # TKS build remediation and re-review
 
-30 October 2026. Reviewer/implementer: GPT-6 Astra in the same project chat and host. This is maintenance verification, not unaffiliated human review.
+30 October 2026. This was same-host maintenance verification, not unaffiliated human review.
 
-**Result: PASS for all three scoped review findings.** Numerical software is version `0.1.3.dev1`, commit `3c99ca11bb71d35ca8f4c836a5c2b573fb7f36a3`. The previous accepted `58570b8` source and wheel remain historical artifacts. B8's owner-approved AI reproducibility scope is unchanged.
+**Result: PASS for all three scoped review findings.** Numerical software is version `0.1.3.dev1`, commit `3c99ca11bb71d35ca8f4c836a5c2b573fb7f36a3`. The previous accepted `58570b8` source and wheel remain historical artifacts. B8's owner-approved reproducibility scope is unchanged.
 
 ## Fixes and evidence
 

@@ -2,7 +2,7 @@
 
 > **Superseded on 23 October 2026.** This packet reviews the withdrawn scalp-EEG-to-iEEG route and must not be used to assess the active GBFs project. The active packet is [`B2_GBF_INDEPENDENT_REVIEW_PACKET.md`](B2_GBF_INDEPENDENT_REVIEW_PACKET.md); the active specification is [`B2_GBF_SPEC.md`](B2_GBF_SPEC.md).
 
-**Review status: same-chat AI PEER REVIEW COMPLETED, HOLD FOR CHANGES; unaffiliated external review remains outstanding.** The [review report](../../outputs/track_b/20261023T_b2_peer_review/REVIEW.md) identified six revision groups. The active specification has since incorporated the core technical revisions for R1–R5, and the prior-art matrix and policy have been reconciled for R6. The original report remains a review of the earlier packet state, not external sign-off or a re-review of the updated specification. B2 remains IN_PROGRESS.
+**Review status: same-chat review completed, HOLD FOR CHANGES; unaffiliated external review remains outstanding.** The [review report](../../outputs/track_b/20261023T_b2_peer_review/REVIEW.md) identified six revision groups. The active specification has since incorporated the core technical revisions for R1–R5, and the prior-art matrix and policy have been reconciled for R6. The original report remains a review of the earlier packet state, not external sign-off or a re-review of the updated specification. B2 remains IN_PROGRESS.
 
 ## What the project proposes
 

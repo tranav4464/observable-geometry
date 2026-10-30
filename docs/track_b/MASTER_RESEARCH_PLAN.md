@@ -8,4 +8,4 @@ No synthetic datasets or synthetic signal fixtures are permitted. Track A releas
 
 ## B8 acceptance update, 30 October 2026
 
-For this TKS snapshot, the owner accepted the executed same-host Astra audit and deferred the original external human review requirement. The authoritative amendment and narrower reproduction scope are in [B8_PASS_20261030.md](B8_PASS_20261030.md). Historical build-plan review requirements are superseded only for this bounded acceptance. Scientific validation gates and claims are unchanged.
+For this TKS snapshot, the owner accepted the executed same-host reproducibility audit and deferred the original external human review requirement. The authoritative amendment and narrower reproduction scope are in [B8_PASS_20261030.md](B8_PASS_20261030.md). Historical build-plan review requirements are superseded only for this bounded acceptance. Scientific validation gates and claims are unchanged.

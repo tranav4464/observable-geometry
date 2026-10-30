@@ -1,6 +1,6 @@
 {
   "date": "2026-10-30",
-  "authority": "Project owner Tranav, chat instruction: Pass 8B, following the executed Astra audit and disclosure of missing external human review.",
+  "authority": "Project owner Tranav, instruction: Pass 8B, following the executed reproducibility audit and disclosure of missing external human review.",
   "change_type": "Post-audit owner acceptance amendment; not satisfaction of the original external-review criterion.",
   "previous_contract": {
     "status": "IN_PROGRESS",

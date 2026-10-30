@@ -3,7 +3,7 @@
 **Creator:** Tranav Tyagi  
 **Field:** computational neuroscience / EEG source imaging  
 **Accepted software:** 0.1.3.dev1, commit `3c99ca11bb71d35ca8f4c836a5c2b573fb7f36a3`  
-**Status:** ready for TKS submission as a bounded research-software build. B8 passed under owner-accepted AI reproducibility; human external review is deferred.
+**Status:** ready for TKS submission as a bounded research-software build. B8 passed for the accepted software snapshot; external human review is deferred.
 
 ## What I built
 

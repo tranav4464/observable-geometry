@@ -33,7 +33,7 @@ For a new model, the install and input contracts are in the repository [README](
 
 - B0–B3 passed at their declared, bounded scopes.
 - B4–B7 were explicitly pivoted or stopped after the proposed endpoints failed to support the intended neural-source or analyst-decision claims. These are documented outcomes, not hidden completed validations.
-- B8 passed on 30 October 2026 under owner-accepted AI reproducibility: fresh installation, 213 workspace tests and 211 archive tests with two expected skips, exact 40,980-pair replay and independent numerical calculation. External human review is deferred under a documented acceptance amendment. See [B8 decision](../track_b/B8_PASS_20261030.md).
+- B8 passed on 30 October 2026 for the bounded software snapshot: fresh installation, 213 workspace tests and 211 archive tests with two expected skips, exact 40,980-pair replay and a separate numerical calculation. External human review is deferred. See [B8 decision](../track_b/B8_PASS_20261030.md).
 
 ## What this build does not establish
 
@@ -45,7 +45,7 @@ The ds004752 real-recording benchmark is a separate exploratory scalp-to-intracr
 
 Two reviewers found the exploratory pre-interpretation use case clear and worth considering. They emphasized that the next scientific step is to show what decision the output changes beyond direct leadfield similarity and established PSF/CTF or other resolution diagnostics. One reviewer also suggested clarifying the relationship between the diagnostic and GBFs; the distinction is stated above. Suggested orientation-aware, gain-aware, and parcel-level extensions remain candidates, not implemented or validated improvements. The detailed next-build agenda is in the [next-build review actions](../reviews/next-build-actions.md).
 
-These comments are useful outreach feedback, but they are not a formal B8 pass or an independent clean reproduction of the release candidate. B8 was subsequently accepted on the separately executed AI audit under the documented amendment; these outreach comments themselves do not establish reproduction.
+These comments are useful outreach feedback, but they are not a formal B8 pass or an independent clean reproduction of the release candidate. B8 was subsequently accepted using separately executed reproducibility evidence under the documented amendment; these outreach comments themselves do not establish reproduction.
 
 ## Accepted TKS snapshot and next work
 

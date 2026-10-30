@@ -819,20 +819,20 @@
         "docs/track_b/tks_remediation_20261030/packaging_checks.json"
       ],
       "blocking": [],
-      "objective": "Accept a reproducible bounded TKS software snapshot under the owner-approved AI audit criterion dated 2026-10-30.",
+      "objective": "Accept a reproducible bounded TKS software snapshot under the owner-approved audit criterion dated 2026-10-30.",
       "exit_criteria": [
         "Install, model input access, environment, scripts, license and limitations are documented.",
         "A fresh isolated Python environment reproduces the pinned primary artifact using identified owner-provided model-only inputs.",
-        "Executed AI review findings, independence limits and owner acceptance are recorded; external human review is explicitly deferred."
+        "Executed review findings, independence limits and owner acceptance are recorded; external human review is explicitly deferred."
       ],
       "verification": [
         "Verify the pinned source, wheel and installed modules; execute the full available source suite and disclose local-evidence supplements.",
         "Replay the 40,980-pair model output, verify input/output hashes and access logs, and perform separate numerical ranking replay.",
         "Record owner acceptance under the amended criterion and retain the original contract."
       ],
-      "falsification_check": "Pinned software fails fresh-environment reproduction, output/input checks diverge, or acceptance misrepresents AI evidence as external human or physiological validation.",
+      "falsification_check": "Pinned software fails fresh-environment reproduction, output/input checks diverge, or acceptance misrepresents assisted review evidence as external human or physiological validation.",
       "failure_route": "Reopen B8 for software discrepancies; external human review and public-input recreation remain deferred validation work under the disclosed amendment.",
-      "independent_review": "Owner-accepted executed Astra AI audit, same host and existing project chat; no unaffiliated human review. See B8_ACCEPTANCE_AMENDMENT_20261030.json.",
+      "independent_review": "Owner-accepted same-host reproducibility audit; no unaffiliated human review. See B8_ACCEPTANCE_AMENDMENT_20261030.json.",
       "verification_evidence": [
         "outputs/track_b/20261024_b8_release_checks/test_run.json",
         "outputs/track_b/20261024_b8_release_checks/clean_install_parity.json",

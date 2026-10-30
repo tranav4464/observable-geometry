@@ -2,7 +2,7 @@
 
 **Historical findings: all three were subsequently addressed in [the remediation re-review](tks-remediation-review-2026-10-30.md).**
 
-Date: 30 October 2026. Reviewer: GPT-6 Astra through Codex, in the existing project chat. This is a same-host technical/product review with prior project involvement, not unaffiliated external review.
+Date: 30 October 2026. This was a same-host technical/product review with prior project involvement, not unaffiliated external review.
 
 Reviewed repository: `23de77fb310c324a20377e8bcfeb4943f597b73f`. Accepted numerical software: `58570b8738080efd6c94b7e44eb5d89f83343be9`, version 0.1.3.dev0. Reviewed download: `Observable_Geometry_TKS_20261030.zip`, SHA-256 `e1868d9e21bd40c5a6dc266b518b7ea9e545545e705faa14a450a52c23be70b6`.
 
@@ -34,7 +34,7 @@ Recommended correction: generate a bundle-specific README pointing to START_HERE
 
 Location: `scripts/build_tks_submission.py:10–11`.
 
-The builder hardcodes `outputs/track_b/astra_b8_audit_20261030/packet`, which is absent from a fresh public checkout. It also fixes one destination and refuses to overwrite it. Refusing overwrites is appropriate, but there is no documented input/destination argument or artifact-acquisition step. Consequently another developer cannot regenerate the submission ZIP merely by cloning the repository and running the script.
+The original builder hardcoded a private audit-packet path that is absent from a fresh public checkout. It also fixed one destination and refused to overwrite it. Refusing overwrites is appropriate, but there was no documented input/destination argument or artifact-acquisition step. Consequently another developer could not regenerate that submission ZIP merely by cloning the repository and running the script.
 
 Recommended correction: accept explicit source-ZIP, wheel and output paths; verify the pinned hashes; document how to obtain the data-free artifacts or build the exact candidate. Distinguish rebuilding the handoff from reproducing the licensed model result. This issue does not stop installation of the supplied wheel.
 

@@ -47,7 +47,7 @@ The public source checkout intentionally excludes licensed model arrays, partici
 - The public software, clean installation, commands, tests, documentation, packaging, and hashes have been exercised end to end.
 - The Localize-MI demonstration is conditional on one participant-specific model and an electrical stimulation pulse artifact.
 - B4 through B7 are explicit pivots because available evidence did not support physiological recovery or decision-benefit claims.
-- B8 passed under the project's disclosed owner-accepted AI reproducibility criterion; external human review remains deferred.
+- B8 passed for the bounded software snapshot; external human review remains deferred.
 - WSGZP participant-specific source analysis remains blocked pending registration provenance and reviewed geometry QC.
 
 Please treat this as exploratory research software with unusually explicit guardrails, not as a validated clinical or source-recovery system.
