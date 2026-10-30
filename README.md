@@ -121,7 +121,7 @@ observable-geometry family-frontier `
 
 The input has `tolerance` and a nonempty `cases` array. Each case has a unique `id`, one `reference` family and an `alternatives` array. Each family has a unique `name`, `evidence` label and `distance` with nonnegative `lower` and `upper` bounds. An exact numerical minimum can be supplied as equal bounds only when its numerical and modeling limitations are understood. A feasible witness without an exclusion certificate should use `lower: 0` and its replayed residual as `upper`.
 
-This command **does not recompute or authenticate** supplied distances. It records the input hash and labels this limit in its output. A reversal is conditional on the source families, model and valid bounds; it is not measured source recovery or a composite-classifier error rate. A five-participant, 20-case worked input built from independently replayed research results is documented in [the family-frontier report](../research/gbf_omitted_activity_20261024/SECONDARY_FAMILY_FRONTIER_RESULTS_20261028.md) in the full workspace.
+This command **does not recompute or authenticate** supplied distances. It records the input hash and labels this limit in its output. A reversal is conditional on the source families, model and valid bounds; it is not measured source recovery or a composite-classifier error rate. A five-participant, 20-case worked input built from independently replayed research results is documented in the private full-workspace family-frontier report, which is not redistributed in this public repository.
 
 ## Audit a target-only claim across a declared model set
 
