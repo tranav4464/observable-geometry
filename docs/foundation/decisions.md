@@ -1,6 +1,6 @@
 # Decisions, open questions and handoff
 
-> **Historical planning record, superseded 24 October 2026.** The active project is now the bounded GBFs source-pattern distinguishability build, not the Recoverable Source Geometry calibration proposal described below. For current scope and status, use [`track_b/PROJECT_DEFINITION.md`](track_b/PROJECT_DEFINITION.md), [`track_b/GBF_BUILD_PLAN.md`](track_b/GBF_BUILD_PLAN.md), and [`track_b/GATE_REGISTER.json`](track_b/GATE_REGISTER.json). Historical entries remain for provenance and must not be treated as active authorization or protocol.
+> **Historical planning record, superseded 24 October 2026.** The active project is now the bounded GBFs source-pattern distinguishability build, not the Recoverable Source Geometry calibration proposal described below. For current scope and status, use [`track_b/PROJECT_DEFINITION.md`](../track_b/PROJECT_DEFINITION.md), [`track_b/GBF_BUILD_PLAN.md`](../track_b/GBF_BUILD_PLAN.md), and [`track_b/GATE_REGISTER.json`](../track_b/GATE_REGISTER.json). Historical entries remain for provenance and must not be treated as active authorization or protocol.
 
 ## Current direction
 

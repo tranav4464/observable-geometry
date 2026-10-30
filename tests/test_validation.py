@@ -8,7 +8,14 @@ import zipfile
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-from verify_foundation import _source_files, validate, validate_empirical_rows, validate_signature_arrays, verify_source_snapshot
+from verify_foundation import (
+    _is_vcs_metadata,
+    _source_files,
+    validate,
+    validate_empirical_rows,
+    validate_signature_arrays,
+    verify_source_snapshot,
+)
 from geometry_basis_cache import _valid_basis
 
 
@@ -57,6 +64,12 @@ class FinalValidatorTests(unittest.TestCase):
 
     def test_snapshot_inventory_contains_tests(self):
         self.assertIn(Path(__file__).resolve(), _source_files())
+
+    def test_vcs_metadata_is_not_treated_as_scientific_input(self):
+        self.assertTrue(_is_vcs_metadata("data/Localize-MI/.git/config"))
+        self.assertTrue(_is_vcs_metadata(Path("data/Localize-MI/.git/objects/pack/example.pack")))
+        self.assertFalse(_is_vcs_metadata("data/Localize-MI/dataset_description.json"))
+        self.assertFalse(_is_vcs_metadata("data/payload/sub-01_epochs.npy"))
 
     def test_snapshot_content_is_checked_without_live_worktree(self):
         with TemporaryDirectory() as directory:

@@ -2,11 +2,11 @@
 
 ## Current maintenance snapshot, 30 October 2026
 
-Version `0.1.3.dev1`, commit `3c99ca1`, repairs package provenance and the portable handoff. 213 workspace tests, 211 archive tests (two expected skips), fresh installation and exact 40,980-row replay passed. See [the re-review](../TKS_REMEDIATION_REVIEW_20261030.md). The earlier acceptance below is historical.
+Version `0.1.3.dev1`, commit `3c99ca1`, repairs package provenance and the portable handoff. 213 workspace tests, 211 archive tests (two expected skips), fresh installation and exact 40,980-row replay passed. See [the re-review](../reviews/tks-remediation-review-2026-10-30.md). The earlier acceptance below is historical.
 
 ## Original accepted TKS snapshot, 30 October 2026
 
-Commit `58570b8738080efd6c94b7e44eb5d89f83343be9`, version `0.1.3.dev0`, is accepted under [B8's owner-approved AI audit criterion](B8_PASS_20261030.md). Fresh installation, 209 archive tests plus two local supplements, and exact 40,980-pair replay passed. External human review remains deferred. The dated candidate notes below are historical; they do not override this acceptance. See the [submission overview](../TKS_SUBMISSION.md).
+Commit `58570b8738080efd6c94b7e44eb5d89f83343be9`, version `0.1.3.dev0`, is accepted under [B8's owner-approved AI audit criterion](B8_PASS_20261030.md). Fresh installation, 209 archive tests plus two local supplements, and exact 40,980-pair replay passed. External human review remains deferred. The dated candidate notes below are historical; they do not override this acceptance. See the [submission overview](../tks/submission.md).
 
 ## Active build target
 
@@ -171,7 +171,7 @@ the participant-specific forward model and five repeated stimulation sites
 global ridge explanations of the measured pulse artifact. Flexible direct
 fits have lower held-current residuals than point/equal-weight patches. This
 is a real controlled-artifact diagnostic, not endogenous neural-source
-validation or a GBF novelty result. See the [family validation record](../../../research/gbf_omitted_activity_20261024/LOCALIZE_FAMILY_VALIDATION_20261028.md).
+validation or a GBF novelty result. See the [family validation record](../../research/gbf_omitted_activity_20261024/LOCALIZE_FAMILY_VALIDATION_20261028.md).
 
 **Source-family defense and density sensitivity are now documented:**
 Primary literature supports testing area-weighted, same-polarity connected

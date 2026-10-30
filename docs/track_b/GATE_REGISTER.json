@@ -63,9 +63,9 @@
         "docs/track_b/B0_GBF_EXTENSION_SCREEN.md",
         "docs/track_b/CLOSE_PRIOR_ART_RECHECK_20261029.md",
         "docs/track_b/NOVELTY_RESUME_AUDIT_20261029.md",
-        "docs/FOUNDATION_DECISIONS.md",
-        "docs/FOUNDATION_PROTOCOL.md",
-        "docs/REVERSE_ENGINEERING.md",
+        "docs/foundation/foundation-decisions.md",
+        "docs/foundation/foundation-protocol.md",
+        "docs/foundation/reverse-engineering.md",
         "docs/track_b/B0_EQUATION_AUDIT.md",
         "vendor/GBFs/LICENSE",
         "outputs/tracka_release_20261022_v2/run_manifest.json"
@@ -259,7 +259,7 @@
         "Independent technical review approves the complete specification before new model fitting or outcome-driven iteration."
       ],
       "verification": [
-        "Check the equation and dimensions against FOUNDATION_PROTOCOL.md and the Track A implementation.",
+        "Check the equation and dimensions against docs/foundation/foundation-protocol.md and the Track A implementation.",
         "Recompute the primary score from saved permitted real forward-model artifacts and compare against an independent implementation after the protocol is reviewed.",
         "Verify matched output definitions against established resolution and separability baselines.",
         "Review the predeclared data boundary, thresholds, and conclusions with an independent reviewer."
@@ -609,7 +609,7 @@
         "scripts/track_b/build_b8_reviewer_handoff.py",
         "outputs/track_b/20261024_b8_release_checks/source_snapshot_verification.json",
         "README.md",
-        "docs/ARCHITECTURE.md",
+        "docs/foundation/architecture.md",
         "src/observable_geometry/cli.py",
         "scripts/track_b/export_sealed_model_bundle.py",
         "scripts/track_b/verify_b8_clean_install.py",
@@ -813,7 +813,7 @@
         "docs/track_b/b8_ai_audit_20261030/tests.xml",
         "docs/track_b/b8_ai_audit_20261030/workspace_supplement.log",
         "docs/track_b/b8_ai_audit_20261030/workspace_supplement.xml",
-        "docs/TKS_REMEDIATION_REVIEW_20261030.md",
+        "docs/reviews/tks-remediation-review-2026-10-30.md",
         "docs/track_b/tks_remediation_20261030/MANIFEST.json",
         "docs/track_b/tks_remediation_20261030/maintenance_verification.json",
         "docs/track_b/tks_remediation_20261030/packaging_checks.json"
@@ -1008,7 +1008,7 @@
         "docs/track_b/b8_ai_audit_20261030/tests.xml",
         "docs/track_b/b8_ai_audit_20261030/workspace_supplement.log",
         "docs/track_b/b8_ai_audit_20261030/workspace_supplement.xml",
-        "docs/TKS_REMEDIATION_REVIEW_20261030.md",
+        "docs/reviews/tks-remediation-review-2026-10-30.md",
         "docs/track_b/tks_remediation_20261030/MANIFEST.json",
         "docs/track_b/tks_remediation_20261030/maintenance_verification.json",
         "docs/track_b/tks_remediation_20261030/packaging_checks.json"

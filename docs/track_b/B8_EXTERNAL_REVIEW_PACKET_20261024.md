@@ -55,7 +55,7 @@ recovery or novelty.
 
 ## Materials
 
-- `README.md` and `docs/ARCHITECTURE.md` for setup and interfaces.
+- `README.md` and `docs/foundation/architecture.md` for setup and interfaces.
 - `docs/track_b/PROJECT_DEFINITION.md` and `docs/track_b/GBF_BUILD_PLAN.md` for scope and claim boundaries.
 - `docs/track_b/B0_GBF_EXTENSION_SCREEN.md` for prior art and novelty limits.
 - Suzuki, Wada & Sugiura's CANDLE preprint and the project page ([paper](https://arxiv.org/abs/2610.07824), [full text](https://arxiv.org/html/2610.07824), [project page](https://candle-esi.pages.dev/)) are newly identified close prior art. Please assess whether its null-space learning method, GBF comparison, and Parmigiani stimulation evaluation materially change the project's claim boundary; do not treat its preprint results as independent replication or assume exact participant overlap without checking.

@@ -1,6 +1,6 @@
 # Track A Foundation Protocol
 
-> **Frozen Track A record.** This protocol and its planned follow-on research language document the sealed foundation experiment. The active Track B route was subsequently narrowed to the GBFs software build; see [`track_b/PROJECT_DEFINITION.md`](track_b/PROJECT_DEFINITION.md) and [`track_b/GATE_REGISTER.json`](track_b/GATE_REGISTER.json).
+> **Frozen Track A record.** This protocol and its planned follow-on research language document the sealed foundation experiment. The active Track B route was subsequently narrowed to the GBFs software build; see [`track_b/PROJECT_DEFINITION.md`](../track_b/PROJECT_DEFINITION.md) and [`track_b/GATE_REGISTER.json`](../track_b/GATE_REGISTER.json).
 
 **Version 1.1 | Frozen for the first development case and Track A evaluation | 22 October 2026**
 
@@ -68,7 +68,7 @@ The dashboard normalizes every displayed map frame separately so that spatial pa
 
 ## Reproduction and acceptance checks
 
-Run `scripts/run_foundation.ps1` from PowerShell in this directory. It verifies required payload files, runs mathematical tests, executes the recorded-data GBFs and conditional baseline, checks independent GBFs parity, runs MNE minimum norm, computes the nominal signature library and checks report consistency. The environment is Python 3.12 with the exact package pins in `requirements-foundation.txt`.
+Run `scripts/run_foundation.ps1` from PowerShell in this directory. It verifies required payload files, runs mathematical tests, executes the recorded-data GBFs and conditional baseline, checks independent GBFs parity, runs MNE minimum norm, computes the nominal signature library and checks report consistency. The environment is Python 3.12 with the exact package pins in `requirements/foundation.txt`.
 
 Acceptance for this Foundation release means: all tests pass; the upstream recorded-data path returns finite output; the conditional solver and forward signatures are finite; all 8,196 vertices have valid signatures and a distant alternative; summary statistics lie in [0,1]; metadata and channel dimensions agree; and the offline report and machine-readable provenance exist. Acceptance does not imply source-localization accuracy or a successful biological validation study.
 
@@ -86,6 +86,6 @@ Track B must establish prior-art novelty, plausible forward-model uncertainty, n
 
 The primary development evaluation uses six distinct 1 mA sites from sub-01 (runs 1, 3, 5, 6, 8 and 10), with a common set of 224 good channels. It applies the dataset-aligned −2 to +2 ms window, 300 GBF modes per hemisphere at Lambda 1.2, and a fixed-orientation MNE minimum-norm comparator at lambda²=1/9. The five same-site 5 mA runs are a secondary current-sensitivity check. No settings are tuned on the known target locations. All eleven runs are from the same participant and remain development data.
 
-Across the six primary sites, GBFs median/mean peak error was 19.76/19.96 mm; MNE median/mean was 28.30/27.16 mm. Across 15 dependent pairs, predicted and observed sensor-pattern similarity had Pearson r=0.345 and Spearman rho=0.343. These are descriptive only. The measured pulse artifact is not a physiological source map, and these values do not validate a recoverability score or rank methods. Full per-site results and current sensitivity are in `outputs/tracka_verified_20261022_final/empirical_evaluation_report.html` and `.json`.
+Across the six primary sites, GBFs median/mean peak error was 19.76/19.96 mm; MNE median/mean was 28.30/27.16 mm. Across 15 dependent pairs, predicted and observed sensor-pattern similarity had Pearson r=0.345 and Spearman rho=0.343. These are descriptive only. The measured pulse artifact is not a physiological source map, and these values do not validate a recoverability score or rank methods. Full per-site results and current sensitivity are in `outputs/tracka_release_20261022_v2/empirical_evaluation_report.html` and `.json`.
 
 Track A is verified as an engineering and exploratory foundation. The next phase may investigate the falsifiable question of whether nominal signatures predict empirical confusion under plausible forward-model and nuisance variation. Track B's novelty gate remains open until the closest methods are compared at equation level and the proposed quantity is calibrated on participant-held-out data.

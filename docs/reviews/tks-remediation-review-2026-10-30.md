@@ -27,7 +27,7 @@ Source ZIP SHA-256: `ad5d1c5b0bc1891e18b505d6d9bc9d734531c4e61f5925e5ee359b8363d
 Ranked CSV SHA-256: `847d248a5155818d234436a6e874ad8d5c2cf30aee1015b00053754e8359bab4`.
 Package-source fingerprint: `95cdd237926f647507bf13f0e72b07dcac37c94d90e679098a54462e2cb02230`.
 
-Machine-readable evidence and test logs: [remediation evidence](track_b/tks_remediation_20261030/MANIFEST.json). The code is pinned separately from subsequent documentation and packaging.
+Machine-readable evidence and test logs: [remediation evidence](../track_b/tks_remediation_20261030/MANIFEST.json). The code is pinned separately from subsequent documentation and packaging.
 
 ## Remaining limits
 

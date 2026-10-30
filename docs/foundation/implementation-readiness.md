@@ -1,6 +1,6 @@
 # Implementation readiness review
 
-> **Historical readiness review, superseded 24 October 2026.** It records Track B as pre-authorization. The user has since authorized the GBFs software build, and the current status is in [`track_b/GATE_REGISTER.json`](track_b/GATE_REGISTER.json). Retain this file as a record of the earlier Track A handoff, not as an active build restriction.
+> **Historical readiness review, superseded 24 October 2026.** It records Track B as pre-authorization. The user has since authorized the GBFs software build, and the current status is in [`track_b/GATE_REGISTER.json`](../track_b/GATE_REGISTER.json). Retain this file as a record of the earlier Track A handoff, not as an active build restriction.
 
 **Updated 22 October 2026. Track A engineering foundation accepted after remediation; this review covers scientific readiness for Track B.**
 

@@ -2,7 +2,7 @@
 
 ## Inspect without installing
 
-Open `TKS_BUILD.html` in the repository, or `START_HERE.html` in the submission bundle. The displayed numbers are recorded results from the verified model-only run, not a live analysis of a visitor's EEG.
+Open `index.html` in the repository, or `START_HERE.html` in the submission bundle. The displayed numbers are recorded results from the verified model-only run, not a live analysis of a visitor's EEG.
 
 ## Install the tested wheel
 
@@ -53,4 +53,4 @@ The source archive is pinned to commit `3c99ca1`; its older status documents ref
 
 ## Rebuild the submission
 
-See [the clean-checkout build instructions](BUILDING_TKS_SUBMISSION.md). All artifact paths and output destinations are explicit.
+See [the clean-checkout build instructions](building-submission.md). All artifact paths and output destinations are explicit.

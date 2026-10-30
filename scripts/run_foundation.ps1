@@ -3,7 +3,7 @@ $ErrorActionPreference = 'Stop'
 $ProjectRoot = Split-Path -Parent $PSScriptRoot
 $Python = if ($PythonExePath) { (Resolve-Path -LiteralPath $PythonExePath).Path } else { Join-Path $ProjectRoot '.venv\Scripts\python.exe' }
 if (-not (Test-Path -LiteralPath $Python)) {
-    throw "Foundation environment missing. Create it with: py -3.12 -m venv .venv; .\.venv\Scripts\python.exe -m pip install -r requirements-foundation.txt"
+    throw "Foundation environment missing. Create it with: py -3.12 -m venv .venv; .\.venv\Scripts\python.exe -m pip install -r requirements/foundation.txt"
 }
 if (-not $env:TRACKA_RUN_ID) {
     $env:TRACKA_RUN_ID = 'tracka_' + (Get-Date -Format 'yyyyMMdd_HHmmss')
@@ -19,7 +19,7 @@ foreach ($RunNumber in 1..11) {
     if (-not (Test-Path -LiteralPath $Epochs)) { throw "Required Localize-MI development payload is missing: $Epochs. Run scripts/fetch_localize.py." }
 }
 foreach ($File in @($Forward)) {
-    if (-not (Test-Path -LiteralPath $File)) { throw "Required Localize-MI payload is missing: $File. See docs/FOUNDATION_PROTOCOL.md for the data-fetch procedure." }
+    if (-not (Test-Path -LiteralPath $File)) { throw "Required Localize-MI payload is missing: $File. See docs/foundation/foundation-protocol.md for the data-fetch procedure." }
 }
 $env:PYTHONPATH = Join-Path $ProjectRoot 'src'
 Push-Location $ProjectRoot

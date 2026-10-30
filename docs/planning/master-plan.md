@@ -1,6 +1,6 @@
 # Recoverable Source Geometry: master research and delivery plan
 
-> **Historical plan, superseded 24 October 2026.** The active build target is the GBFs source-pattern distinguishability tool documented in [`track_b/PROJECT_DEFINITION.md`](track_b/PROJECT_DEFINITION.md) and [`track_b/GBF_BUILD_PLAN.md`](track_b/GBF_BUILD_PLAN.md). RSG calibration and adaptive reporting remain unvalidated ideas, not the active project route.
+> **Historical plan, superseded 24 October 2026.** The active build target is the GBFs source-pattern distinguishability tool documented in [`track_b/PROJECT_DEFINITION.md`](../track_b/PROJECT_DEFINITION.md) and [`track_b/GBF_BUILD_PLAN.md`](../track_b/GBF_BUILD_PLAN.md). RSG calibration and adaptive reporting remain unvalidated ideas, not the active project route.
 
 **Owner:** Tranav Tyagi. **Reviewed:** 22 October 2026. **Status:** Track A Foundation Build verified for one development case; Track B Research Build remains planned.
 

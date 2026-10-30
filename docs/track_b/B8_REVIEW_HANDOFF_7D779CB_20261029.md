@@ -6,7 +6,7 @@
 
 ## Review materials
 
-The source, tests, and project documentation are in the public [Observable Geometry repository](https://github.com/tranav4464/observable-geometry). The short [TKS build handoff](../TKS_BUILD_HANDOFF.md) explains the use case and limits. The exact-candidate check results and hashes are in [B8_RELEASE_CANDIDATE_7D779CB_20261029.md](B8_RELEASE_CANDIDATE_7D779CB_20261029.md). The source archive, wheel, sealed participant model arrays, and machine run outputs are local artifacts and are not required for a high-level documentation review.
+The source, tests, and project documentation are in the public [Observable Geometry repository](https://github.com/tranav4464/observable-geometry). The short [TKS build handoff](../tks/build-handoff.md) explains the use case and limits. The exact-candidate check results and hashes are in [B8_RELEASE_CANDIDATE_7D779CB_20261029.md](B8_RELEASE_CANDIDATE_7D779CB_20261029.md). The source archive, wheel, sealed participant model arrays, and machine run outputs are local artifacts and are not required for a high-level documentation review.
 
 ## Requested independent check
 

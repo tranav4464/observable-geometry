@@ -9,7 +9,7 @@ Recreate the environment from the repository root in PowerShell:
 ```powershell
 python -m venv .venv_trackb_gpu
 .venv_trackb_gpu\Scripts\python.exe -m pip install --upgrade pip
-.venv_trackb_gpu\Scripts\python.exe -m pip install -r requirements-trackb-gpu.txt --extra-index-url https://download.pytorch.org/whl/cu130
+.venv_trackb_gpu\Scripts\python.exe -m pip install -r requirements/track-b-gpu.txt --extra-index-url https://download.pytorch.org/whl/cu130
 .venv_trackb_gpu\Scripts\python.exe scripts\track_b\check_gpu_runtime.py
 ```
 

@@ -1,6 +1,6 @@
 # Observable Geometry: full TKS build review
 
-**Historical findings: all three were subsequently addressed in [the remediation re-review](TKS_REMEDIATION_REVIEW_20261030.md).**
+**Historical findings: all three were subsequently addressed in [the remediation re-review](tks-remediation-review-2026-10-30.md).**
 
 Date: 30 October 2026. Reviewer: GPT-6 Astra through Codex, in the existing project chat. This is a same-host technical/product review with prior project involvement, not unaffiliated external review.
 
@@ -26,7 +26,7 @@ Recommended correction: record the numerical module hash, package version, Pytho
 
 Locations: `README.md:19`, `README.md:27`, `README.md:103`; `scripts/build_tks_submission.py` copies the repository README unchanged.
 
-The 174 packaged files all pass their hashes, and all six START_HERE navigation links resolve. However, the ZIP's README links to `TKS_BUILD.html`, which the ZIP does not contain (it contains `START_HERE.html`), and to a root-level audit script that is only inside the nested source ZIP. It also links to a research report outside the package. The editable source-install instructions apply after extracting the source archive, not in the outer ZIP folder.
+The 174 packaged files all pass their hashes, and all six START_HERE navigation links resolve. However, the ZIP's README links to `index.html`, which the ZIP does not contain (it contains `START_HERE.html`), and to a root-level audit script that is only inside the nested source ZIP. It also links to a research report outside the package. The editable source-install instructions apply after extracting the source archive, not in the outer ZIP folder.
 
 Recommended correction: generate a bundle-specific README pointing to START_HERE, package installation, and the source extraction step. Mark workspace-only research references explicitly or supply permitted linked documents. Run link checks on the actual ZIP, not only the workspace. This is a handoff defect, not corrupt software.
 

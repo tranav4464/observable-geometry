@@ -2,7 +2,7 @@
   "project": "Observable Geometry",
   "handoff_version": "track-a-foundation-20261022-verified",
   "track_a_status": "verified_engineering_foundation_accepted_for_track_b_research",
-  "audit_report": "docs/TRACK_A_AUDIT_2026_10_22.md",
+  "audit_report": "docs/track-a/audit-2026-10-22.md",
   "handoff_acceptance": "accepted for Track B research and prior-art review; not accepted as physiological validation or an RSG novelty claim",
   "track_b_status": "active GBFs software build: B0-B3 PASS at bounded scopes; B4-B7 PIVOT at their stated scopes; B8 IN_PROGRESS",
   "scientific_claim_boundary": "One-participant descriptive pulse-artifact localization and nominal source-signature analysis only. Fixed cortical-normal orientation is a model assumption with measured geometric mismatch; no physiological localization, calibrated recoverability, population generalization, RSG novelty, or method superiority claim.",
@@ -108,9 +108,9 @@
     "fresh_basis_generation": "cold 20-mode and 300-mode geometry caches regenerated and identity-checked in the final run",
     "empty_venv_install_check": "Fresh Python 3.12 venv, all 34 exact pins installed, pip check clean, and all 20 tests passed."
   },
-  "verified_run_id": "tracka_verified_20261022_final",
-  "run_manifest": "outputs/tracka_verified_20261022_final/run_manifest.json",
-  "offline_report": "outputs/tracka_verified_20261022_final/foundation_report.html",
+  "verified_run_id": "tracka_release_20261022_v2",
+  "run_manifest": "outputs/tracka_release_20261022_v2/run_manifest.json",
+  "offline_report": "outputs/tracka_release_20261022_v2/foundation_report.html",
   "track_a_closeout": {
     "cold_run": true,
     "complete_csr_threshold_export": {

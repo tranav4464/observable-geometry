@@ -17,7 +17,7 @@ try {
         else { & $BasePython -m venv .venv }
         if ($LASTEXITCODE -ne 0) { throw 'Could not create the Python 3.12 virtual environment.' }
     }
-    & $Python -m pip install --disable-pip-version-check -r requirements-foundation.txt
+    & $Python -m pip install --disable-pip-version-check -r requirements/foundation.txt
     if ($LASTEXITCODE -ne 0) { throw 'Pinned Python environment installation failed.' }
 
     $Metadata = Join-Path $ProjectRoot 'data\Localize-MI'

@@ -8,6 +8,7 @@ import json
 import os
 from pathlib import Path
 import platform
+import subprocess
 import sys
 import zipfile
 
@@ -111,10 +112,28 @@ def _hashes(paths):
     return {str(path.relative_to(ROOT)).replace("\\", "/"): sha256_file(path) for path in paths}
 
 
+def _is_vcs_metadata(path: Path | str) -> bool:
+    """Return true for mutable Git implementation files, not dataset content."""
+    return ".git" in Path(path).parts
+
+
+def _git_commit(repository: Path) -> str:
+    completed = subprocess.run(
+        ["git", "-C", str(repository), "rev-parse", "HEAD"],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    commit = completed.stdout.strip()
+    if len(commit) != 40 or any(character not in "0123456789abcdef" for character in commit.lower()):
+        raise ValueError(f"Invalid Git commit returned for {repository}")
+    return commit
+
+
 def _source_files():
     roots = [ROOT / "src", ROOT / "scripts", ROOT / "tests", ROOT / "docs"]
     files = [p for directory in roots for p in directory.rglob("*") if p.is_file() and "__pycache__" not in p.parts]
-    files += [ROOT / name for name in ("README.md", "requirements-foundation.txt", "pyproject.toml", "REVIEW.html")]
+    files += [ROOT / name for name in ("README.md", "requirements/foundation.txt", "pyproject.toml")]
     return sorted(set(files), key=lambda p: str(p).lower())
 
 
@@ -160,7 +179,7 @@ def validate(out: Path, *, seal: bool = False, check_worktree: bool = False) -> 
     if missing:
         raise ValueError("Missing expected foundation artifacts: " + ", ".join(missing))
     env = strict_json(out / "environment_report.json")
-    req_hash = sha256_file(ROOT / "requirements-foundation.txt")
+    req_hash = sha256_file(ROOT / "requirements/foundation.txt")
     if (env["status"] != "PASS" or env["pinned_package_count"] != 34 or
             env["requirements_sha256"] != req_hash or env["python_version"].split(".")[:2] != ["3", "12"] or
             not env["is_virtual_environment"]):
@@ -296,14 +315,18 @@ def validate(out: Path, *, seal: bool = False, check_worktree: bool = False) -> 
     if seal:
         source_zip = out / "tracka_source_snapshot.zip"
         source_files = _build_source_snapshot(source_zip)
+        expected_dataset_commit = "d7a123d3067213281f106b343c71f28c30e4dd60"
+        dataset_commit = _git_commit(ROOT / "data/Localize-MI")
+        if dataset_commit != expected_dataset_commit:
+            raise ValueError("Refusing to seal an unexpected Localize-MI dataset commit")
         input_files = [f for base in (ROOT / "data/Localize-MI", ROOT / "data/payload")
-                       for f in base.rglob("*") if f.is_file()]
+                       for f in base.rglob("*") if f.is_file() and not _is_vcs_metadata(f)]
         input_files.append(vendor_path)
         artifact_files = [p for p in out.iterdir() if p.is_file() and p.name != "run_manifest.json"]
         manifest = {
             "status": "SEALED", "run_id": RUN_ID, "created_utc": "2026-10-22",
             "claim_boundary": "single-participant descriptive stimulation-pulse-artifact benchmark; not physiology validation",
-            "environment": env, "dataset_metadata_commit": "d7a123d3067213281f106b343c71f28c30e4dd60",
+            "environment": env, "dataset_metadata_commit": dataset_commit,
             "upstream_gbfs_commit": "99fc7c6e8afbd2e3e68a700c5f1fa1483b90f49e",
             "source_snapshot_sha256": sha256_file(source_zip),
             "source_files_sha256": _hashes(source_files), "input_files_sha256": _hashes(input_files),
@@ -327,10 +350,19 @@ def validate(out: Path, *, seal: bool = False, check_worktree: bool = False) -> 
             path = ROOT / name
             if not path.is_file() or sha256_file(path) != expected:
                 raise ValueError(f"Sealed artifact hash mismatch: {name}")
+        ignored_vcs_entries = []
         for name, expected in manifest["input_files_sha256"].items():
+            if _is_vcs_metadata(name):
+                ignored_vcs_entries.append(name)
+                continue
             path = ROOT / name
             if not path.is_file() or sha256_file(path) != expected:
                 raise ValueError(f"Sealed input hash mismatch: {name}")
+        dataset_commit = _git_commit(ROOT / "data/Localize-MI")
+        if dataset_commit != manifest["dataset_metadata_commit"]:
+            raise ValueError("Localize-MI dataset commit differs from the sealed manifest")
+        result["dataset_metadata_commit_verified"] = dataset_commit
+        result["ignored_mutable_vcs_metadata_entries"] = len(ignored_vcs_entries)
         if sha256_file(out / "tracka_source_snapshot.zip") != manifest["source_snapshot_sha256"]:
             raise ValueError("Sealed source snapshot hash mismatch")
         verify_source_snapshot(out / "tracka_source_snapshot.zip", manifest["source_files_sha256"])

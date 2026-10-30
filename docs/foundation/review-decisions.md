@@ -1,6 +1,6 @@
 # Review first: project decision and foundation gates
 
-> **Historical review plan, superseded 24 October 2026.** The proposed RSG research route and pre-build authorization language below are not active constraints. Current scope and progress are in [`track_b/PROJECT_DEFINITION.md`](track_b/PROJECT_DEFINITION.md) and [`track_b/GATE_REGISTER.json`](track_b/GATE_REGISTER.json).
+> **Historical review plan, superseded 24 October 2026.** The proposed RSG research route and pre-build authorization language below are not active constraints. Current scope and progress are in [`track_b/PROJECT_DEFINITION.md`](../track_b/PROJECT_DEFINITION.md) and [`track_b/GATE_REGISTER.json`](../track_b/GATE_REGISTER.json).
 
 **Updated 22 October 2026 | Track A foundation accepted | Track B research/novelty work ready to start**
 
@@ -79,7 +79,7 @@ Report participant-level calibration, utility, sensitivity and failures. Reprodu
 
 ## Two-track delivery decision
 
-Track A is a complete Foundation Build: verified GBFs reproduction, recorded-data adaptation, nominal source signatures, nominal distinguishability, ambiguity reporting and a reproducible interface. Track B is the Research Build: justified forward-model family, RSG mathematics, calibration, recoverability-limited reconstruction and held-out validation. Track B begins only after the Foundation is frozen and Gate 0 identifies a defensible gap. See `TWO_TRACK_EXECUTION_PLAN.md` for work packages and acceptance evidence.
+Track A is a complete Foundation Build: verified GBFs reproduction, recorded-data adaptation, nominal source signatures, nominal distinguishability, ambiguity reporting and a reproducible interface. Track B is the Research Build: justified forward-model family, RSG mathematics, calibration, recoverability-limited reconstruction and held-out validation. Track B begins only after the Foundation is frozen and Gate 0 identifies a defensible gap. See the [two-track execution plan](../planning/two-track-execution-plan.md) for work packages and acceptance evidence.
 
 ## Realistic estimate after authorization
 
@@ -99,4 +99,4 @@ Track A is now an executable foundation, not evidence that Recoverable Source Ge
 
 ## Change control
 
-Record scope changes in `DECISIONS.md`. Do not install dependencies, train models, generate recordings, run experiments or continue implementation until Tranav explicitly authorizes the build. Research and documentation may continue.
+Record scope changes in [`decisions.md`](decisions.md). Do not install dependencies, train models, generate recordings, run experiments or continue implementation until Tranav explicitly authorizes the build. Research and documentation may continue.

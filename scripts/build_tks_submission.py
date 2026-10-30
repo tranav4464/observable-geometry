@@ -52,7 +52,7 @@ def main():
     shutil.copy2(source, DEST / source.name)
     # Only text documentation from the repository; no research output trees.
     for p in (ROOT / 'docs').rglob('*'):
-        if p.is_file() and p.suffix in {'.md', '.json', '.txt', '.xml', '.log', '.py'}:
+        if p.is_file() and p.suffix in {'.md', '.html', '.json', '.txt', '.xml', '.log', '.py'}:
             target = DEST / p.relative_to(ROOT)
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(p, target)
@@ -60,8 +60,8 @@ def main():
         shutil.copy2(ROOT / name, DEST / name)
     (DEST / 'README.md').write_text(
         '# Observable Geometry submission bundle\n\n'
-        'Start with [the presentation](START_HERE.html), [demo guide](docs/TKS_DEMO.md), '
-        'or [project summary](docs/TKS_SUBMISSION.md).\n\n'
+        'Start with [the presentation](START_HERE.html), [demo guide](docs/tks/demo.md), '
+        'or [project summary](docs/tks/submission.md).\n\n'
         f'Included software: {version}, commit `{args.code_commit}`. Install `package/{wheel.name}` '
         'using the demo guide. Package-index access is required for dependencies.\n\n'
         f'For editable installation and tests, first extract `{source.name}` into a separate source directory. '
@@ -72,10 +72,10 @@ def main():
         'cover the packaged artifacts.\n', encoding='utf-8')
     (DEST / 'evidence').mkdir()
     shutil.copy2(ROOT / 'docs/track_b/b8_ai_audit_20261030/requirements_resolved.txt', DEST / 'evidence/requirements_resolved.txt')
-    links = [('docs/TKS_SUBMISSION.md', 'Submission overview'), ('docs/TKS_DEMO.md', 'Run the demo'),
-             ('docs/TKS_PITCH.md', 'Two-minute pitch'), ('docs/track_b/B8_PASS_20261030.md', 'B8 acceptance and limits'),
+    links = [('docs/tks/submission.md', 'Submission overview'), ('docs/tks/demo.md', 'Run the demo'),
+             ('docs/tks/pitch.md', 'Two-minute pitch'), ('docs/track_b/B8_PASS_20261030.md', 'B8 acceptance and limits'),
              ('docs/track_b/b8_ai_audit_20261030/ASTRA_B8_AUDIT_20261030.md', 'Executed AI audit'),
-             ('docs/NEXT_BUILD_REVIEW_ACTIONS.md', 'Next build and outreach feedback')]
+             ('docs/reviews/next-build-actions.md', 'Next build and outreach feedback')]
     page = '''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Observable Geometry | TKS Build</title><style>
 body{margin:0;background:#eef2f6;color:#15263a;font:17px/1.6 system-ui,sans-serif}main{max-width:960px;margin:40px auto;padding:0 22px}section,header{background:white;padding:30px;border-radius:14px;margin-bottom:20px;border:1px solid #dbe3ed}h1{font-size:42px;line-height:1.12;margin:14px 0}h2{font-size:24px;margin-top:0}.label{color:#1555ab;font-weight:700}.metrics{display:flex;gap:20px;flex-wrap:wrap}.metric{flex:1;min-width:160px;background:#edf5ff;padding:18px;border-radius:10px}.metric b{display:block;font-size:30px}a{color:#174fa5}li{margin:9px 0}.note{border-left:4px solid #b57712;padding-left:18px}code{background:#eef2f6;padding:2px 4px}footer{font-size:14px;color:#4b596b} @media(max-width:600px){h1{font-size:32px}section,header{padding:22px}}</style><main>
@@ -92,10 +92,10 @@ body{margin:0;background:#eef2f6;color:#15263a;font:17px/1.6 system-ui,sans-seri
     page = page.replace('0.1.3.dev0', version).replace('58570b8', args.code_commit[:7])
     page = page.replace('209 tests passed', '211 tests passed')
     (DEST / 'START_HERE.html').write_text(page, encoding='utf-8')
-    (DEST / 'TKS_BUILD.html').write_text(page, encoding='utf-8')
+    (DEST / 'index.html').write_text(page, encoding='utf-8')
     if args.update_page:
-        (ROOT / 'TKS_BUILD.html').write_text(page, encoding='utf-8')
-    (DEST / 'START_HERE.md').write_text('# Observable Geometry TKS submission\n\nOpen START_HERE.html, then docs/TKS_DEMO.md for installation and execution.\n\nThe package and source archive are identified by README.md and SHA256_MANIFEST.json. Outer documentation records subsequent B8 acceptance. No recordings or model arrays are included. SHA256_MANIFEST.json identifies every packaged file.\n', encoding='utf-8')
+        (ROOT / 'index.html').write_text(page, encoding='utf-8')
+    (DEST / 'START_HERE.md').write_text('# Observable Geometry TKS submission\n\nOpen START_HERE.html, then docs/tks/demo.md for installation and execution.\n\nThe package and source archive are identified by README.md and SHA256_MANIFEST.json. Outer documentation records subsequent B8 acceptance. No recordings or model arrays are included. SHA256_MANIFEST.json identifies every packaged file.\n', encoding='utf-8')
     files = sorted(p for p in DEST.rglob('*') if p.is_file())
     manifest = {p.relative_to(DEST).as_posix(): digest(p) for p in files}
     (DEST / 'SHA256_MANIFEST.json').write_text(json.dumps(manifest, indent=2)+'\n')

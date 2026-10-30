@@ -73,7 +73,7 @@ The software and reports must label measured scalp EEG and iEEG, model predictio
 
 ## Keep records synchronized
 
-When evidence or decisions change, update the gate register, method matrix, evidence ledger, decision log, relevant gate documents, README, and `REVIEW.html` together. Give every run a unique identifier. Preserve old outputs and link each reported result to its data manifest, code, configuration, environment, command, metrics, exclusions, and limitations.
+When evidence or decisions change, update the gate register, method matrix, evidence ledger, decision log, relevant gate documents, README, and `docs/project-review.html` together. Give every run a unique identifier. Preserve old outputs and link each reported result to its data manifest, code, configuration, environment, command, metrics, exclusions, and limitations.
 
 ## Completion rule
 

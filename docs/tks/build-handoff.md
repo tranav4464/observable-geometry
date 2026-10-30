@@ -27,13 +27,13 @@ observable-geometry distinguish `
 
 The command reports highly similar candidate pairs separated by at least 20 mm, their similarity scores, model/input/code provenance, and an access log. The current sealed example contains 40,980 ranked pairs from one participant-specific model. It is a **model-only demonstration**: the predicted signatures are not measured neural events, and the output is not a source-recovery score or a probability of correct localization. The model bundle is Localize-MI-derived and must remain local under that dataset's license.
 
-For a new model, the install and input contracts are in the repository [README](../README.md). Do not use the command with an unverified forward model, inconsistent channel order/reference, or an undocumented covariance and interpret the result as empirical evidence.
+For a new model, the install and input contracts are in the repository [README](../../README.md). Do not use the command with an unverified forward model, inconsistent channel order/reference, or an undocumented covariance and interpret the result as empirical evidence.
 
 ## Evidence and current gate state
 
 - B0–B3 passed at their declared, bounded scopes.
 - B4–B7 were explicitly pivoted or stopped after the proposed endpoints failed to support the intended neural-source or analyst-decision claims. These are documented outcomes, not hidden completed validations.
-- B8 passed on 30 October 2026 under owner-accepted AI reproducibility: fresh installation, 213 workspace tests and 211 archive tests with two expected skips, exact 40,980-pair replay and independent numerical calculation. External human review is deferred under a documented acceptance amendment. See [B8 decision](track_b/B8_PASS_20261030.md).
+- B8 passed on 30 October 2026 under owner-accepted AI reproducibility: fresh installation, 213 workspace tests and 211 archive tests with two expected skips, exact 40,980-pair replay and independent numerical calculation. External human review is deferred under a documented acceptance amendment. See [B8 decision](../track_b/B8_PASS_20261030.md).
 
 ## What this build does not establish
 
@@ -43,12 +43,12 @@ The ds004752 real-recording benchmark is a separate exploratory scalp-to-intracr
 
 ## Outreach feedback and next build
 
-Two reviewers found the exploratory pre-interpretation use case clear and worth considering. They emphasized that the next scientific step is to show what decision the output changes beyond direct leadfield similarity and established PSF/CTF or other resolution diagnostics. One reviewer also suggested clarifying the relationship between the diagnostic and GBFs; the distinction is stated above. Suggested orientation-aware, gain-aware, and parcel-level extensions remain candidates, not implemented or validated improvements. The detailed next-build agenda is in [NEXT_BUILD_REVIEW_ACTIONS.md](NEXT_BUILD_REVIEW_ACTIONS.md).
+Two reviewers found the exploratory pre-interpretation use case clear and worth considering. They emphasized that the next scientific step is to show what decision the output changes beyond direct leadfield similarity and established PSF/CTF or other resolution diagnostics. One reviewer also suggested clarifying the relationship between the diagnostic and GBFs; the distinction is stated above. Suggested orientation-aware, gain-aware, and parcel-level extensions remain candidates, not implemented or validated improvements. The detailed next-build agenda is in the [next-build review actions](../reviews/next-build-actions.md).
 
 These comments are useful outreach feedback, but they are not a formal B8 pass or an independent clean reproduction of the release candidate. B8 was subsequently accepted on the separately executed AI audit under the documented amendment; these outreach comments themselves do not establish reproduction.
 
 ## Accepted TKS snapshot and next work
 
-The accepted snapshot is `3c99ca1`, version `0.1.3.dev1`. [B8 PASS](track_b/B8_PASS_20261030.md) records the owner's amended software acceptance criteria. External human reproduction, WSGZP geometry verification and scientific extension remain next-build work. A stable-version rebuild or public package release would require its own artifact checks; neither is implied by this snapshot acceptance.
+The accepted snapshot is `3c99ca1`, version `0.1.3.dev1`. [B8 PASS](../track_b/B8_PASS_20261030.md) records the owner's amended software acceptance criteria. External human reproduction, WSGZP geometry verification and scientific extension remain next-build work. A stable-version rebuild or public package release would require its own artifact checks; neither is implied by this snapshot acceptance.
 
-Current maintenance verification: [remediation re-review](TKS_REMEDIATION_REVIEW_20261030.md). The original B8 acceptance artifact remains preserved; this update repairs provenance and packaging without changing numerical scores.
+Current maintenance verification: [remediation re-review](../reviews/tks-remediation-review-2026-10-30.md). The original B8 acceptance artifact remains preserved; this update repairs provenance and packaging without changing numerical scores.

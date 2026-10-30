@@ -3,8 +3,9 @@
 > **Status: accepted as a verified engineering and exploratory foundation for Track B research.** The acceptance is bounded to the declared one-participant Localize-MI pulse-artifact benchmark. It does not establish physiological source recovery, population performance, a calibrated recoverability measure, or novelty of Recoverable Source Geometry.
 
 **Verified:** 22 October 2026
-**Run:** `tracka_verified_20261022_final`
-**Evidence:** `outputs/tracka_verified_20261022_final/run_manifest.json` and the offline report in the same folder.
+**Accepted release:** `tracka_release_20261022_v2`
+
+**Evidence:** `outputs/tracka_release_20261022_v2/run_manifest.json` and the offline report in the same folder. The earlier `tracka_verified_20261022_final` snapshot is retained as historical evidence but predates the strengthened source-snapshot test inventory requirement.
 
 ## What Track A establishes
 
@@ -16,7 +17,7 @@ The benchmark target is the midpoint of the known intracranial stimulation conta
 
 | Gate | Status | Verified evidence and boundary |
 |---|---|---|
-| A0: design freeze | Pass for the declared proxy task | Target, −2 to +2 ms window, source family, nuisance handling, fixed comparisons, and development-only split are frozen in `FOUNDATION_DECISIONS.md` and `FOUNDATION_PROTOCOL.md`. Fixed cortical-normal orientation is retained as a model assumption, not validated as the physical direction of the stimulation artifact. |
+| A0: design freeze | Pass for the declared proxy task | Target, −2 to +2 ms window, source family, nuisance handling, fixed comparisons, and development-only split are frozen in the [foundation decisions](../foundation/foundation-decisions.md) and [foundation protocol](../foundation/foundation-protocol.md). Fixed cortical-normal orientation is retained as a model assumption, not validated as the physical direction of the stimulation artifact. |
 | A1: environment and provenance | Pass | Python 3.12.14 virtual environment; 34 exact package pins; a separate empty-venv install and dependency check passed; hashed requirements, input payloads, source snapshot, artifacts, and sealed run manifest. |
 | A2: physical data adapter | Pass for supplied data contracts | All eleven runs are checked for channels, units, event metadata, time grids, dimensions, trial counts, finiteness, and common channel order. Sensor positions and transforms are validated. Orientation compatibility remains a scientific limitation. |
 | A3: reverse engineering and parity | Pass for stated integration scope | Pinned upstream GBFs path is retained and an independent algebraic parity check gives relative Frobenius error `2.23e-13` on identical inputs. This is not a reproduction of the GBFs paper benchmark. |
@@ -45,7 +46,7 @@ The original audit reproduced five adversarial software failures and several mis
 - The report now includes the sensor-signature comparison, performance measurement, orientation caveat, and complete 0.95 ambiguity export. The clean pinned environment includes the report renderer dependency.
 - Run outputs are uniquely named and immutable after sealing. The verified run has 20 passing tests, a 34-package pinned environment, a cold-cache end-to-end execution, and two consecutive validator PASS results.
 
-The detailed historical findings and their closure mapping remain in [the audit record](TRACK_A_AUDIT_2026_10_22.md). The original findings are preserved as the state observed before remediation; the closeout section records what changed and what remains open.
+The detailed historical findings and their closure mapping remain in [the audit record](audit-2026-10-22.md). The original findings are preserved as the state observed before remediation; the closeout section records what changed and what remains open.
 
 ## Remaining scientific limits and failures
 
@@ -77,6 +78,6 @@ Then run the full Track A build with:
 .\scripts\run_foundation.ps1
 ```
 
-To inspect the verified result, open `outputs/tracka_verified_20261022_final/foundation_report.html`. The sealed manifest records the environment, input hashes, source snapshot, artifact hashes, run ID, and verification results.
+To inspect the verified result, open `outputs/tracka_release_20261022_v2/foundation_report.html`. The sealed manifest records the environment, scientific input hashes, dataset commit, source snapshot, artifact hashes, run ID, and verification results.
 
-As a separate setup check, a new temporary Python 3.12 virtual environment was created from the base interpreter, all 34 exact packages were installed from `requirements-foundation.txt`, `pip check` reported no broken requirements, and all 20 tests passed. This verifies dependency installation and unit tests independently from the cold-cache analysis run.
+As a separate setup check, a new temporary Python 3.12 virtual environment was created from the base interpreter, all 34 exact packages were installed from `requirements/foundation.txt`, `pip check` reported no broken requirements, and all 20 tests passed. This verifies dependency installation and unit tests independently from the cold-cache analysis run.

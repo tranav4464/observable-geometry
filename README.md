@@ -2,7 +2,7 @@
 
 Observable Geometry 0.1.3.dev1 is the accepted TKS software snapshot for a computational-neuroscience software build around **Geometric-Informed Basis Functions (GBFs)** and a nominal EEG source-pattern comparison. The software asks what a declared forward model predicts at the sensors for pairs of candidate sources. It does not infer every active neural source, assign calibrated probabilities, or establish physiological source recovery.
 
-**Intended use:** before interpreting an inverse solution, a researcher can use a participant-specific forward model, sensor reference, and noise covariance to find spatially distant candidate sources whose predicted scalp patterns are similar. This is an exploratory model audit: it can expose conditional ambiguity in the supplied model, but it does not show that either source was active or that a real recording can be localized accurately. The [TKS build handoff](docs/TKS_BUILD_HANDOFF.md) gives a short project explanation, use case, demo path, evidence, and claim limits. Feedback from two outreach reviewers and the next-build actions are summarized in [the review action plan](docs/NEXT_BUILD_REVIEW_ACTIONS.md).
+**Intended use:** before interpreting an inverse solution, a researcher can use a participant-specific forward model, sensor reference, and noise covariance to find spatially distant candidate sources whose predicted scalp patterns are similar. This is an exploratory model audit: it can expose conditional ambiguity in the supplied model, but it does not show that either source was active or that a real recording can be localized accurately. The [TKS build handoff](docs/tks/build-handoff.md) gives a short project explanation, use case, demo path, evidence, and claim limits. Feedback from two outreach reviewers and the next-build actions are summarized in [the review action plan](docs/reviews/next-build-actions.md).
 
 The active contribution is a traceable GBFs implementation/reproduction workflow and an inspectable researcher-facing diagnostic. The normalized, noise-whitened source-pattern similarity is established prior art; this project does not claim that score as a new mathematical method. Track A's Localize-MI pulse-artifact evaluation is limited to one participant and an electrical stimulation artifact. It does not validate endogenous neural-source localization.
 
@@ -16,7 +16,25 @@ The `distinguish` diagnostic is separate from the GBF inverse estimator. It comp
 - **B7:** pivoted after a same-model, paired comparison found moderate association between the B3 score and MNE PSF summaries but no evidence of analyst decision benefit. Retain as a descriptive diagnostic only.
 - **B8: PASS under owner-accepted AI reproducibility (30 October 2026).** Accepted TKS snapshot: `3c99ca1`, package `0.1.3.dev1`. Fresh installation, 213 workspace tests and 211 archive tests with two expected skips, and exact 40,980-pair replay passed. This acceptance explicitly replaces the external-review requirement for this TKS build; no external human review is claimed. See the [decision and amended criteria](docs/track_b/B8_PASS_20261030.md).
 
-Start with the [submission overview](docs/TKS_SUBMISSION.md), [demo guide](docs/TKS_DEMO.md), or [build presentation](TKS_BUILD.html). The accepted code and wheel remain pinned to commit `3c99ca1`; subsequent acceptance and submission documentation is identified separately. WSGZP geometry is a deferred empirical extension, not a prerequisite for presenting this bounded software build.
+Start with the [submission overview](docs/tks/submission.md), [reviewer quick start](docs/tks/outreach-review.md), [demo guide](docs/tks/demo.md), or [build presentation](index.html). The accepted code and wheel remain pinned to commit `3c99ca1`; subsequent acceptance and submission documentation is identified separately. WSGZP geometry is a deferred empirical extension, not a prerequisite for presenting this bounded software build.
+
+## Repository map
+
+| Path | Contents |
+|---|---|
+| [`src/observable_geometry/`](src/observable_geometry/) | Installable Python package and command-line interface |
+| [`tests/`](tests/) | Unit, integration, packaging, and audit tests |
+| [`examples/`](examples/) | Small data-free input examples |
+| [`docs/tks/`](docs/tks/) | Submission, demo, pitch, and reviewer handoff |
+| [`docs/foundation/`](docs/foundation/) | Architecture, mathematics, validation, and design decisions |
+| [`docs/planning/`](docs/planning/) | Project plans and Track B research architecture |
+| [`docs/track-a/`](docs/track-a/) | Track A completion and audit records |
+| [`docs/track_b/`](docs/track_b/) | Track B protocols, gate evidence, and historical machine-readable records |
+| [`docs/reviews/`](docs/reviews/) | Independent reviews, remediation, and future-work feedback |
+| [`requirements/`](requirements/) | Pinned foundation, CPU, and GPU research environments |
+| [`scripts/`](scripts/README.md) | Reproducible build, audit, and verification entry points |
+
+The documentation hub is [`docs/README.md`](docs/README.md). Historical Track B filenames remain unchanged where audit records cite them; current reader-facing documents use descriptive lowercase names.
 
 ### WSGZP geometry status
 
@@ -152,4 +170,4 @@ An optional [relative tail-closed frontier](docs/track_b/TAIL_CLOSED_RELATIVE_FR
 
 Track A remains sealed. Do not overwrite its outputs. Project source code is BSD-3-Clause licensed. This covers this repository's source only; it does not relicense the separately vendored GBFs checkout or any dataset. The Localize-MI data have a non-commercial share-alike license and are excluded from the package and source snapshot. Two outreach reviewers provided document-level feedback. B8 subsequently passed under owner-accepted AI reproducibility for the pinned TKS snapshot; external human review remains deferred. See the [acceptance record](docs/track_b/B8_PASS_20261030.md). The build remains exploratory research software with no established novel-method or physiological recovery claim.
 
-Current maintenance verification: [remediation re-review](docs/TKS_REMEDIATION_REVIEW_20261030.md). The original B8 acceptance artifact remains preserved; this update repairs provenance and packaging without changing numerical scores.
+Current verification: [end-to-end user acceptance review](docs/reviews/user-acceptance-review-2026-10-30.md) and [remediation re-review](docs/reviews/tks-remediation-review-2026-10-30.md). The original B8 acceptance artifact remains preserved; this update repairs provenance and packaging without changing numerical scores.

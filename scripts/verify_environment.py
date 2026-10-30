@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def main() -> None:
-    req_path = ROOT / "requirements-foundation.txt"
+    req_path = ROOT / "requirements/foundation.txt"
     expected = {}
     for line in req_path.read_text(encoding="utf-8").splitlines():
         line = line.strip()

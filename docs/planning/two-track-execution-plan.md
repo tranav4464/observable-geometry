@@ -1,8 +1,8 @@
 # Two-track execution plan
 
-> **Historical execution plan, superseded 24 October 2026.** The gate status and active GBFs route are maintained in [`track_b/GATE_REGISTER.json`](track_b/GATE_REGISTER.json), [`track_b/PROJECT_DEFINITION.md`](track_b/PROJECT_DEFINITION.md), and [`track_b/GBF_BUILD_PLAN.md`](track_b/GBF_BUILD_PLAN.md). Track A remains sealed. Do not use this earlier RSG planning record to infer current Track B gates.
+> **Historical execution plan, superseded 24 October 2026.** The gate status and active GBFs route are maintained in [`track_b/GATE_REGISTER.json`](../track_b/GATE_REGISTER.json), [`track_b/PROJECT_DEFINITION.md`](../track_b/PROJECT_DEFINITION.md), and [`track_b/GBF_BUILD_PLAN.md`](../track_b/GBF_BUILD_PLAN.md). Track A remains sealed. Do not use this earlier RSG planning record to infer current Track B gates.
 
-> **Verification closeout, 22 October 2026:** Track A acceptance is recorded in `TRACK_A_COMPLETION_REPORT.md` and the sealed run manifest. This is readiness for Track B's research and prior-art work, not acceptance of RSG novelty or physiological localization claims.
+> **Verification closeout, 22 October 2026:** Track A acceptance is recorded in [`docs/track-a/completion-report.md`](../track-a/completion-report.md) and the sealed run manifest. This is readiness for Track B's research and prior-art work, not acceptance of RSG novelty or physiological localization claims.
 
 **Updated 22 October 2026 | Track A Foundation Build executed; Track B remains unstarted**
 
@@ -12,7 +12,7 @@ The authorized Track A run is complete for its selected development case. The pr
 
 This closes the **engineering Foundation Build** for one participant. It does not reproduce the GBFs paper's published benchmark and does not establish population performance, biological source accuracy, calibrated source uncertainty, or RSG novelty. Track B remains separate and must perform those scientific tests before stronger claims.
 
-The frozen methods and quantitative results are recorded in [`FOUNDATION_PROTOCOL.md`](FOUNDATION_PROTOCOL.md); the accepted cold run and its hashed release are under `outputs/tracka_verified_20261022_final/`.
+The frozen methods and quantitative results are recorded in the [foundation protocol](../foundation/foundation-protocol.md); the accepted cold run and its strengthened hashed release are under `outputs/tracka_release_20261022_v2/`.
 
 ## 1. Strategy
 
@@ -43,7 +43,7 @@ The Research Build may use “recoverable” only after the score is calibrated 
 
 ### Deliverables
 
-- `FOUNDATION_PROTOCOL.md`
+- [`docs/foundation/foundation-protocol.md`](../foundation/foundation-protocol.md)
 - source-family diagram and data-flow diagram
 - frozen definitions of target, observation window, preprocessing and metrics
 - decision record explaining excluded alternatives
@@ -234,7 +234,7 @@ If parity cannot be achieved, diagnose it before evaluating any extension.
 
 **Track A handoff (22 October 2026):** The cold engineering foundation and its audit remediation are closed against the sealed run manifest. The plausible, unresolved Track B gap is whether a calibrated, task-level source-equivalence object can predict held-out empirical confusion while accounting for physically defensible forward-model variation and nuisance effects. This may collide with resolution-matrix, adaptive-parcellation and robust inverse work. The observed six-site association is descriptive only. Track B should begin with prior-art equations, task validity and data feasibility; no novelty claim is accepted at this gate.
 
-**Prior-art rationale for A7 plausibility:** Existing resolution matrices describe point-spread and cross-talk under a specified inverse; adaptive EEG/MEG parcellations already seek distinguishable parcels from cross-talk functions; robust inverse work already addresses forward-model error. A plausible, still-unverified gap is the *empirical calibration and predictive utility* of pairwise measurement-level equivalence across a physically justified family of forward models for a defined task. See the primary-source comparison in `RESEARCH_AUDIT.md`, including [adaptive cortical parcellations](https://pmc.ncbi.nlm.nih.gov/articles/PMC5864515/) and [spatial-fidelity evaluation](https://pmc.ncbi.nlm.nih.gov/articles/PMC7793168/). This is a research hypothesis, not proof that no prior method already does it.
+**Prior-art rationale for A7 plausibility:** Existing resolution matrices describe point-spread and cross-talk under a specified inverse; adaptive EEG/MEG parcellations already seek distinguishable parcels from cross-talk functions; robust inverse work already addresses forward-model error. A plausible, still-unverified gap is the *empirical calibration and predictive utility* of pairwise measurement-level equivalence across a physically justified family of forward models for a defined task. See the [primary-source research audit](../foundation/research-audit.md), including [adaptive cortical parcellations](https://pmc.ncbi.nlm.nih.gov/articles/PMC5864515/) and [spatial-fidelity evaluation](https://pmc.ncbi.nlm.nih.gov/articles/PMC7793168/). This is a research hypothesis, not proof that no prior method already does it.
 
 # Track B: Research Build
 

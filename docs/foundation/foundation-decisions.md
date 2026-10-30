@@ -45,10 +45,10 @@ flowchart LR
 
 | Gate | Evidence required | Current evidence | State |
 |---|---|---|---|
-| A0 | Frozen target, signal window, source family, nuisance rules, comparisons and data flow | This record and `FOUNDATION_PROTOCOL.md`; target-to-cortex offsets in `case_validation.json` | Passed for the development task |
+| A0 | Frozen target, signal window, source family, nuisance rules, comparisons and data flow | This record and the [foundation protocol](foundation-protocol.md); target-to-cortex offsets in `case_validation.json` | Passed for the development task |
 | A1 | Exact environment, pinned source versions, checksum manifest, clean reproduction | 34 exact package pins; uniquely named run; source snapshot and input/output SHA-256 manifest; pinned upstream commits | Pass is recorded in the run manifest |
 | A2 | Channel order/geometry, units/reference/covariance, transform and target checks | Case validation plus all-run checks of units, events, dimensions, timing grid, finiteness and common channels | Pass for integration case and all 11 development runs; target/orientation limitation is retained |
-| A3 | Paper-to-code trace, parity and separately named data adaptation | `docs/REVERSE_ENGINEERING.md`, `gbfs_parity.json`, frozen 300-mode recorded-data evaluation | Passed for numerical parity and the declared Localize-MI adaptation; not a GBFs paper-benchmark reproduction |
+| A3 | Paper-to-code trace, parity and separately named data adaptation | `docs/foundation/reverse-engineering.md`, `gbfs_parity.json`, frozen 300-mode recorded-data evaluation | Passed for numerical parity and the declared Localize-MI adaptation; not a GBFs paper-benchmark reproduction |
 | A4 | Complete deterministic nominal signature library and edge-case tests | Stable ranking, null/support rejection, complete CSR threshold sets, runtime/RSS record and adversarial fixtures | Pass for 8,196 source vertices; scores remain nominal |
 | A5 | Nominal ambiguity, resolution comparison, sensitivity and limitations | Complete ≥0.95 ambiguity sets, point-spread L1 mass, sensitivity variants, explicit model limits | Pass as nominal diagnostics; no calibration claim |
 | A6 | One-command reproduction, offline report, user instructions and output validator | Unique immutable run folders, cold basis generation, sensor-signature plot, source/input/output hashes, corruption-resistant validator | Pass is recorded in the sealed manifest |

@@ -1,6 +1,6 @@
 # Mathematical specification: planning version 0.2
 
-> **Historical mathematical proposal, superseded 24 October 2026.** The RSG calibration equations below were not adopted as the active contribution. The current frozen GBFs diagnostic is specified in [`track_b/B2_GBF_SPEC.md`](track_b/B2_GBF_SPEC.md); it makes no novel-method claim.
+> **Historical mathematical proposal, superseded 24 October 2026.** The RSG calibration equations below were not adopted as the active contribution. The current frozen GBFs diagnostic is specified in [`track_b/B2_GBF_SPEC.md`](../track_b/B2_GBF_SPEC.md); it makes no novel-method claim.
 
 **Status:** Track A includes standard linear-Gaussian inference and a nominal noise-whitened source-signature measure. The RSG formulas below remain candidate research formulations and are not validated.
 

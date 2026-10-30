@@ -6,7 +6,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-TARGET = ROOT / "REVIEW.html"
+TARGET = ROOT / "docs/project-review.html"
 GATES = ROOT / "docs" / "track_b" / "GATE_REGISTER.json"
 CSS = {"PASS": "pass", "IN_PROGRESS": "progress", "NOT_STARTED": "pending", "FAIL": "fail", "PIVOT": "progress"}
 
@@ -18,7 +18,9 @@ def main() -> None:
     for gate in ("B0", "B1", "B2"):
         status = statuses[gate]
         shown = status.replace("_", " ")
-        for badge_id in (f"status-{gate}", f"row-{gate}"):
+        required_badge = f"row-{gate}"
+        optional_badge = f"status-{gate}"
+        for badge_id in (required_badge, optional_badge):
             replacement = f'<span id="{badge_id}" class="tag {CSS[status]}">{shown}</span>'
             html, count = re.subn(
                 rf'<span id="{badge_id}" class="tag [^"]+">.*?</span>',
@@ -26,7 +28,7 @@ def main() -> None:
                 html,
                 count=1,
             )
-            if count != 1:
+            if badge_id == required_badge and count != 1:
                 raise ValueError(f"Could not update status badge {badge_id}")
     TARGET.write_text(html, encoding="utf-8")
     print("PASS live review badges refreshed from gate register")
