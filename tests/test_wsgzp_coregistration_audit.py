@@ -48,7 +48,10 @@ def test_requested_subject_must_exist(tmp_path):
 def test_fiducial_transform_is_not_treated_as_frame_validation():
     from audit_wsgzp_coregistration import audit_subject
 
-    source = Path(__file__).resolve().parents[2] / "wsgzp datset" / "extracted" / "ccepcoreg"
+    build_root = Path(__file__).resolve().parents[2]
+    source = build_root / "Datasets" / "WSGZP" / "extracted" / "ccepcoreg"
+    if not source.exists():
+        source = build_root / "wsgzp datset" / "extracted" / "ccepcoreg"
     if not source.exists():
         pytest.skip("Local WSGZP dataset is not available")
     report = audit_subject(source, "sub-01")
