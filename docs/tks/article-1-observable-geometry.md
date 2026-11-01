@@ -2,7 +2,7 @@
 
 *What building Observable Geometry taught me about the limits of a convincing brain map*
 
-**In brief:** I built a tool that compares the scalp signals predicted for distant cortical locations under one EEG model. I could reproduce its rankings and check the calculation independently. The score itself is established mathematics. It tells me where this model predicts ambiguity, not where a person's neurons were active.
+**Research summary:** I asked which separated cortical sources one participant's EEG forward model predicts will look most alike at the scalp. Observable Geometry ranks their noise-weighted leadfield patterns without reading an EEG event. On 8,196 modeled vertices, it produced 40,980 ranked rows; an independent calculation and an installed-package replay checked the result. The score uses established mathematics. These results establish a reproducible model audit, not the locations of active neurons or improved source-recovery accuracy.
 
 Imagine two lights behind a frosted window. From outside, you can see a glow, but a bright light farther away and a dimmer light nearby might leave almost the same pattern on the glass. Adding more detail to your drawing of the glow does not tell you which light was on.
 
@@ -12,7 +12,7 @@ I built **Observable Geometry** to check that question before interpreting a sou
 
 **Here is what I can test:** for one head model and noise model, which *single-source candidates* beyond a chosen distance have the most similar predicted scalp patterns? The diagnostic does not inspect a recorded EEG event. Identifying the source of an actual event would need different evidence.
 
-## The trip from brain to scalp, and the trip back
+## Why this question matters
 
 A forward model predicts electrode voltages from a proposed source using assigned head geometry, tissue properties and electrode positions. Its *leadfield* is a table of those predictions: each column lists what the electrodes would measure for one candidate source.
 
@@ -24,7 +24,7 @@ The **geometric-informed basis functions** (GBFs) framework was my starting poin
 
 The `distinguish` command compares columns of a supplied forward model directly. It does not run GBF source reconstruction. The verified participant example uses fixed-orientation cortical vertices. A researcher could supply another source family, provided its construction and assumptions are documented.
 
-## What does “looks alike” mean?
+## Method: measuring similarity before inversion
 
 The calculation begins with a matrix, not an EEG recording. Let **G** have one row for each retained electrode channel and one column for each candidate source. Its column **gᵢ** predicts the channel voltages produced by a unit coefficient at candidate **i** under the supplied head model. For the verified case, **G** has 236 rows and 8,196 columns. Each column represents one fixed current direction at a point on the model's cortical mesh, with every other candidate coefficient set to zero. This tests a *source family*, the patterns the model allows, rather than every possible pattern of brain activity.
 
@@ -46,7 +46,7 @@ The score runs from zero to one. Near one, two modeled patterns have nearly the 
 
 The tool excludes candidates within a chosen distance, then ranks the rest for each location. That distance is a reporting choice, not a universal resolution limit. The CSV preserves vertex identifiers, distances and scores. A manifest records input and code hashes; an access log records which arrays were opened.
 
-## What happened on a real participant model
+## Experiment: one participant-specific model
 
 The development case is **Localize-MI sub-01**, a dataset collected during simultaneous intracranial stimulation and high-density scalp EEG [5]. The project had a participant-specific forward solution, source coordinates and a noise covariance prepared in its earlier, sealed Track A. The raw forward solution has three orientation components per cortical vertex. The documented preparation selects the 236 accepted scalp channels, converts the forward solution to one direction approximately perpendicular to each cortical patch using MNE's cortical patch statistics, and applies the same common-average reference to the forward and covariance. The resulting fixed-orientation G has one column per vertex. These are model inputs derived from a real participant's anatomy, not scalp measurements of 8,196 known active sources.
 
@@ -56,19 +56,25 @@ For every valid vertex i, the program calculates straight-line distance to other
 
 The public command takes a model-only NPZ bundle, a compressed file of numerical arrays, matching metadata and a fresh output directory. It writes `ranked_pairs.csv` for human inspection, `scores.npz` for numerical replay, `summary.json` for descriptive aggregates, `run_manifest.json` for input and code provenance, and `npz_key_access.jsonl` for the array-access record. It refuses to overwrite a previous result. The participant bundle is not redistributed with the public repository because of its dataset license. A new researcher can install and run the public arithmetic example; independently repeating the participant result requires lawful access to the matching model-only inputs.
 
-The input to this run was a **236 × 8,196 leadfield**, a **236 × 236 noise covariance**, vertex coordinates and identifiers, and the matching reference and channel metadata. Covariance support rank was **235**. The run used a **20 mm** minimum separation and exported five alternatives per vertex: **40,980 directed rows**, not 40,980 distinct unordered pairs. It did not take a scalp event waveform or a known active-source label as input.
+The run had a declared input and output:
+
+| Component | What I supplied or obtained |
+|---|---|
+| Model inputs | A **236 × 8,196 leadfield**, **236 × 236 covariance**, vertex coordinates and IDs, and matching channel and reference metadata. The covariance's supported rank was **235**. No EEG event waveform or known active-source label entered this run. |
+| Analysis choices | Exclude pairs closer than **20 mm**; export the **five** highest-scoring eligible alternatives per vertex; compute in float64. |
+| Output | **40,980 directed rows** (8,196 vertices × five alternatives), plus numerical scores, summary statistics and provenance files. These are not 40,980 independent experiments or distinct unordered pairs. |
 
 **Reading one row:** For source index **0** (model vertex ID **21**), the top eligible alternative was candidate index **220** (ID **9627**), **22.35 mm** away. The absolute cosine was **0.9022** and the fitted unit-pattern residual was **0.4313** [4]. The first number says their predicted scalp *shapes* are similar after noise weighting and allowing strength and polarity to change. The second is the pattern difference left after that best fit; it is **√(1 − 0.9022²)**, not 0.4313 volts or a localization error. Those IDs label vertices in this model, not measured active brain regions. The program gave this result because their whitened leadfield columns have that angle. The row alone cannot tell us which anatomical feature caused the resemblance or whether either source was active.
 
-Across the **8,196 vertices**, the median *best* eligible similarity was **0.91556**. For **495 vertices (6.04%)**, that best score reached **0.95**; none reached 0.99 [4]. These are model vertices, not 8,196 measured neural events. The 0.95 cutoff is descriptive, not a validated source-reporting rule. Although the search excluded pairs closer than 20 mm, every exported top-five match lay within **42.67 mm** in this run. Calling them “distant” means *beyond our 20 mm exclusion*, not across the brain. The numbers depend on this model, covariance, reference and source family; they are not an EEG failure rate.
+Across the **8,196 vertices**, the median *best* eligible similarity was **0.91556**. For **495 vertices (6.04%)**, that best score reached **0.95**; none reached 0.99 [4]. The unit here is a model vertex, not a measured neural event. The cutoff is descriptive, not a validated source-reporting rule. Every exported top-five match lay within **42.67 mm**: “distant” means *beyond our 20 mm exclusion*, not across the brain. These numbers depend on the model, covariance, reference and source family; they are not an EEG failure rate.
 
 I wanted every pair traceable to its inputs. A clean installation reproduced all **40,980 rows** and score arrays exactly; a separate calculation reproduced every ranking, with a maximum cosine difference of about **2.1 × 10⁻¹⁵** [4]. The CLI rejects undeclared arrays, including a recorded EEG `data` array, before opening them. These checks establish numerical reproducibility and the stated access boundary, not recovered neural anatomy.
 
-The verification had several layers. Small algebraic fixtures checked the exact cases of identical, reversed and orthogonal patterns, as well as tie ordering, covariance rescaling and invalid inputs. Those fixtures test arithmetic, not neuroscience. The frozen development calculation and the later higher-precision float64 implementation then agreed exactly on candidate indices, validity masks and eligible-candidate counts; the maximum difference from the saved lower-precision float32 cosine values was **2.98 × 10⁻⁸**, below the prespecified **10⁻⁷** rounding tolerance [4]. A separate CPU calculation replayed the scores at float64 precision. Finally, the installed package in a fresh public clone reproduced the CSV, numerical arrays and summary byte for byte using lawfully held local model inputs. The published repository supplies source code, example inputs and these audit records, while stating which participant inputs a public reader cannot obtain from the package alone.
+The verification had several layers. Small algebraic fixtures checked the exact cases of identical, reversed and orthogonal patterns, as well as tie ordering, covariance rescaling and invalid inputs. Those fixtures test arithmetic, not neuroscience. The frozen development calculation and the later higher-precision float64 implementation then agreed exactly on candidate indices, validity masks and eligible-candidate counts; the maximum difference from the saved lower-precision float32 cosine values was **2.98 × 10⁻⁸**, below the prespecified **10⁻⁷** rounding tolerance [4]. A separate CPU calculation replayed the scores at float64 precision. Finally, the installed package in a fresh public clone reproduced the CSV, numerical arrays and summary byte for byte using lawfully held local model inputs.
 
-The checks establish repeatable arithmetic for the declared model. The unit of analysis for the distribution below is **one model vertex**, summarized by its best distant match. The five exported rows per vertex are not independent observations, and neighboring vertices share anatomy and leadfield structure. The validation of the numerical result says nothing about how often a real neural event has the model's assumed single-vertex form.
+The unit of analysis for the distribution below is **one model vertex**, summarized by its best distant match. The five exported rows per vertex are not independent observations, and neighboring vertices share anatomy and leadfield structure. The validation of the numerical result says nothing about how often a real neural event has the model's assumed single-vertex form.
 
-## The comparison that changed how I describe the tool
+## Comparison with an established resolution analysis
 
 Existing source-imaging software can examine resolution through an inverse operator, the calculation that turns scalp measurements into a source estimate. A *point-spread function* asks where that method would place activity from one proposed point source; a *cross-talk function* asks which true sources could contribute to one estimated location. These are established ways to inspect leakage and localization behavior [3]. My diagnostic is calculated before choosing an inverse operator, so it asks a related but different question about the predicted sensor patterns themselves.
 
@@ -76,7 +82,7 @@ I paired the best distant similarity for all **8,196** vertices with point-sprea
 
 I could have labeled pairs scoring around 0.95 “unresolvable,” but I had no evidence for that cutoff. The list gives a researcher specific alternatives to inspect before comparing two regions. I have not yet shown that seeing the list changes a reporting decision beyond what a direct leadfield-correlation map or standard resolution report would provide. That comparison needs its own experiment.
 
-## Why I stopped some tempting experiments
+## Validation attempts that did not support a source-recovery claim
 
 The Localize-MI data also include electrical stimulation pulses. Those pulses have a known contact, which initially looked attractive as a location reference. But the scalp response to a stimulation artifact is not the same thing as an endogenous neural source event. A channel mismatch in an earlier route also made one comparison invalid. I kept the failure and the corrected rerun in the project record rather than using the pulse result to claim neural-source recovery.
 
@@ -84,7 +90,7 @@ I examined other measured-data routes too. For a rigorous source validation, I w
 
 I stopped at a model audit. The measured-data routes I examined did not yet justify claims about endogenous source recovery, population generalization or better researcher decisions. They did show me what a convincing next test would need: checked geometry and a measured neural event with an independent, appropriately limited reference.
 
-## What a researcher can do with it
+## Use and next validation test
 
 Consider a study that plans to compare estimated activity in two distant cortical regions. The researcher can supply the same head model, reference, channel set and noise covariance intended for the inverse analysis. Observable Geometry then reports whether those regions contain candidate patterns that appear similar at the sensors. If they do, the report gives concrete pairs and model provenance to inspect while deciding how specific the anatomical interpretation should be.
 
@@ -92,7 +98,7 @@ The researcher still needs the inverse method's resolution analysis, sensitivity
 
 The next version should ask whether the ranking survives justified changes in covariance, montage and source orientation, and whether a region-level report helps someone make a better decision than direct leadfield similarity or point-spread analysis alone. An eligible measured-data study would then test whether that decision tracks independently verified neural events. A larger model or a fancier score would not replace those tests.
 
-## What I learned from the build
+## Conclusion
 
 I started with a broad ambition: find out how much of the brain we can reconstruct from outside the head. Working through GBFs, forward models, inverse resolution and difficult validation datasets made the useful question more precise. A beautiful source map can be computationally valid while the sensors still permit a distant alternative under the chosen model. The first useful step is to make that alternative visible and traceable.
 

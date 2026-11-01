@@ -7,7 +7,7 @@
 | Check | Result |
 |---|---|
 | Distinct questions | Article 1 explains the Build's method and measured limits. Article 2 asks how a brain map can be validated across six original studies. The [overlap map](learn-build-overlap-map.md) marks Learn background kept brief. |
-| Length | Article 1: **3,199 words**, Article 2: **2,972 words**, including citations. Both are approximately **12–13 minutes** at a technical-reading pace, though readers may pause longer over equations or linked figures. |
+| Length | Article 1: **3,200 words**, Article 2: **2,972 words**, including citations. Both are approximately **12–13 minutes** at a technical-reading pace, though readers may pause longer over equations or linked figures. |
 | Voice and structure | Both articles use a personal but precise voice, readable headings and short transitions. Article 1 has the research-report progression while retaining a reader-facing title; Article 2 is a comparative argument rather than a second Build report. |
 | Language pass | Formulaic transitions and repeated stock phrases were replaced with direct descriptions of the work and the author's reasoning. The technical claims, figures, citations and limitations were retained. |
 | Non-specialist check | Article 1 now explains the leadfield, covariance, whitening, polarity, cosine, residual and comparison metrics beside their equations. Article 2 introduces dipoles, IEDs, surgical resection, source maxima and the head-model shortcut where they first appear. |
