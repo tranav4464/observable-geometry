@@ -22,8 +22,10 @@ Added a joint sensor-permutation test to `tests/test_track_b_distinguishability.
 
 `docs/tks/demo.md` still pointed to the old `TKS/observable_geometry` path and model export files that are absent after workspace reorganization. It now gives a portable public arithmetic demonstration and states plainly that licensed model inputs are required for independent reproduction of the 40,980-row participant result. The public command was executed successfully; the modified guide still needs a post-change clean-clone check after publication.
 
-## Open completion items
+## Post-change public-clone check
 
-- Run the complete audit again after the documentation and new test are committed and published.
-- Complete the article, claim-to-evidence audit, citation check and editorial review.
-- A reviewer without the licensed model-only input bundle cannot reproduce the participant result from the public clone alone. This same-host replay is independent of the earlier run directory, but it is not external human reproduction or physiological validation.
+After the documentation repair and sensor-reordering test were pushed, a second public clone of commit `105f17d` passed 213 tests with two expected source-only skips. It ran `robust-audit` and reproduced the participant-model CSV, scores and summary with the three hashes above.
+
+That check exposed a remaining README defect: its `family-frontier` command referred to a JSON file absent from the public source. Commit `7aceb87` adds `examples/family_frontier_toy.json`, updates the README, and adds a regression test for the documented example. A third clean public clone at exact commit `7aceb87550753ddd342c6dd83bdbaf1f52cc769d` installed in a new Python 3.12.16 environment and passed **214 tests, two expected skips, zero failures**. Both documented data-free commands completed. The installed `distinguish` command again reproduced the same 8,196-source summary and the same three output hashes above. The access log opened only `leadfield`, `noise_covariance`, `coordinates_m` and `source_ids`.
+
+This is a same-host fresh-clone reproduction with lawfully held model-only inputs. A public reviewer without those inputs can run the software and examples but cannot independently regenerate the participant result from the repository alone. It is neither external human reproduction nor physiological validation.
