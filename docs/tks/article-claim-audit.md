@@ -1,6 +1,6 @@
 # Research article claim audit
 
-**Article:** `research-article-draft.md`  
+**Article:** `article-1-observable-geometry.md`
 **Audit date:** 1 November 2026  
 **Status:** Main model-output numbers freshly replayed from an installed public-clone package using lawful local model-only inputs. The local editorial and link review is complete; independent reader feedback remains a future publication check.
 
@@ -16,8 +16,13 @@
 | WSGZP participant registration remains unverified | `README.md` WSGZP geometry status and linked coordinate/provenance audits | Metadata plausibility does not prove electrode-to-MRI registration. Do not imply the dataset itself is unusable for all purposes. |
 | Angle-based source separability predates this build | Pascual-Marqui and Biscay-Lirio (1993), DOI 10.3109/00207459308994264, cited as source [1] in the article | Similarity of concepts, not an assertion that every implementation detail is identical. |
 | GBFs constrain inversion with individual cortical geometry | Wang et al. (2026), *Nature Biomedical Engineering*, DOI 10.1038/s41551-026-01664-0, source [2] | The article distinguishes the GBF inverse estimator from this package's direct leadfield-column comparison. |
+| Track A used 20 modes per hemisphere, compared with the paper's 300-mode demonstration | `docs/track_b/B3_IMPLEMENTATION_AND_CLOSEOUT_20261024.md`, method-to-code trace; Track A parity record | Same-input parity is not full paper-benchmark reproduction. |
+| Sub-01 noise interval −200 to −50 ms, 10% diagonal shrinkage, 38-trial scaling, 236 × 8,196 fixed-normal conversion | `docs/track_b/B2_GBF_SPEC.md`, frozen development case and mathematical contract | Trial-count covariance scaling leaves normalized cosine unchanged if it is global; absolute norms depend on scale. |
+| Whitening on supported rank, 10⁻¹⁰ eigenvalue cutoff, 10⁻⁷ nullspace check, ρ and residual equations | `docs/track_b/B2_GBF_SPEC.md`; `src/observable_geometry/track_b/distinguishability.py` | Derivation is for the declared single-column source family, not unknown orientations or distributed sources. |
+| 2.98 × 10⁻⁸ difference from sealed float32 scores, exact indices/masks/counts | `docs/track_b/B3_IMPLEMENTATION_AND_CLOSEOUT_20261024.md`; `docs/track_b/B2_GATE_CLOSEOUT_20261024.md` | Float32 comparison tolerance was fixed at 10⁻⁷; later separate CPU64 replay is a different check. |
+| Localize-MI seven people and 61 stimulation sessions, pulse artifact endpoint | Mikulan et al. (2020), primary source [5] in Article 1; `docs/track_b/B2_GBF_SPEC.md` for the selected sub-01 development case | Article 1 uses one participant model, not all seven participants or a held-out event analysis. |
 | PSF/CTF are inverse-resolution diagnostics | Official MNE-Python documentation, source [3] | Depends on the chosen inverse operator, whereas this direct column comparison does not choose one. |
 
 ## Editorial check
 
-The article was read against the README, submission and demo. Its claims distinguish the model-only `distinguish` result from the unsuccessful measured stimulation-pulse validation route, and it does not present the 0.95 score as a probability or decision threshold. Local Markdown links were checked for existence on 1 November 2026. The external reference destinations and the final publishing format should be checked again at posting time. Independent scientific and non-specialist reader feedback would strengthen a later revision; none is represented as completed here.
+The article was read against the README, submission and demo. Its claims distinguish the model-only `distinguish` result from the unsuccessful measured stimulation-pulse validation route, and it does not present the 0.95 score as a probability or decision threshold. The expanded Article 1 is 3,153 words including references by PowerShell `Measure-Object -Word` on 1 November 2026. External reference destinations and final publishing format are part of the final audit. Independent scientific and non-specialist reader feedback would strengthen a later revision; none is represented as completed here.

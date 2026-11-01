@@ -1,6 +1,6 @@
 # Scientific and submission review, 1 November 2026
 
-**Scope:** Observable Geometry's accepted TKS software and the 7–10 minute article. This is an internal skeptical review, not an independent researcher endorsement.
+**Scope:** Historical internal review of Observable Geometry's accepted TKS software and the earlier 7–10 minute article draft. The article was subsequently expanded and paired with a separate six-paper synthesis; use the later final editorial and scientific audit for the current writing. This is not an independent researcher endorsement.
 
 ## Equation and implementation check
 

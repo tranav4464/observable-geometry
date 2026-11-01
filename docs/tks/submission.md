@@ -31,7 +31,7 @@ A researcher studying two regions can inspect whether the declared model gives t
 
 Use the [demo guide](demo.md). The submission ZIP contains the tested wheel, exact source archive, current submission documentation, resolved audit environment and data-free audit records. The licensed model inputs are excluded. On this project's local machine the verified inputs are available for a live demo; another user needs lawful matching inputs or their own verified forward model.
 
-The [research article](research-article-draft.md) explains the scientific question and how the build changed my interpretation of EEG source maps. Its numerical statements are traced in the [article claim audit](article-claim-audit.md). The [fresh public-clone check](../reviews/fresh-public-clone-check-2026-11-01.md) records a separate installation and licensed model replay of the current submission code.
+The [Build article](article-1-observable-geometry.md) derives the diagnostic and explains its verified result. The [six-paper synthesis](article-2-source-validation.md) asks what independent evidence would establish a neural-source claim. The [Article 1 claim audit](article-claim-audit.md), [Article 2 claim audit](article-2-claim-audit.md), [research matrix](six-paper-research-matrix.md), [Learn overlap map](learn-build-overlap-map.md), and [final editorial and scientific audit](final-editorial-scientific-audit.md) show their evidence and distinct scopes. The [fresh public-clone check](../reviews/fresh-public-clone-check-2026-11-01.md) records a separate installation and licensed model replay of the current submission code.
 
 ## Honest completion boundary
 

@@ -49,7 +49,7 @@ This is an arithmetic example, not a source-imaging result. The main `distinguis
 
 ## Verify the source and bundle
 
-The source archive is pinned to commit `3c99ca1`; its older status documents reflect that commit's history. Current acceptance is in the outer submission documents. The manifest lists SHA-256 hashes for all packaged files. After extracting the source, install pytest, h5py, MNE and nibabel in a virtual environment, set PYTHONPATH to its `src` folder and run `python -m pytest -q -ra`. The two archive skips are expected; a downloaded source archive does not include the private workspace evidence or WSGZP dataset.
+The packaged source commit is recorded in the bundle README and SHA-256 manifest. The accepted numerical snapshot was commit `3c99ca1`; later package archives can include documentation and tests added after acceptance without changing the diagnostic implementation. Current acceptance is described in the outer submission documents. After extracting the source, install pytest, h5py, MNE and nibabel in a virtual environment, set PYTHONPATH to its `src` folder and run `python -m pytest -q -ra`. The two archive skips are expected; a downloaded source archive does not include the private workspace evidence or WSGZP dataset.
 
 ## Rebuild the submission
 

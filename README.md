@@ -18,7 +18,7 @@ The `distinguish` diagnostic is separate from the GBF inverse estimator. It comp
 
 Start with the [submission overview](docs/tks/submission.md), [reviewer quick start](docs/tks/outreach-review.md), [demo guide](docs/tks/demo.md), or [build presentation](index.html). The accepted code and wheel remain pinned to commit `3c99ca1`; subsequent acceptance and submission documentation is identified separately. WSGZP geometry is a deferred empirical extension, not a prerequisite for presenting this bounded software build.
 
-For the wider scientific story, read [When Two Brain Locations Look Alike to EEG](docs/tks/research-article-draft.md). Its [claim audit](docs/tks/article-claim-audit.md) ties the main numbers and boundaries to project evidence.
+For the wider scientific story, read [Article 1: When Two Brain Locations Look Alike to EEG](docs/tks/article-1-observable-geometry.md) and [Article 2: A Brain Map Can Look Right. How Would We Know It Is?](docs/tks/article-2-source-validation.md). The [claim audit](docs/tks/article-claim-audit.md) and [six-paper matrix](docs/tks/six-paper-research-matrix.md) trace the evidence.
 
 ## Repository map
 
