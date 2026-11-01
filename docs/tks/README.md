@@ -3,6 +3,7 @@
 - [Reviewer and outreach quick start](outreach-review.md)
 - [Submission overview](submission.md)
 - [Demo guide](demo.md)
+- [Local browser interface and arithmetic demo](web-interface.md)
 - [Two-minute pitch](pitch.md)
 - [Build handoff](build-handoff.md)
 - [Article 1: When Two Brain Locations Look Alike to EEG](article-1-observable-geometry.md)
