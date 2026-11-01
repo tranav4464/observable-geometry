@@ -1,0 +1,14 @@
+{
+  "dataset": "algebraic browser demo; no participant data",
+  "participant": "none",
+  "forward_model": "handwritten test matrix; not a head model",
+  "reference": "identity",
+  "coordinate_frame": "arbitrary example frame",
+  "source_orientation": "fixed columns",
+  "noise_covariance": "identity test matrix",
+  "sensor_names": [
+    "S1",
+    "S2",
+    "S3"
+  ]
+}

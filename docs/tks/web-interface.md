@@ -12,9 +12,14 @@ python -m venv .web-env
 .\.web-env\Scripts\observable-geometry-web.exe
 ```
 
-Open `http://127.0.0.1:8501` if your browser does not open automatically. Stop the server with Ctrl+C. It binds to this computer only. The optional `Web Interface` folder in the TKS handoff contains a versioned wheel if you prefer to install that instead of a source checkout; install it along with `streamlit` and `pandas`.
+Open `http://127.0.0.1:8501` if your browser does not open automatically. Stop the server with Ctrl+C. It binds to this computer only. The optional `Web Interface` folder in the TKS handoff contains a versioned wheel if you prefer that to a source checkout. From that folder, install it with `python -m pip install .\observable_geometry-0.1.3.dev2-py3-none-any.whl streamlit pandas`, then run `observable-geometry-web`.
 
 ## Use it
+
+### Try the public arithmetic demo first
+
+Choose **Run a model**. Set the bundle to the absolute path of `examples/browser_algebra_demo.npz` and metadata to `examples/browser_algebra_demo_metadata.json` in the repository, or use the copies beside this guide in the TKS handoff. Choose a new output folder and click **Run diagnostic**. Then select a source to see its alternatives. This four-source matrix is handwritten arithmetic for learning the interface. It contains no EEG recording, participant geometry or physiological source result.
+
 
 - **Inspect an existing run:** enter the absolute path to a completed `distinguish` output directory containing `ranked_pairs.csv` and `summary.json`. This works without participant model inputs if you already have a completed run.
 - **Run a model:** enter absolute paths to a verified model-only NPZ bundle, matching metadata JSON and a new output directory. Set the minimum straight-line distance and number of alternatives. The interface invokes the same diagnostic as `observable-geometry distinguish` and preserves its strict array-key checks and no-overwrite behavior.
