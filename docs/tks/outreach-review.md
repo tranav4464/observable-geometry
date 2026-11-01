@@ -4,7 +4,7 @@ Thank you for reviewing Observable Geometry. This is a bounded computational-neu
 
 ## The two-minute explanation
 
-Different candidate brain sources can produce similar predicted scalp patterns under the same head model, reference, sensor set, and noise covariance. Observable Geometry takes those declared model inputs, excludes nearby candidates, and ranks the most similar distant alternatives. It exports the actual pairs, scores, provenance, hashes, and an access log so the result can be inspected rather than accepted as a black box.
+Different candidate brain sources can produce similar predicted scalp patterns under the same head model, reference, sensor set, and noise covariance. Observable Geometry takes those declared model inputs, excludes candidates inside a chosen distance, and ranks the most similar remaining alternatives. It exports the actual pairs, scores, provenance, hashes, and an access log so the result can be inspected rather than accepted as a black box.
 
 The delivered `distinguish` diagnostic is separate from the reproduced GBF inverse workflow. Its normalized noise-whitened similarity is established mathematics, not a claimed new formula. The current contribution is the auditable software workflow and its bounded model audit. It does not establish neural-source recovery, clinical utility, or a novel inverse method.
 

@@ -7,7 +7,7 @@
 
 ## What I built
 
-I built a tool for inspecting ambiguity in EEG source models. Given a forward model, noise covariance, source coordinates and provenance, it finds distant candidate brain locations whose predicted scalp patterns look similar. A researcher can inspect those alternatives before treating an estimated location as spatially specific.
+I built a tool for inspecting ambiguity in EEG source models. Given a forward model, noise covariance, source coordinates and provenance, it ranks candidate locations beyond a chosen minimum distance by similarity of their predicted scalp patterns. A researcher can inspect those alternatives before treating an estimated location as spatially specific.
 
 The project started with a GBFs reproduction and reverse-engineering workflow. The delivered pairwise diagnostic is separate from that inverse estimator: it compares forward-model columns directly. My contribution is the implementation, strict input contracts, ranked alternatives, traceable outputs and reproducible checks. The similarity formula itself is established mathematics.
 
@@ -19,13 +19,13 @@ The project started with a GBFs reproduction and reverse-engineering workflow. T
 
 ## What was demonstrated
 
-The sealed sub-01 model has 236 sensors and 8,196 candidate sources, with covariance rank 235. At 20 mm minimum separation and five alternatives per source, the CLI produces 40,980 directed ranked rows. These are five alternatives per source, not 40,980 unique unordered pairs. Median best distant similarity is 0.91556. About 6.04% of sources have a best distant similarity of at least 0.95. That threshold is descriptive, not a validated cutoff for making a clinical or anatomical decision.
+The sealed sub-01 model has 236 sensors and 8,196 candidate sources, with covariance rank 235. At 20 mm minimum separation and five alternatives per source, the CLI produces 40,980 directed ranked rows. These are five alternatives per source, not 40,980 unique unordered pairs. Median best eligible similarity is 0.91556. About 6.04% of sources have a best eligible similarity of at least 0.95. That threshold is descriptive, not a validated cutoff for making a clinical or anatomical decision.
 
 A fresh installed wheel reproduced all ranked rows, nine score arrays and the summary exactly. The full archive suite passed 211 tests with two documented local-evidence skips; the full workspace passed 213 tests. A separate calculation reproduced every ranking with maximum cosine difference approximately 2.1e-15. [Audit and acceptance](../track_b/B8_PASS_20261030.md).
 
 ## Why someone might use it
 
-A researcher studying two regions can inspect whether the declared model gives them similar scalp signatures, examine the specific distant alternatives, and export an audit trail. The result can prompt closer inspection of spatial claims. Improved research decisions compared with existing leadfield correlation and resolution reports have not yet been demonstrated.
+A researcher studying two regions can inspect whether the declared model gives them similar scalp signatures, examine the specific eligible alternatives, and export an audit trail. The result can prompt closer inspection of spatial claims. Improved research decisions compared with existing leadfield correlation and resolution reports have not yet been demonstrated.
 
 ## Run or review
 

@@ -25,7 +25,7 @@ observable-geometry distinguish `
   --top-k 5
 ```
 
-The command reports highly similar candidate pairs separated by at least 20 mm, their similarity scores, model/input/code provenance, and an access log. The current sealed example contains 40,980 ranked pairs from one participant-specific model. It is a **model-only demonstration**: the predicted signatures are not measured neural events, and the output is not a source-recovery score or a probability of correct localization. The model bundle is Localize-MI-derived and must remain local under that dataset's license.
+The command ranks the highest-scoring eligible alternatives for each candidate source, after a user-chosen minimum distance. It reports their scores, model/input/code provenance and an access log. The sealed example uses 20 mm and contains 40,980 directed rows from one participant-specific model; its exported top-five alternatives were all within 42.67 mm. A top-ranked pair need not meet any validated similarity threshold. This is a **model-only demonstration**: the predicted signatures are not measured neural events, and the output is not a source-recovery score or a probability of correct localization. The model bundle is Localize-MI-derived and must remain local under that dataset's license.
 
 For a new model, the install and input contracts are in the repository [README](../../README.md). Do not use the command with an unverified forward model, inconsistent channel order/reference, or an undocumented covariance and interpret the result as empirical evidence.
 

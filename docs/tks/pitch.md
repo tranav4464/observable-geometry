@@ -1,10 +1,10 @@
 # Two-minute explanation
 
-EEG records electrical patterns at the scalp. Researchers use those measurements and a head model to estimate where activity might have come from. But two distant brain locations can produce very similar predicted scalp patterns. A detailed-looking map can therefore hide uncertainty about location.
+EEG records electrical patterns at the scalp. Researchers use those measurements and a head model to estimate where activity might have come from. But two separated brain locations can produce very similar predicted scalp patterns. A detailed-looking map can therefore hide uncertainty about location.
 
-I built Observable Geometry to make that ambiguity easier to inspect. You give it a forward model, a matching noise covariance, source coordinates and information about how the model was constructed. It compares the predicted patterns, accounts for noise and lists distant alternatives for each source location.
+I built Observable Geometry to make that ambiguity easier to inspect. You give it a forward model, a matching noise covariance, source coordinates and information about how the model was constructed. It compares the predicted patterns, accounts for noise and lists alternatives beyond a chosen minimum distance for each source location.
 
-The output is concrete: a ranked CSV, numerical scores, a summary, and a record of the inputs and code used. A researcher can inspect which distant alternatives their model struggles to separate before making a spatially specific claim.
+The output is concrete: a ranked CSV, numerical scores, a summary, and a record of the inputs and code used. A researcher can inspect which eligible alternatives their model predicts to have similar scalp patterns before making a spatially specific claim.
 
 I started by reproducing and reverse-engineering a GBFs workflow. I then built a separate diagnostic with input validation, numerical tests and checks that prevent it from accidentally opening EEG sample arrays. On one verified participant model with 8,196 candidate sources, the tool produces 40,980 ranked rows. A fresh installed package reproduced those outputs exactly, and a separately written calculation reproduced every ranking.
 
