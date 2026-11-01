@@ -24,6 +24,7 @@ I cloned the public repository into a new directory and installed the current `0
 | Non-positive-semidefinite covariance | Rejected, no result directory published |
 | Missing metadata | Rejected, no result directory published |
 | Browser result-integrity correction | Three focused tests passed; a complete run is accepted, modified CSV and missing manifest are rejected |
+| Fresh-environment Jupyter notebook execution | Completed on the public arithmetic example; produced two PNG and two SVG figures plus a figure manifest with hashes. This does not validate the participant figures or physiological claims. |
 
 The first row of the participant-model result is source ID 21 to candidate ID 9627 at 22.348103167 mm, absolute cosine 0.9022051367696975, and profiled unit-pattern residual 0.43130718888788705. The median best eligible cosine is 0.915556984605132. These are model-conditional quantities, not recorded event outcomes. The fresh-clone CSV matched the earlier 40,980-row result exactly.
 
