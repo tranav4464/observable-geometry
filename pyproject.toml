@@ -16,6 +16,7 @@ readme = "README.md"
 test = ["pytest>=8"]
 research-audit = ["h5py>=3.10", "mne>=1.7", "nibabel>=5.2"]
 web = ["streamlit>=1.40", "pandas>=2.0"]
+figures = ["matplotlib>=3.8", "pandas>=2.0", "nbformat>=5.9", "nbclient>=0.9", "ipykernel>=6.29"]
 
 [project.scripts]
 observable-geometry = "observable_geometry.cli:main"
