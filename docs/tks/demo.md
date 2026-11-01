@@ -18,6 +18,11 @@ Python package installation requires package-index access or a complete dependen
 
 ## Run with your own verified model
 
+### Optional browser view
+
+The newer **0.1.3.dev2** source adds a local web interface. From a fresh clone, run `python -m pip install -e ".[web]"`, then `observable-geometry-web` and open `http://127.0.0.1:8501`. Choose **Inspect an existing run** to view a completed `distinguish` output directory, or **Run a model** to supply absolute paths to a model-only NPZ bundle, matching metadata JSON and a new output directory. The browser calls the same diagnostic as the CLI. It shows the distribution of top eligible scores, the ranked alternatives for one source, a distance-versus-score graph and a CSV download. The server binds to `127.0.0.1`; it does not upload model files to an external service. The public bundle does not contain the licensed participant inputs. The accepted 0.1.3.dev1 wheel in the earlier TKS ZIP remains the independently audited snapshot; the web interface is an additional local iteration.
+
+
 ```powershell
 .\.demo-env\Scripts\observable-geometry.exe distinguish --bundle "C:\path\to\model_bundle.npz" --metadata "C:\path\to\model_metadata.json" --output .\demo-results --minimum-distance-mm 20 --top-k 5
 ```

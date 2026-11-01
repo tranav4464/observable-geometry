@@ -1,6 +1,6 @@
 # Observable Geometry
 
-Observable Geometry 0.1.3.dev1 is the accepted TKS software snapshot for a computational-neuroscience software build around **Geometric-Informed Basis Functions (GBFs)** and a nominal EEG source-pattern comparison. The software asks what a declared forward model predicts at the sensors for pairs of candidate sources. It does not infer every active neural source, assign calibrated probabilities, or establish physiological source recovery.
+Observable Geometry 0.1.3.dev2 adds a local browser interface to the accepted 0.1.3.dev1 TKS software snapshot. The computational-neuroscience build centers on **Geometric-Informed Basis Functions (GBFs)** and a nominal EEG source-pattern comparison. The software asks what a declared forward model predicts at the sensors for pairs of candidate sources. It does not infer every active neural source, assign calibrated probabilities, or establish physiological source recovery. The browser addition has been locally tested but has not received a separate B8 acceptance review.
 
 **Intended use:** before interpreting an inverse solution, a researcher can use a participant-specific forward model, sensor reference, and noise covariance to find spatially distant candidate sources whose predicted scalp patterns are similar. This is an exploratory model audit: it can expose conditional ambiguity in the supplied model, but it does not show that either source was active or that a real recording can be localized accurately. The [TKS build handoff](docs/tks/build-handoff.md) gives a short project explanation, use case, demo path, evidence, and claim limits. Feedback from two outreach reviewers and the next-build actions are summarized in [the review action plan](docs/reviews/next-build-actions.md).
 
@@ -76,7 +76,7 @@ The full research workspace also contains local dataset files, ignored build out
 
 ### Local browser interface
 
-Install the optional web dependencies with `python -m pip install -e ".[web]"`, then run `observable-geometry-web`. Open `http://127.0.0.1:8501` if the browser does not open automatically. The interface can run `distinguish` from local model-only NPZ and metadata paths or inspect an existing completed run. It shows the score distribution, a source-specific table and distance-versus-score plot, and lets you download the ranked CSV. The server binds to your own computer; files are not uploaded to a hosted service. The same input contracts and scientific limitations as the CLI apply.
+Install the optional web dependencies with `python -m pip install -e ".[web]"`, then run `observable-geometry-web`. Open `http://127.0.0.1:8501` if the browser does not open automatically. The interface can run `distinguish` from local model-only NPZ and metadata paths or inspect an existing completed run. It shows the score distribution, a source-specific table and distance-versus-score plot, and lets you download the ranked CSV. The server binds to your own computer; files are not uploaded to a hosted service. The same input contracts and scientific limitations as the CLI apply. See the [browser handoff](docs/tks/web-interface.md) for first-use steps.
 
 
 Prepare an NPZ bundle with exactly these arrays:
