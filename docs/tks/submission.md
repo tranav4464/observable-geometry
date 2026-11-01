@@ -31,6 +31,8 @@ A researcher studying two regions can inspect whether the declared model gives t
 
 Use the [demo guide](demo.md). The submission ZIP contains the tested wheel, exact source archive, current submission documentation, resolved audit environment and data-free audit records. The licensed model inputs are excluded. On this project's local machine the verified inputs are available for a live demo; another user needs lawful matching inputs or their own verified forward model.
 
+The [research article](research-article-draft.md) explains the scientific question and how the build changed my interpretation of EEG source maps. Its numerical statements are traced in the [article claim audit](article-claim-audit.md). The [fresh public-clone check](../reviews/fresh-public-clone-check-2026-11-01.md) records a separate installation and licensed model replay of the current submission code.
+
 ## Honest completion boundary
 
 The TKS software snapshot is complete within its declared scope. B4–B7 remain recorded pivots, not completed scientific validations. This build does not establish neural-source recovery, a novel mathematical method, clinical utility or population generalization. WSGZP registration and measured-source validation are future extensions. No stable PyPI release or journal acceptance is implied. The [next-build review plan](../reviews/next-build-actions.md) preserves the outreach feedback.

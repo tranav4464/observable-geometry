@@ -5,6 +5,8 @@
 - [Demo guide](demo.md)
 - [Two-minute pitch](pitch.md)
 - [Build handoff](build-handoff.md)
+- [Research article](research-article-draft.md)
+- [Article claim audit](article-claim-audit.md)
 - [Rebuild the submission package](building-submission.md)
 
 The repository landing page is [`index.html`](../../index.html). Review findings and their resolution are stored in [`../reviews/`](../reviews/).

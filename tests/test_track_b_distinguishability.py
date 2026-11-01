@@ -32,6 +32,34 @@ def test_covariance_global_scale_invariance_and_stable_tie_breaking():
     assert a.candidate_indices[0, :2].tolist() == [1, 2]
 
 
+def test_joint_sensor_reordering_preserves_rankings_and_scores():
+    # A model export may reorder sensors, provided its covariance rows and
+    # columns follow the identical permutation. This catches accidental
+    # dependence on channel position in the numerical calculation.
+    leadfield = np.array([
+        [1.0, 0.3, -0.8, 0.1],
+        [0.2, 1.0, 0.4, -0.5],
+        [-0.4, 0.1, 0.7, 1.0],
+    ])
+    covariance = np.array([
+        [2.0, 0.2, -0.1],
+        [0.2, 1.5, 0.3],
+        [-0.1, 0.3, 1.1],
+    ])
+    coordinates_m = np.column_stack((np.arange(4) * 0.03, np.zeros((4, 2))))
+    original = compute_distinguishability(leadfield, covariance, coordinates_m, top_k=3)
+    order = np.array([2, 0, 1])
+    reordered = compute_distinguishability(
+        leadfield[order], covariance[np.ix_(order, order)], coordinates_m, top_k=3,
+    )
+    np.testing.assert_array_equal(original.candidate_indices, reordered.candidate_indices)
+    np.testing.assert_allclose(
+        original.absolute_cosine, reordered.absolute_cosine,
+        rtol=1e-13, atol=1e-13, equal_nan=True,
+    )
+    np.testing.assert_allclose(original.whitened_norm, reordered.whitened_norm, rtol=1e-13)
+
+
 @pytest.mark.parametrize("bad_cov", [
     np.array([[1.0, 0.2], [0.0, 1.0]]),
     np.diag([1.0, -0.01]),

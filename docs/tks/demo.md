@@ -24,25 +24,25 @@ Python package installation requires package-index access or a complete dependen
 
 Replace the two input paths. Choose a new output folder each time. The diagnostic refuses to overwrite an existing result. See the input schema in the source archive's README or the public repository. No participant recording arrays should be put into the bundle.
 
-## Tranav's local live demo
+## Run a public data-free example
 
-On the existing full workspace, use this previously verified wheel environment and model export. This convenience command is specific to this machine; it is not a portable data-download procedure.
+From a clone of the public repository, create a Python 3.12+ environment and run the separate `robust-audit` workflow:
 
 ```powershell
-Set-Location 'C:\Users\TRANAV\OneDrive\Desktop\TKS\observable_geometry'
-$demoOutput = Join-Path $PWD ('outputs/track_b/tks_demo_' + (Get-Date -Format 'yyyyMMdd_HHmmss'))
-& .\outputs\track_b\tks_remediation_20261030\env\Scripts\observable-geometry.exe distinguish --bundle .\outputs\track_b\20261029T_atomic_cli_real_model_reproduction\model_export\model_bundle.npz --metadata .\outputs\track_b\20261029T_atomic_cli_real_model_reproduction\model_export\model_metadata.json --output $demoOutput --minimum-distance-mm 20 --top-k 5
-Get-Content (Join-Path $demoOutput 'summary.json')
-Import-Csv (Join-Path $demoOutput 'ranked_pairs.csv') | Select-Object -First 5
+python -m venv .demo-env
+.\.demo-env\Scripts\python.exe -m pip install -e .
+$demoOutput = Join-Path $PWD ('robust-demo-' + (Get-Date -Format 'yyyyMMdd_HHmmss'))
+.\.demo-env\Scripts\observable-geometry.exe robust-audit --spec .\examples\robust_audit_toy.json --output $demoOutput
+Get-Content (Join-Path $demoOutput 'result.json')
 ```
 
-Expected model size: 8,196 sources, covariance rank 235, 40,980 ranked rows. Changing model inputs or options changes the result. Preserve the original sealed files.
+This is an arithmetic example, not a source-imaging result. The main `distinguish` diagnostic requires a compatible model bundle and metadata as described above. The licensed sub-01 inputs used for the 8,196-source, 40,980-row result are not distributed in the public repository or submission ZIP. A reviewer without those inputs can inspect its recorded replay evidence but cannot independently regenerate that participant result from the public package alone.
 
 ## Two-minute walkthrough
 
 1. Explain the problem: different sources can produce similar scalp patterns under a model.
 2. Show the four allowed model arrays and the metadata contract.
-3. Run `distinguish`, or open the already executed audit output if time is short.
+3. Run `distinguish` with a verified model, or show the recorded model-only audit and run the public arithmetic example.
 4. Show a query source and its ranked distant alternatives in the CSV. Explain that cosine is pattern similarity, not probability.
 5. Show the hashes and access log, then the audit result.
 6. Close with the use case and limitation: inspect model ambiguity before interpreting a source estimate; physiological validation and decision advantage remain future work.

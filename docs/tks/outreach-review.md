@@ -45,7 +45,7 @@ The public source checkout intentionally excludes licensed model arrays, partici
 ## Current evidence boundary
 
 - The public software, clean installation, commands, tests, documentation, packaging, and hashes have been exercised end to end.
-- The Localize-MI demonstration is conditional on one participant-specific model and an electrical stimulation pulse artifact.
+- The `distinguish` demonstration is a model-only audit of one Localize-MI participant forward model. The separate stimulation-pulse route did not validate endogenous neural-source recovery.
 - B4 through B7 are explicit pivots because available evidence did not support physiological recovery or decision-benefit claims.
 - B8 passed for the bounded software snapshot; external human review remains deferred.
 - WSGZP participant-specific source analysis remains blocked pending registration provenance and reviewed geometry QC.
