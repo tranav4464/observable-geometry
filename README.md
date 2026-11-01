@@ -76,7 +76,7 @@ The full research workspace also contains local dataset files, ignored build out
 
 ### Local browser interface
 
-Install the optional web dependencies with `python -m pip install -e ".[web]"`, then run `observable-geometry-web`. Open `http://127.0.0.1:8501` if the browser does not open automatically. The interface can run `distinguish` from local model-only NPZ and metadata paths or inspect an existing completed run. It shows the score distribution, a source-specific table and distance-versus-score plot, and lets you download the ranked CSV. The server binds to your own computer; files are not uploaded to a hosted service. The same input contracts and scientific limitations as the CLI apply. See the [browser handoff](docs/tks/web-interface.md) for first-use steps.
+Install the optional web dependencies with `python -m pip install -e ".[web]"`, then run `observable-geometry-web`. Open `http://127.0.0.1:8501` if the browser does not open automatically. The interface can run `distinguish` from local model-only NPZ and metadata paths or inspect an existing completed run after checking its files against its SHA-256 manifest. It shows the score distribution, a source-specific table and distance-versus-score plot, and lets you download the ranked CSV. The server binds to your own computer; files are not uploaded to a hosted service. The same input contracts and scientific limitations as the CLI apply. See the [browser handoff](docs/tks/web-interface.md) for first-use steps.
 
 
 Prepare an NPZ bundle with exactly these arrays:

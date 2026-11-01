@@ -1,6 +1,6 @@
 # Reproduce the Build article figures
 
-Open `model_audit_figures.ipynb` from the repository root using Python 3.12+. Install the optional figure dependencies with `python -m pip install -e ".[figures]"`. Run all cells in order.
+Open `model_audit_figures.ipynb` from the repository root using Python 3.12+. Install the optional figure dependencies with `python -m pip install -e ".[figures]"`. Register that environment's kernel with `python -m ipykernel install --user --name observable-geometry --display-name "Observable Geometry"`, select it in Jupyter or VS Code, then run all cells in order. If you use another kernel name, select the same environment manually; the notebook metadata does not install a kernel by itself.
 
 The notebook reruns the package's `distinguish` diagnostic. If the local, hash-verified Localize-MI sub-01 model-only export is present, it produces the participant-model figures. A public clone falls back to the four-source arithmetic fixture in `examples/`; those demo figures are **not neuroscience evidence**. The notebook never reads recorded EEG waveform arrays.
 

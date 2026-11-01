@@ -10,6 +10,7 @@ import pandas as pd
 import streamlit as st
 
 from observable_geometry.cli import run_distinguish
+from observable_geometry.web_results import verify_completed_run
 
 
 st.set_page_config(page_title="Observable Geometry", layout="wide")
@@ -52,13 +53,14 @@ if result_dir is not None:
         st.warning("This directory does not contain a completed distinguish run.")
     else:
         try:
-            summary = json.loads(summary_path.read_text(encoding="utf-8"))
+            summary = verify_completed_run(result_dir)
             pairs = pd.read_csv(pairs_path)
             required = {"source_index", "source_id", "rank", "candidate_index", "candidate_id",
                         "distance_mm", "absolute_cosine", "profiled_residual_unit_snr"}
             if not required.issubset(pairs.columns):
                 raise ValueError("The ranked-pairs file has an unexpected schema")
             st.subheader("Run summary")
+            st.caption("Local output files match this run's SHA-256 manifest. This checks file integrity, not scientific validity or the identity of the person who created the manifest.")
             a, b, c = st.columns(3)
             a.metric("Candidate sources", f"{summary['source_count']:,}")
             b.metric("Exported ranked rows", f"{len(pairs):,}")
@@ -84,5 +86,5 @@ if result_dir is not None:
                 st.json({"inputs": summary.get("inputs"), "parameters": summary.get("parameters"),
                          "claim_boundary": summary.get("claim_boundary")})
                 st.write("Check run_manifest.json and npz_key_access.jsonl in the same directory for code and input hashes and array access.")
-        except (ValueError, KeyError, OSError, pd.errors.ParserError) as exc:
+        except (ValueError, KeyError, OSError, json.JSONDecodeError, pd.errors.ParserError) as exc:
             st.error(f"Could not read this run: {exc}")
