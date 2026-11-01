@@ -15,9 +15,11 @@ readme = "README.md"
 [project.optional-dependencies]
 test = ["pytest>=8"]
 research-audit = ["h5py>=3.10", "mne>=1.7", "nibabel>=5.2"]
+web = ["streamlit>=1.40", "pandas>=2.0"]
 
 [project.scripts]
 observable-geometry = "observable_geometry.cli:main"
+observable-geometry-web = "observable_geometry.web_launch:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
