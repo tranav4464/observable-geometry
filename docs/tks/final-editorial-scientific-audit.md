@@ -7,7 +7,7 @@
 | Check | Result |
 |---|---|
 | Distinct questions | Article 1 explains the Build's method and measured limits. Article 2 asks how a brain map can be validated across six original studies. The [overlap map](learn-build-overlap-map.md) marks Learn background kept brief. |
-| Length | Article 1: **3,197 words**, Article 2: **2,932 words**, including citations. Both are approximately **12–13 minutes** at a technical-reading pace, though readers may pause longer over equations or linked figures. |
+| Length | Article 1: **3,199 words**, Article 2: **2,932 words**, including citations. Both are approximately **12–13 minutes** at a technical-reading pace, though readers may pause longer over equations or linked figures. |
 | Voice and structure | Both articles use a personal but precise voice, readable headings and short transitions. Article 1 has the research-report progression while retaining a reader-facing title; Article 2 is a comparative argument rather than a second Build report. |
 | Language pass | Formulaic transitions and repeated stock phrases were replaced with direct descriptions of the work and the author's reasoning. The technical claims, figures, citations and limitations were retained. |
 | Non-specialist check | Article 1 now explains the leadfield, covariance, whitening, polarity, cosine, residual and comparison metrics beside their equations. Article 2 introduces dipoles, IEDs, surgical resection, source maxima and the head-model shortcut where they first appear. |
@@ -19,7 +19,7 @@
 | Check | Result and boundary |
 |---|---|
 | Mathematical derivation | Article 1 derives covariance-supported whitening, normalized absolute cosine and profiled unit-pattern residual. The calculation is conditional on the fixed-orientation, single-column source family; gain is removed by normalization, and source polarity is free. The source/covariance channel-reference contract and eigenvalue support cutoff are stated. |
-| Model example | Article 1 states one Localize-MI sub-01 model, 236 channels, 8,196 vertices, rank 235, 20 mm exclusion and five ordered alternatives. The 40,980 rows are directed exports, not independent neural observations. The [Article 1 claim audit](article-claim-audit.md) traces each result to code or saved evidence. |
+| Model example | Article 1 states one Localize-MI sub-01 model, 236 channels, 8,196 vertices, rank 235, 20 mm exclusion and five ordered alternatives. It now walks through a real exported row: IDs, 22.35 mm distance, 0.9022 cosine and 0.4313 unit-pattern residual. The 40,980 rows are directed exports, not independent neural observations. The [Article 1 claim audit](article-claim-audit.md) traces each result to code or saved evidence. |
 | Reproducibility | The article separates arithmetic fixtures, frozen float32-to-CPU64 comparison, independent score replay and installed-wheel output replay. The lawful participant model arrays are not in the public bundle; a reader can run the public algebraic example and repeat the licensed-model result only with matching permitted inputs. |
 | Comparators and novelty | GBF inverse reproduction, direct leadfield comparison and PSF/CTF resolution are not conflated. The 1993 angular-separability prior art is cited. Moderate one-model PSF correlations are presented as related outputs, with no claimed decision improvement or new method. |
 | Failed routes | The stimulation-pulse artifact and WSGZP geometry limitations are included as unresolved validation routes. Neither is called endogenous source ground truth. |
