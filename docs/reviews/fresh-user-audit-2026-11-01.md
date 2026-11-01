@@ -15,6 +15,7 @@ I cloned the public repository into a new directory and installed the current `0
 | `family-frontier` and `robust-audit` public examples | Both completed; their supplied numerical bounds were not independently authenticated by the commands |
 | Streamlit AppTest: run public example | Completed, displayed 4 sources, 12 rows and median similarity 0.958 |
 | Streamlit AppTest: inspect participant result | Completed, displayed 8,196 sources, 40,980 rows and median similarity 0.916 |
+| First local web-server launch | Streamlit prompted for an optional email on this fresh install; pressing Enter started the server. Local HTTP request returned 200 |
 | Browser and CLI CSV parity for same public model | Byte-identical |
 | Fresh clone with separately held Localize-MI-derived model-only inputs | 8,196 sources, 235 supported covariance directions, 40,980 ranked rows; CSV equal to the earlier verified notebook run |
 | Output SHA-256 checks | All files named in the distinguish manifest matched their recorded hashes |

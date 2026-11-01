@@ -14,6 +14,8 @@ python -m venv .web-env
 
 Open `http://127.0.0.1:8501` if your browser does not open automatically. Stop the server with Ctrl+C. It binds to this computer only. The optional `Web Interface` folder in the TKS handoff contains a versioned wheel if you prefer that to a source checkout. From that folder, install it with `python -m pip install .\observable_geometry-0.1.3.dev2-py3-none-any.whl streamlit pandas`, then run `observable-geometry-web`.
 
+On a machine where Streamlit has never been started, Streamlit may first ask for an optional email address in the terminal. Press Enter to leave it blank; the local server then starts. This is Streamlit's initial setup, not a prompt from Observable Geometry.
+
 ## Use it
 
 ### Try the public arithmetic demo first
