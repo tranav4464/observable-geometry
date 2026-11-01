@@ -1,0 +1,20 @@
+{
+  "tolerance": 2.0,
+  "cases": [
+    {
+      "id": "arithmetic-example",
+      "reference": {
+        "name": "point family",
+        "distance": {"lower": 3.0, "upper": 3.0},
+        "evidence": "illustrative supplied value"
+      },
+      "alternatives": [
+        {
+          "name": "patch family",
+          "distance": {"lower": 1.0, "upper": 1.0},
+          "evidence": "illustrative supplied value"
+        }
+      ]
+    }
+  ]
+}

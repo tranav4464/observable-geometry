@@ -1,11 +1,20 @@
 import pytest
 import json
+from pathlib import Path
 
 from observable_geometry.cli import main
 
 from observable_geometry.track_b.family_frontier import (
     DistanceInterval, FamilyComparison, compare_families,
 )
+
+
+def test_documented_family_frontier_example_runs(tmp_path):
+    example = Path(__file__).resolve().parents[1] / "examples" / "family_frontier_toy.json"
+    assert main(["family-frontier", "--spec", str(example), "--output", str(tmp_path / "result")]) == 0
+    result = json.loads((tmp_path / "result" / "result.json").read_text(encoding="utf-8"))
+    assert result["input_evidence_status"] == "supplied_distance_bounds_not_replayed_by_this_command"
+    assert result["cases"][0]["alternatives"][0]["reference_excluded_alternative_fits"] is True
 
 
 def family(name, lower, upper):

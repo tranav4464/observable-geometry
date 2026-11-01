@@ -117,9 +117,11 @@ The `family-frontier` command takes previously computed distance intervals for a
 
 ```powershell
 observable-geometry family-frontier `
-  --spec .\family_distances.json `
+  --spec .\examples\family_frontier_toy.json `
   --output .\results\family-frontier-001
 ```
+
+The included example uses illustrative supplied distances to exercise the command; it is not a model fit or measured neural result.
 
 The input has `tolerance` and a nonempty `cases` array. Each case has a unique `id`, one `reference` family and an `alternatives` array. Each family has a unique `name`, `evidence` label and `distance` with nonnegative `lower` and `upper` bounds. An exact numerical minimum can be supplied as equal bounds only when its numerical and modeling limitations are understood. A feasible witness without an exclusion certificate should use `lower: 0` and its replayed residual as `upper`.
 
