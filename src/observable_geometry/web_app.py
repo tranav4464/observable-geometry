@@ -28,6 +28,8 @@ if mode == "Run a model":
     minimum_distance = c1.number_input("Minimum straight-line distance (mm)", min_value=0.0, value=20.0)
     top_k = c2.number_input("Alternatives per source", min_value=1, max_value=100, value=5)
     if st.button("Run diagnostic", type="primary"):
+        # Do not leave an earlier result visible beside an error from this run.
+        st.session_state.pop("result_directory", None)
         if not bundle or not metadata or not output:
             st.error("Enter all three paths.")
         else:
