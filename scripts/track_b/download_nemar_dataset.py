@@ -55,7 +55,7 @@ def download_one(root: Path, entry: dict, retries: int = 5) -> tuple[str, int, s
         if offset > size:
             part.unlink()
             offset = 0
-        headers = {"User-Agent": "TKS-ObservableGeometry/0.1 (research dataset acquisition)"}
+        headers = {"User-Agent": "ObservableGeometry/0.1 (research dataset acquisition)"}
         if offset:
             headers["Range"] = f"bytes={offset}-"
         try:

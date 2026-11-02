@@ -1,7 +1,5 @@
-# Dependency sets
+# Optional research environments
 
-- `foundation.txt`: Track A foundation environment.
-- `track-b-cpu.txt`: Track B CPU environment.
-- `track-b-gpu.txt`: Track B GPU environment.
+The standard installation is defined in `pyproject.toml`. The files in this directory list optional dependencies for reproducibility utilities and research analyses. They are not required for the command-line tool or local browser interface.
 
-The installable package declares its runtime dependencies in [`../pyproject.toml`](../pyproject.toml). These files pin broader research environments and are not required for the basic CLI installation.
+Dataset access and licensing are handled separately from software dependencies.

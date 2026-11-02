@@ -1,185 +1,72 @@
 # Observable Geometry
 
-Observable Geometry 0.1.3.dev3 adds a local browser interface to the accepted 0.1.3.dev1 TKS software snapshot. The computational-neuroscience build centers on **Geometric-Informed Basis Functions (GBFs)** and a nominal EEG source-pattern comparison. The software asks what a declared forward model predicts at the sensors for pairs of candidate sources. It does not infer every active neural source, assign calibrated probabilities, or establish physiological source recovery. The browser addition has been locally tested but has not received a separate B8 acceptance review.
+**Observable Geometry is open-source research software for inspecting when candidate brain sources have similar predicted EEG patterns under a supplied forward model.** It helps researchers examine a model's spatial ambiguity before interpreting a source estimate.
 
-**Intended use:** before interpreting an inverse solution, a researcher can use a participant-specific forward model, sensor reference, and noise covariance to rank the most similar candidate sources beyond a chosen minimum distance. This is an exploratory model audit: it can expose conditional ambiguity in the supplied model, but it does not show that either source was active or that a real recording can be localized accurately. The [TKS build handoff](docs/tks/build-handoff.md) gives a short project explanation, use case, demo path, evidence, and claim limits. Feedback from two outreach reviewer responses and the next-build actions are summarized in [the review action plan](docs/reviews/next-build-actions.md).
+## What it does
 
-The active contribution is a traceable GBFs implementation/reproduction workflow and an inspectable researcher-facing diagnostic. The normalized, noise-whitened source-pattern similarity is established prior art; this project does not claim that score as a new mathematical method. Track A's Localize-MI pulse-artifact evaluation is limited to one participant and an electrical stimulation artifact. It does not validate endogenous neural-source localization.
+Given a sensor-by-source leadfield, a matching noise covariance, source coordinates and model metadata, the diagnostic:
 
-The `distinguish` diagnostic is separate from the GBF inverse estimator. It compares columns of a sensor-by-candidate-pattern leadfield; it does not construct GBF patches or estimate active sources. The sealed Localize-MI example uses fixed-orientation cortical-vertex columns. Other source-pattern families can be supplied only when their construction is documented. The output is a conditional ranking and score, not a calibrated decision threshold.
+1. whitens the predicted scalp patterns using the covariance's supported subspace;
+2. normalizes pattern magnitude and compares candidates with an absolute cosine score;
+3. excludes pairs closer than a user-chosen distance; and
+4. saves the highest-similarity alternatives with input/output hashes and an access log.
 
-## Current project state
+The command-line tool and optional local browser interface use the same calculation. The browser can display score distributions, a selected source's ranked alternatives, and a distance-versus-score plot.
 
-- **B0–B3:** passed at bounded scopes. This includes prior-art screening, one verified real model, the frozen nominal score, a CPU float64 implementation, tests, and a sealed model-only demonstration.
-- **B4:** pivoted. A fresh 224-channel sub-01 rerun reproduces the existing pairwise CSV exactly, but the measured pulse artifact and tested source models do not support a neural-source validation claim. The previous 236/224-channel comparison is documented as invalid.
-- **B5/B6:** pivoted without protocol lock or held-out evaluation because the available endpoint cannot validate endogenous neural-source distinguishability. No reserved outcomes were opened.
-- **B7:** pivoted after a same-model, paired comparison found moderate association between the B3 score and MNE PSF summaries but no evidence of analyst decision benefit. Retain as a descriptive diagnostic only.
-- **B8: PASS for the bounded TKS software snapshot (30 October 2026).** Accepted snapshot: `3c99ca1`, package `0.1.3.dev1`. Fresh installation, 213 workspace tests and 211 archive tests with two expected skips, and exact 40,980-pair replay passed. No external human review is claimed. See the [decision and acceptance scope](docs/track_b/B8_PASS_20261030.md).
+## Scientific scope
 
-Start with the [submission overview](docs/tks/submission.md), [reviewer quick start](docs/tks/outreach-review.md), [demo guide](docs/tks/demo.md), [browser guide](docs/tks/web-interface.md), or [build presentation](index.html). The **accepted dev1 snapshot** remains pinned to commit `3c99ca1`; the current dev2 repository head adds the locally tested browser interface and is not covered by that B8 decision. WSGZP geometry is a deferred empirical extension, not a prerequisite for presenting the bounded software build.
+This is an **exploratory, model-conditional diagnostic**. The similarity calculation is established mathematics, not a new method claim. A high score means two modeled sources predict similar sensor patterns under the supplied inputs. It is not a probability, proof that either source was active, or evidence of accurate recovery from a measured neural event.
 
-For the wider scientific story, read [Article 1: When Two Brain Locations Look Alike to EEG](docs/tks/article-1-observable-geometry.md) and [Article 2: A Brain Map Can Look Right. How Would We Know It Is?](docs/tks/article-2-source-validation.md). The [claim audit](docs/tks/article-claim-audit.md) and [six-paper matrix](docs/tks/six-paper-research-matrix.md) trace the evidence.
-
-## Repository map
-
-| Path | Contents |
-|---|---|
-| [`src/observable_geometry/`](src/observable_geometry/) | Installable Python package and command-line interface |
-| [`tests/`](tests/) | Unit, integration, packaging, and audit tests |
-| [`examples/`](examples/) | Small data-free input examples |
-| [`docs/tks/`](docs/tks/) | Submission, demo, pitch, and reviewer handoff |
-| [`docs/foundation/`](docs/foundation/) | Architecture, mathematics, validation, and design decisions |
-| [`docs/planning/`](docs/planning/) | Project plans and Track B research architecture |
-| [`docs/track-a/`](docs/track-a/) | Track A completion and audit records |
-| [`docs/track_b/`](docs/track_b/) | Track B protocols, gate evidence, and historical machine-readable records |
-| [`docs/reviews/`](docs/reviews/) | Independent reviews, remediation, and future-work feedback |
-| [`requirements/`](requirements/) | Pinned foundation, CPU, and GPU research environments |
-| [`scripts/`](scripts/README.md) | Reproducible build, audit, and verification entry points |
-
-The documentation hub is [`docs/README.md`](docs/README.md). Historical Track B filenames remain unchanged where audit records cite them; current reader-facing documents use descriptive lowercase names.
-
-### WSGZP geometry status
-
-The WSGZP release supplies individual scalp-electrode coordinates and fiducials labeled `T1w`/millimetres. The dataset paper reports digitization and MRI coregistration, but the public export code copies values from `*_egi_dig.hpts` into BIDS without showing the upstream transform. The AnonyMI paper says its masking changes voxel intensities without changing the MRI header, so AnonyMI alone is less likely to have shifted the coordinate frame; the exact participant-level digitizer registration and QC remain unverified. The source digitizer files and participant registration QC are not present in the downloaded package. A 36-participant metadata/MRI screen found 57 electrodes outside the MRI field of view across eight participants; this is a triage result, not proof of a coordinate error or a geometry pass. Do not use WSGZP for participant-specific source analysis until coordinate-frame provenance is confirmed and electrode-to-scalp geometry receives reviewed QC. See the [coordinate screen](docs/track_b/WSGZP_COORDINATE_COMPATIBILITY_SCREEN_20261029.md), [upstream pipeline audit](docs/track_b/WSGZP_UPSTREAM_COORDINATE_PIPELINE_AUDIT_20261029.md), and [geometry acceptance request](docs/track_b/WSGZP_COORDINATE_PROVENANCE_REQUEST.md).
-
-### Localize-MI model-only extension
-
-Seven Localize-MI participant forward FIFs are available locally and pass file-hash, leadfield-structure, channel-order, and internal transform-consistency checks. Together with the earlier all-participant metadata geometry audit, the maximum discrepancy between released scalp-electrode positions and forward sensor positions is 0.00866 mm; this establishes cross-file consistency, not endogenous source recovery. The data remain local under their CC BY-NC-SA 4.0 terms. See the [bundle audit](docs/track_b/LOCALIZEMI_FORWARD_BUNDLE_AUDIT_20261029.md), [participant geometry evidence](docs/track_b/B1_LOCAL_DATA_AUDIT.md), and [replayable audit script](scripts/track_b/audit_localizemi_forward_bundle.py).
-
-See [the project definition](docs/track_b/PROJECT_DEFINITION.md), [the build plan](docs/track_b/GBF_BUILD_PLAN.md), the [B4 audit](docs/track_b/B4_DEVELOPMENT_AUDIT_20261024.md), the [B5/B6 route closeout](docs/track_b/B5_B6_ROUTE_CLOSEOUT_20261024.md), the [B7 decision-value audit](docs/track_b/B7_DECISION_VALUE_AUDIT_20261024.md), and the [gate register](docs/track_b/GATE_REGISTER.json).
+The public example is a small arithmetic fixture for learning the interface. Licensed participant inputs are not included. The project has not established endogenous neural-source recovery, improved researcher decisions, or generalization across participants. See [the method and limitations](docs/foundation/mathematics.md) and [the project overview](docs/project/project-overview.md).
 
 ## Install
 
-Python 3.12 or later is required. Confirm that the `python` command selects a compatible interpreter, then run from the project directory:
+Python 3.12 or newer is required.
 
 ```powershell
-python --version
 python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-python -m pip install --upgrade pip
-python -m pip install -e ".[test,research-audit]"
+.\.venv\Scripts\python.exe -m pip install -e .
+.\.venv\Scripts\observable-geometry.exe --help
 ```
 
-If `python --version` reports an older interpreter, invoke your Python 3.12+ executable directly. On systems with the Windows Python launcher, `py -3.12 -m venv .venv` is an equivalent alternative.
-
-Run the full workspace correctness and audit tests:
+For the local browser interface:
 
 ```powershell
-python -m pytest -q
+.\.venv\Scripts\python.exe -m pip install -e ".[web]"
+.\.venv\Scripts\observable-geometry-web.exe
 ```
 
-The `research-audit` extra supplies the HDF5, MRI and MNE dependencies used by repository audit tests; these are not required to install or use the researcher-facing CLI. In a full research workspace, the gate-register integration test also checks that every cited evidence path exists. A source-only archive intentionally omits those local run outputs, so that integration test is skipped there; run `python scripts/track_b/validate_gate_register.py` only from the complete workspace to validate the evidence paths.
+Open `http://127.0.0.1:8501`. The browser interface runs on your computer; it does not upload model files to a hosted service.
 
-The full research workspace also contains local dataset files, ignored build outputs, and the pinned upstream GBFs checkout. Those files are not included in a clean source installation. The Localize-MI data have a non-commercial share-alike license and must not be redistributed with this package. Superseded WBEN and synthetic-signal code is retained only under `archive/historical_wben/`; it is excluded from the installed package and normal test suite. Follow each dataset's current terms and citation instructions before acquiring or using it.
+## Try the public example
 
-## Run the researcher-facing diagnostic
-
-### Local browser interface
-
-Install the optional web dependencies with `python -m pip install -e ".[web]"`, then run `observable-geometry-web`. Open `http://127.0.0.1:8501` if the browser does not open automatically. The interface can run `distinguish` from local model-only NPZ and metadata paths or inspect an existing completed run after checking its files against its SHA-256 manifest. It shows the score distribution, a source-specific table and distance-versus-score plot, and lets you download the ranked CSV. The server binds to your own computer; files are not uploaded to a hosted service. The same input contracts and scientific limitations as the CLI apply. See the [browser handoff](docs/tks/web-interface.md) for first-use steps.
-
-
-Prepare an NPZ bundle with exactly these arrays:
-
-- `leadfield`: finite `n_sensors × n_sources` forward matrix.
-- `noise_covariance`: finite `n_sensors × n_sensors` covariance using the same sensor order and reference.
-- `coordinates_m`: finite `n_sources × 3` source coordinates in metres.
-- Optional `source_ids`: one integer or string ID per source column.
-
-The command rejects undeclared arrays, including a `data` member, before materializing them. A successful run records the allowed keys it reads; a rejected run reports the denied key on stderr and does not publish an output folder. This process-level guard prevents accidental access through this CLI; it is not a security sandbox.
-
-Provide a JSON file describing the model. It must include nonempty strings for `dataset`, `participant`, `forward_model`, `reference`, `coordinate_frame`, `source_orientation`, and `noise_covariance`, plus a `sensor_names` array with one unique name per leadfield row. For example:
-
-```json
-{
-  "dataset": "your dataset and version",
-  "participant": "subject identifier",
-  "forward_model": "forward solution and provenance",
-  "reference": "electrode reference",
-  "coordinate_frame": "coordinate frame",
-  "source_orientation": "fixed or free orientation convention",
-  "noise_covariance": "estimation window and method",
-  "sensor_names": ["sensor-1", "sensor-2"]
-}
-```
-
-Run the analysis into a new output directory. Existing output paths are never overwritten. Each command writes into a temporary sibling directory and publishes the finished result only after every output file is complete; a failed run removes its temporary directory so it cannot be mistaken for a completed result or block a retry.
+The arithmetic example demonstrates the interface and output format. It is not EEG data or a neuroscience result.
 
 ```powershell
-observable-geometry distinguish `
-  --bundle .\model_bundle.npz `
-  --metadata .\model_metadata.json `
-  --output .\results\run-001 `
-  --minimum-distance-mm 20 `
-  --top-k 5
+$demoOutput = Join-Path $PWD ('demo-' + (Get-Date -Format 'yyyyMMdd_HHmmss'))
+.\.venv\Scripts\observable-geometry.exe robust-audit --spec .\examples\robust_audit_toy.json --output $demoOutput
+Get-Content (Join-Path $demoOutput 'result.json')
 ```
 
-The output contains ranked source pairs, float64 scores, a JSON summary, input and code hashes, and an NPZ access log. Similarity is conditional on the supplied forward model, sensor reference, source family, and covariance. It is not a probability that a source will be localized correctly.
+To run `distinguish` on a research model, provide a compatible model-only NPZ, matching metadata JSON, and a new output directory. See [the user guide](docs/project/demo.md) for the input contract and an example command. Never put recorded EEG samples into the model bundle.
 
-## Compare source-family claims across tolerances
+## Output
 
-The `family-frontier` command takes previously computed distance intervals for a reference source family and one or more alternatives. It reports whether each family fits, is excluded, or remains unresolved at a supplied tolerance. It also reports the half-open tolerance interval where a valid lower bound excludes the reference while a feasible alternative upper bound fits. This makes a source-family assumption change visible without choosing a single tolerance after seeing the result.
+A `distinguish` run writes ranked candidate pairs, score arrays, a summary, a run manifest containing hashes and parameters, and a record of which NPZ keys were accessed. Results are not overwritten; use a new output directory for each run.
 
-```powershell
-observable-geometry family-frontier `
-  --spec .\examples\family_frontier_toy.json `
-  --output .\results\family-frontier-001
-```
+## Project documents
 
-The included example uses illustrative supplied distances to exercise the command; it is not a model fit or measured neural result.
+- [Project overview and claim limits](docs/project/project-overview.md)
+- [Installation and demonstration guide](docs/project/demo.md)
+- [Local browser guide](docs/project/web-interface.md)
+- [Architecture](docs/foundation/architecture.md)
+- [Mathematical definition](docs/foundation/mathematics.md)
+- [Validation scope](docs/foundation/validation.md)
+- [Recorded results and limitations](docs/project/results-and-limits.md)
+- [Article: When Two Brain Locations Look Alike to EEG](docs/project/article-1-observable-geometry.md)
+- [Article: A Brain Map Can Look Right. How Would We Know It Is?](docs/project/article-2-source-validation.md)
+- [Documentation index](docs/README.md)
 
-The input has `tolerance` and a nonempty `cases` array. Each case has a unique `id`, one `reference` family and an `alternatives` array. Each family has a unique `name`, `evidence` label and `distance` with nonnegative `lower` and `upper` bounds. An exact numerical minimum can be supplied as equal bounds only when its numerical and modeling limitations are understood. A feasible witness without an exclusion certificate should use `lower: 0` and its replayed residual as `upper`.
+## License and data
 
-This command **does not recompute or authenticate** supplied distances. It records the input hash and labels this limit in its output. A reversal is conditional on the source families, model and valid bounds; it is not measured source recovery or a composite-classifier error rate. A five-participant, 20-case worked input built from independently replayed research results is documented in the private full-workspace family-frontier report, which is not redistributed in this public repository.
-
-## Audit a target-only claim across a declared model set
-
-The separate `robust-audit` command accepts a JSON specification with a fixed-field tolerance, anchor target and alternative residual certificates, a source amplitude limit, an alternative L1 budget, certified per-column forward radii, and one or more independently checked scenarios inside the declared uncertainty set. It returns **certified target only**, **refuted by an in-set scenario**, or **unresolved**. A single in-set target-fit failure refutes the universal claim; a loose radius never becomes a false certificate.
-
-```powershell
-observable-geometry robust-audit `
-  --spec .\examples\robust_audit_toy.json `
-  --output .\results\robust-audit-001
-```
-
-The source checkout's `examples/robust_audit_toy.json` is an **arithmetic illustration**, not simulated neural evidence. Its supplied bounds satisfy a positive certificate; the separate sub-01 research example demonstrates an in-set counterexample and the failure of a loose continuous bound. A wheel-only installation needs a user-supplied JSON spec in the same schema.
-
-The input JSON must have exactly these fields: `parameter_interval`, `tolerance`, `anchor_target_residual_upper`, `anchor_alternative_residual_lower`, `anchor_alternative_residual_upper`, `target_amplitude_abs_upper`, `alternative_l1_budget`, `target_column_radius`, `alternative_column_radius_upper`, and `endpoints`. `parameter_interval` is a two-number range for the varied forward parameter. Each endpoint has a unique `name`, an in-range `parameter_value`, a separately established `target_residual_lower`, and optionally an `alternative_residual_upper`. The observed field, source units, sensor reference, whitening and source-family definitions must agree across all scenarios. The CLI checks numeric membership and decision arithmetic; it cannot authenticate those scientific assumptions or manufacture valid residual/radius certificates from arbitrary numbers.
-
-Every CLI result includes `input_evidence_status=supplied_bounds_not_replayed_by_this_command`. The two included sub-01 research inputs have a separate hash and conservative-scalar replay in `research/gbf_omitted_activity_20261024/ROBUST_AUDIT_INPUT_REPLAY_RESULTS_20261028.md`. That replay is case-specific; it does not confer verification on other user-supplied specs.
-
-The included sub-01 research example is documented in `research/gbf_omitted_activity_20261024/ROBUST_AUDIT_DECISION_RESULTS_20261027.md` in the full workspace. Its conductivity range and tolerance are illustrative. The three-way logic is standard triangle-inequality reasoning plus an in-set counterexample, not a novel source inverse or physiological validation.
-
-## Reproduce the sealed Localize-MI model-only demonstration
-
-In the full research workspace, with the sealed Track A artifacts present, first export only the allowed model arrays. The adapter validates the sealed artifact hashes, records each NPZ key read, and never indexes the recorded EEG `data` member:
-
-```powershell
-python scripts\track_b\export_sealed_model_bundle.py --output .\tmp\model_bundle_run1
-observable-geometry distinguish `
-  --bundle .\tmp\model_bundle_run1\model_bundle.npz `
-  --metadata .\tmp\model_bundle_run1\model_metadata.json `
-  --output .\outputs\track_b\your-new-run-id `
-  --minimum-distance-mm 20 `
-  --top-k 5
-```
-
-The original B3 reference command remains available as `python scripts\track_b\run_b3_distinguishability.py --run-id your-new-run-id`. Both commands refuse overwrites and do not read the EEG sample array. The exported model bundle is Localize-MI-derived and must stay local unless its license terms have been assessed. The Track A report and B4 rerun are development evidence for one participant and the pulse artifact only.
-
-## Interpretation and research boundaries
-
-The experimental [two-sided fixed-field audit API](docs/track_b/TWO_SIDED_AUDIT_API.md)
-compares a favored source family and a finite union of constrained alternatives
-against the same pre-whitened field. It returns feasible witnesses, weak-dual
-lower bounds, and an explicit abstention state when neither family fits. This
-is standard constrained-fitting mathematics implemented as inspectable
-research software. The current conductivity example uses a synthetic field;
-it does not establish physiological source attribution.
-
-The equation, assumptions, prior art, data provenance, failures, and claim limits are documented in `docs/track_b/`. Historical NeuroFlowNet/WBEN experiments are archived and are not part of the active target. Active experimental work uses real recordings only; software correctness checks may use algebraic fixtures, but no synthetic neural dataset or signal is used as empirical evidence.
-
-An optional [relative tail-closed frontier](docs/track_b/TAIL_CLOSED_RELATIVE_FRONTIER_20261029.md) evaluates the model-conditional separation margin relative to each retained field's gain, using a generalized eigenvalue form of the existing S-lemma bound. It is a finite-grid, model-only diagnostic, not a novel method or neural-source result. The full workspace includes a runner and a separate direct-matrix verifier under `scripts/track_b/`.
-
-Track A remains sealed. Do not overwrite its outputs. Project source code is BSD-3-Clause licensed. This covers this repository's source only; it does not relicense the separately vendored GBFs checkout or any dataset. The Localize-MI data have a non-commercial share-alike license and are excluded from the package and source snapshot. Two outreach reviewers provided document-level feedback. B8 passed for the pinned TKS snapshot; external human review remains deferred. See the [acceptance record](docs/track_b/B8_PASS_20261030.md). The build remains exploratory research software with no established novel-method or physiological recovery claim. See the concise [assistance disclosure](docs/reviews/assistance-disclosure.md).
-
-Current verification: [end-to-end user acceptance review](docs/reviews/user-acceptance-review-2026-10-30.md) and [remediation re-review](docs/reviews/tks-remediation-review-2026-10-30.md). The original B8 acceptance artifact remains preserved; this update repairs provenance and packaging without changing numerical scores.
+Project source is licensed under BSD 3-Clause. This does not relicense upstream GBFs code or any dataset. Obtain data directly from their providers, follow their license and access conditions, and prepare participant-specific model inputs locally.
