@@ -54,6 +54,10 @@ To run `distinguish` on a research model, provide a compatible model-only NPZ, m
 
 A `distinguish` run writes ranked candidate pairs, score arrays, a summary, a run manifest containing hashes and parameters, and a record of which NPZ keys were accessed. Results are not overwritten; use a new output directory for each run.
 
+## Reproducibility artifacts
+
+A checksummed archive of selected portable run outputs and a dataset reacquisition/rebuild guide are in [reproduction/](reproduction/README.md). Participant data and model arrays are not included.
+
 ## Project documents
 
 - [Project overview and claim limits](docs/project/project-overview.md)
